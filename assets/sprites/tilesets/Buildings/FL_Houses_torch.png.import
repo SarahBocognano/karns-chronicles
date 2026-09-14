@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm8yrsrkkdteq"
-path="res://.godot/imported/char_a_p1_0bas_humn_v08.png-89a2e5addf599466820b6a82a79a5f07.ctex"
+uid="uid://ckj77pbv1162w"
+path="res://.godot/imported/FL_Houses_torch.png-dd427f15a5cd494bcb1c01e0c1177741.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/body/char_a_p1_0bas_humn_v08.png"
-dest_files=["res://.godot/imported/char_a_p1_0bas_humn_v08.png-89a2e5addf599466820b6a82a79a5f07.ctex"]
+source_file="res://assets/sprites/tilesets/Buildings/FL_Houses_torch.png"
+dest_files=["res://.godot/imported/FL_Houses_torch.png-dd427f15a5cd494bcb1c01e0c1177741.ctex"]
 
 [params]
 

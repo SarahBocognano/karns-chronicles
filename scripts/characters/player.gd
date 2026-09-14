@@ -3,15 +3,11 @@ extends CharacterBody2D
 @export var speed: float = 150.0
 
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
-@onready var outfit_sprite: AnimatedSprite2D = $OutfitSprite
-@onready var hair_sprite: AnimatedSprite2D = $HairSprite
 
-var layers: Array[AnimatedSprite2D]
 var direction: Vector2 = Vector2.ZERO
 var current_direction: String = "down"
 
 func _ready() -> void:
-	layers = [body_sprite, outfit_sprite, hair_sprite]
 	_apply_spawn_point()
 
 func _apply_spawn_point() -> void:
@@ -36,9 +32,9 @@ func _physics_process(_delta: float) -> void:
 
 	if direction != Vector2.ZERO:
 		update_facing_direction()
-		play_layered_animation("walk_" + current_direction)
+		play_animation("walk_" + current_direction)
 	else:
-		stop_layered_animation()
+		stop_animation()
 
 	move_and_slide()
 
@@ -48,12 +44,14 @@ func update_facing_direction() -> void:
 	else:
 		current_direction = "down" if direction.y > 0 else "up"
 
-func play_layered_animation(anim_name: String) -> void:
-	for layer in layers:
-		if layer.sprite_frames and layer.sprite_frames.has_animation(anim_name):
-			if layer.animation != anim_name or not layer.is_playing():
-				layer.play(anim_name)
+func play_animation(anim_name: String) -> void:
+	if body_sprite.sprite_frames and body_sprite.sprite_frames.has_animation(anim_name):
+		if body_sprite.animation != anim_name or not body_sprite.is_playing():
+			body_sprite.play(anim_name)
 
-func stop_layered_animation() -> void:
-	for layer in layers:
-		layer.stop()
+func stop_animation() -> void:
+	body_sprite.stop()
+
+
+func _on_direction_timer_timeout() -> void:
+	pass # Replace with function body.

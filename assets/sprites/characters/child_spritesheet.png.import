@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csubejv3jn17u"
-path="res://.godot/imported/char_a_p1_1out_pfpn_v02.png-528d199eb8a8dd5f87268dcfc6039e56.ctex"
+uid="uid://bq20tjw4d3v7p"
+path="res://.godot/imported/child_spritesheet.png-4b0661c5a776190ab09d04b0c5f97dfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/outfit/char_a_p1_1out_pfpn_v02.png"
-dest_files=["res://.godot/imported/char_a_p1_1out_pfpn_v02.png-528d199eb8a8dd5f87268dcfc6039e56.ctex"]
+source_file="res://assets/sprites/characters/child_spritesheet.png"
+dest_files=["res://.godot/imported/child_spritesheet.png-4b0661c5a776190ab09d04b0c5f97dfa.ctex"]
 
 [params]
 

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b5n0auxdrmwnu"]
+
+[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/new_atlas_texture.tres" id="1_bjokd"]
+[ext_resource type="Texture2D" uid="uid://bxyvxnuco4bpm" path="res://assets/ui/image_ad298c1e-removebg-preview.png" id="1_e2pbm"]
+[ext_resource type="Script" uid="uid://ck0mhy55uhjg2" path="res://scenes/Dialog/dialog_box.gd" id="1_q25dq"]
+[ext_resource type="Texture2D" uid="uid://b83aq7t4yhnx" path="res://assets/ui/image_dd73c3e9-removebg-preview.png" id="2_bgph5"]
+[ext_resource type="Script" uid="uid://bqtbivv6oqg84" path="res://scenes/Dialog/continue_arrow.gd" id="3_bjokd"]
+[ext_resource type="FontFile" uid="uid://qetvw6d7ohye" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="4_bgph5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tafph"]
+texture = ExtResource("1_e2pbm")
+texture_margin_left = 60.0
+texture_margin_top = 40.0
+texture_margin_right = 60.0
+texture_margin_bottom = 40.0
+expand_margin_left = 60.0
+expand_margin_top = 40.0
+expand_margin_right = 60.0
+expand_margin_bottom = 40.0
+
+[node name="DialogBox" type="CanvasLayer" unique_id=1385062618]
+script = ExtResource("1_q25dq")
+
+[node name="PortraitDisplay" type="TextureRect" parent="." unique_id=438588791]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 513.0
+offset_top = -531.0
+offset_right = 1036.0
+offset_bottom = -190.0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_bjokd")
+stretch_mode = 6
+
+[node name="Root" type="Control" parent="." unique_id=1925136949]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Root" unique_id=569309483]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 583.0
+offset_top = -84.0
+offset_right = -582.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tafph")
+
+[node name="ContinueArroww" type="TextureRect" parent="Root/Panel" unique_id=1042328605]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029000001
+anchor_top = 0.11400001
+anchor_right = 0.049000002
+anchor_bottom = 0.120000005
+offset_left = 682.105
+offset_top = 137.36
+offset_right = 728.005
+offset_bottom = 181.8
+texture = ExtResource("2_bgph5")
+expand_mode = 1
+script = ExtResource("3_bjokd")
+
+[node name="NameLabel" type="Label" parent="Root/Panel" unique_id=642102149]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 198.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.9098039, 0.8509804, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("4_bgph5")
+text = "Zylrak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogueLabel" type="RichTextLabel" parent="Root/Panel" unique_id=659735845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 68.0
+offset_right = -37.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 50)
+theme_override_colors/default_color = Color(0.92941177, 0.9019608, 0.8392157, 1)
+theme_override_fonts/normal_font = ExtResource("4_bgph5")
+theme_override_fonts/bold_font = ExtResource("4_bgph5")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
