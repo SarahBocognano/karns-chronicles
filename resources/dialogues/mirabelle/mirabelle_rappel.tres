@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://c2f0gdc2r6ad5"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_ymwoi"]
+[ext_resource type="Texture2D" uid="uid://c22tenwjc4qdn" path="res://assets/portrait/mirabelle_douce.tres" id="2_tolj8"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_axc1w"]
+
+[sub_resource type="Resource" id="Resource_3v433"]
+script = ExtResource("1_ymwoi")
+speaker_name = "Mirabelle"
+portrait = ExtResource("2_tolj8")
+text = "Les pensées sont superbes ce matin, tu ne trouves pas ? ... Non, bien sûr. Les hommes avec une épée ne regardent jamais les fleurs."
+
+[resource]
+script = ExtResource("3_axc1w")
+lines = Array[ExtResource("1_ymwoi")]([SubResource("Resource_3v433")])
+required_flags = Array[String](["talked_to_mirabelle"])

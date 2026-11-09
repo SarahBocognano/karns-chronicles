@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bmasl78lm47a8"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_kcsti"]
+[ext_resource type="Texture2D" uid="uid://c22tenwjc4qdn" path="res://assets/portrait/mirabelle_douce.tres" id="2_rn8nn"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="3_bynxn"]
+[ext_resource type="Texture2D" uid="uid://d4l1ewmwls60v" path="res://assets/portrait/mirabelle_rire.tres" id="4_h7f0w"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="5_4qw5b"]
+[ext_resource type="Texture2D" uid="uid://bjoa8qdnv0ere" path="res://assets/portrait/mirabelle_inquiete.tres" id="6_g6inm"]
+[ext_resource type="Texture2D" uid="uid://dk1w48e7symff" path="res://assets/portrait/mirabelle_genee.tres" id="7_l7b8b"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="8_7owkn"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="9_lec28"]
+
+[sub_resource type="Resource" id="Resource_03fv2"]
+script = ExtResource("1_kcsti")
+speaker_name = "Mirabelle"
+portrait = ExtResource("2_rn8nn")
+text = "Oh ! Attention où tu mets les pieds, l'étranger. Tu as failli écraser mes soucis."
+
+[sub_resource type="Resource" id="Resource_m1h5g"]
+script = ExtResource("1_kcsti")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_bynxn")
+text = "Des soucis ? J'en ai déjà assez comme ça, merci."
+
+[sub_resource type="Resource" id="Resource_25n57"]
+script = ExtResource("1_kcsti")
+speaker_name = "Mirabelle"
+portrait = ExtResource("4_h7f0w")
+text = "Les fleurs, idiot ! Des soucis, des pensées, de la sauge... Tout ce petit monde a soif, même quand le village a peur."
+
+[sub_resource type="Resource" id="Resource_1g78r"]
+script = ExtResource("1_kcsti")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_4qw5b")
+text = "Des goules rôdent à deux pas, et toi, tu arroses tes plantes ?"
+
+[sub_resource type="Resource" id="Resource_ur40f"]
+script = ExtResource("1_kcsti")
+speaker_name = "Mirabelle"
+portrait = ExtResource("6_g6inm")
+text = "Justement. Si j'arrête, qu'est-ce qui restera quand tout ça sera fini ? Des chardons et des ronces."
+
+[sub_resource type="Resource" id="Resource_qboc6"]
+script = ExtResource("1_kcsti")
+speaker_name = "Mirabelle"
+portrait = ExtResource("7_l7b8b")
+text = "Je m'appelle Mirabelle. Si tu te blesses dehors, passe me voir. La sauge, ça soigne mieux que les grands discours."
+
+[sub_resource type="Resource" id="Resource_tddar"]
+script = ExtResource("1_kcsti")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_7owkn")
+text = "Zylrak, de l'Ordre des Cendres. Retiens bien ce nom."
+
+[sub_resource type="Resource" id="Resource_d0arl"]
+script = ExtResource("1_kcsti")
+speaker_name = "Mirabelle"
+portrait = ExtResource("2_rn8nn")
+text = "Je le planterai dans un coin du jardin. On verra bien s'il pousse."
+
+[resource]
+script = ExtResource("9_lec28")
+lines = Array[ExtResource("1_kcsti")]([SubResource("Resource_03fv2"), SubResource("Resource_m1h5g"), SubResource("Resource_25n57"), SubResource("Resource_1g78r"), SubResource("Resource_ur40f"), SubResource("Resource_qboc6"), SubResource("Resource_tddar"), SubResource("Resource_d0arl")])
+forbidden_flags = Array[String](["talked_to_mirabelle"])
+flags_on_finish = Array[String](["talked_to_mirabelle"])

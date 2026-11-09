@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bjx36mfhugyfr" path="res://assets/sprites/characters/random_blackhair_man(1).png" id="15_gdbrw"]
 [ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="npc_dialogue_script"]
 [ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="dialogue_conversation_script"]
+[ext_resource type="Resource" uid="uid://crvpv08r76rjy" path="res://resources/dialogues/inconnu/inconnu_rencontre.tres" id="dlg_inconnu_rencontre"]
+[ext_resource type="Resource" uid="uid://ukr7totgebid" path="res://resources/dialogues/inconnu/inconnu_rappel.tres" id="dlg_inconnu_rappel"]
 [ext_resource type="Resource" uid="uid://dfbrs5kp54oun" path="res://resources/dialogues/oswin/oswin_appel.tres" id="dlg_oswin_appel"]
 [ext_resource type="Resource" uid="uid://cotheo2ay7byk" path="res://resources/dialogues/oswin/oswin_rappel.tres" id="dlg_oswin_rappel"]
 [ext_resource type="Resource" uid="uid://ddbhecuw5mcyt" path="res://resources/dialogues/barnabe/barnabe_concours.tres" id="dlg_barnabe_concours"]
@@ -5228,6 +5230,8 @@ autoplay = "default"
 frame_progress = 0.023357684
 
 [node name="PNJ1" type="Node2D" parent="." unique_id=1644308417]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_inconnu_rencontre"), ExtResource("dlg_inconnu_rappel")])
 position = Vector2(264, 83)
 scale = Vector2(0.7, 0.7)
 

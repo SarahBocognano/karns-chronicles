@@ -25,6 +25,16 @@ func _ready() -> void:
 	_start_idle()
 
 func _physics_process(_delta: float) -> void:
+	# Pépin s'arrête de courir pendant qu'il parle à Zylrak.
+	var dialogue := get_node_or_null("Dialogue")
+	var talking: bool = dialogue != null and dialogue.in_dialogue
+	direction_timer.paused = talking
+	if talking:
+		velocity = Vector2.ZERO
+		sprite.pause()
+		return
+	if current_state == State.WALKING and not sprite.is_playing():
+		sprite.play()
 	if current_state == State.WALKING:
 		velocity = current_direction * speed
 	else:

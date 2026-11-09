@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://mh5v6gkt0ew7"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_ojsjc"]
+[ext_resource type="Texture2D" uid="uid://4uin8wtfch1c" path="res://assets/portrait/godric_bougon.tres" id="2_g0s6d"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_lwkhh"]
+
+[sub_resource type="Resource" id="Resource_e4vlu"]
+script = ExtResource("1_ojsjc")
+speaker_name = "Godric"
+portrait = ExtResource("2_g0s6d")
+text = "Dès que tu passes les dernières maisons, garde la main sur ton épée, petit. Les bêtes peuvent surgir de n'importe où."
+
+[resource]
+script = ExtResource("3_lwkhh")
+lines = Array[ExtResource("1_ojsjc")]([SubResource("Resource_e4vlu")])
+required_flags = Array[String](["talked_to_godric"])
