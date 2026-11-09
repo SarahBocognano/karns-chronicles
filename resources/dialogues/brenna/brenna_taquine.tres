@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bx6lg70x6uly"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_gsxyt"]
+[ext_resource type="Texture2D" uid="uid://d3n20nd4cot58" path="res://assets/portrait/brenna_malicieuse.tres" id="2_f6osl"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="3_65qg0"]
+[ext_resource type="Texture2D" uid="uid://7u07244vqfxq" path="res://assets/portrait/brenna_rire.tres" id="4_x6k2r"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_vwqjg"]
+
+[sub_resource type="Resource" id="Resource_vof6g"]
+script = ExtResource("1_gsxyt")
+speaker_name = "Brenna"
+portrait = ExtResource("2_f6osl")
+text = "Encore toi ? Va donc faire un tour à l'auberge, il paraît qu'on y cherche quelqu'un d'important."
+
+[sub_resource type="Resource" id="Resource_5qsbx"]
+script = ExtResource("1_gsxyt")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_65qg0")
+text = "Enfin quelqu'un qui me comprend."
+
+[sub_resource type="Resource" id="Resource_4btue"]
+script = ExtResource("1_gsxyt")
+speaker_name = "Brenna"
+portrait = ExtResource("4_x6k2r")
+text = "J'ai dit « il paraît »."
+
+[resource]
+script = ExtResource("5_vwqjg")
+lines = Array[ExtResource("1_gsxyt")]([SubResource("Resource_vof6g"), SubResource("Resource_5qsbx"), SubResource("Resource_4btue")])
+required_flags = Array[String](["talked_to_brenna"])
+forbidden_flags = Array[String](["has_accepted_zylrak_quest"])

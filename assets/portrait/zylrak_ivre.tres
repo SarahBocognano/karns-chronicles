@@ -4,4 +4,5 @@
 
 [resource]
 atlas = ExtResource("1_clqsq")
-region = Rect2(1013.3052, 672.0686, 519.9148, 337.67944)
+region = Rect2(1013.305, 672.069, 519.915, 337.679)
+margin = Rect2(27.516, 37.52, 55.03, 37.52)

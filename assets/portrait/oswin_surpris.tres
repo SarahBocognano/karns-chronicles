@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://cbm76snh0mlr1"]
+
+[ext_resource type="Texture2D" uid="uid://c52145k5jfr4" path="res://assets/portrait/oswin_expressions.png" id="1_ynojy"]
+
+[resource]
+atlas = ExtResource("1_ynojy")
+region = Rect2(540, 340, 440, 336)
+margin = Rect2(37.7, 0, 75.4, 0)

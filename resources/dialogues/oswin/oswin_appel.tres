@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://dfbrs5kp54oun"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_xop3p"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="2_llfem"]
+[ext_resource type="Texture2D" uid="uid://cbm76snh0mlr1" path="res://assets/portrait/oswin_surpris.tres" id="2_ydp5x"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="3_i0734"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="4_hufkh"]
+[ext_resource type="Texture2D" uid="uid://b7v12a3l41kgr" path="res://assets/portrait/oswin_inquiet.tres" id="4_pri3b"]
+[ext_resource type="Texture2D" uid="uid://bdyjbimjxh7ke" path="res://assets/portrait/oswin_effraye.tres" id="5_05xdi"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="5_g0xi8"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_8xpea"]
+[ext_resource type="Texture2D" uid="uid://g35qhp4eijfg" path="res://assets/portrait/oswin_triste.tres" id="6_qemya"]
+[ext_resource type="Texture2D" uid="uid://jg10rilrou4d" path="res://assets/portrait/oswin_suppliant.tres" id="8_of43a"]
+[ext_resource type="Texture2D" uid="uid://d0m212i3uauan" path="res://assets/portrait/oswin_soulage.tres" id="11_lv5tr"]
+
+[sub_resource type="Resource" id="Resource_ydp5x"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("2_ydp5x")
+text = "Vous, là ! Avec la cape. Vous êtes bien un Ashwarden ?"
+
+[sub_resource type="Resource" id="Resource_pri3b"]
+script = ExtResource("1_xop3p")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_llfem")
+text = "En chair, en os et en cuir. Zylrak, de l'Ordre des Cendres. On parle déjà de moi jusqu'ici ?"
+
+[sub_resource type="Resource" id="Resource_05xdi"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("4_pri3b")
+text = "De vous, non. Mais tout le monde connaît le symbole sur votre cape. Et on a besoin de quelqu'un comme vous."
+
+[sub_resource type="Resource" id="Resource_qemya"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("5_05xdi")
+text = "Depuis des semaines, des goules rôdent autour du village. Les routes sont coupées, et plusieurs d'entre nous ont déjà été attaqués."
+
+[sub_resource type="Resource" id="Resource_of43a"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("6_qemya")
+text = "Et le marchand qu'on attendait hier n'est jamais arrivé. Sans lui, plus de vivres, plus de remèdes... Le village ne tiendra pas longtemps."
+
+[sub_resource type="Resource" id="Resource_lv5tr"]
+script = ExtResource("1_xop3p")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_i0734")
+text = "Des goules, un marchand qui disparaît... Ça commence à ressembler à un contrat."
+
+[sub_resource type="Resource" id="Resource_n60dh"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("8_of43a")
+text = "On n'a pas grand-chose, mais on paiera ce qu'on peut. Retrouvez-le, je vous en supplie."
+
+[sub_resource type="Resource" id="Resource_q1cs2"]
+script = ExtResource("1_xop3p")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_hufkh")
+text = "Garde ta bourse pour l'instant. Mais retiens bien le nom de celui qui va sauver ton village."
+
+[sub_resource type="Resource" id="Resource_rhjqd"]
+script = ExtResource("1_xop3p")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_g0xi8")
+text = "Je m'en occupe."
+
+[sub_resource type="Resource" id="Resource_ids4w"]
+script = ExtResource("1_xop3p")
+speaker_name = "Oswin"
+portrait = ExtResource("11_lv5tr")
+text = "Merci... Merci, Ashwarden. Que les Cendres vous gardent."
+
+[resource]
+script = ExtResource("6_8xpea")
+lines = Array[ExtResource("1_xop3p")]([SubResource("Resource_ydp5x"), SubResource("Resource_pri3b"), SubResource("Resource_05xdi"), SubResource("Resource_qemya"), SubResource("Resource_of43a"), SubResource("Resource_lv5tr"), SubResource("Resource_n60dh"), SubResource("Resource_q1cs2"), SubResource("Resource_rhjqd"), SubResource("Resource_ids4w")])
+forbidden_flags = Array[String](["has_accepted_zylrak_quest"])
+flags_on_finish = Array[String](["has_accepted_zylrak_quest"])
+auto_start = true

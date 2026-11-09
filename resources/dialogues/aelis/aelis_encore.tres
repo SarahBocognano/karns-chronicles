@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bfqtyvquuij6a"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_7pthy"]
+[ext_resource type="Texture2D" uid="uid://7jfyh04gcrq6" path="res://assets/portrait/aelis_agacee.tres" id="2_7f0sf"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="3_yg6gm"]
+[ext_resource type="Texture2D" uid="uid://bekc75lq0r1qt" path="res://assets/portrait/aelis_dedaigneuse.tres" id="4_3ooop"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_6qn4d"]
+
+[sub_resource type="Resource" id="Resource_bo4ja"]
+script = ExtResource("1_7pthy")
+speaker_name = "Aelis"
+portrait = ExtResource("2_7f0sf")
+text = "Encore toi ?"
+
+[sub_resource type="Resource" id="Resource_rynww"]
+script = ExtResource("1_7pthy")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_yg6gm")
+text = "J'ai pensé que tu t'ennuierais sans moi."
+
+[sub_resource type="Resource" id="Resource_blhnh"]
+script = ExtResource("1_7pthy")
+speaker_name = "Aelis"
+portrait = ExtResource("4_3ooop")
+text = "J'ai connu des rages de dents plus divertissantes."
+
+[resource]
+script = ExtResource("5_6qn4d")
+lines = Array[ExtResource("1_7pthy")]([SubResource("Resource_bo4ja"), SubResource("Resource_rynww"), SubResource("Resource_blhnh")])
+required_flags = Array[String](["aelis_rejected_once"])
+forbidden_flags = Array[String](["aelis_rejected_twice"])
+flags_on_finish = Array[String](["aelis_rejected_twice"])

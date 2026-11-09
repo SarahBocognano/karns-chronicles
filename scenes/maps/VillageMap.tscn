@@ -21,6 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://bq20tjw4d3v7p" path="res://assets/sprites/characters/child_spritesheet.png" id="19_b2ae8"]
 [ext_resource type="Texture2D" uid="uid://v2x5a521ysm3" path="res://assets/sprites/characters/pink_arrosoir_pnj(1).png" id="20_ug1s8"]
 [ext_resource type="Texture2D" uid="uid://ch6cpovx6l13k" path="res://assets/sprites/characters/arrow_pnj_girl.png" id="21_4nu7d"]
+[ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="npc_dialogue_script"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="dialogue_conversation_script"]
+[ext_resource type="Resource" uid="uid://b20j62e3w7cvr" path="res://resources/dialogues/brenna/brenna_quete_aldric.tres" id="dlg_brenna_quete_aldric"]
+[ext_resource type="Resource" uid="uid://da012ohockgm" path="res://resources/dialogues/brenna/brenna_attente_aldric.tres" id="dlg_brenna_attente_aldric"]
+[ext_resource type="Resource" uid="uid://bdy15ef5i8erq" path="res://resources/dialogues/brenna/brenna_rencontre.tres" id="dlg_brenna_rencontre"]
+[ext_resource type="Resource" uid="uid://bx6lg70x6uly" path="res://resources/dialogues/brenna/brenna_taquine.tres" id="dlg_brenna_taquine"]
+[ext_resource type="Resource" uid="uid://dt8688iy6gi5h" path="res://resources/dialogues/aelis/aelis_drague.tres" id="dlg_aelis_drague"]
+[ext_resource type="Resource" uid="uid://bfqtyvquuij6a" path="res://resources/dialogues/aelis/aelis_encore.tres" id="dlg_aelis_encore"]
+[ext_resource type="Resource" uid="uid://kdeq3ptn2mhy" path="res://resources/dialogues/aelis/aelis_ignore.tres" id="dlg_aelis_ignore"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -27336,7 +27345,9 @@ shape = SubResource("RectangleShape2D_qhbll")
 [node name="SpawnFromWeaponShop" type="Marker2D" parent="." unique_id=1654620120]
 position = Vector2(-81, -116)
 
-[node name="RandomRedHair" type="Node2D" parent="." unique_id=1356955891 groups=["Player"]]
+[node name="RandomRedHair" type="Node2D" parent="." unique_id=1356955891]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_brenna_quete_aldric"), ExtResource("dlg_brenna_attente_aldric"), ExtResource("dlg_brenna_rencontre"), ExtResource("dlg_brenna_taquine")])
 position = Vector2(-347.99997, 132.99998)
 scale = Vector2(0.7, 0.7)
 
@@ -27387,6 +27398,8 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_rhs5w")
 
 [node name="PNJBlondeHair" type="Node2D" parent="." unique_id=776265087]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_aelis_drague"), ExtResource("dlg_aelis_encore"), ExtResource("dlg_aelis_ignore")])
 position = Vector2(461, 160)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PNJBlondeHair" unique_id=337107542]

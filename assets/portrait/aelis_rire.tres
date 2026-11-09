@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://chnlrfqjbs8b2"]
+
+[ext_resource type="Texture2D" uid="uid://wq8yl4nc0te" path="res://assets/portrait/aelis_expressions.png" id="1_upuln"]
+
+[resource]
+atlas = ExtResource("1_upuln")
+region = Rect2(1204, 4, 360, 365.217)
+margin = Rect2(99.825, 0, 199.65, 0)

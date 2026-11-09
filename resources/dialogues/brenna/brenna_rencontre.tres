@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bdy15ef5i8erq"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_4g4tg"]
+[ext_resource type="Texture2D" uid="uid://d3n20nd4cot58" path="res://assets/portrait/brenna_malicieuse.tres" id="2_2i4kf"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="3_1r0rc"]
+[ext_resource type="Texture2D" uid="uid://7u07244vqfxq" path="res://assets/portrait/brenna_rire.tres" id="4_n0j1m"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="5_veqcr"]
+[ext_resource type="Texture2D" uid="uid://dji0wg4g1p7an" path="res://assets/portrait/brenna_mefiante.tres" id="6_yh0vp"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="7_cjery"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="8_se3lx"]
+[ext_resource type="Texture2D" uid="uid://b6ihvptd1t3iv" path="res://assets/portrait/brenna_timide.tres" id="9_jedx2"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="10_q6wto"]
+
+[sub_resource type="Resource" id="Resource_emybt"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Brenna"
+portrait = ExtResource("2_2i4kf")
+text = "Tiens, tiens... Le grand Ashwarden qui a crié son nom sur toute la place du village ?"
+
+[sub_resource type="Resource" id="Resource_5fluo"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_1r0rc")
+text = "Les nouvelles vont vite. C'est normal, quand on est quelqu'un d'important."
+
+[sub_resource type="Resource" id="Resource_88cp7"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Brenna"
+portrait = ExtResource("4_n0j1m")
+text = "Ou quand on parle très, très fort."
+
+[sub_resource type="Resource" id="Resource_f3q5a"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_veqcr")
+text = "Hé ! Je ne parle pas fort. Je parle avec... conviction."
+
+[sub_resource type="Resource" id="Resource_s0cy3"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Brenna"
+portrait = ExtResource("6_yh0vp")
+text = "Mmh. Tu sais ce que je crois ? Ceux qui répètent leur nom à tout bout de champ..."
+
+[sub_resource type="Resource" id="Resource_dxtni"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Brenna"
+portrait = ExtResource("2_2i4kf")
+text = "... c'est qu'ils ont peur qu'on les oublie."
+
+[sub_resource type="Resource" id="Resource_evl75"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_cjery")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_u47vx"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_se3lx")
+text = "Et toi, tu as un nom, ou tu passes tes journées à lire dans la tête des gens ?"
+
+[sub_resource type="Resource" id="Resource_tjd26"]
+script = ExtResource("1_4g4tg")
+speaker_name = "Brenna"
+portrait = ExtResource("9_jedx2")
+text = "Brenna. Et rassure-toi, le tien, je risque pas de l'oublier. Tu l'as crié trois fois."
+
+[resource]
+script = ExtResource("10_q6wto")
+lines = Array[ExtResource("1_4g4tg")]([SubResource("Resource_emybt"), SubResource("Resource_5fluo"), SubResource("Resource_88cp7"), SubResource("Resource_f3q5a"), SubResource("Resource_s0cy3"), SubResource("Resource_dxtni"), SubResource("Resource_evl75"), SubResource("Resource_u47vx"), SubResource("Resource_tjd26")])
+forbidden_flags = Array[String](["talked_to_brenna"])
+flags_on_finish = Array[String](["talked_to_brenna"])
