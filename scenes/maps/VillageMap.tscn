@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://dt8688iy6gi5h" path="res://resources/dialogues/aelis/aelis_drague.tres" id="dlg_aelis_drague"]
 [ext_resource type="Resource" uid="uid://bfqtyvquuij6a" path="res://resources/dialogues/aelis/aelis_encore.tres" id="dlg_aelis_encore"]
 [ext_resource type="Resource" uid="uid://kdeq3ptn2mhy" path="res://resources/dialogues/aelis/aelis_ignore.tres" id="dlg_aelis_ignore"]
+[ext_resource type="Script" uid="uid://cnbe36bsnqt2s" path="res://scenes/maps/enter_forest.gd" id="enter_forest_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -27231,6 +27232,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyusc"]
 size = Vector2(22.857117, 45.71428)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_forest"]
+size = Vector2(96, 16)
+
 [node name="VillageMap" type="Node2D" unique_id=1637787322 groups=["Player"]]
 
 [node name="SpawnFromOverworld" type="Marker2D" parent="." unique_id=33542093]
@@ -27477,3 +27481,13 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_eyusc")
 
 [connection signal="timeout" from="PNJChildBlondHair/DirectionTimer" to="YSortLayer/Player" method="_on_direction_timer_timeout"]
+
+[node name="ExitToForest" type="Area2D" parent="."]
+position = Vector2(16, 532)
+script = ExtResource("enter_forest_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToForest"]
+shape = SubResource("RectangleShape2D_exit_forest")
+
+[node name="SpawnFromForest" type="Marker2D" parent="."]
+position = Vector2(16, 480)
