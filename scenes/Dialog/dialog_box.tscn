@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5n0auxdrmwnu"]
 
-[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/new_atlas_texture.tres" id="1_bjokd"]
+[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/zylrak_normal.tres" id="1_bjokd"]
 [ext_resource type="Texture2D" uid="uid://bxyvxnuco4bpm" path="res://assets/ui/image_ad298c1e-removebg-preview.png" id="1_e2pbm"]
 [ext_resource type="Script" uid="uid://ck0mhy55uhjg2" path="res://scenes/Dialog/dialog_box.gd" id="1_q25dq"]
 [ext_resource type="Texture2D" uid="uid://b83aq7t4yhnx" path="res://assets/ui/image_dd73c3e9-removebg-preview.png" id="2_bgph5"]
@@ -26,12 +26,12 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 513.0
-offset_top = -531.0
-offset_right = 1036.0
-offset_bottom = -190.0
+offset_top = -535.0
+offset_right = 939.0
+offset_bottom = -257.0
 grow_vertical = 0
-scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_bjokd")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="Root" type="Control" parent="." unique_id=1925136949]
@@ -57,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tafph")
 
-[node name="ContinueArroww" type="TextureRect" parent="Root/Panel" unique_id=1042328605]
+[node name="ContinueArrow" type="TextureRect" parent="Root/Panel" unique_id=1042328605]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.029000001
