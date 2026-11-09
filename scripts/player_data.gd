@@ -21,6 +21,9 @@ var quest_flags: Dictionary = {
 	"aldric_quest_started": false,       # Brenna a demandé de retrouver son frère Aldric
 	"aelis_rejected_once": false,        # Aelis a remballé Zylrak une première fois
 	"aelis_rejected_twice": false,       # … puis une deuxième : elle l'ignore
+	"talked_to_torvald": false,          # Torvald a parlé des cris près des ruines
+	"talked_to_theobald": false,         # Théobald a parlé des Yrenn et de leurs symboles
+	"barnabe_contest_done": false,       # concours de chopes perdu contre Barnabé
 }
 
 # --- Système de spawn entre scènes ---

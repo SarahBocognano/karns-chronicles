@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://c5tnugxif01l"]
+
+[ext_resource type="Texture2D" uid="uid://bvgaycoc7xooc" path="res://assets/portrait/torvald_expressions.png" id="1_fivdf"]
+
+[resource]
+atlas = ExtResource("1_fivdf")
+region = Rect2(80, 18, 607, 450.926)
+margin = Rect2(41.994, 0, 83.987, 0)
