@@ -12,8 +12,22 @@
 [ext_resource type="Texture2D" uid="uid://ckj77pbv1162w" path="res://assets/sprites/tilesets/Buildings/FL_Houses_torch.png" id="8_vwsec"]
 [ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="10_0ggv5"]
 [ext_resource type="Script" uid="uid://bbug4huw7whb5" path="res://scenes/maps/exit_to_village_from_weapon.gd" id="11_agyoe"]
-[ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/forgeron.gd" id="12_qymji"]
-[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/new_atlas_texture.tres" id="13_toti5"]
+[ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="12_qymji"]
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="14_dtot8"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p_z_sourire_en_coin"]
+[ext_resource type="Texture2D" uid="uid://m5xvhlfx5vsw" path="res://assets/portrait/forgeron_boit.tres" id="p_f_boit"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="p_z_fier"]
+[ext_resource type="Texture2D" uid="uid://bvhvb206xxyln" path="res://assets/portrait/forgeron_hautain.tres" id="p_f_hautain"]
+[ext_resource type="Texture2D" uid="uid://cy8l107u7f8aj" path="res://assets/portrait/forgeron_sceptique.tres" id="p_f_sceptique"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="p_z_colre"]
+[ext_resource type="Texture2D" uid="uid://4hfxo72j05ca" path="res://assets/portrait/forgeron_rire.tres" id="p_f_rire"]
+[ext_resource type="Texture2D" uid="uid://cjanpgjy417vl" path="res://assets/portrait/forgeron_agace.tres" id="p_f_agace"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="p_z_embarrass"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="p_z_determin"]
+[ext_resource type="Texture2D" uid="uid://b46lueihbj56a" path="res://assets/portrait/forgeron_colere.tres" id="p_f_colere"]
+[ext_resource type="Texture2D" uid="uid://dilotqhifwwtw" path="res://assets/portrait/forgeron_serieux.tres" id="p_f_serieux"]
+[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="p_z_rire"]
+[ext_resource type="Texture2D" uid="uid://b3305xiapaaa0" path="res://assets/portrait/forgeron_sourire.tres" id="p_f_sourire"]
 [ext_resource type="Texture2D" uid="uid://etwphlxbu6he" path="res://assets/sprites/characters/forgeron_spritesheet.png" id="15_dtot8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ggv5"]
@@ -4690,6 +4704,111 @@ size = Vector2(3, 315)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhbll"]
 size = Vector2(55, 9)
 
+[sub_resource type="Resource" id="DialogueLine_forgeron_01"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_sourire_en_coin")
+text = "Alors c'est toi, le fameux forgeron dont tout Karn parle ? J'avoue, je m'attendais à quelqu'un de plus... impressionnant."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_02"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_boit")
+text = "Et toi, t'es qui pour venir me faire ce genre de remarque chez moi ?"
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_03"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_fier")
+text = "Zylrak. Ashwarden de l'Ordre des Cendres. Retiens bien ce nom : bientôt, on le chantera dans toutes les tavernes de Karn."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_04"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_hautain")
+text = "Jamais entendu parler."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_05"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_sceptique")
+text = "Des gamins qui se prennent pour des légendes, j'en vois passer tous les mois. La plupart finissent la gueule dans un caniveau."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_06"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_colre")
+text = "« Qui se prennent pour »... ? Attends un peu, toi. Un jour, mon nom sera gravé sur les plus belles lames du royaume. Et c'est toi qui me supplieras de les forger !"
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_07"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_rire")
+text = "Ha ! Tant que tu payes, gamin, je te grave même le nom de ta mère."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_08"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_agace")
+text = "Bon. À part me faire perdre mon temps à t'écouter parler de toi, qu'est-ce que tu viens chercher ici ?"
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_09"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_embarrass")
+text = "..."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_10"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_determin")
+text = "Une lame. Une vraie. Pas un de ces cure-dents que tu vends aux gardes du village. Tu te crois capable de forger une épée à ma hauteur ?"
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_11"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_colere")
+text = "Tu commences sérieusement à me chauffer. Des armes comme les miennes, t'en trouveras nulle part ailleurs dans Karn."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_12"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_serieux")
+text = "Tiens. Équilibrée, trempée trois fois, aussi tranchante que ta langue. Ça fera 12 000 écus."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_13"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_rire")
+text = "Ha... 12 000 ? Évidemment. C'est pile le prix que j'avais en tête."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_14"]
+script = ExtResource("14_dtot8")
+speaker_name = "Zylrak"
+portrait = ExtResource("p_z_sourire_en_coin")
+text = "Merci, l'ami. Je la couvrirai du sang de mes ennemis... et je dirai à tout le monde d'où elle vient."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
+[sub_resource type="Resource" id="DialogueLine_forgeron_15"]
+script = ExtResource("14_dtot8")
+speaker_name = "Forgeron"
+portrait = ExtResource("p_f_sourire")
+text = "Ramène-la-moi entière, et peut-être que je retiendrai ton nom."
+metadata/_custom_type_script = "uid://d30cvftsqiqkj"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0euk"]
 atlas = ExtResource("15_dtot8")
 region = Rect2(0, 3740, 128, 68)
@@ -4831,7 +4950,7 @@ shape = SubResource("RectangleShape2D_qhbll")
 [node name="Forgeron" type="Node2D" parent="." unique_id=209896029]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("12_qymji")
-portrait_texture = ExtResource("13_toti5")
+dialogue_lines = Array[ExtResource("14_dtot8")]([SubResource("DialogueLine_forgeron_01"), SubResource("DialogueLine_forgeron_02"), SubResource("DialogueLine_forgeron_03"), SubResource("DialogueLine_forgeron_04"), SubResource("DialogueLine_forgeron_05"), SubResource("DialogueLine_forgeron_06"), SubResource("DialogueLine_forgeron_07"), SubResource("DialogueLine_forgeron_08"), SubResource("DialogueLine_forgeron_09"), SubResource("DialogueLine_forgeron_10"), SubResource("DialogueLine_forgeron_11"), SubResource("DialogueLine_forgeron_12"), SubResource("DialogueLine_forgeron_13"), SubResource("DialogueLine_forgeron_14"), SubResource("DialogueLine_forgeron_15")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Forgeron" unique_id=974551794]
 position = Vector2(-84.28571, -211.42857)

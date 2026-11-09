@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://m5xvhlfx5vsw"]
+
+[ext_resource type="Texture2D" uid="uid://4scd0ylftuqi" path="res://assets/portrait/forgeron_expressions.png" id="1_shg2p"]
+
+[resource]
+atlas = ExtResource("1_shg2p")
+region = Rect2(1156, 680, 372, 330)
+margin = Rect2(67, 0, 134, 0)

@@ -4,14 +4,14 @@ extends CanvasLayer
 @onready var portrait_display: TextureRect = $PortraitDisplay
 @onready var name_label: Label = $Root/Panel/NameLabel
 @onready var dialogue_label: RichTextLabel = $Root/Panel/DialogueLabel
-@onready var continue_arrow: TextureRect = $Root/Panel/ContinueArro
+@onready var continue_arrow: TextureRect = $Root/Panel/ContinueArrow
 
 @export var left_margin: float = 200.0
 
 var portrait_offset_x: float = 0.0
 
 func _ready() -> void:
-	hide_dialogue()
+	hide_dialogue() 
 	portrait_offset_x = portrait_display.global_position.x - panel.global_position.x
 	_position_panel()
 	get_viewport().size_changed.connect(_position_panel)

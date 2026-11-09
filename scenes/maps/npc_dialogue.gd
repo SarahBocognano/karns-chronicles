@@ -1,11 +1,6 @@
 extends Node2D
 
-@export var npc_name: String = "PNJ"
-@export var dialogue_lines: Array[String] = [
-	"Bonjour voyageur !",
-	"Que puis-je faire pour toi ?"
-]
-@export var portrait_texture: Texture2D  # glisse ton AtlasTexture (.tres) ici dans l'inspecteur
+@export var dialogue_lines: Array[DialogueLine] = []
 
 var player_in_range: bool = false
 var player_ref: Node2D = null
@@ -42,14 +37,18 @@ func _unhandled_input(event: InputEvent) -> void:
 func start_dialogue() -> void:
 	current_line = 0
 	in_dialogue = true
-	dialogue_box.show_dialogue(npc_name, dialogue_lines[current_line], portrait_texture)
+	_show_current_line()
 
 func advance_dialogue() -> void:
 	current_line += 1
 	if current_line >= dialogue_lines.size():
 		end_dialogue()
 	else:
-		dialogue_box.show_dialogue(npc_name, dialogue_lines[current_line], portrait_texture)
+		_show_current_line()
+
+func _show_current_line() -> void:
+	var line: DialogueLine = dialogue_lines[current_line]
+	dialogue_box.show_dialogue(line.speaker_name, line.text, line.portrait)
 
 func end_dialogue() -> void:
 	in_dialogue = false
