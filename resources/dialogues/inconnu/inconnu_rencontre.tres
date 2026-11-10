@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://crvpv08r76rjy"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_wesly"]
+[ext_resource type="Texture2D" uid="uid://clu1v87pfjbb7" path="res://assets/portrait/inconnu_neutre.tres" id="2_8irqw"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="3_gg8pe"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="4_3s5rj"]
+[ext_resource type="Texture2D" uid="uid://cd6j4dl1jb0go" path="res://assets/portrait/inconnu_surpris.tres" id="5_phqaj"]
+[ext_resource type="Texture2D" uid="uid://dgk2yiiadg1tj" path="res://assets/portrait/inconnu_sourire.tres" id="6_wbixw"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="7_bupds"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="8_yh4aa"]
+
+[sub_resource type="Resource" id="Resource_ocllk"]
+script = ExtResource("1_wesly")
+speaker_name = "???"
+portrait = ExtResource("2_8irqw")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_4xs6b"]
+script = ExtResource("1_wesly")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_gg8pe")
+text = "Tu comptes me fixer comme ça encore longtemps ?"
+
+[sub_resource type="Resource" id="Resource_w6011"]
+script = ExtResource("1_wesly")
+speaker_name = "???"
+portrait = ExtResource("2_8irqw")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_gpf2o"]
+script = ExtResource("1_wesly")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_3s5rj")
+text = "Zylrak, de l'Ordre des Cendres. C'est ça que tu voulais savoir ?"
+
+[sub_resource type="Resource" id="Resource_01wtj"]
+script = ExtResource("1_wesly")
+speaker_name = "???"
+portrait = ExtResource("5_phqaj")
+text = "... Zylrak."
+
+[sub_resource type="Resource" id="Resource_coyc7"]
+script = ExtResource("1_wesly")
+speaker_name = "???"
+portrait = ExtResource("6_wbixw")
+text = "Les cendres se souviennent toujours du feu, Ashwarden. Même quand le feu, lui, a oublié."
+
+[sub_resource type="Resource" id="Resource_btl3p"]
+script = ExtResource("1_wesly")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_bupds")
+text = "... D'accord. Super. Très clair."
+
+[resource]
+script = ExtResource("8_yh4aa")
+lines = Array[ExtResource("1_wesly")]([SubResource("Resource_ocllk"), SubResource("Resource_4xs6b"), SubResource("Resource_w6011"), SubResource("Resource_gpf2o"), SubResource("Resource_01wtj"), SubResource("Resource_coyc7"), SubResource("Resource_btl3p")])
+forbidden_flags = Array[String](["talked_to_inconnu"])
+flags_on_finish = Array[String](["talked_to_inconnu"])

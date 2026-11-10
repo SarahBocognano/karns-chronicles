@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://kljl1dy2boxi"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_iqulg"]
+[ext_resource type="Texture2D" uid="uid://4r71aa5cnt2j" path="res://assets/portrait/torvald_amuse.tres" id="2_1xdic"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_whxmf"]
+
+[sub_resource type="Resource" id="Resource_1xdic"]
+script = ExtResource("1_iqulg")
+speaker_name = "Torvald"
+portrait = ExtResource("2_1xdic")
+text = "Encore là ? Les ruines sont à l'est, et ma bière est toujours à deux écus."
+
+[resource]
+script = ExtResource("2_whxmf")
+lines = Array[ExtResource("1_iqulg")]([SubResource("Resource_1xdic")])
+required_flags = Array[String](["talked_to_torvald"])

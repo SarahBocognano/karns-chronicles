@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://ddbhecuw5mcyt"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_srjcs"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="2_2yk4j"]
+[ext_resource type="Texture2D" uid="uid://egasqgnvdf2m" path="res://assets/portrait/barnabe_hilare.tres" id="2_ddi8m"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="3_i5xjx"]
+[ext_resource type="Texture2D" uid="uid://bv1p3tlcp1c8v" path="res://assets/portrait/zylrak_ivre.tres" id="4_w82et"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="5_ddi8m"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_uood6"]
+[ext_resource type="Texture2D" uid="uid://bka40xsiissl6" path="res://assets/portrait/barnabe_surpris.tres" id="6_x3kfp"]
+[ext_resource type="Texture2D" uid="uid://5iuxjlc2fcej" path="res://assets/portrait/barnabe_ivre.tres" id="7_s86mo"]
+[ext_resource type="Texture2D" uid="uid://da0kw4d67f7x3" path="res://assets/portrait/barnabe_vexe.tres" id="9_a63vo"]
+
+[sub_resource type="Resource" id="Resource_x3kfp"]
+script = ExtResource("1_srjcs")
+speaker_name = "Barnabé"
+portrait = ExtResource("2_ddi8m")
+text = "Hé, toi ! La cape ! T'as une tête à tenir l'alcool. Enfin... à croire que tu le tiens."
+
+[sub_resource type="Resource" id="Resource_s86mo"]
+script = ExtResource("1_srjcs")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_2yk4j")
+text = "Je tiens tout. L'alcool, l'épée, et ma réputation."
+
+[sub_resource type="Resource" id="Resource_a63vo"]
+script = ExtResource("1_srjcs")
+speaker_name = "Barnabé"
+portrait = ExtResource("2_ddi8m")
+text = "Barnabé ! Champion de la chope trois hivers de suite. Un concours, l'Ashwarden ? Le perdant paie la tournée."
+
+[sub_resource type="Resource" id="Resource_6x5dx"]
+script = ExtResource("1_srjcs")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_i5xjx")
+text = "T'as pas idée de ce que tu viens de faire."
+
+[sub_resource type="Resource" id="Resource_rnmik"]
+script = ExtResource("1_srjcs")
+text = "Quelques chopes plus tard..."
+
+[sub_resource type="Resource" id="Resource_eufmt"]
+script = ExtResource("1_srjcs")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_w82et")
+text = "J'te jure... l'auberge, elle tourne. C'est elle qui triche."
+
+[sub_resource type="Resource" id="Resource_rojk5"]
+script = ExtResource("1_srjcs")
+speaker_name = "Barnabé"
+portrait = ExtResource("6_x3kfp")
+text = "Attends... t'en as bu combien, toi ?"
+
+[sub_resource type="Resource" id="Resource_hp3fl"]
+script = ExtResource("1_srjcs")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_w82et")
+text = "Quatre ! ... Ou deux. Deux fois deux."
+
+[sub_resource type="Resource" id="Resource_oiwtp"]
+script = ExtResource("1_srjcs")
+speaker_name = "Barnabé"
+portrait = ExtResource("7_s86mo")
+text = "J'en suis à neuf ! Ha ! Tu paies la tournée, gardien des chopes vides !"
+
+[sub_resource type="Resource" id="Resource_kmnjb"]
+script = ExtResource("1_srjcs")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_ddi8m")
+text = "On dira à personne que l'Ashwarden a perdu contre un type qui s'appelle Barnabé."
+
+[sub_resource type="Resource" id="Resource_mc1bp"]
+script = ExtResource("1_srjcs")
+speaker_name = "Barnabé"
+portrait = ExtResource("9_a63vo")
+text = "Hé ! C'est un très beau prénom, Barnabé !"
+
+[resource]
+script = ExtResource("6_uood6")
+lines = Array[ExtResource("1_srjcs")]([SubResource("Resource_x3kfp"), SubResource("Resource_s86mo"), SubResource("Resource_a63vo"), SubResource("Resource_6x5dx"), SubResource("Resource_rnmik"), SubResource("Resource_eufmt"), SubResource("Resource_rojk5"), SubResource("Resource_hp3fl"), SubResource("Resource_oiwtp"), SubResource("Resource_kmnjb"), SubResource("Resource_mc1bp")])
+forbidden_flags = Array[String](["barnabe_contest_done"])
+flags_on_finish = Array[String](["barnabe_contest_done"])

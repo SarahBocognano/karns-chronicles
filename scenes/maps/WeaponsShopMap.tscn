@@ -4887,6 +4887,7 @@ radius = 89.13415
 script = ExtResource("1_dtot8")
 camera_zoom = Vector2(3.5, 3.5)
 camera_follows_player = false
+fill_screen = true
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1543618920]
 position = Vector2(0, -1)

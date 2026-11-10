@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://ckwns36axdjdl"]
+
+[ext_resource type="Texture2D" uid="uid://df8w2w5ij42ue" path="res://assets/portrait/theobald_expressions.png" id="1_sjgjn"]
+
+[resource]
+atlas = ExtResource("1_sjgjn")
+region = Rect2(15, 8, 478, 444.545)
+margin = Rect2(101.605, 0, 203.21, 0)

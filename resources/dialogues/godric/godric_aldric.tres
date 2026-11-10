@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://cy8htq20j3yow"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_1l2ya"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="2_635jo"]
+[ext_resource type="Texture2D" uid="uid://sdtijf3gc5aa" path="res://assets/portrait/godric_triste.tres" id="3_iaqhx"]
+[ext_resource type="Texture2D" uid="uid://buer1knjw7hx5" path="res://assets/portrait/godric_neutre.tres" id="4_8uju1"]
+[ext_resource type="Texture2D" uid="uid://c3b33txlnebms" path="res://assets/portrait/godric_sourire.tres" id="5_eq47t"]
+[ext_resource type="Texture2D" uid="uid://4uin8wtfch1c" path="res://assets/portrait/godric_bougon.tres" id="6_qp5oj"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="7_1uqeg"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="8_bply5"]
+
+[sub_resource type="Resource" id="Resource_5yv7j"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_635jo")
+text = "C'est toi, Godric ? Brenna dit que c'est toi qui as élevé Aldric."
+
+[sub_resource type="Resource" id="Resource_2arda"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Godric"
+portrait = ExtResource("3_iaqhx")
+text = "Élevé... disons que j'ai essayé. Ce gamin est aussi têtu que l'était son père, paix à son âme."
+
+[sub_resource type="Resource" id="Resource_sj4fm"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Godric"
+portrait = ExtResource("4_8uju1")
+text = "C'est moi qui lui ai mis sa première hache entre les mains. Il avait huit ans, il pouvait à peine la soulever."
+
+[sub_resource type="Resource" id="Resource_u44j7"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Godric"
+portrait = ExtResource("5_eq47t")
+text = "Aujourd'hui, il abat un chêne plus vite que moi. Et il ne se prive pas de me le rappeler."
+
+[sub_resource type="Resource" id="Resource_lxako"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Godric"
+portrait = ExtResource("6_qp5oj")
+text = "Il coupait au bord du lac, à l'ouest de la forêt. Le bois y est meilleur, mais le coin est mal fréquenté depuis quelque temps."
+
+[sub_resource type="Resource" id="Resource_au4of"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_1uqeg")
+text = "Je le ramènerai. À Brenna, et à toi."
+
+[sub_resource type="Resource" id="Resource_nb6ca"]
+script = ExtResource("1_1l2ya")
+speaker_name = "Godric"
+portrait = ExtResource("3_iaqhx")
+text = "Fais vite, Ashwarden. Je suis trop vieux pour enterrer encore quelqu'un de ma famille."
+
+[resource]
+script = ExtResource("8_bply5")
+lines = Array[ExtResource("1_1l2ya")]([SubResource("Resource_5yv7j"), SubResource("Resource_2arda"), SubResource("Resource_sj4fm"), SubResource("Resource_u44j7"), SubResource("Resource_lxako"), SubResource("Resource_au4of"), SubResource("Resource_nb6ca")])
+required_flags = Array[String](["aldric_quest_started"])
+forbidden_flags = Array[String](["godric_talked_about_aldric"])
+flags_on_finish = Array[String](["godric_talked_about_aldric", "talked_to_godric"])

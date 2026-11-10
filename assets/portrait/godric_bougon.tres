@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://4uin8wtfch1c"]
+
+[ext_resource type="Texture2D" uid="uid://cy3ic7jt6ecb2" path="res://assets/portrait/godric_expressions.png" id="1_c1er0"]
+
+[resource]
+atlas = ExtResource("1_c1er0")
+region = Rect2(86, 526, 592, 488)
+margin = Rect2(51.932854, 0, 103.86571, 0)

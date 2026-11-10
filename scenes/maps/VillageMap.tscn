@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://24lx7denjjvi"]
 
 [ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="1_s10dk"]
+[ext_resource type="Script" uid="uid://cqn5bdx4vwqcf" path="res://scenes/maps/map_camera_zoom.gd" id="99_camlim"]
 [ext_resource type="Texture2D" uid="uid://cxnavo42kupsx" path="res://assets/sprites/tilesets/Terrains/g_terrain3.png" id="3_80giv"]
 [ext_resource type="Texture2D" uid="uid://jghcoekdh6rj" path="res://assets/sprites/tilesets/Terrains/g_terrain1.png" id="4_73i6q"]
 [ext_resource type="Texture2D" uid="uid://d1f3j8k3v76st" path="res://assets/sprites/tilesets/TreesAndPlants/hills1.png" id="4_dubm8"]
@@ -30,6 +31,16 @@
 [ext_resource type="Resource" uid="uid://dt8688iy6gi5h" path="res://resources/dialogues/aelis/aelis_drague.tres" id="dlg_aelis_drague"]
 [ext_resource type="Resource" uid="uid://bfqtyvquuij6a" path="res://resources/dialogues/aelis/aelis_encore.tres" id="dlg_aelis_encore"]
 [ext_resource type="Resource" uid="uid://kdeq3ptn2mhy" path="res://resources/dialogues/aelis/aelis_ignore.tres" id="dlg_aelis_ignore"]
+[ext_resource type="Script" uid="uid://cnbe36bsnqt2s" path="res://scenes/maps/enter_forest.gd" id="enter_forest_script"]
+[ext_resource type="Resource" uid="uid://bmasl78lm47a8" path="res://resources/dialogues/mirabelle/mirabelle_rencontre.tres" id="dlg_mirabelle_rencontre"]
+[ext_resource type="Resource" uid="uid://di67stt8nwd45" path="res://resources/dialogues/mirabelle/mirabelle_aldric.tres" id="dlg_mirabelle_aldric"]
+[ext_resource type="Resource" uid="uid://c2f0gdc2r6ad5" path="res://resources/dialogues/mirabelle/mirabelle_rappel.tres" id="dlg_mirabelle_rappel"]
+[ext_resource type="Resource" uid="uid://cy8htq20j3yow" path="res://resources/dialogues/godric/godric_aldric.tres" id="dlg_godric_aldric"]
+[ext_resource type="Resource" uid="uid://vi7qn161fa8w" path="res://resources/dialogues/godric/godric_rappel_aldric.tres" id="dlg_godric_rappel_aldric"]
+[ext_resource type="Resource" uid="uid://y34mwms7ytwc" path="res://resources/dialogues/godric/godric_rencontre.tres" id="dlg_godric_rencontre"]
+[ext_resource type="Resource" uid="uid://mh5v6gkt0ew7" path="res://resources/dialogues/godric/godric_rappel.tres" id="dlg_godric_rappel"]
+[ext_resource type="Resource" uid="uid://ci06gmb0rc8p2" path="res://resources/dialogues/pepin/pepin_rencontre.tres" id="dlg_pepin_rencontre"]
+[ext_resource type="Resource" uid="uid://jj4bj1ca22bc" path="res://resources/dialogues/pepin/pepin_rappel.tres" id="dlg_pepin_rappel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -20766,7 +20777,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyusc"]
 size = Vector2(22.857117, 45.71428)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit_forest"]
+size = Vector2(96, 16)
+
 [node name="VillageMap" type="Node2D" unique_id=1637787322 groups=["Player"]]
+script = ExtResource("99_camlim")
 
 [node name="SpawnFromOverworld" type="Marker2D" parent="." unique_id=33542093]
 position = Vector2(500, 850)
@@ -20909,6 +20924,8 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_lmsi1")
 
 [node name="PNJBucheron" type="Node2D" parent="." unique_id=1884778249]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_godric_aldric"), ExtResource("dlg_godric_rappel_aldric"), ExtResource("dlg_godric_rencontre"), ExtResource("dlg_godric_rappel")])
 position = Vector2(666, -37)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PNJBucheron" unique_id=1332262760]
@@ -20979,7 +20996,15 @@ shape = SubResource("RectangleShape2D_ir2vt")
 position = Vector2(-2, 9)
 shape = SubResource("CircleShape2D_1ylwq")
 
+[node name="Dialogue" type="Node2D" parent="PNJChildBlondHair"]
+position = Vector2(-2, 9)
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_pepin_rencontre"), ExtResource("dlg_pepin_rappel")])
+interaction_radius = 34.0
+
 [node name="PNJArrosoir" type="Node2D" parent="." unique_id=2071779729]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_mirabelle_rencontre"), ExtResource("dlg_mirabelle_aldric"), ExtResource("dlg_mirabelle_rappel")])
 position = Vector2(-622, 330)
 scale = Vector2(0.7, 0.7)
 
@@ -21012,3 +21037,13 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_eyusc")
 
 [connection signal="timeout" from="PNJChildBlondHair/DirectionTimer" to="YSortLayer/Player" method="_on_direction_timer_timeout"]
+
+[node name="ExitToForest" type="Area2D" parent="."]
+position = Vector2(16, 532)
+script = ExtResource("enter_forest_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToForest"]
+shape = SubResource("RectangleShape2D_exit_forest")
+
+[node name="SpawnFromForest" type="Marker2D" parent="."]
+position = Vector2(16, 480)

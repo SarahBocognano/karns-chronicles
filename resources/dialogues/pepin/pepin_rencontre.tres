@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://ci06gmb0rc8p2"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_ealpo"]
+[ext_resource type="Texture2D" uid="uid://rcd22x0de3il" path="res://assets/portrait/pepin_rire.tres" id="2_i1pnq"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="3_vsysj"]
+[ext_resource type="Texture2D" uid="uid://d1dpvb4srhu8l" path="res://assets/portrait/pepin_curieux.tres" id="4_tr4fp"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="5_gythl"]
+[ext_resource type="Texture2D" uid="uid://da3hkf44120u1" path="res://assets/portrait/pepin_excite.tres" id="6_8mfr7"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="7_ujwi2"]
+[ext_resource type="Texture2D" uid="uid://iioism1glrpa" path="res://assets/portrait/pepin_boudeur.tres" id="8_hremr"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="9_atntd"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="10_xbjcc"]
+
+[sub_resource type="Resource" id="Resource_p5i27"]
+script = ExtResource("1_ealpo")
+speaker_name = "Pépin"
+portrait = ExtResource("2_i1pnq")
+text = "Hahaha ! T'as vu ta cape ? On dirait le vieux rideau de la mère Margot !"
+
+[sub_resource type="Resource" id="Resource_bfpu1"]
+script = ExtResource("1_ealpo")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_vsysj")
+text = "C'est la cape de l'Ordre des Cendres, morveux."
+
+[sub_resource type="Resource" id="Resource_vgbd5"]
+script = ExtResource("1_ealpo")
+speaker_name = "Pépin"
+portrait = ExtResource("4_tr4fp")
+text = "L'Ordre des quoi ? Des cendres ? Comme dans la cheminée ?"
+
+[sub_resource type="Resource" id="Resource_1t4eg"]
+script = ExtResource("1_ealpo")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_gythl")
+text = "... Comme dans la légende. Laisse tomber."
+
+[sub_resource type="Resource" id="Resource_qe04v"]
+script = ExtResource("1_ealpo")
+speaker_name = "Pépin"
+portrait = ExtResource("6_8mfr7")
+text = "Wouah, t'es un vrai chevalier ? T'as déjà tué un dragon ? Un troll ? Une poule ?"
+
+[sub_resource type="Resource" id="Resource_ayhkr"]
+script = ExtResource("1_ealpo")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_ujwi2")
+text = "Des dizaines. Enfin... pas de poules."
+
+[sub_resource type="Resource" id="Resource_sq75s"]
+script = ExtResource("1_ealpo")
+speaker_name = "Pépin"
+portrait = ExtResource("8_hremr")
+text = "Pfff. T'as même pas une égratignure. Moi j'dis que t'as jamais rien tué du tout."
+
+[sub_resource type="Resource" id="Resource_18ulj"]
+script = ExtResource("1_ealpo")
+speaker_name = "Pépin"
+portrait = ExtResource("2_i1pnq")
+text = "Allez, salut, le chevalier des cheminées ! Et fais gaffe à ta bourse, y a des voleurs dans le coin, hihi !"
+
+[sub_resource type="Resource" id="Resource_olcbw"]
+script = ExtResource("1_ealpo")
+speaker_name = "Zylrak"
+portrait = ExtResource("9_atntd")
+text = "... Pourquoi j'ai l'impression qu'il parlait de lui ?"
+
+[resource]
+script = ExtResource("10_xbjcc")
+lines = Array[ExtResource("1_ealpo")]([SubResource("Resource_p5i27"), SubResource("Resource_bfpu1"), SubResource("Resource_vgbd5"), SubResource("Resource_1t4eg"), SubResource("Resource_qe04v"), SubResource("Resource_ayhkr"), SubResource("Resource_sq75s"), SubResource("Resource_18ulj"), SubResource("Resource_olcbw")])
+forbidden_flags = Array[String](["talked_to_pepin"])
+flags_on_finish = Array[String](["talked_to_pepin"])

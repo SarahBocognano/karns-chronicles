@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://dl6s2p8gkndu4"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_xh6l2"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="2_edh6b"]
+[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/zylrak_normal.tres" id="3_k4e5m"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_48y1e"]
+
+[sub_resource type="Resource" id="Resource_txxu2"]
+script = ExtResource("1_xh6l2")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_edh6b")
+text = "Un chariot renversé... et des marques de griffes. Quelqu'un a eu de gros ennuis par ici."
+
+[sub_resource type="Resource" id="Resource_27rg2"]
+script = ExtResource("1_xh6l2")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_k4e5m")
+text = "Pas mes affaires. Pour l'instant."
+
+[resource]
+script = ExtResource("4_48y1e")
+lines = Array[ExtResource("1_xh6l2")]([SubResource("Resource_txxu2"), SubResource("Resource_27rg2")])
+forbidden_flags = Array[String](["has_accepted_zylrak_quest"])

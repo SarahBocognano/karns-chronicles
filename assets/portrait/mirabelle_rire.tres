@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://d4l1ewmwls60v"]
+
+[ext_resource type="Texture2D" uid="uid://btr4bi2clo7qy" path="res://assets/portrait/mirabelle_expressions.png" id="1_nntws"]
+
+[resource]
+atlas = ExtResource("1_nntws")
+region = Rect2(928, 528, 474, 486)
+margin = Rect2(90.244606, 0, 180.48921, 0)

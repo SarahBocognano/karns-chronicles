@@ -8,7 +8,7 @@
 script = ExtResource("1_og63x")
 speaker_name = "Brenna"
 portrait = ExtResource("2_w3byq")
-text = "Aldric est quelque part dans la forêt, à l'est du village. Ramène-le-moi, Zylrak."
+text = "Aldric allait souvent couper du bois près du lac, dans la forêt au sud du village. Ramène-le-moi, Zylrak."
 
 [resource]
 script = ExtResource("3_eeoex")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://vi7qn161fa8w"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_cmc87"]
+[ext_resource type="Texture2D" uid="uid://4uin8wtfch1c" path="res://assets/portrait/godric_bougon.tres" id="2_f065e"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_vpilh"]
+
+[sub_resource type="Resource" id="Resource_0mdp4"]
+script = ExtResource("1_cmc87")
+speaker_name = "Godric"
+portrait = ExtResource("2_f065e")
+text = "Le lac, à l'ouest de la forêt. Ne traîne pas, petit."
+
+[resource]
+script = ExtResource("3_vpilh")
+lines = Array[ExtResource("1_cmc87")]([SubResource("Resource_0mdp4")])
+required_flags = Array[String](["godric_talked_about_aldric"])

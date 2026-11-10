@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://ck5kbw51xujqv"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_qwewc"]
+[ext_resource type="Texture2D" uid="uid://bgj8eo5cg4lc4" path="res://assets/portrait/theobald_condescendant.tres" id="2_t4ncy"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="2_y1orw"]
+[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="3_ej87s"]
+[ext_resource type="Texture2D" uid="uid://ckwns36axdjdl" path="res://assets/portrait/theobald_neutre.tres" id="4_82lni"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="4_wetgq"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="5_u1pr5"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_3wu41"]
+[ext_resource type="Texture2D" uid="uid://nxleelclpyft" path="res://assets/portrait/theobald_intrigue.tres" id="7_q8awr"]
+[ext_resource type="Texture2D" uid="uid://dtw0j6j83ajwk" path="res://assets/portrait/theobald_pensif.tres" id="8_d3osi"]
+[ext_resource type="Texture2D" uid="uid://fusuhwfah227" path="res://assets/portrait/theobald_grave.tres" id="9_r245o"]
+[ext_resource type="Texture2D" uid="uid://c8iendwmt1pt5" path="res://assets/portrait/theobald_rire.tres" id="11_3vg3q"]
+
+[sub_resource type="Resource" id="Resource_t4ncy"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("2_t4ncy")
+text = "Tiens donc. Un porteur d'épée. Laisse-moi deviner : tu viens me demander une potion pour avoir l'air plus intelligent ?"
+
+[sub_resource type="Resource" id="Resource_82lni"]
+script = ExtResource("1_qwewc")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_y1orw")
+text = "Je viens rien te demander du tout, le vieux."
+
+[sub_resource type="Resource" id="Resource_q8awr"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("4_82lni")
+text = "Théobald Lunebrise. Érudit, mage, et accessoirement l'esprit le plus cultivé à cent lieues à la ronde."
+
+[sub_resource type="Resource" id="Resource_d3osi"]
+script = ExtResource("1_qwewc")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_ej87s")
+text = "Lunebrise ? Sérieusement ? Ta mère t'aimait pas, ou..."
+
+[sub_resource type="Resource" id="Resource_r245o"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("2_t4ncy")
+text = "Dit l'homme qui se fait appeler « gardien des cendres ». Charmant programme."
+
+[sub_resource type="Resource" id="Resource_3vg3q"]
+script = ExtResource("1_qwewc")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_wetgq")
+text = "... Touché."
+
+[sub_resource type="Resource" id="Resource_7731q"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("7_q8awr")
+text = "Mais dis-moi, Ashwarden... Si tu vas vers l'est, tu croiseras peut-être les ruines des Yrenn."
+
+[sub_resource type="Resource" id="Resource_lr5sj"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("8_d3osi")
+text = "Un peuple fascinant. Leur écriture n'a jamais été entièrement déchiffrée. La lune, le loup, l'épée, la flamme..."
+
+[sub_resource type="Resource" id="Resource_lygr2"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("9_r245o")
+text = "Ils scellaient ce qu'ils ne pouvaient pas détruire. Si tu trouves une porte couverte d'inscriptions, ne force rien. Lis."
+
+[sub_resource type="Resource" id="Resource_ui47d"]
+script = ExtResource("1_qwewc")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_u1pr5")
+text = "Et si j'arrive pas à lire ?"
+
+[sub_resource type="Resource" id="Resource_47ehk"]
+script = ExtResource("1_qwewc")
+speaker_name = "Théobald"
+portrait = ExtResource("11_3vg3q")
+text = "Alors reviens me voir. Avec les fragments que tu trouveras, et un peu d'humilité. Surtout l'humilité."
+
+[resource]
+script = ExtResource("6_3wu41")
+lines = Array[ExtResource("1_qwewc")]([SubResource("Resource_t4ncy"), SubResource("Resource_82lni"), SubResource("Resource_q8awr"), SubResource("Resource_d3osi"), SubResource("Resource_r245o"), SubResource("Resource_3vg3q"), SubResource("Resource_7731q"), SubResource("Resource_lr5sj"), SubResource("Resource_lygr2"), SubResource("Resource_ui47d"), SubResource("Resource_47ehk")])
+forbidden_flags = Array[String](["talked_to_theobald"])
+flags_on_finish = Array[String](["talked_to_theobald"])

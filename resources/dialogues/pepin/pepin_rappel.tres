@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://jj4bj1ca22bc"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_wtqq2"]
+[ext_resource type="Texture2D" uid="uid://rcd22x0de3il" path="res://assets/portrait/pepin_rire.tres" id="2_qu74m"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_7tyue"]
+
+[sub_resource type="Resource" id="Resource_7vhyw"]
+script = ExtResource("1_wtqq2")
+speaker_name = "Pépin"
+portrait = ExtResource("2_qu74m")
+text = "Chevalier des cheminées ! Chevalier des cheminées ! Attrape-moi si tu peux !"
+
+[resource]
+script = ExtResource("3_7tyue")
+lines = Array[ExtResource("1_wtqq2")]([SubResource("Resource_7vhyw")])
+required_flags = Array[String](["talked_to_pepin"])

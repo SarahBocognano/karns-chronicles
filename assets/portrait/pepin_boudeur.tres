@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://iioism1glrpa"]
+
+[ext_resource type="Texture2D" uid="uid://c1d5w5p0fukaj" path="res://assets/portrait/pepin_expressions.png" id="1_w52uc"]
+
+[resource]
+atlas = ExtResource("1_w52uc")
+region = Rect2(206, 528, 434, 482)
+margin = Rect2(101.534775, 0, 203.06955, 0)
