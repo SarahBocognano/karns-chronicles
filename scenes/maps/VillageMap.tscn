@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://24lx7denjjvi"]
 
 [ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="1_s10dk"]
+[ext_resource type="Script" uid="uid://cqn5bdx4vwqcf" path="res://scenes/maps/map_camera_zoom.gd" id="99_camlim"]
 [ext_resource type="Texture2D" uid="uid://cxnavo42kupsx" path="res://assets/sprites/tilesets/Terrains/g_terrain3.png" id="3_80giv"]
 [ext_resource type="Texture2D" uid="uid://jghcoekdh6rj" path="res://assets/sprites/tilesets/Terrains/g_terrain1.png" id="4_73i6q"]
 [ext_resource type="Texture2D" uid="uid://d1f3j8k3v76st" path="res://assets/sprites/tilesets/TreesAndPlants/hills1.png" id="4_dubm8"]
@@ -27245,6 +27246,7 @@ size = Vector2(22.857117, 45.71428)
 size = Vector2(96, 16)
 
 [node name="VillageMap" type="Node2D" unique_id=1637787322 groups=["Player"]]
+script = ExtResource("99_camlim")
 
 [node name="SpawnFromOverworld" type="Marker2D" parent="." unique_id=33542093]
 position = Vector2(500, 850)

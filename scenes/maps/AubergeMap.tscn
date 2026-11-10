@@ -5141,6 +5141,7 @@ size = Vector2(28.571426, 45.714294)
 script = ExtResource("1_k4qic")
 camera_zoom = Vector2(3.5, 3.5)
 camera_follows_player = false
+fill_screen = true
 
 [node name="SpawnFromVillage" type="Marker2D" parent="." unique_id=1231686233]
 position = Vector2(45, 65)
