@@ -1,6 +1,20 @@
 # Karn's Chronicles
 
-RPG 2D en pixel art, réalisé avec **Godot 4.7**. On y suit **Zylrak**, un jeune aventurier qui part du village à la recherche d'Aldric, disparu dans la forêt, et enquête sur les attaques de monstres autour des ruines.
+Petit projet de démo d'un **RPG 2D en pixel art**, réalisé avec **Godot 4.7**.
+
+Le but est de construire, pas à pas, le début d'un RPG à l'ancienne : un village à explorer, des personnages à qui parler, des quêtes qui s'enchaînent selon ce que le joueur a déjà fait, et une première zone dangereuse hors du village. La suite prévue est un système de combat au tour par tour.
+
+## L'histoire
+
+**Zylrak** est un Ashwarden, un membre de l'Ordre des Cendres. Il est un peu trop sûr de lui et répète son nom à qui veut l'entendre. En arrivant dans un petit village, il le découvre aux abois :
+- depuis des semaines, des **goules** rôdent autour du village et les routes sont coupées ;
+- le **marchand** qui devait apporter vivres et remèdes n'est jamais arrivé.
+
+À l'auberge, Oswin lui confie l'affaire. Les habitués parlent de cris entendus près des **ruines des Yrenn**, à l'est, un peuple disparu dont personne n'a jamais entièrement déchiffré l'écriture.
+
+Au village, Brenna lui demande aussi de retrouver son frère **Aldric**. Il est parti couper du bois près du lac, dans la forêt au sud, et n'est jamais revenu.
+
+Dans la forêt, Zylrak trouve le chariot du marchand renversé, couvert de marques de griffes. Les traces partent vers les ruines...
 
 ## Lancer le jeu
 
