@@ -40,6 +40,7 @@ var _rempart_turns := 0
 var _foe_panel: Panel
 var _foe_names: VBoxContainer
 var _hero_panel: Panel
+var _name_label: Label
 var _hp_label: Label
 var _ep_label: Label
 var _hp_bar: ProgressBar
@@ -165,13 +166,14 @@ func _choose_action() -> Dictionary:
 			1:
 				var entries: Array[String] = []
 				var enabled: Array[bool] = []
-				for s in BattleCatalog.SIGNES:
+				var known := PlayerData.known_signs()
+				for s in known:
 					entries.append("%s  %d EP" % [s.nom, s.cout])
 					enabled.append(PlayerData.current_energy >= s.cout)
 				var k := await _menu(entries, enabled, true)
 				if k < 0:
 					continue
-				var signe: Dictionary = BattleCatalog.SIGNES[k]
+				var signe: Dictionary = known[k]
 				if signe.type == "degats":
 					var t2 := await _choose_target()
 					if t2.is_empty():
@@ -385,13 +387,32 @@ func _ending() -> void:
 			var gained := 0
 			for f in foes:
 				gained += f.data.xp
-			PlayerData.xp += gained
 			_hero.play("garde")
 			await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, -1.0)
+			for up in PlayerData.gain_xp(gained):
+				await _level_up(up)
 		"defaite":
 			await _say("Zylrak s'effondre...", -1.0)
 		"fuite":
 			pass
+
+## Montée de niveau : flash doré, braises, puis les gains et les Signes appris.
+func _level_up(up: Dictionary) -> void:
+	_refresh_hero()
+	_embers(HERO_HOME + Vector2(0, -20), Color(1.0, 0.85, 0.4))
+	_embers(HERO_HOME + Vector2(0, -34), Color(1.0, 0.7, 0.3))
+	_popup("Niveau %d !" % up.level, HERO_HOME + Vector2(0, -62), Color(1.0, 0.86, 0.45))
+	_flash(_hero, Color(1.8, 1.55, 0.9), 0.4)
+	await _say("Zylrak passe au niveau %d !" % up.level, -1.0)
+	var names := {"max_hp": "PV max", "max_energy": "EP max", "attack": "Attaque", "defense": "Défense", "magic": "Magie", "speed": "Vitesse"}
+	var parts: PackedStringArray = []
+	for key in names:
+		if up.gains[key] > 0:
+			parts.append("%s +%d" % [names[key], up.gains[key]])
+	await _say(", ".join(parts), -1.0)
+	for signe in up.signes:
+		_embers(HERO_HOME + Vector2(0, -24), Color(1.0, 0.55, 0.15))
+		await _say("Zylrak apprend le Signe : %s !" % signe, -1.0)
 
 # =============================================================== construction
 func _build_world() -> void:
@@ -524,7 +545,8 @@ func _build_ui() -> void:
 	_hero_panel = _panel()
 	var hero_box := VBoxContainer.new()
 	_hero_panel.add_child(hero_box)
-	hero_box.add_child(_label("Zylrak", _font_size(), GOLD))
+	_name_label = _label("", _font_size(), GOLD)
+	hero_box.add_child(_name_label)
 	_hp_label = _label("", _font_size(), TEXT)
 	hero_box.add_child(_hp_label)
 	_hp_bar = _bar(Color(0.75, 0.22, 0.18))
@@ -616,6 +638,7 @@ func _refresh_foes() -> void:
 			_foe_names.add_child(_label(f.name, _font_size(), TEXT))
 
 func _refresh_hero() -> void:
+	_name_label.text = "Zylrak    Niv. %d" % PlayerData.level
 	_hp_label.text = "PV  %d / %d" % [PlayerData.current_hp, PlayerData.max_hp]
 	_ep_label.text = "EP  %d / %d" % [PlayerData.current_energy, PlayerData.max_energy]
 	_hp_bar.max_value = PlayerData.max_hp

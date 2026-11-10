@@ -18,7 +18,56 @@ var attack: int = 7      # coups d'épée
 var defense: int = 3     # réduit les dégâts reçus
 var magic: int = 6       # puissance des Signes
 var speed: int = 6       # ordre de jeu en combat, chances de fuite
-var xp: int = 0
+var level: int = 1
+var xp: int = 0          # expérience totale depuis le début
+
+const MAX_LEVEL := 30
+
+## Expérience totale nécessaire pour atteindre le niveau `n` (niveau 2 : 20, 3 : 50, 4 : 90, 5 : 140…).
+static func xp_for_level(n: int) -> int:
+	return 5 * (n - 1) * (n + 2)
+
+## Gains de statistiques en passant au niveau `n`.
+static func level_gains(n: int) -> Dictionary:
+	return {
+		"max_hp": 4,
+		"max_energy": 2,
+		"attack": 1,
+		"defense": 1 if n % 2 == 0 else 0,
+		"magic": 1,
+		"speed": 1 if n % 3 == 0 else 0,
+	}
+
+## Ajoute de l'expérience et applique les montées de niveau.
+## Renvoie une entrée par niveau gagné : {"level", "gains", "signes"} (signes = Signes appris).
+func gain_xp(amount: int) -> Array[Dictionary]:
+	xp += amount
+	var ups: Array[Dictionary] = []
+	while level < MAX_LEVEL and xp >= xp_for_level(level + 1):
+		level += 1
+		var gains := level_gains(level)
+		max_hp += gains.max_hp
+		current_hp += gains.max_hp
+		max_energy += gains.max_energy
+		current_energy += gains.max_energy
+		attack += gains.attack
+		defense += gains.defense
+		magic += gains.magic
+		speed += gains.speed
+		var learned: Array[String] = []
+		for s in BattleCatalog.SIGNES:
+			if s.get("niveau", 1) == level:
+				learned.append(s.nom)
+		ups.append({"level": level, "gains": gains, "signes": learned})
+	return ups
+
+## Signes que Zylrak connaît à son niveau actuel.
+func known_signs() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for s in BattleCatalog.SIGNES:
+		if s.get("niveau", 1) <= level:
+			out.append(s)
+	return out
 ## Objets, un identifiant par exemplaire (voir BattleCatalog.OBJETS).
 var inventory: Array[String] = ["potion", "potion", "potion"]
 
