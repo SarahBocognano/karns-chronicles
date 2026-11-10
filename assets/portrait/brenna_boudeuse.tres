@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dob30ogvysj7k"]
+
+[ext_resource type="Texture2D" uid="uid://42547sn8ugc7" path="res://assets/portrait/brenna_expressions.png" id="1_xngkn"]
+
+[resource]
+atlas = ExtResource("1_xngkn")
+region = Rect2(1033, 22, 330, 267.273)
+margin = Rect2(39.281, 0, 79.562, 0)

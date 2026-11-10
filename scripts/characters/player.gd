@@ -24,6 +24,11 @@ func _apply_spawn_point() -> void:
 	PlayerData.next_spawn_point = ""  # on consomme le spawn point pour éviter de le réutiliser par erreur
 
 func _physics_process(_delta: float) -> void:
+	if PlayerData.controls_locked:
+		velocity = Vector2.ZERO
+		stop_animation()
+		return
+
 	direction.x = Input.get_axis("move_left", "move_right")
 	direction.y = Input.get_axis("move_up", "move_down")
 	direction = direction.normalized()

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://b20j62e3w7cvr"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_j368f"]
+[ext_resource type="Texture2D" uid="uid://igwo1ueraan1" path="res://assets/portrait/brenna_triste.tres" id="2_jsf7g"]
+[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/zylrak_normal.tres" id="3_e27ke"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="4_ymbte"]
+[ext_resource type="Texture2D" uid="uid://bovq46417yatt" path="res://assets/portrait/brenna_fachee.tres" id="5_0pxy5"]
+[ext_resource type="Texture2D" uid="uid://b6ihvptd1t3iv" path="res://assets/portrait/brenna_timide.tres" id="6_qqkig"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="7_e5dk1"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="8_gcm50"]
+[ext_resource type="Texture2D" uid="uid://7u07244vqfxq" path="res://assets/portrait/brenna_rire.tres" id="9_su52i"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="10_xhv6y"]
+
+[sub_resource type="Resource" id="Resource_ym4sh"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("2_jsf7g")
+text = "Zylrak... attends. Je peux te parler ?"
+
+[sub_resource type="Resource" id="Resource_8hg00"]
+script = ExtResource("1_j368f")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_e27ke")
+text = "Tiens, plus de moqueries ? Ça doit être sérieux."
+
+[sub_resource type="Resource" id="Resource_qtno6"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("2_jsf7g")
+text = "C'est mon frère, Aldric. Il est parti couper du bois dans la forêt il y a deux jours. Il n'est jamais rentré."
+
+[sub_resource type="Resource" id="Resource_5i5vc"]
+script = ExtResource("1_j368f")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_ymbte")
+text = "Deux jours... avec les goules qui rôdent dans le coin."
+
+[sub_resource type="Resource" id="Resource_onwva"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("5_0pxy5")
+text = "Je sais ! Et personne au village ne veut aller le chercher. Ils ont tous trop peur."
+
+[sub_resource type="Resource" id="Resource_qy53t"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("6_qqkig")
+text = "Toi, tu n'as peur de rien, pas vrai ? Enfin... c'est ce que tu racontes à tout le monde."
+
+[sub_resource type="Resource" id="Resource_k2mg0"]
+script = ExtResource("1_j368f")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_e5dk1")
+text = "Je vais te le ramener, ton frère."
+
+[sub_resource type="Resource" id="Resource_xd80p"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("6_qqkig")
+text = "Merci... Et cette fois, je te promets de retenir ton nom."
+
+[sub_resource type="Resource" id="Resource_7nww7"]
+script = ExtResource("1_j368f")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_gcm50")
+text = "Je savais que tu finirais par craquer."
+
+[sub_resource type="Resource" id="Resource_sunsy"]
+script = ExtResource("1_j368f")
+speaker_name = "Brenna"
+portrait = ExtResource("9_su52i")
+text = "N'en profite pas, Ashwarden."
+
+[resource]
+script = ExtResource("10_xhv6y")
+lines = Array[ExtResource("1_j368f")]([SubResource("Resource_ym4sh"), SubResource("Resource_8hg00"), SubResource("Resource_qtno6"), SubResource("Resource_5i5vc"), SubResource("Resource_onwva"), SubResource("Resource_qy53t"), SubResource("Resource_k2mg0"), SubResource("Resource_xd80p"), SubResource("Resource_7nww7"), SubResource("Resource_sunsy")])
+required_flags = Array[String](["talked_to_brenna", "has_accepted_zylrak_quest"])
+forbidden_flags = Array[String](["aldric_quest_started"])
+flags_on_finish = Array[String](["aldric_quest_started"])
+show_quest_marker = true

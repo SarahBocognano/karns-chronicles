@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://dt8688iy6gi5h"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_vftmn"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="2_tg5jg"]
+[ext_resource type="Texture2D" uid="uid://dx1p2gj34dhxc" path="res://assets/portrait/aelis_hautaine.tres" id="3_w84sr"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="4_foypg"]
+[ext_resource type="Texture2D" uid="uid://b336ihp1livu6" path="res://assets/portrait/aelis_soupir.tres" id="5_bfigr"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="6_kgqqn"]
+[ext_resource type="Texture2D" uid="uid://bqltp3porx545" path="res://assets/portrait/aelis_glaciale.tres" id="7_m6obm"]
+[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="8_ixfd0"]
+[ext_resource type="Texture2D" uid="uid://p2w0u1rqgse0" path="res://assets/portrait/aelis_mefiante.tres" id="9_5onxi"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="10_0wdjq"]
+[ext_resource type="Texture2D" uid="uid://rqhg6bpejda4" path="res://assets/portrait/aelis_genee.tres" id="11_sidve"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="12_duxp7"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="13_07y1v"]
+
+[sub_resource type="Resource" id="Resource_h0teo"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_tg5jg")
+text = "Eh bien... Personne ne m'avait dit que ce village cachait une telle merveille."
+
+[sub_resource type="Resource" id="Resource_e6l0v"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("3_w84sr")
+text = "Et personne ne m'avait dit que les villages laissaient traîner leurs mercenaires sur la place publique."
+
+[sub_resource type="Resource" id="Resource_eeb1j"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_foypg")
+text = "Mercenaire ? Zylrak, Ashwarden de l'Ordre des Cendres. Retiens bien ce nom, il va bientôt..."
+
+[sub_resource type="Resource" id="Resource_yxl0m"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("5_bfigr")
+text = "... circuler dans toutes les tavernes de Karn, j'imagine. Tu n'es pas le premier à me la faire, celle-là."
+
+[sub_resource type="Resource" id="Resource_xvogy"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_kgqqn")
+text = "Qui t'a... Peu importe. Et toi, la belle, tu as un nom ?"
+
+[sub_resource type="Resource" id="Resource_ff77p"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("7_m6obm")
+text = "Dame Aelis d'Aubreval. Et « la belle » va garder ses distances, merci."
+
+[sub_resource type="Resource" id="Resource_megl0"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_ixfd0")
+text = "D'Aubreval ! Une noble de la capitale, perdue au milieu des poules. Qu'est-ce qui t'amène si loin de tes salons ?"
+
+[sub_resource type="Resource" id="Resource_sddnm"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("9_5onxi")
+text = "Mes affaires. Qui ne regardent pas un homme dont la cape sent le feu de camp."
+
+[sub_resource type="Resource" id="Resource_xkttu"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("10_0wdjq")
+text = "... Tu sais, sous la cape et la fumée, il y a juste quelqu'un qui aimerait qu'on se souvienne de lui."
+
+[sub_resource type="Resource" id="Resource_plkhq"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("11_sidve")
+text = "Je..."
+
+[sub_resource type="Resource" id="Resource_3phsc"]
+script = ExtResource("1_vftmn")
+speaker_name = "Aelis"
+portrait = ExtResource("7_m6obm")
+text = "Reviens quand ton nom voudra dire quelque chose, Ashwarden."
+
+[sub_resource type="Resource" id="Resource_omc28"]
+script = ExtResource("1_vftmn")
+speaker_name = "Zylrak"
+portrait = ExtResource("12_duxp7")
+text = "Ce sera plus tôt que tu ne le crois."
+
+[resource]
+script = ExtResource("13_07y1v")
+lines = Array[ExtResource("1_vftmn")]([SubResource("Resource_h0teo"), SubResource("Resource_e6l0v"), SubResource("Resource_eeb1j"), SubResource("Resource_yxl0m"), SubResource("Resource_xvogy"), SubResource("Resource_ff77p"), SubResource("Resource_megl0"), SubResource("Resource_sddnm"), SubResource("Resource_xkttu"), SubResource("Resource_plkhq"), SubResource("Resource_3phsc"), SubResource("Resource_omc28")])
+forbidden_flags = Array[String](["aelis_rejected_once"])
+flags_on_finish = Array[String](["aelis_rejected_once"])

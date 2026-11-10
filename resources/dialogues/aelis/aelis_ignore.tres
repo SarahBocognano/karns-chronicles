@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://kdeq3ptn2mhy"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_kxplv"]
+[ext_resource type="Texture2D" uid="uid://bekc75lq0r1qt" path="res://assets/portrait/aelis_dedaigneuse.tres" id="2_yyc2s"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="3_gvlw2"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_u6ata"]
+
+[sub_resource type="Resource" id="Resource_3jjaf"]
+script = ExtResource("1_kxplv")
+speaker_name = "Aelis"
+portrait = ExtResource("2_yyc2s")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_inqcr"]
+script = ExtResource("1_kxplv")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_gvlw2")
+text = "D'accord. Message reçu."
+
+[resource]
+script = ExtResource("4_u6ata")
+lines = Array[ExtResource("1_kxplv")]([SubResource("Resource_3jjaf"), SubResource("Resource_inqcr")])
+required_flags = Array[String](["aelis_rejected_twice"])

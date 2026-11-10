@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://da012ohockgm"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_og63x"]
+[ext_resource type="Texture2D" uid="uid://igwo1ueraan1" path="res://assets/portrait/brenna_triste.tres" id="2_w3byq"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_eeoex"]
+
+[sub_resource type="Resource" id="Resource_aig8j"]
+script = ExtResource("1_og63x")
+speaker_name = "Brenna"
+portrait = ExtResource("2_w3byq")
+text = "Aldric est quelque part dans la forêt, à l'est du village. Ramène-le-moi, Zylrak."
+
+[resource]
+script = ExtResource("3_eeoex")
+lines = Array[ExtResource("1_og63x")]([SubResource("Resource_aig8j")])
+required_flags = Array[String](["aldric_quest_started"])

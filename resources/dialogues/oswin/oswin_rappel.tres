@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://cotheo2ay7byk"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_arjqw"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_j1mb4"]
+[ext_resource type="Texture2D" uid="uid://cp37hw3o38tt2" path="res://assets/portrait/oswin_determine.tres" id="2_q36jl"]
+
+[sub_resource type="Resource" id="Resource_q36jl"]
+script = ExtResource("1_arjqw")
+speaker_name = "Oswin"
+portrait = ExtResource("2_q36jl")
+text = "Le marchand arrivait par la route de l'est. Si vous trouvez quoi que ce soit, revenez me voir."
+
+[resource]
+script = ExtResource("2_j1mb4")
+lines = Array[ExtResource("1_arjqw")]([SubResource("Resource_q36jl")])
+required_flags = Array[String](["has_accepted_zylrak_quest"])

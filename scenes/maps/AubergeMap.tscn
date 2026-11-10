@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://4pamqjsa3xou" path="res://assets/sprites/characters/random_pnj_redhead.png" id="12_tafph"]
 [ext_resource type="Texture2D" uid="uid://dhhlswknbt6ss" path="res://assets/sprites/characters/magicien_pnj.png" id="14_fh66m"]
 [ext_resource type="Texture2D" uid="uid://bjx36mfhugyfr" path="res://assets/sprites/characters/random_blackhair_man(1).png" id="15_gdbrw"]
+[ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="npc_dialogue_script"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="dialogue_conversation_script"]
+[ext_resource type="Resource" uid="uid://dfbrs5kp54oun" path="res://resources/dialogues/oswin/oswin_appel.tres" id="dlg_oswin_appel"]
+[ext_resource type="Resource" uid="uid://cotheo2ay7byk" path="res://resources/dialogues/oswin/oswin_rappel.tres" id="dlg_oswin_rappel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3kx"]
 size = Vector2(21, 39.5)
@@ -5288,6 +5292,8 @@ scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_063pl")
 
 [node name="PNJ5" type="Node2D" parent="." unique_id=1694069418]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_oswin_appel"), ExtResource("dlg_oswin_rappel")])
 position = Vector2(-46, 17)
 scale = Vector2(0.7, 0.7)
 
