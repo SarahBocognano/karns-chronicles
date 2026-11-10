@@ -19,6 +19,12 @@
 [ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="dialogue_conversation_script"]
 [ext_resource type="Resource" uid="uid://dfbrs5kp54oun" path="res://resources/dialogues/oswin/oswin_appel.tres" id="dlg_oswin_appel"]
 [ext_resource type="Resource" uid="uid://cotheo2ay7byk" path="res://resources/dialogues/oswin/oswin_rappel.tres" id="dlg_oswin_rappel"]
+[ext_resource type="Resource" uid="uid://ddbhecuw5mcyt" path="res://resources/dialogues/barnabe/barnabe_concours.tres" id="dlg_barnabe_concours"]
+[ext_resource type="Resource" uid="uid://cf7jjnc1paypt" path="res://resources/dialogues/barnabe/barnabe_revanche.tres" id="dlg_barnabe_revanche"]
+[ext_resource type="Resource" uid="uid://bd5wybihrjyek" path="res://resources/dialogues/torvald/torvald_rencontre.tres" id="dlg_torvald_rencontre"]
+[ext_resource type="Resource" uid="uid://kljl1dy2boxi" path="res://resources/dialogues/torvald/torvald_rappel.tres" id="dlg_torvald_rappel"]
+[ext_resource type="Resource" uid="uid://ck5kbw51xujqv" path="res://resources/dialogues/theobald/theobald_rencontre.tres" id="dlg_theobald_rencontre"]
+[ext_resource type="Resource" uid="uid://bgq0atx0bxoer" path="res://resources/dialogues/theobald/theobald_rappel.tres" id="dlg_theobald_rappel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3kx"]
 size = Vector2(21, 39.5)
@@ -5238,6 +5244,8 @@ position = Vector2(21.42857, -2.8571424)
 shape = SubResource("CircleShape2D_lh3kx")
 
 [node name="PNJ2" type="Node2D" parent="." unique_id=295456532]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_barnabe_concours"), ExtResource("dlg_barnabe_revanche")])
 position = Vector2(76.99999, -74.99999)
 scale = Vector2(0.7, 0.7)
 
@@ -5254,6 +5262,8 @@ position = Vector2(4.285725, -10.0000105)
 shape = SubResource("CircleShape2D_cqgup")
 
 [node name="PNJ3" type="Node2D" parent="." unique_id=509829576]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_torvald_rencontre"), ExtResource("dlg_torvald_rappel")])
 position = Vector2(194, -46)
 scale = Vector2(0.7, 0.7)
 
@@ -5276,6 +5286,8 @@ scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_qhbll")
 
 [node name="PNJ4" type="Node2D" parent="." unique_id=2035760208]
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_theobald_rencontre"), ExtResource("dlg_theobald_rappel")])
 position = Vector2(-119, -89)
 scale = Vector2(0.7, 0.7)
 

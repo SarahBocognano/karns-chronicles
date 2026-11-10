@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bd5wybihrjyek"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_brryf"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="2_3k02l"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="3_fkpdr"]
+[ext_resource type="Texture2D" uid="uid://c5tnugxif01l" path="res://assets/portrait/torvald_neutre.tres" id="3_sdihj"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="4_pxo7d"]
+[ext_resource type="Texture2D" uid="uid://4r71aa5cnt2j" path="res://assets/portrait/torvald_amuse.tres" id="5_204ae"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="5_sdihj"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="6_204ae"]
+[ext_resource type="Texture2D" uid="uid://dklug0u3cligq" path="res://assets/portrait/torvald_mefiant.tres" id="7_bkuh7"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="7_g084t"]
+[ext_resource type="Texture2D" uid="uid://cgocehauf23wb" path="res://assets/portrait/torvald_serieux.tres" id="9_abbjg"]
+
+[sub_resource type="Resource" id="Resource_bkuh7"]
+script = ExtResource("1_brryf")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_3k02l")
+text = "Patron ! Ta meilleure bière pour l'Ashwarden qui va sauver ce village."
+
+[sub_resource type="Resource" id="Resource_abbjg"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("3_sdihj")
+text = "La meilleure, c'est la même que les autres. Deux écus."
+
+[sub_resource type="Resource" id="Resource_bgnj7"]
+script = ExtResource("1_brryf")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_fkpdr")
+text = "Pas de tournée offerte pour le héros du jour ?"
+
+[sub_resource type="Resource" id="Resource_k1w0s"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("5_204ae")
+text = "Les héros paient d'avance. C'est les seuls clients qui reviennent pas toujours."
+
+[sub_resource type="Resource" id="Resource_vhgxm"]
+script = ExtResource("1_brryf")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_pxo7d")
+text = "... Charmant."
+
+[sub_resource type="Resource" id="Resource_8762k"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("7_bkuh7")
+text = "Alors comme ça, Oswin t'a refilé l'histoire du marchand."
+
+[sub_resource type="Resource" id="Resource_no1uo"]
+script = ExtResource("1_brryf")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_sdihj")
+text = "Tu sais quelque chose ?"
+
+[sub_resource type="Resource" id="Resource_j3f2h"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("9_abbjg")
+text = "Ce que tout le monde chuchote ici. Ceux qui ont pris la route de l'est ces derniers jours ont entendu des cris du côté des vieilles ruines."
+
+[sub_resource type="Resource" id="Resource_7ur43"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("9_abbjg")
+text = "Moi, je dis rien. Mais si j'étais toi, je regarderais par là."
+
+[sub_resource type="Resource" id="Resource_afqpk"]
+script = ExtResource("1_brryf")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_204ae")
+text = "Les ruines, hein... Merci, Torvald."
+
+[sub_resource type="Resource" id="Resource_m75oa"]
+script = ExtResource("1_brryf")
+speaker_name = "Torvald"
+portrait = ExtResource("3_sdihj")
+text = "Deux écus."
+
+[resource]
+script = ExtResource("7_g084t")
+lines = Array[ExtResource("1_brryf")]([SubResource("Resource_bkuh7"), SubResource("Resource_abbjg"), SubResource("Resource_bgnj7"), SubResource("Resource_k1w0s"), SubResource("Resource_vhgxm"), SubResource("Resource_8762k"), SubResource("Resource_no1uo"), SubResource("Resource_j3f2h"), SubResource("Resource_7ur43"), SubResource("Resource_afqpk"), SubResource("Resource_m75oa")])
+forbidden_flags = Array[String](["talked_to_torvald"])
+flags_on_finish = Array[String](["talked_to_torvald"])

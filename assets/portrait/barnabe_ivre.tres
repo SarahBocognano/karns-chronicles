@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://5iuxjlc2fcej"]
+
+[ext_resource type="Texture2D" uid="uid://q0rgumfod5fs" path="res://assets/portrait/barnabe_expressions.png" id="1_x0qvn"]
+
+[resource]
+atlas = ExtResource("1_x0qvn")
+region = Rect2(798, 9, 678, 493)
+margin = Rect2(38.730217, 0, 77.460434, 0)

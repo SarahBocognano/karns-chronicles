@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bgq0atx0bxoer"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_eqw1b"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_dncpw"]
+[ext_resource type="Texture2D" uid="uid://dtw0j6j83ajwk" path="res://assets/portrait/theobald_pensif.tres" id="2_fn2td"]
+
+[sub_resource type="Resource" id="Resource_fn2td"]
+script = ExtResource("1_eqw1b")
+speaker_name = "Théobald"
+portrait = ExtResource("2_fn2td")
+text = "Lune, loup, épée, flamme... Chez les Yrenn, l'ordre compte toujours. Souviens-t'en."
+
+[resource]
+script = ExtResource("2_dncpw")
+lines = Array[ExtResource("1_eqw1b")]([SubResource("Resource_fn2td")])
+required_flags = Array[String](["talked_to_theobald"])
