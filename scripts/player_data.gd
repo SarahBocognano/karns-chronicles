@@ -11,7 +11,26 @@ var controls_locked: bool = false
 # --- Progression / état du joueur ---
 var current_hp: int = 20
 var max_hp: int = 20
-var inventory: Array[String] = []
+## Énergie des Signes (la magie des Ashwardens).
+var current_energy: int = 12
+var max_energy: int = 12
+var attack: int = 7      # coups d'épée
+var defense: int = 3     # réduit les dégâts reçus
+var magic: int = 6       # puissance des Signes
+var speed: int = 6       # ordre de jeu en combat, chances de fuite
+var xp: int = 0
+## Objets, un identifiant par exemplaire (voir BattleCatalog.OBJETS).
+var inventory: Array[String] = ["potion", "potion", "potion"]
+
+func count_item(item_id: String) -> int:
+	return inventory.count(item_id)
+
+func use_item(item_id: String) -> bool:
+	var i := inventory.find(item_id)
+	if i == -1:
+		return false
+	inventory.remove_at(i)
+	return true
 
 # --- Flags de quête (simple pour l'instant, on structurera plus tard si besoin) ---
 var quest_flags: Dictionary = {
