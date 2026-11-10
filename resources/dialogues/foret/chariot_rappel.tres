@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bhkpyugwbp2q4"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_d5m2c"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="2_wcxxe"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_moj0k"]
+
+[sub_resource type="Resource" id="Resource_v2tdu"]
+script = ExtResource("1_d5m2c")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_wcxxe")
+text = "Les traces partent vers l'est, vers les ruines. Pas de temps à perdre."
+
+[resource]
+script = ExtResource("3_moj0k")
+lines = Array[ExtResource("1_d5m2c")]([SubResource("Resource_v2tdu")])
+required_flags = Array[String](["found_merchant_cart"])

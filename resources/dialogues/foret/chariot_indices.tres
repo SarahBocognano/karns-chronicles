@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://cv2dlf4ynd2u5"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_mew6d"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="2_3lhxo"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="3_81tdr"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="4_uaeie"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_4nn6v"]
+
+[sub_resource type="Resource" id="Resource_tlcaw"]
+script = ExtResource("1_mew6d")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_3lhxo")
+text = "Un chariot renversé, les caisses éventrées... C'est celui du marchand qu'Oswin attendait."
+
+[sub_resource type="Resource" id="Resource_43dlm"]
+script = ExtResource("1_mew6d")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_81tdr")
+text = "Des marques de griffes partout sur le bois. Des goules. Et pas qu'une seule."
+
+[sub_resource type="Resource" id="Resource_3dwfx"]
+script = ExtResource("1_mew6d")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_3lhxo")
+text = "Pas de corps. Juste des traces dans la boue, qui partent vers l'est... Ils l'ont traîné."
+
+[sub_resource type="Resource" id="Resource_32hv2"]
+script = ExtResource("1_mew6d")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_uaeie")
+text = "Vers les ruines. Torvald avait raison. Avec un peu de chance, il est encore en vie."
+
+[resource]
+script = ExtResource("5_4nn6v")
+lines = Array[ExtResource("1_mew6d")]([SubResource("Resource_tlcaw"), SubResource("Resource_43dlm"), SubResource("Resource_3dwfx"), SubResource("Resource_32hv2")])
+required_flags = Array[String](["has_accepted_zylrak_quest"])
+forbidden_flags = Array[String](["found_merchant_cart"])
+flags_on_finish = Array[String](["found_merchant_cart"])
+show_quest_marker = true

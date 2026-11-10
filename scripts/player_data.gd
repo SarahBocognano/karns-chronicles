@@ -30,6 +30,7 @@ var quest_flags: Dictionary = {
 	"godric_talked_about_aldric": false, # Godric a dit où Aldric allait couper du bois
 	"talked_to_pepin": false,            # Pépin, le gamin qui se moque de Zylrak
 	"talked_to_inconnu": false,          # l'inconnu encapuchonné de l'auberge
+	"found_merchant_cart": false,        # chariot du marchand retrouvé dans la forêt (indices vers les ruines)
 }
 
 # --- Système de spawn entre scènes ---
