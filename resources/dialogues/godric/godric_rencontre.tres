@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://y34mwms7ytwc"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_xl8nw"]
+[ext_resource type="Texture2D" uid="uid://buer1knjw7hx5" path="res://assets/portrait/godric_neutre.tres" id="2_6r4fi"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="3_60vsr"]
+[ext_resource type="Texture2D" uid="uid://c3b33txlnebms" path="res://assets/portrait/godric_sourire.tres" id="4_tfu5l"]
+[ext_resource type="Texture2D" uid="uid://4uin8wtfch1c" path="res://assets/portrait/godric_bougon.tres" id="5_uv60u"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="6_t36lb"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="7_jgxmu"]
+
+[sub_resource type="Resource" id="Resource_5yj7b"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Godric"
+portrait = ExtResource("2_6r4fi")
+text = "Hm. Un Ashwarden. Ça faisait longtemps qu'on n'en avait plus vu par ici."
+
+[sub_resource type="Resource" id="Resource_exy45"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_60vsr")
+text = "Zylrak. Et je compte bien qu'on se souvienne de mon passage."
+
+[sub_resource type="Resource" id="Resource_2f82d"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Godric"
+portrait = ExtResource("4_tfu5l")
+text = "Ils disent tous ça, petit. Moi, je me souviens surtout de ceux qui reviennent."
+
+[sub_resource type="Resource" id="Resource_j1tnc"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Godric"
+portrait = ExtResource("5_uv60u")
+text = "Hors du village, tu n'es plus chez toi. Les bêtes rôdent partout : sur les chemins, dans les bois, dans les champs. Et elles n'attendent pas qu'on les voie."
+
+[sub_resource type="Resource" id="Resource_3gwij"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_t36lb")
+text = "Qu'elles viennent. Mon épée a faim."
+
+[sub_resource type="Resource" id="Resource_7a710"]
+script = ExtResource("1_xl8nw")
+speaker_name = "Godric"
+portrait = ExtResource("2_6r4fi")
+text = "Ton épée, peut-être. Mais garde les yeux ouverts quand même."
+
+[resource]
+script = ExtResource("7_jgxmu")
+lines = Array[ExtResource("1_xl8nw")]([SubResource("Resource_5yj7b"), SubResource("Resource_exy45"), SubResource("Resource_2f82d"), SubResource("Resource_j1tnc"), SubResource("Resource_3gwij"), SubResource("Resource_7a710")])
+forbidden_flags = Array[String](["talked_to_godric"])
+flags_on_finish = Array[String](["talked_to_godric"])

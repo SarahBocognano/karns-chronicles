@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://di67stt8nwd45"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_6ynw8"]
+[ext_resource type="Texture2D" uid="uid://bjoa8qdnv0ere" path="res://assets/portrait/mirabelle_inquiete.tres" id="2_t4p14"]
+[ext_resource type="Texture2D" uid="uid://dk1w48e7symff" path="res://assets/portrait/mirabelle_genee.tres" id="3_yy8it"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="4_oxl2b"]
+[ext_resource type="Texture2D" uid="uid://c22tenwjc4qdn" path="res://assets/portrait/mirabelle_douce.tres" id="5_kyayw"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_vvp2f"]
+
+[sub_resource type="Resource" id="Resource_m113v"]
+script = ExtResource("1_6ynw8")
+speaker_name = "Mirabelle"
+portrait = ExtResource("2_t4p14")
+text = "Tu pars chercher Aldric ? Il me rapportait toujours des fleurs sauvages des bords du lac..."
+
+[sub_resource type="Resource" id="Resource_yrhuf"]
+script = ExtResource("1_6ynw8")
+speaker_name = "Mirabelle"
+portrait = ExtResource("3_yy8it")
+text = "Enfin... pour mon jardin, hein. Juste pour le jardin."
+
+[sub_resource type="Resource" id="Resource_kymvg"]
+script = ExtResource("1_6ynw8")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_oxl2b")
+text = "Évidemment. Juste pour le jardin."
+
+[sub_resource type="Resource" id="Resource_ngelg"]
+script = ExtResource("1_6ynw8")
+speaker_name = "Mirabelle"
+portrait = ExtResource("5_kyayw")
+text = "Ramène-le, Zylrak. S'il te plaît."
+
+[resource]
+script = ExtResource("6_vvp2f")
+lines = Array[ExtResource("1_6ynw8")]([SubResource("Resource_m113v"), SubResource("Resource_yrhuf"), SubResource("Resource_kymvg"), SubResource("Resource_ngelg")])
+required_flags = Array[String](["talked_to_mirabelle", "aldric_quest_started"])
+forbidden_flags = Array[String](["mirabelle_aldric_done"])
+flags_on_finish = Array[String](["mirabelle_aldric_done"])
