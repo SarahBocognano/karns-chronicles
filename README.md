@@ -20,19 +20,10 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 ## Contenu actuel
 
 ### Le village
-- **Aelis** : remballe Zylrak quand il tente sa chance.
-- **Brenna** : lance la quête pour retrouver son frère **Aldric**.
-- **Oswin** : donne la quête principale (enquêter sur les attaques) à l'auberge.
-- **Mirabelle** : la fleuriste, qui arrose ses fleurs sur la place.
-- **Godric** : le vieux bûcheron, oncle d'Aldric et de Brenna.
-- **Pépin** : le gamin espiègle qui se moque de Zylrak.
-- **Le Forgeron**, dans sa forge.
+Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 
 ### L'auberge
-- **Torvald** : parle des cris entendus près des ruines.
-- **Théobald Lunebrise** : le magicien, qui connaît les Yrenn et leurs symboles.
-- **Barnabé** : défie Zylrak au concours de chopes.
-- **L'inconnu encapuchonné**, au comportement cryptique.
+Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 
 ### La forêt (au sud du village)
 - Deux niveaux reliés par un col entre deux falaises.
@@ -62,32 +53,6 @@ scripts/
   player_data.gd       autoload : PV, inventaire, flags de quête
   scene_transition.gd  autoload : changement de carte avec fondu au noir
 ```
-
-## Comment ça marche
-
-### Dialogues et quêtes
-- Chaque PNJ a un nœud avec le script `scenes/maps/npc_dialogue.gd` et une liste de **conversations** (`DialogueConversation`, dans `resources/dialogues/<pnj>/`).
-- Le PNJ joue la **première conversation disponible** de sa liste, selon ses conditions :
-  - `required_flags` : flags qui doivent être vrais ;
-  - `forbidden_flags` : flags qui doivent être faux.
-- À la fin d'une conversation :
-  - `flags_on_finish` passe des flags à vrai ;
-  - `show_quest_marker` affiche un « ! » au-dessus du PNJ tant que la conversation est disponible ;
-  - `auto_start` fait venir le PNJ vers Zylrak dès l'arrivée dans la scène.
-- Chaque réplique (`DialogueLine`) a un nom, un portrait et un texte.
-- Les flags de quête sont listés dans `scripts/player_data.gd` (`quest_flags`).
-
-### Cartes
-- **Passer d'une carte à l'autre** : une `Area2D` appelle `SceneTransition.change_scene(scène, point_d_arrivée)`, et Zylrak réapparaît sur le `Marker2D` du même nom.
-- **`map_camera_zoom.gd`**, sur la racine de chaque carte, fixe le zoom et bloque la caméra aux bords du sol.
-  - Avec `fill_screen`, la pièce remplit tout l'écran quelle que soit la taille de la fenêtre.
-- **`map_message_zone.gd`** fait parler Zylrak quand il entre dans une zone, par exemple un chemin pas encore accessible.
-- **`encounter_zone.gd`** marque les zones de rencontres aléatoires.
-
-### Forêt
-- La carte `ForestMap.tscn` est générée par un script (relief, eau, arbres, décor). Des retouches à la main dans l'éditeur seraient perdues si on la régénère.
-- L'eau est dessinée avec un shader (`resources/shaders/water.gdshader`) sur des `Polygon2D`.
-- La brume et les rayons de lumière viennent de `forest_ambience.gdshader`, appliqué sur un `ColorRect`.
 
 ## Crédits
 
