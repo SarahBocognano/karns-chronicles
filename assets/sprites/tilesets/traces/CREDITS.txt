@@ -1,0 +1,6 @@
+griffures_bois.png, griffures_sol.png, empreinte_goule.png, empreinte_goule_sang.png, sillons.png :
+dessinés pour Karn's Chronicles.
+
+sang_flaque.png, sang_trace.png, sang_trace_2.png :
+d'après "Horror Fantasy Assets" by Stealthix — CC0
+(https://opengameart.org/content/horror-fantasy-assets), couleurs assombries.
