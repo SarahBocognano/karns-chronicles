@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="MonsterData" format=3]
 
 [ext_resource type="Script" path="res://scripts/battle/monster_data.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/sprites/monsters/goule_provisoire.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/monsters/morts_vivants/ghoul.png" id="2"]
 
 [resource]
 script = ExtResource("1")
 display_name = "Goule"
 texture = ExtResource("2")
 sprite_scale = 1.0
+flip_h = true
+shadow = false
 max_hp = 14
 attack = 4
 defense = 1

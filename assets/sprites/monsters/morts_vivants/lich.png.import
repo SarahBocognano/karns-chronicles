@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rurv4sj8tmkg"
-path="res://.godot/imported/goule_provisoire.png-36f394791768c129793640c3c74917c3.ctex"
+uid="uid://c65oq3i2sxj2s"
+path="res://.godot/imported/lich.png-d2807002d7ff6b1e3d74f668aa196ca4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/monsters/goule_provisoire.png"
-dest_files=["res://.godot/imported/goule_provisoire.png-36f394791768c129793640c3c74917c3.ctex"]
+source_file="res://assets/sprites/monsters/morts_vivants/lich.png"
+dest_files=["res://.godot/imported/lich.png-d2807002d7ff6b1e3d74f668aa196ca4.ctex"]
 
 [params]
 

@@ -129,10 +129,14 @@ func _foe_turn(foe: Dictionary) -> void:
 	var names: PackedStringArray = foe.data.attack_names
 	var attack_name: String = names[rng.randi() % names.size()] if names.size() > 0 else "Attaque"
 	_show_message("%s : %s !" % [foe.name, attack_name])
-	var sprite: Sprite2D = foe.sprite
+	var sprite: Node2D = foe.sprite
+	if sprite is AnimatedSprite2D:
+		sprite.play("attaque")
 	var tw := create_tween()
 	tw.tween_property(sprite, "position:x", foe.home.x + 26, 0.16).set_trans(Tween.TRANS_QUAD)
 	tw.tween_property(sprite, "position:x", foe.home.x, 0.22).set_delay(0.08)
+	if sprite is AnimatedSprite2D:
+		tw.tween_callback(func(): sprite.play("repos"))
 	await get_tree().create_timer(0.18).timeout
 	var dmg := _damage(foe.data.attack, PlayerData.defense)
 	if _defending:
@@ -358,11 +362,14 @@ func _hero_step(dx: float) -> void:
 
 func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 	foe.hp = max(0, foe.hp - dmg)
-	_popup(prefix + str(dmg), foe.home + Vector2(0, -58), color)
+	_popup(prefix + str(dmg), foe.home + Vector2(0, -foe.height - 6), color)
 	_shake(foe.sprite, foe.home)
 	await _flash(foe.sprite, Color(2.2, 2.2, 2.2), 0.12)
 	if foe.hp <= 0:
 		foe.alive = false
+		if foe.sprite is AnimatedSprite2D:
+			foe.sprite.play("mort")
+			await foe.sprite.animation_finished
 		var tw := create_tween()
 		tw.tween_property(foe.sprite, "modulate", Color(1.0, 0.3, 0.3, 0.0), 0.5)
 		await tw.finished
@@ -440,20 +447,39 @@ func _build_world() -> void:
 		var data: MonsterData = monster_list[i]
 		var home: Vector2 = slots[i]
 		var shadow := _shadow(home, 16)
-		var s := Sprite2D.new()
-		s.texture = data.texture
-		s.centered = false
+		shadow.visible = data.shadow
+		var s: Node2D
+		# Hauteur réellement dessinée (au-dessus des pieds), pour placer la flèche de cible et les dégâts.
+		var height := 48.0
+		if data.lpc_sheet:
+			# Monstre du générateur LPC : animé, même format de planche que Zylrak.
+			var a := AnimatedSprite2D.new()
+			a.sprite_frames = _lpc_monster_frames(data.lpc_sheet)
+			a.offset = Vector2(0, -28)
+			a.flip_h = data.flip_h
+			a.play("repos")
+			var used := a.sprite_frames.get_frame_texture("repos", 0).get_image().get_used_rect()
+			height = (60 - used.position.y) * data.sprite_scale
+			s = a
+		else:
+			var sp := Sprite2D.new()
+			sp.texture = data.texture
+			sp.centered = false
+			sp.flip_h = data.flip_h
+			if data.texture:
+				var size := Vector2(data.texture.get_size())
+				sp.offset = Vector2(-size.x / 2.0, -size.y + 2)
+				var used2 := data.texture.get_image().get_used_rect()
+				height = (data.texture.get_height() - used2.position.y) * data.sprite_scale
+			s = sp
 		s.scale = Vector2(data.sprite_scale, data.sprite_scale)
-		if data.texture:
-			var size := Vector2(data.texture.get_size())
-			s.offset = Vector2(-size.x / 2.0, -size.y + 2)
 		s.position = home
 		_world.add_child(s)
 		var label := data.display_name
 		if counts[data.display_name] > 1:
 			seen[data.display_name] = seen.get(data.display_name, 0) + 1
 			label += " " + "ABC"[seen[data.display_name] - 1]
-		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label})
+		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height})
 
 	# Zylrak, tourné vers la gauche
 	_shadow(HERO_HOME, 14)
@@ -500,6 +526,30 @@ func _hero_frames() -> SpriteFrames:
 		at.region = Rect2(i * 128, slash_y, 128, 128)
 		f.add_frame("coup", at)
 	return f
+
+## Animations d'un monstre LPC tourné vers la droite (rangées « droite » de la planche).
+## Les planches du générateur ont une rangée « repos » (rangée 25) ; les plus anciennes non :
+## on prend alors la première image de la marche.
+func _lpc_monster_frames(sheet: Texture2D) -> SpriteFrames:
+	var f := SpriteFrames.new()
+	f.remove_animation("default")
+	if sheet.get_height() >= 26 * 64:
+		_add_sheet_anim(f, sheet, "repos", 25, 2, 2.0, true)
+	else:
+		_add_sheet_anim(f, sheet, "repos", 11, 1, 1.0, true)
+	_add_sheet_anim(f, sheet, "attaque", 15, 6, 14.0, false)
+	_add_sheet_anim(f, sheet, "mort", 20, 6, 10.0, false)
+	return f
+
+func _add_sheet_anim(f: SpriteFrames, sheet: Texture2D, name: String, row: int, count: int, fps: float, loop: bool) -> void:
+	f.add_animation(name)
+	f.set_animation_loop(name, loop)
+	f.set_animation_speed(name, fps)
+	for i in count:
+		var at := AtlasTexture.new()
+		at.atlas = sheet
+		at.region = Rect2(i * 64, row * 64, 64, 64)
+		f.add_frame(name, at)
 
 func _add_anim(f: SpriteFrames, name: String, cell: int, row: int, count: int, fps: float, loop: bool, first := 0) -> void:
 	f.add_animation(name)
@@ -660,8 +710,7 @@ func _place_target_cursor() -> void:
 	if alive.is_empty():
 		return
 	var f: Dictionary = alive[_target_index]
-	var h: float = f.data.texture.get_height() * f.data.sprite_scale if f.data.texture else 48.0
-	_target_cursor.position = f.home + Vector2(0, -h - 2)
+	_target_cursor.position = f.home + Vector2(0, -f.height - 2)
 	_target_cursor.visible = true
 
 # =============================================================== messages et effets

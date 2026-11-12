@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://dl6s2p8gkndu4" path="res://resources/dialogues/foret/chariot_avant_quete.tres" id="23_1a8lt"]
 [ext_resource type="Script" uid="uid://b6rfqg4b2460u" path="res://scripts/battle/monster_data.gd" id="89_mdata"]
 [ext_resource type="Resource" path="res://resources/monsters/goule.tres" id="90_goule"]
+[ext_resource type="Resource" path="res://resources/monsters/zombie.tres" id="92_zombie"]
 [ext_resource type="Texture2D" uid="uid://d30rysgkt0aol" path="res://assets/battle_backgrounds/battle_foret.png" id="91_bgforet"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rqqvi"]
@@ -21213,7 +21214,7 @@ shape = SubResource("RectangleShape2D_6ve8n")
 
 [node name="EncounterZone" type="Area2D" parent="." unique_id=1782411919]
 script = ExtResource("18_3yp6n")
-monsters = Array[ExtResource("89_mdata")]([ExtResource("90_goule")])
+monsters = Array[ExtResource("89_mdata")]([ExtResource("90_goule"), ExtResource("92_zombie")])
 battle_background = ExtResource("91_bgforet")
 
 [node name="R0" type="CollisionShape2D" parent="EncounterZone" unique_id=1946397519]
