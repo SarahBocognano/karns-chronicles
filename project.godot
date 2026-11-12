@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerData="*uid://ddab6qmwc70wa"
 SceneTransition="*uid://dg5gv3rd34j3i"
+Musique="*res://scripts/musique.gd"
 
 [display]
 
