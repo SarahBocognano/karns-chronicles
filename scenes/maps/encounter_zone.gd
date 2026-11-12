@@ -7,7 +7,7 @@ signal player_entered
 signal player_exited
 
 ## Probabilité de rencontre à chaque case parcourue dans la zone.
-@export_range(0.0, 1.0) var encounter_rate: float = 0.08
+@export_range(0.0, 1.0) var encounter_rate: float = 0.03
 ## Monstres qu'on peut croiser ici (tirés au hasard pour composer le groupe).
 @export var monsters: Array[MonsterData] = []
 @export_range(1, 3) var min_monsters: int = 1
@@ -15,7 +15,7 @@ signal player_exited
 ## Décor de l'écran de combat (480×270).
 @export var battle_background: Texture2D
 ## Cases sans rencontre en arrivant sur la carte et après chaque combat.
-@export var safe_steps: int = 6
+@export var safe_steps: int = 12
 
 const STEP := 32.0
 
