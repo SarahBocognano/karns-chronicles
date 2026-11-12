@@ -170,17 +170,14 @@ func _marker_base_position() -> Vector2:
 			head = center + Vector2(0, -frame_size.y / 2.0 + 12.0 * sprite.scale.y)
 	return head + marker_offset
 
-## « ! » en pixel art : une barre et un point dorés avec un contour sombre.
+## Marqueur de quête : la flèche dorée de « Tiny RPG – Mana Soul GUI » (tiopalada, CC0),
+## pointe en bas, juste au-dessus de la tête du PNJ.
 class QuestMarker extends Node2D:
-	const GOLD := Color(0.96, 0.78, 0.29)
-	const LIGHT := Color(1.0, 0.93, 0.62)
-	const DARK := Color(0.12, 0.08, 0.05)
+	const ARROW := preload("res://assets/ui/mana_soul/fleche_quete.png")
+	func _ready() -> void:
+		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	func _draw() -> void:
-		draw_rect(Rect2(-2.5, -17, 5, 11), DARK)
-		draw_rect(Rect2(-2.5, -5, 5, 5), DARK)
-		draw_rect(Rect2(-1.5, -16, 3, 9), GOLD)
-		draw_rect(Rect2(-1.5, -4, 3, 3), GOLD)
-		draw_rect(Rect2(-1.5, -16, 1, 9), LIGHT)
+		draw_texture(ARROW, Vector2(-ARROW.get_width() / 2.0, -ARROW.get_height() - 1.0))
 
 func _update_quest_marker() -> void:
 	if not _marker_holder:

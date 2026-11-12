@@ -1,0 +1,3 @@
+Tiny RPG - Mana Soul GUI by Gabriel "tiopalada" Lima is marked with CC0 1.0.
+https://tiopalada.itch.io/tiny-rpg-mana-soul-gui
+Fichiers repris : cadre.png (9 Slices A), barre.png (bar B), fleche_quete.png (down arrow).

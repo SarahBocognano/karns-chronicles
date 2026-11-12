@@ -1,0 +1,3 @@
+main_curseur.png — "Hand cursor" by andreyin, CC0 — https://opengameart.org/node/89568
+mana_soul/ — "Tiny RPG - Mana Soul GUI" by Gabriel "tiopalada" Lima, CC0 — voir mana_soul/LICENCE.txt
+pixel_ui_fantasy/ — Pixel UI Fantasy Free by heyheythere - https://heyheythere.itch.io/pixel-ui-fantasy-free - CC BY 4.0 (voir pixel_ui_fantasy/LICENSE.txt)

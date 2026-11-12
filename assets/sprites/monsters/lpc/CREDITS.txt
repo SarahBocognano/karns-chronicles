@@ -3,3 +3,9 @@ zombie_lpc.png
 Based on the male LPC base by Stephen Challener (Redshrike) and the thrust and
 shoot animations by Johannes Sjölund (wulax).
 License: CC-BY-SA 3.0 (or GPL 3.0) — https://opengameart.org/content/lpc-zombie
+
+gobelin_aile.png
+Composé avec le Universal LPC Spritesheet Character Generator
+(https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/).
+Chaque élément (corps, tête, ailes…) a ses propres auteurs et licences (CC-BY-SA, GPL, OGA-BY) :
+ajouter ici le fichier de crédits exporté par le générateur.
