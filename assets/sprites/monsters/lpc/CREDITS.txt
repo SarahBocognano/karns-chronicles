@@ -1,0 +1,5 @@
+zombie_lpc.png
+"[LPC] Zombie" by Benjamin K. Smith (BenCreating), commissioned by castelonia.
+Based on the male LPC base by Stephen Challener (Redshrike) and the thrust and
+shoot animations by Johannes Sjölund (wulax).
+License: CC-BY-SA 3.0 (or GPL 3.0) — https://opengameart.org/content/lpc-zombie

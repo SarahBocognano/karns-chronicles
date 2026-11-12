@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MonsterData" format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/monster_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/monsters/lpc/zombie_lpc.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Zombie"
+lpc_sheet = ExtResource("2")
+sprite_scale = 1.0
+flip_h = false
+shadow = true
+max_hp = 20
+attack = 5
+defense = 2
+speed = 2
+xp = 9
+attack_names = PackedStringArray("Coup de poing", "Morsure")
