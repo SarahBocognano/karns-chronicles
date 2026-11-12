@@ -8,6 +8,19 @@ signal _message_closed
 const BASE := Vector2(480, 270)
 const ZYLRAK_SHEET := preload("res://assets/sprites/characters/zylrak_with_cape_spridesheet.png")
 const FONT := preload("res://assets/fonts/Cinzel-VariableFont_wght.ttf")
+## Interface en pixel art (agrandie en nombre entier pour rester nette) :
+## cadre et contour des barres de « Tiny RPG – Mana Soul GUI » (tiopalada, CC0),
+## remplissages des barres de « Pixel UI Fantasy Free » (heyheythere, CC BY 4.0), main façon SNES.
+const UI_SCALE := 3
+const FRAME := preload("res://assets/ui/mana_soul/cadre.png")
+const FRAME_MARGIN_X := 26   # largeur des volutes des coins (pixels de l'image d'origine)
+const FRAME_MARGIN_Y := 18
+const BAR_FRAME := preload("res://assets/ui/mana_soul/barre.png")
+const BAR_RED := preload("res://assets/ui/pixel_ui_fantasy/bar_red.png")
+const BAR_BLUE := preload("res://assets/ui/pixel_ui_fantasy/bar_blue.png")
+const HAND := preload("res://assets/ui/main_curseur.png")
+
+var _px_cache := {}
 const HERO_HOME := Vector2(378, 178)
 const FOE_SLOTS := {
 	1: [Vector2(128, 176)],
@@ -43,14 +56,13 @@ var _hero_panel: Panel
 var _name_label: Label
 var _hp_label: Label
 var _ep_label: Label
-var _hp_bar: ProgressBar
-var _ep_bar: ProgressBar
+var _hp_bar: Control
+var _ep_bar: Control
 var _menu_panel: Panel
 var _menu_box: VBoxContainer
-var _menu_cursor: Polygon2D
+var _menu_cursor: Sprite2D
 var _message_panel: Panel
 var _message_label: Label
-var _target_cursor: Node2D
 
 var _menu_entries: Array[String] = []
 var _menu_enabled: Array[bool] = []
@@ -58,6 +70,45 @@ var menu_index := 0
 var _menu_cancelable := false
 var _target_index := 0
 var _waiting_message := false
+var _say_token := 0
+
+## Bleu du fond de la boîte de dialogue (moyenne de son image), repris pour les panneaux de combat.
+const DIALOG_BLUE := Color(0.042, 0.078, 0.121)
+## Couleur du fond du cadre Mana Soul d'origine (remplacée par DIALOG_BLUE).
+const FRAME_FILL := Color8(0x11, 0x13, 0x43)
+
+## L'ennemi visé s'illumine doucement pendant le choix de la cible (comme dans les Final Fantasy).
+func _process(_delta: float) -> void:
+	if state != "cible":
+		return
+	var alive := _alive_foes()
+	var glow := 1.0 + 0.35 * (0.5 + 0.5 * sin(Time.get_ticks_msec() / 110.0))
+	for k in alive.size():
+		var spr: CanvasItem = alive[k].sprite
+		spr.self_modulate = Color(glow, glow, glow) if k == _target_index else Color(1, 1, 1)
+
+## Agrandit une image de pixel art d'un facteur entier, sans lissage.
+## `opaque` : rend opaques les pixels déjà visibles (fond translucide du cadre d'origine)
+## et passe le fond du cadre au bleu des dialogues.
+func _px(tex: Texture2D, k: int, opaque := false) -> Texture2D:
+	var key := "%s@%d%s" % [tex.resource_path, k, "o" if opaque else ""]
+	if not _px_cache.has(key):
+		var img := tex.get_image()
+		if img.is_compressed():
+			img.decompress()
+		if opaque:
+			img.convert(Image.FORMAT_RGBA8)
+			for y in img.get_height():
+				for x in img.get_width():
+					var c := img.get_pixel(x, y)
+					if c.a > 0.3:
+						if absf(c.r - FRAME_FILL.r) + absf(c.g - FRAME_FILL.g) + absf(c.b - FRAME_FILL.b) < 0.03:
+							c = DIALOG_BLUE
+						c.a = 1.0
+						img.set_pixel(x, y, c)
+		img.resize(img.get_width() * k, img.get_height() * k, Image.INTERPOLATE_NEAREST)
+		_px_cache[key] = ImageTexture.create_from_image(img)
+	return _px_cache[key]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -116,11 +167,6 @@ func _hero_turn() -> void:
 			await _hero_sign(action.signe, action.get("target", {}))
 		"objet":
 			await _hero_item(action.objet)
-		"defense":
-			_defending = true
-			_hero.play("garde")
-			await _flash(_hero, Color(1.4, 1.3, 1.0), 0.25)
-			await _say("Zylrak se met en garde.", 0.9)
 		"fuite":
 			await _hero_flee()
 
@@ -156,12 +202,12 @@ func _foe_turn(foe: Dictionary) -> void:
 # =============================================================== choix de Zylrak
 func _choose_action() -> Dictionary:
 	while true:
-		var main := ["Attaque", "Signes", "Objets", "Défense", "Fuite"]
+		var main := ["Attaque", "Signes", "Objets", "Fuite"]
 		var has_items := false
 		for id in BattleCatalog.OBJETS:
 			if PlayerData.count_item(id) > 0:
 				has_items = true
-		var i := await _menu(main, [true, true, has_items, true, true], false)
+		var i := await _menu(main, [true, true, has_items, true], false)
 		match i:
 			0:
 				var t := await _choose_target()
@@ -199,8 +245,6 @@ func _choose_action() -> Dictionary:
 					continue
 				return {"type": "objet", "objet": ids[k2]}
 			3:
-				return {"type": "defense"}
-			4:
 				return {"type": "fuite"}
 	return {}
 
@@ -233,7 +277,11 @@ func _choose_target() -> Dictionary:
 	state = "cible"
 	_place_target_cursor()
 	var i: int = await _menu_done
-	_target_cursor.visible = false
+	for f in foes:
+		(f.sprite as CanvasItem).self_modulate = Color(1, 1, 1)
+	for l in _foe_names.get_children():
+		l.add_theme_color_override("font_color", TEXT)
+	_place_menu_cursor()
 	state = "anim"
 	if i < 0:
 		return {}
@@ -397,11 +445,11 @@ func _ending() -> void:
 			for f in foes:
 				gained += f.data.xp
 			await _victory_pose()
-			await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, -1.0)
+			await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, 2.2, true)
 			for up in PlayerData.gain_xp(gained):
 				await _level_up(up)
 		"defaite":
-			await _say("Zylrak s'effondre...", -1.0)
+			await _say("Zylrak s'effondre...", 2.2, true)
 		"fuite":
 			pass
 
@@ -425,16 +473,16 @@ func _level_up(up: Dictionary) -> void:
 	_embers(HERO_HOME + Vector2(0, -34), Color(1.0, 0.7, 0.3))
 	_popup("Niveau %d !" % up.level, HERO_HOME + Vector2(0, -62), Color(1.0, 0.86, 0.45))
 	_flash(_hero, Color(1.8, 1.55, 0.9), 0.4)
-	await _say("Zylrak passe au niveau %d !" % up.level, -1.0)
+	await _say("Zylrak passe au niveau %d !" % up.level, 2.0, true)
 	var names := {"max_hp": "PV max", "max_energy": "Mana max", "attack": "Attaque", "defense": "Défense", "magic": "Magie", "speed": "Vitesse"}
 	var parts: PackedStringArray = []
 	for key in names:
 		if up.gains[key] > 0:
 			parts.append("%s +%d" % [names[key], up.gains[key]])
-	await _say(", ".join(parts), -1.0)
+	await _say(", ".join(parts), 2.8, true)
 	for signe in up.signes:
 		_embers(HERO_HOME + Vector2(0, -24), Color(1.0, 0.55, 0.15))
-		await _say("Zylrak apprend le Signe : %s !" % signe, -1.0)
+		await _say("Zylrak apprend le Signe : %s !" % signe, 2.2, true)
 
 # =============================================================== construction
 func _build_world() -> void:
@@ -494,8 +542,7 @@ func _build_world() -> void:
 		if counts[data.display_name] > 1:
 			seen[data.display_name] = seen.get(data.display_name, 0) + 1
 			label += " " + "ABC"[seen[data.display_name] - 1]
-		var bar := _hp_bar_node(home + Vector2(0, -height - 5))
-		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height, "bar": bar})
+		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height, "bar": null})
 
 	# Zylrak, tourné vers la gauche
 	_shadow(HERO_HOME, 14)
@@ -509,18 +556,6 @@ func _build_world() -> void:
 		if _hero.animation == "coup" or _hero.animation == "sort":
 			_hero.play("garde"))
 
-	# Curseur de cible (petit triangle doré au-dessus du monstre visé)
-	_target_cursor = Node2D.new()
-	var tri := Polygon2D.new()
-	tri.polygon = PackedVector2Array([Vector2(-5, -7), Vector2(5, -7), Vector2(0, 0)])
-	tri.color = Color(0.1, 0.07, 0.04)
-	var tri2 := Polygon2D.new()
-	tri2.polygon = PackedVector2Array([Vector2(-3.5, -6), Vector2(3.5, -6), Vector2(0, -1.5)])
-	tri2.color = Color(1.0, 0.85, 0.4)
-	_target_cursor.add_child(tri)
-	_target_cursor.add_child(tri2)
-	_target_cursor.visible = false
-	_world.add_child(_target_cursor)
 
 func _hero_frames() -> SpriteFrames:
 	var f := SpriteFrames.new()
@@ -546,38 +581,22 @@ func _hero_frames() -> SpriteFrames:
 		f.add_frame("coup", at)
 	return f
 
-## Petite barre de vie au-dessus d'un monstre (30 × 3 pixels du décor, avec un contour sombre).
-const HP_BAR_W := 30.0
-
-func _hp_bar_node(center: Vector2) -> Node2D:
-	var bar := Node2D.new()
-	bar.position = center - Vector2(HP_BAR_W / 2.0, 0)
-	var back := ColorRect.new()
-	back.color = Color(0.05, 0.04, 0.04, 0.85)
-	back.position = Vector2(-1, -1)
-	back.size = Vector2(HP_BAR_W + 2, 5)
-	bar.add_child(back)
-	var fill := ColorRect.new()
-	fill.name = "Remplissage"
-	fill.color = _hp_color(1.0)
-	fill.size = Vector2(HP_BAR_W, 3)
-	bar.add_child(fill)
-	_world.add_child(bar)
-	return bar
+## Barre de vie d'un ennemi : la même jauge que celle de Zylrak, posée au-dessus de sa tête.
+const FOE_BAR_W := 120.0   # en pixels d'écran
+const FOE_BAR_GAP := 9.0   # entre le haut du monstre et le milieu de la barre, en pixels du décor
 
 func _update_hp_bar(foe: Dictionary) -> void:
-	var ratio: float = clamp(float(foe.hp) / foe.data.max_hp, 0.0, 1.0)
-	var fill: ColorRect = foe.bar.get_node("Remplissage")
-	fill.color = _hp_color(ratio)
-	create_tween().tween_property(fill, "size:x", HP_BAR_W * ratio, 0.25)
+	_set_gauge(foe.bar, foe.hp, foe.data.max_hp)
 
-## Vert, puis jaune sous la moitié, rouge sous le quart.
-func _hp_color(ratio: float) -> Color:
-	if ratio > 0.5:
-		return Color(0.42, 0.78, 0.30)
-	if ratio > 0.25:
-		return Color(0.92, 0.75, 0.22)
-	return Color(0.85, 0.24, 0.18)
+func _place_foe_bars() -> void:
+	for f in foes:
+		var g: Control = f.bar
+		if g == null:
+			continue
+		g.size = Vector2(FOE_BAR_W, BAR_FRAME.get_height() * GAUGE_K)
+		var center: Vector2 = (f.home + Vector2(0, -f.height - FOE_BAR_GAP)) * _zoom + _offset
+		g.position = center - g.size / 2.0
+		_layout_gauge(g)
 
 ## Animations d'un monstre LPC tourné vers la droite (rangées « droite » de la planche).
 ## Les planches du générateur ont une rangée « repos » (rangée 25) ; les plus anciennes non :
@@ -638,9 +657,9 @@ func _build_ui() -> void:
 	_menu_box = VBoxContainer.new()
 	_menu_panel.add_child(_menu_box)
 	_menu_panel.visible = false
-	_menu_cursor = Polygon2D.new()
-	_menu_cursor.polygon = PackedVector2Array([Vector2(0, -9), Vector2(12, 0), Vector2(0, 9)])
-	_menu_cursor.color = Color(1.0, 0.85, 0.4)
+	_menu_cursor = Sprite2D.new()
+	_menu_cursor.texture = _px(HAND, 2)
+	_menu_cursor.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_menu_cursor.visible = false
 	_ui_layer.add_child(_menu_cursor)
 
@@ -651,11 +670,11 @@ func _build_ui() -> void:
 	hero_box.add_child(_name_label)
 	_hp_label = _label("", _font_size(), TEXT)
 	hero_box.add_child(_hp_label)
-	_hp_bar = _bar(Color(0.75, 0.22, 0.18))
+	_hp_bar = _bar(BAR_RED)
 	hero_box.add_child(_hp_bar)
 	_ep_label = _label("", _font_size(), TEXT)
 	hero_box.add_child(_ep_label)
-	_ep_bar = _bar(Color(0.88, 0.52, 0.18))
+	_ep_bar = _bar(BAR_BLUE)
 	hero_box.add_child(_ep_bar)
 
 	_message_panel = _panel()
@@ -664,6 +683,10 @@ func _build_ui() -> void:
 	_message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_message_panel.add_child(_message_label)
 	_message_panel.visible = false
+
+	for f in foes:
+		f.bar = _bar(BAR_RED)
+		_ui_layer.add_child(f.bar)
 
 	_refresh_foes()
 	_refresh_hero()
@@ -683,22 +706,25 @@ func _layout() -> void:
 	_hero_panel.position = Vector2(m * 3 + screen.x * 0.56, y)
 	_hero_panel.size = Vector2(screen.x - (m * 4 + screen.x * 0.56), h)
 	_message_panel.position = Vector2(screen.x * 0.2, m)
-	_message_panel.size = Vector2(screen.x * 0.6, screen.y * 0.09)
+	_message_panel.size = Vector2(screen.x * 0.6, max(screen.y * 0.09, FRAME_MARGIN_Y * UI_SCALE * 2 + 16))
 	for p in [_foe_panel, _menu_panel, _hero_panel, _message_panel]:
 		var child: Control = p.get_child(0)
-		child.position = Vector2(m * 1.6, m * 1.1)
-		child.size = p.size - Vector2(m * 3.2, m * 2.2)
+		# Texte entre les volutes dorées du haut et du bas, avec la place de la main à gauche.
+		var pad := Vector2(max(m * 2.9, 32.0 * UI_SCALE), FRAME_MARGIN_Y * UI_SCALE - 6)
+		child.position = pad
+		child.size = p.size - pad * 2
+	_place_foe_bars()
 	_place_menu_cursor()
 
 func _panel() -> Panel:
 	var p := Panel.new()
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0.06, 0.09, 0.13, 0.93)
-	sb.border_color = GOLD
-	sb.set_border_width_all(3)
-	sb.set_corner_radius_all(8)
-	sb.shadow_color = Color(0, 0, 0, 0.45)
-	sb.shadow_size = 6
+	var sb := StyleBoxTexture.new()
+	sb.texture = _px(FRAME, UI_SCALE, true)
+	sb.texture_margin_left = FRAME_MARGIN_X * UI_SCALE
+	sb.texture_margin_right = FRAME_MARGIN_X * UI_SCALE
+	sb.texture_margin_top = FRAME_MARGIN_Y * UI_SCALE
+	sb.texture_margin_bottom = FRAME_MARGIN_Y * UI_SCALE
+	p.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	p.add_theme_stylebox_override("panel", sb)
 	_ui_layer.add_child(p)
 	return p
@@ -713,19 +739,54 @@ func _label(text: String, size: int, color: Color) -> Label:
 	l.add_theme_constant_override("outline_size", 4)
 	return l
 
-func _bar(color: Color) -> ProgressBar:
-	var b := ProgressBar.new()
-	b.show_percentage = false
-	b.custom_minimum_size = Vector2(0, _font_size() * 0.4)
-	var bg := StyleBoxFlat.new()
-	bg.bg_color = Color(0.02, 0.03, 0.05)
-	bg.set_corner_radius_all(3)
-	var fill := StyleBoxFlat.new()
-	fill.bg_color = color
-	fill.set_corner_radius_all(3)
-	b.add_theme_stylebox_override("background", bg)
-	b.add_theme_stylebox_override("fill", fill)
-	return b
+## Jauge de Zylrak : contour doré à pointes (Mana Soul) avec un remplissage en dégradé
+## (Pixel UI Fantasy) logé à l'intérieur, le tout agrandi ×2. Valeur réglée par _set_gauge().
+const GAUGE_K := 2
+const GAUGE_INNER := Rect2(6, 4, 83, 7)   # intérieur du contour, en pixels de l'image d'origine
+
+func _bar(fill_tex: Texture2D) -> Control:
+	var g := Control.new()
+	g.custom_minimum_size = Vector2(0, BAR_FRAME.get_height() * GAUGE_K)
+	g.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	var back := ColorRect.new()
+	back.name = "Fond"
+	back.color = Color(0.06, 0.05, 0.10)
+	g.add_child(back)
+	# L'image de remplissage n'a que quelques pixels colorés au centre : on la recadre et on l'étire.
+	var img := fill_tex.get_image()
+	if img.is_compressed():
+		img.decompress()
+	var fill := TextureRect.new()
+	fill.name = "Remplissage"
+	fill.texture = ImageTexture.create_from_image(img.get_region(img.get_used_rect()))
+	fill.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	fill.stretch_mode = TextureRect.STRETCH_SCALE
+	g.add_child(fill)
+	var frame := NinePatchRect.new()
+	frame.name = "Cadre"
+	frame.texture = _px(BAR_FRAME, GAUGE_K)
+	frame.patch_margin_left = 8 * GAUGE_K
+	frame.patch_margin_right = 8 * GAUGE_K
+	frame.set_anchors_preset(Control.PRESET_FULL_RECT)
+	g.add_child(frame)
+	g.set_meta("ratio", 1.0)
+	g.resized.connect(func(): _layout_gauge(g))
+	return g
+
+func _layout_gauge(g: Control) -> void:
+	var k := float(GAUGE_K)
+	var inner := Rect2(GAUGE_INNER.position * k, Vector2(g.size.x - (GAUGE_INNER.position.x + BAR_FRAME.get_width() - GAUGE_INNER.end.x) * k, GAUGE_INNER.size.y * k))
+	var back: ColorRect = g.get_node("Fond")
+	back.position = inner.position
+	back.size = inner.size
+	var fill: TextureRect = g.get_node("Remplissage")
+	fill.position = inner.position
+	fill.size = Vector2(max(0.0, inner.size.x * float(g.get_meta("ratio"))), inner.size.y)
+	fill.visible = fill.size.x >= 1.0
+
+func _set_gauge(g: Control, value: float, max_value: float) -> void:
+	g.set_meta("ratio", clamp(value / max(max_value, 1.0), 0.0, 1.0))
+	_layout_gauge(g)
 
 func _font_size() -> int:
 	return int(round(get_viewport().get_visible_rect().size.y / 1080.0 * 30.0))
@@ -743,10 +804,8 @@ func _refresh_hero() -> void:
 	_name_label.text = "Zylrak    Niv. %d" % PlayerData.level
 	_hp_label.text = "PV  %d / %d" % [PlayerData.current_hp, PlayerData.max_hp]
 	_ep_label.text = "Mana  %d / %d" % [PlayerData.current_energy, PlayerData.max_energy]
-	_hp_bar.max_value = PlayerData.max_hp
-	_hp_bar.value = PlayerData.current_hp
-	_ep_bar.max_value = PlayerData.max_energy
-	_ep_bar.value = PlayerData.current_energy
+	_set_gauge(_hp_bar, PlayerData.current_hp, PlayerData.max_hp)
+	_set_gauge(_ep_bar, PlayerData.current_energy, PlayerData.max_energy)
 
 func _place_menu_cursor() -> void:
 	if _menu_cursor == null or not _menu_panel.visible or _menu_box.get_child_count() <= menu_index:
@@ -755,23 +814,36 @@ func _place_menu_cursor() -> void:
 		return
 	var l: Control = _menu_box.get_child(menu_index)
 	_menu_cursor.visible = true
-	_menu_cursor.position = l.global_position + Vector2(-_font_size() * 0.7, l.size.y / 2.0)
+	# Le bout du doigt de la main s'arrête juste avant le texte.
+	_menu_cursor.position = l.global_position + Vector2(-34, l.size.y / 2.0)
 
+## Choix de la cible : la main pointe le nom visé dans la liste des ennemis, écrit en doré
+## (et l'ennemi s'illumine dans le décor, voir _process).
 func _place_target_cursor() -> void:
-	var alive := _alive_foes()
-	if alive.is_empty():
+	if _alive_foes().is_empty():
 		return
-	var f: Dictionary = alive[_target_index]
-	_target_cursor.position = f.home + Vector2(0, -f.height - 8)
-	_target_cursor.visible = true
+	var labels := _foe_names.get_children()
+	for k in labels.size():
+		labels[k].add_theme_color_override("font_color", GOLD if k == _target_index else TEXT)
+	if _target_index < labels.size():
+		var l: Control = labels[_target_index]
+		_menu_cursor.visible = true
+		_menu_cursor.position = l.global_position + Vector2(-34, l.size.y / 2.0)
 
 # =============================================================== messages et effets
 ## Affiche un message. `duration` < 0 : attend que le joueur appuie sur Entrée.
-func _say(text: String, duration: float) -> void:
+## `skippable` : le message se ferme tout seul après `duration`, ou plus tôt avec Entrée.
+func _say(text: String, duration: float, skippable := false) -> void:
 	_show_message(text)
 	state = "message"
-	if duration < 0.0:
+	if duration < 0.0 or skippable:
 		_waiting_message = true
+		_say_token += 1
+		var token := _say_token
+		if skippable:
+			get_tree().create_timer(duration).timeout.connect(func():
+				if _waiting_message and token == _say_token:
+					_message_closed.emit())
 		await _message_closed
 		_waiting_message = false
 	else:

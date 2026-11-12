@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://c2hkfq33yeuwc"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_xloth"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_colere.tres" id="2_nrogq"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_embarrassé.tres" id="3_f1hu8"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="4_wpwxn"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_fier.tres" id="5_3l4qu"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="6_aiv41"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="7_lbt28"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="8_iyklh"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="9_emvxj"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="10_umvfp"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="11_2johi"]
+
+[sub_resource type="Resource" id="Resource_slm4k"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_nrogq")
+text = "Pas un pas de plus. Mains en évidence."
+
+[sub_resource type="Resource" id="Resource_wrp6p"]
+script = ExtResource("1_xloth")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_f1hu8")
+text = "Holà, doucement avec ça ! Je suis du bon côté de la flèche, promis."
+
+[sub_resource type="Resource" id="Resource_qhqng"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_wpwxn")
+text = "C'est ce que disent tous ceux qui rôdent autour des chariots pillés."
+
+[sub_resource type="Resource" id="Resource_8yya2"]
+script = ExtResource("1_xloth")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_3l4qu")
+text = "Zylrak, Ashwarden de l'Ordre des Cendres. Oswin m'a chargé de retrouver le marchand."
+
+[sub_resource type="Resource" id="Resource_ajabh"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("6_aiv41")
+text = "Oswin a engagé quelqu'un ? ... Il devait vraiment être désespéré."
+
+[sub_resource type="Resource" id="Resource_8xvwj"]
+script = ExtResource("1_xloth")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_lbt28")
+text = "Hé !"
+
+[sub_resource type="Resource" id="Resource_wgpkv"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_wpwxn")
+text = "Ysolde. Je chasse dans ces bois. Enfin, je chassais. Depuis que les goules sont là, c'est le gibier qui me regarde."
+
+[sub_resource type="Resource" id="Resource_d48qm"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_nrogq")
+text = "Ces traces, là. Elles partent vers l'est, vers les ruines. Je les suis depuis trois jours."
+
+[sub_resource type="Resource" id="Resource_507hm"]
+script = ExtResource("1_xloth")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_iyklh")
+text = "Toute seule ? C'est pas un peu imprudent ?"
+
+[sub_resource type="Resource" id="Resource_7ekxk"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_nrogq")
+text = "Imprudent, c'est d'attendre que quelqu'un d'autre s'en charge."
+
+[sub_resource type="Resource" id="Resource_57vpf"]
+script = ExtResource("1_xloth")
+speaker_name = "Ysolde"
+portrait = ExtResource("9_emvxj")
+text = "Bonne chance, l'Ashwarden. Essaie de ne pas mourir avant d'avoir servi à quelque chose."
+
+[sub_resource type="Resource" id="Resource_ewhot"]
+script = ExtResource("1_xloth")
+speaker_name = "Zylrak"
+portrait = ExtResource("10_umvfp")
+text = "... Elle m'aime bien, ça se voit."
+
+[resource]
+script = ExtResource("11_2johi")
+lines = Array[ExtResource("1_xloth")]([SubResource("Resource_slm4k"), SubResource("Resource_wrp6p"), SubResource("Resource_qhqng"), SubResource("Resource_8yya2"), SubResource("Resource_ajabh"), SubResource("Resource_8xvwj"), SubResource("Resource_wgpkv"), SubResource("Resource_d48qm"), SubResource("Resource_507hm"), SubResource("Resource_7ekxk"), SubResource("Resource_57vpf"), SubResource("Resource_ewhot")])
+required_flags = Array[String](["has_accepted_zylrak_quest"])
+forbidden_flags = Array[String](["met_ysolde"])
+flags_on_finish = Array[String](["met_ysolde"])
+show_quest_marker = true

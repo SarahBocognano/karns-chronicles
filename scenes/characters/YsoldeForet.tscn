@@ -1,0 +1,132 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="1_npc"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Resource" uid="uid://c2hkfq33yeuwc" path="res://resources/dialogues/ysolde/ysolde_rencontre.tres" id="3_ren"]
+[ext_resource type="Resource" uid="uid://ccnny43l1r4ij" path="res://resources/dialogues/ysolde/ysolde_avant_quete.tres" id="4_av"]
+[ext_resource type="Resource" uid="uid://cclfvrj4yqax6" path="res://resources/dialogues/ysolde/ysolde_rappel_foret.tres" id="5_rf"]
+[ext_resource type="Texture2D" uid="uid://ch6cpovx6l13k" path="res://assets/sprites/characters/arrow_pnj_girl.png" id="6_sheet"]
+[ext_resource type="Script" uid="uid://etuqnhp0eyl2" path="res://scenes/maps/flag_presence.gd" id="7_pres"]
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_0"]
+atlas = ExtResource("6_sheet")
+region = Rect2(0, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_1"]
+atlas = ExtResource("6_sheet")
+region = Rect2(64, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_2"]
+atlas = ExtResource("6_sheet")
+region = Rect2(128, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_3"]
+atlas = ExtResource("6_sheet")
+region = Rect2(192, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_4"]
+atlas = ExtResource("6_sheet")
+region = Rect2(256, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_5"]
+atlas = ExtResource("6_sheet")
+region = Rect2(320, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_6"]
+atlas = ExtResource("6_sheet")
+region = Rect2(384, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_7"]
+atlas = ExtResource("6_sheet")
+region = Rect2(448, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_8"]
+atlas = ExtResource("6_sheet")
+region = Rect2(512, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_9"]
+atlas = ExtResource("6_sheet")
+region = Rect2(576, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_10"]
+atlas = ExtResource("6_sheet")
+region = Rect2(640, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_11"]
+atlas = ExtResource("6_sheet")
+region = Rect2(704, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_tir_12"]
+atlas = ExtResource("6_sheet")
+region = Rect2(768, 1088, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_11")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_tir_12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Rect_pieds"]
+size = Vector2(22, 12)
+
+[node name="Ysolde" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_npc")
+conversations = Array[ExtResource("2_conv")]([ExtResource("3_ren"), ExtResource("4_av"), ExtResource("5_rf")])
+interaction_radius = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_tir")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("Rect_pieds")
+
+[node name="Presence" type="Node" parent="."]
+script = ExtResource("7_pres")
+forbidden_flags = Array[String](["met_ysolde"])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bli61vj0g401k"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_c1p1i"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="2_mv2bu"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_ajqel"]
+
+[sub_resource type="Resource" id="Resource_8b7js"]
+script = ExtResource("1_c1p1i")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_mv2bu")
+text = "Je suis prête quand tu l'es. Les ruines ne vont pas s'explorer toutes seules."
+
+[resource]
+script = ExtResource("3_ajqel")
+lines = Array[ExtResource("1_c1p1i")]([SubResource("Resource_8b7js")])
+required_flags = Array[String](["ysolde_told_past"])
