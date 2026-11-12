@@ -32,7 +32,7 @@ offset_bottom = -257.0
 grow_vertical = 0
 texture = ExtResource("1_bjokd")
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="Root" type="Control" parent="." unique_id=1925136949]
 custom_minimum_size = Vector2(0, 200)

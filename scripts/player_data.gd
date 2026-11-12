@@ -103,6 +103,8 @@ var quest_flags: Dictionary = {
 
 # --- Système de spawn entre scènes ---
 var next_spawn_point: String = ""
+## Direction dans laquelle Zylrak regarde ("up", "down", "left", "right"), gardée d'une carte à l'autre.
+var facing: String = "down"
 
 func set_flag(flag_name: String, value: bool) -> void:
 	quest_flags[flag_name] = value

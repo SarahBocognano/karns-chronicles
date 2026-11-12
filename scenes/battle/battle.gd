@@ -172,7 +172,7 @@ func _choose_action() -> Dictionary:
 				var enabled: Array[bool] = []
 				var known := PlayerData.known_signs()
 				for s in known:
-					entries.append("%s  %d EP" % [s.nom, s.cout])
+					entries.append("%s  %d" % [s.nom, s.cout])
 					enabled.append(PlayerData.current_energy >= s.cout)
 				var k := await _menu(entries, enabled, true)
 				if k < 0:
@@ -362,6 +362,7 @@ func _hero_step(dx: float) -> void:
 
 func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 	foe.hp = max(0, foe.hp - dmg)
+	_update_hp_bar(foe)
 	_popup(prefix + str(dmg), foe.home + Vector2(0, -foe.height - 6), color)
 	_shake(foe.sprite, foe.home)
 	await _flash(foe.sprite, Color(2.2, 2.2, 2.2), 0.12)
@@ -375,6 +376,7 @@ func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 		await tw.finished
 		foe.sprite.visible = false
 		foe.shadow.visible = false
+		foe.bar.visible = false
 		_refresh_foes()
 
 func _heal(amount: int) -> void:
@@ -394,7 +396,7 @@ func _ending() -> void:
 			var gained := 0
 			for f in foes:
 				gained += f.data.xp
-			_hero.play("garde")
+			await _victory_pose()
 			await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, -1.0)
 			for up in PlayerData.gain_xp(gained):
 				await _level_up(up)
@@ -402,6 +404,19 @@ func _ending() -> void:
 			await _say("Zylrak s'effondre...", -1.0)
 		"fuite":
 			pass
+
+## Zylrak se tourne vers nous, fait un petit bond, puis lève les bras (il garde la pose ensuite).
+func _victory_pose() -> void:
+	_hero.play("bond")
+	var tw := create_tween()
+	tw.tween_property(_hero, "position:y", HERO_HOME.y - 8, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(_hero, "position:y", HERO_HOME.y, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	await tw.finished
+	if _hero.animation == "bond" and _hero.is_playing():
+		await _hero.animation_finished
+	_hero.play("victoire")
+	_embers(HERO_HOME + Vector2(0, -40), Color(1.0, 0.85, 0.45))
+	await _hero.animation_finished
 
 ## Montée de niveau : flash doré, braises, puis les gains et les Signes appris.
 func _level_up(up: Dictionary) -> void:
@@ -411,7 +426,7 @@ func _level_up(up: Dictionary) -> void:
 	_popup("Niveau %d !" % up.level, HERO_HOME + Vector2(0, -62), Color(1.0, 0.86, 0.45))
 	_flash(_hero, Color(1.8, 1.55, 0.9), 0.4)
 	await _say("Zylrak passe au niveau %d !" % up.level, -1.0)
-	var names := {"max_hp": "PV max", "max_energy": "EP max", "attack": "Attaque", "defense": "Défense", "magic": "Magie", "speed": "Vitesse"}
+	var names := {"max_hp": "PV max", "max_energy": "Mana max", "attack": "Attaque", "defense": "Défense", "magic": "Magie", "speed": "Vitesse"}
 	var parts: PackedStringArray = []
 	for key in names:
 		if up.gains[key] > 0:
@@ -479,7 +494,8 @@ func _build_world() -> void:
 		if counts[data.display_name] > 1:
 			seen[data.display_name] = seen.get(data.display_name, 0) + 1
 			label += " " + "ABC"[seen[data.display_name] - 1]
-		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height})
+		var bar := _hp_bar_node(home + Vector2(0, -height - 5))
+		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height, "bar": bar})
 
 	# Zylrak, tourné vers la gauche
 	_shadow(HERO_HOME, 14)
@@ -516,6 +532,9 @@ func _hero_frames() -> SpriteFrames:
 	_add_anim(f, "marche", 64, 9, 9, 12.0, true, 1)
 	_add_anim(f, "sort", 64, 1, 7, 12.0, false)
 	_add_anim(f, "blesse", 64, 20, 6, 10.0, false)
+	# Victoire : petit bond face à nous, puis les deux bras levés (rangées « bas » du saut et de l'emote).
+	_add_anim(f, "bond", 64, 28, 5, 12.0, false)
+	_add_anim(f, "victoire", 64, 36, 3, 8.0, false)
 	var slash_y := 3456 + 128  # coup d'épée en grand format, rangée « gauche »
 	f.add_animation("coup")
 	f.set_animation_loop("coup", false)
@@ -526,6 +545,39 @@ func _hero_frames() -> SpriteFrames:
 		at.region = Rect2(i * 128, slash_y, 128, 128)
 		f.add_frame("coup", at)
 	return f
+
+## Petite barre de vie au-dessus d'un monstre (30 × 3 pixels du décor, avec un contour sombre).
+const HP_BAR_W := 30.0
+
+func _hp_bar_node(center: Vector2) -> Node2D:
+	var bar := Node2D.new()
+	bar.position = center - Vector2(HP_BAR_W / 2.0, 0)
+	var back := ColorRect.new()
+	back.color = Color(0.05, 0.04, 0.04, 0.85)
+	back.position = Vector2(-1, -1)
+	back.size = Vector2(HP_BAR_W + 2, 5)
+	bar.add_child(back)
+	var fill := ColorRect.new()
+	fill.name = "Remplissage"
+	fill.color = _hp_color(1.0)
+	fill.size = Vector2(HP_BAR_W, 3)
+	bar.add_child(fill)
+	_world.add_child(bar)
+	return bar
+
+func _update_hp_bar(foe: Dictionary) -> void:
+	var ratio: float = clamp(float(foe.hp) / foe.data.max_hp, 0.0, 1.0)
+	var fill: ColorRect = foe.bar.get_node("Remplissage")
+	fill.color = _hp_color(ratio)
+	create_tween().tween_property(fill, "size:x", HP_BAR_W * ratio, 0.25)
+
+## Vert, puis jaune sous la moitié, rouge sous le quart.
+func _hp_color(ratio: float) -> Color:
+	if ratio > 0.5:
+		return Color(0.42, 0.78, 0.30)
+	if ratio > 0.25:
+		return Color(0.92, 0.75, 0.22)
+	return Color(0.85, 0.24, 0.18)
 
 ## Animations d'un monstre LPC tourné vers la droite (rangées « droite » de la planche).
 ## Les planches du générateur ont une rangée « repos » (rangée 25) ; les plus anciennes non :
@@ -690,7 +742,7 @@ func _refresh_foes() -> void:
 func _refresh_hero() -> void:
 	_name_label.text = "Zylrak    Niv. %d" % PlayerData.level
 	_hp_label.text = "PV  %d / %d" % [PlayerData.current_hp, PlayerData.max_hp]
-	_ep_label.text = "EP  %d / %d" % [PlayerData.current_energy, PlayerData.max_energy]
+	_ep_label.text = "Mana  %d / %d" % [PlayerData.current_energy, PlayerData.max_energy]
 	_hp_bar.max_value = PlayerData.max_hp
 	_hp_bar.value = PlayerData.current_hp
 	_ep_bar.max_value = PlayerData.max_energy
@@ -710,7 +762,7 @@ func _place_target_cursor() -> void:
 	if alive.is_empty():
 		return
 	var f: Dictionary = alive[_target_index]
-	_target_cursor.position = f.home + Vector2(0, -f.height - 2)
+	_target_cursor.position = f.home + Vector2(0, -f.height - 8)
 	_target_cursor.visible = true
 
 # =============================================================== messages et effets

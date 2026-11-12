@@ -9,6 +9,12 @@ var current_direction: String = "down"
 
 func _ready() -> void:
 	_apply_spawn_point()
+	# Zylrak arrive en regardant dans la direction où il marchait en quittant la carte précédente
+	# (en sortant de l'auberge ou en descendant vers la forêt, il est donc de face).
+	current_direction = PlayerData.facing
+	if body_sprite.sprite_frames and body_sprite.sprite_frames.has_animation("walk_" + current_direction):
+		body_sprite.animation = "walk_" + current_direction
+		body_sprite.frame = 0
 
 func _apply_spawn_point() -> void:
 	if PlayerData.next_spawn_point == "":
@@ -48,6 +54,7 @@ func update_facing_direction() -> void:
 		current_direction = "right" if direction.x > 0 else "left"
 	else:
 		current_direction = "down" if direction.y > 0 else "up"
+	PlayerData.facing = current_direction
 
 func play_animation(anim_name: String) -> void:
 	if body_sprite.sprite_frames and body_sprite.sprite_frames.has_animation(anim_name):

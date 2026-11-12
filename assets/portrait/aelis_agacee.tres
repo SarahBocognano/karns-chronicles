@@ -5,4 +5,4 @@
 [resource]
 atlas = ExtResource("1_kgxe2")
 region = Rect2(834, 4, 360, 365.217)
-margin = Rect2(99.825, 0, 199.65, 0)
+margin = Rect2(73.700775, 14, 147.40155, 0)
