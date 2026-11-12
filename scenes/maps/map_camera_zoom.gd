@@ -7,6 +7,9 @@ extends Node2D
 ## (camera_zoom est alors ignoré). Si la pièce n'a pas le même format que l'écran,
 ## la caméra suit Zylrak sur l'axe qui dépasse, sans jamais montrer le fond.
 @export var fill_screen: bool = false
+## Musique de la carte, jouée en fondu à l'arrivée (vide : la musique s'arrête en fondu).
+## Deux cartes avec le même morceau (l'auberge et son étage) le gardent sans le redémarrer.
+@export var music: AudioStream
 
 var _cam: Camera2D
 var _room := Rect2()
@@ -18,6 +21,10 @@ func _get_real_player() -> Node:
 	return null
 
 func _ready() -> void:
+	# (par l'arbre de scène : ce script se compile aussi sans les autoloads, ex. générateur de carte)
+	var musique := get_node_or_null("/root/Musique")
+	if musique:
+		musique.play(music)
 	_apply_camera_settings()
 	if fill_screen:
 		get_viewport().size_changed.connect(_fit_room_to_screen)

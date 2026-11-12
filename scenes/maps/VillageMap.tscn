@@ -45,6 +45,7 @@
 [ext_resource type="Resource" uid="uid://bli61vj0g401k" path="res://resources/dialogues/ysolde/ysolde_rappel.tres" id="dlg_ysolde_rappel"]
 [ext_resource type="Resource" uid="uid://0dsekl6e2xg1" path="res://resources/dialogues/ysolde/ysolde_attente.tres" id="dlg_ysolde_attente"]
 [ext_resource type="Script" uid="uid://etuqnhp0eyl2" path="res://scenes/maps/flag_presence.gd" id="flag_presence_script"]
+[ext_resource type="AudioStream" uid="uid://cglk6endh6exu" path="res://assets/audio/musique/village.wav" id="musique_carte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -20786,6 +20787,7 @@ size = Vector2(96, 16)
 
 [node name="VillageMap" type="Node2D" unique_id=1637787322 groups=["Player"]]
 script = ExtResource("99_camlim")
+music = ExtResource("musique_carte")
 
 [node name="SpawnFromOverworld" type="Marker2D" parent="." unique_id=33542093]
 position = Vector2(500, 850)

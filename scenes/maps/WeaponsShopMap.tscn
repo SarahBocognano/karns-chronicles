@@ -14,21 +14,22 @@
 [ext_resource type="Script" uid="uid://bbug4huw7whb5" path="res://scenes/maps/exit_to_village_from_weapon.gd" id="11_agyoe"]
 [ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="12_qymji"]
 [ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="14_dtot8"]
-[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p_z_sourire_en_coin"]
-[ext_resource type="Texture2D" uid="uid://m5xvhlfx5vsw" path="res://assets/portrait/forgeron_boit.tres" id="p_f_boit"]
-[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="p_z_fier"]
-[ext_resource type="Texture2D" uid="uid://bvhvb206xxyln" path="res://assets/portrait/forgeron_hautain.tres" id="p_f_hautain"]
-[ext_resource type="Texture2D" uid="uid://cy8l107u7f8aj" path="res://assets/portrait/forgeron_sceptique.tres" id="p_f_sceptique"]
-[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="p_z_colre"]
-[ext_resource type="Texture2D" uid="uid://4hfxo72j05ca" path="res://assets/portrait/forgeron_rire.tres" id="p_f_rire"]
-[ext_resource type="Texture2D" uid="uid://cjanpgjy417vl" path="res://assets/portrait/forgeron_agace.tres" id="p_f_agace"]
-[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="p_z_embarrass"]
-[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="p_z_determin"]
-[ext_resource type="Texture2D" uid="uid://b46lueihbj56a" path="res://assets/portrait/forgeron_colere.tres" id="p_f_colere"]
-[ext_resource type="Texture2D" uid="uid://dilotqhifwwtw" path="res://assets/portrait/forgeron_serieux.tres" id="p_f_serieux"]
-[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="p_z_rire"]
-[ext_resource type="Texture2D" uid="uid://b3305xiapaaa0" path="res://assets/portrait/forgeron_sourire.tres" id="p_f_sourire"]
 [ext_resource type="Texture2D" uid="uid://etwphlxbu6he" path="res://assets/sprites/characters/forgeron_spritesheet.png" id="15_dtot8"]
+[ext_resource type="Texture2D" uid="uid://cjanpgjy417vl" path="res://assets/portrait/forgeron_agace.tres" id="p_f_agace"]
+[ext_resource type="Texture2D" uid="uid://m5xvhlfx5vsw" path="res://assets/portrait/forgeron_boit.tres" id="p_f_boit"]
+[ext_resource type="Texture2D" uid="uid://b46lueihbj56a" path="res://assets/portrait/forgeron_colere.tres" id="p_f_colere"]
+[ext_resource type="Texture2D" uid="uid://bvhvb206xxyln" path="res://assets/portrait/forgeron_hautain.tres" id="p_f_hautain"]
+[ext_resource type="Texture2D" uid="uid://4hfxo72j05ca" path="res://assets/portrait/forgeron_rire.tres" id="p_f_rire"]
+[ext_resource type="Texture2D" uid="uid://cy8l107u7f8aj" path="res://assets/portrait/forgeron_sceptique.tres" id="p_f_sceptique"]
+[ext_resource type="Texture2D" uid="uid://dilotqhifwwtw" path="res://assets/portrait/forgeron_serieux.tres" id="p_f_serieux"]
+[ext_resource type="Texture2D" uid="uid://b3305xiapaaa0" path="res://assets/portrait/forgeron_sourire.tres" id="p_f_sourire"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="p_z_colre"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="p_z_determin"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="p_z_embarrass"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="p_z_fier"]
+[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="p_z_rire"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p_z_sourire_en_coin"]
+[ext_resource type="AudioStream" uid="uid://chslk7g7tgi0m" path="res://assets/audio/musique/forge.wav" id="musique_carte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ggv5"]
 texture = ExtResource("1_pppad")
@@ -4888,6 +4889,7 @@ script = ExtResource("1_dtot8")
 camera_zoom = Vector2(3.5, 3.5)
 camera_follows_player = false
 fill_screen = true
+music = ExtResource("musique_carte")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1543618920]
 position = Vector2(0, -1)

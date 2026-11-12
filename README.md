@@ -74,6 +74,10 @@ scripts/
 - Police : **Cinzel** (Google Fonts, licence SIL Open Font License).
 - Monstres morts-vivants : **Fat Cat Games**, pack *10 FREE Undead fantasy JRPG pixelart characters* (https://fatcatgamesstudio.itch.io/10-jrpg-pixelart-battlers).
 - Zombie : *[LPC] Zombie* par **Benjamin K. Smith (BenCreating)**, commandé par castelonia, d'après la base LPC de **Stephen Challener (Redshrike)** et les animations de **Johannes Sjölund (wulax)** — CC-BY-SA 3.0 (https://opengameart.org/content/lpc-zombie).
+- Musique :
+  - forêt : *Place_Fantasy_Desert_Loop*, pack gratuit *RPG Music* de **The Sound Guild** ;
+  - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : source et licence à compléter ;
+  - combats : *RPG/JRPG Combat Exploration Themes* (version en boucle) : source et licence à compléter.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
 - Interface de combat :

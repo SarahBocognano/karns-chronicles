@@ -27,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://kljl1dy2boxi" path="res://resources/dialogues/torvald/torvald_rappel.tres" id="dlg_torvald_rappel"]
 [ext_resource type="Resource" uid="uid://ck5kbw51xujqv" path="res://resources/dialogues/theobald/theobald_rencontre.tres" id="dlg_theobald_rencontre"]
 [ext_resource type="Resource" uid="uid://bgq0atx0bxoer" path="res://resources/dialogues/theobald/theobald_rappel.tres" id="dlg_theobald_rappel"]
+[ext_resource type="AudioStream" uid="uid://c5pxpcy8wirou" path="res://assets/audio/musique/auberge.wav" id="musique_carte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh3kx"]
 size = Vector2(21, 39.5)
@@ -5142,6 +5143,7 @@ script = ExtResource("1_k4qic")
 camera_zoom = Vector2(3.5, 3.5)
 camera_follows_player = false
 fill_screen = true
+music = ExtResource("musique_carte")
 
 [node name="SpawnFromVillage" type="Marker2D" parent="." unique_id=1231686233]
 position = Vector2(45, 65)

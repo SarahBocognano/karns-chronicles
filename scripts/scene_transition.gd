@@ -11,6 +11,8 @@ const SWIRL_SHADER := preload("res://resources/shaders/battle_swirl.gdshader")
 ## Où Zylrak se réveille après une défaite (soigné).
 const DEFEAT_SCENE := "res://scenes/maps/VillageMap.tscn"
 const DEFEAT_SPAWN := "SpawnFromForest"
+## Musique des combats (« RPG/JRPG Combat Exploration Themes », version en boucle).
+const BATTLE_MUSIC := preload("res://assets/audio/musique/combat.mp3")
 
 @export var fade_duration: float = 0.3
 
@@ -60,6 +62,7 @@ func start_battle(background: Texture2D, monsters: Array) -> void:
 	in_battle = true
 	PlayerData.controls_locked = true
 	var map := get_tree().current_scene
+	Musique.start_battle(BATTLE_MUSIC)
 	await _battle_intro()
 	if is_instance_valid(map):
 		map.process_mode = Node.PROCESS_MODE_DISABLED
@@ -75,6 +78,7 @@ func start_battle(background: Texture2D, monsters: Array) -> void:
 
 	var tw_out := create_tween()
 	tw_out.tween_property(_fade_rect, "modulate:a", 1.0, 0.4)
+	Musique.end_battle()
 	await tw_out.finished
 	battle.queue_free()
 	if is_instance_valid(map):
