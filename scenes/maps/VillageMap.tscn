@@ -41,6 +41,10 @@
 [ext_resource type="Resource" uid="uid://mh5v6gkt0ew7" path="res://resources/dialogues/godric/godric_rappel.tres" id="dlg_godric_rappel"]
 [ext_resource type="Resource" uid="uid://ci06gmb0rc8p2" path="res://resources/dialogues/pepin/pepin_rencontre.tres" id="dlg_pepin_rencontre"]
 [ext_resource type="Resource" uid="uid://jj4bj1ca22bc" path="res://resources/dialogues/pepin/pepin_rappel.tres" id="dlg_pepin_rappel"]
+[ext_resource type="Resource" uid="uid://48gwgcg2q2u1" path="res://resources/dialogues/ysolde/ysolde_passe.tres" id="dlg_ysolde_passe"]
+[ext_resource type="Resource" uid="uid://bli61vj0g401k" path="res://resources/dialogues/ysolde/ysolde_rappel.tres" id="dlg_ysolde_rappel"]
+[ext_resource type="Resource" uid="uid://0dsekl6e2xg1" path="res://resources/dialogues/ysolde/ysolde_attente.tres" id="dlg_ysolde_attente"]
+[ext_resource type="Script" uid="uid://etuqnhp0eyl2" path="res://scenes/maps/flag_presence.gd" id="flag_presence_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -21023,6 +21027,9 @@ shape = SubResource("RectangleShape2D_vwmpr")
 [node name="PNJArrow" type="Node2D" parent="." unique_id=503114656]
 position = Vector2(423, 299)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("npc_dialogue_script")
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_ysolde_passe"), ExtResource("dlg_ysolde_rappel"), ExtResource("dlg_ysolde_attente")])
+interaction_radius = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PNJArrow" unique_id=179418703]
 sprite_frames = SubResource("SpriteFrames_063pl")
@@ -21035,6 +21042,10 @@ frame_progress = 0.911002
 position = Vector2(1.4285278, 2.8571472)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_eyusc")
+
+[node name="Presence" type="Node" parent="PNJArrow"]
+script = ExtResource("flag_presence_script")
+required_flags = Array[String](["met_ysolde"])
 
 [connection signal="timeout" from="PNJChildBlondHair/DirectionTimer" to="YSortLayer/Player" method="_on_direction_timer_timeout"]
 

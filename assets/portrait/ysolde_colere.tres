@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://571t7ekjlouw"]
+
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_expressions.png" id="1_rsqep"]
+
+[resource]
+atlas = ExtResource("1_rsqep")
+region = Rect2(131, 534, 507, 478)
+margin = Rect2(82.30935, 14, 164.6187, 0)

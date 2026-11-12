@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://48gwgcg2q2u1"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_jrlsi"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="2_a8so1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_wd7o8"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="4_t10xn"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_colere.tres" id="5_huv5v"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="6_ystek"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="7_aa5bq"]
+
+[sub_resource type="Resource" id="Resource_ujro5"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_a8so1")
+text = "J'ai trouvé le chariot du marchand. Les goules l'ont traîné vers les ruines."
+
+[sub_resource type="Resource" id="Resource_inuyo"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_wd7o8")
+text = "Je sais. Je t'avais dit que les traces menaient là-bas."
+
+[sub_resource type="Resource" id="Resource_1n32v"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_wd7o8")
+text = "... Tu veux savoir pourquoi je les suis ?"
+
+[sub_resource type="Resource" id="Resource_7l5kn"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_t10xn")
+text = "Si tu veux me le dire."
+
+[sub_resource type="Resource" id="Resource_b6bru"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_wd7o8")
+text = "J'avais une famille, avant. Une ferme, à deux jours d'ici. Mon père, ma mère, mon petit frère."
+
+[sub_resource type="Resource" id="Resource_8hdjl"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_wd7o8")
+text = "Des brigands sont venus une nuit. Moi, j'étais partie poser des collets. Quand je suis rentrée... il ne restait que la fumée."
+
+[sub_resource type="Resource" id="Resource_bqt46"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_t10xn")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_v3n8a"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_huv5v")
+text = "Ce jour-là, je me suis juré une chose : plus jamais je ne serai celle qui arrive trop tard."
+
+[sub_resource type="Resource" id="Resource_yekgv"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_huv5v")
+text = "Alors ces goules, ce marchand, le frère de Brenna... Je ne laisserai personne d'autre perdre les siens."
+
+[sub_resource type="Resource" id="Resource_gms7n"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_a8so1")
+text = "Alors on a le même objectif."
+
+[sub_resource type="Resource" id="Resource_atvrw"]
+script = ExtResource("1_jrlsi")
+speaker_name = "Ysolde"
+portrait = ExtResource("6_ystek")
+text = "On verra. Si tu vas aux ruines, ne pars pas sans moi, l'Ashwarden."
+
+[resource]
+script = ExtResource("7_aa5bq")
+lines = Array[ExtResource("1_jrlsi")]([SubResource("Resource_ujro5"), SubResource("Resource_inuyo"), SubResource("Resource_1n32v"), SubResource("Resource_7l5kn"), SubResource("Resource_b6bru"), SubResource("Resource_8hdjl"), SubResource("Resource_bqt46"), SubResource("Resource_v3n8a"), SubResource("Resource_yekgv"), SubResource("Resource_gms7n"), SubResource("Resource_atvrw")])
+required_flags = Array[String](["met_ysolde", "found_merchant_cart"])
+forbidden_flags = Array[String](["ysolde_told_past"])
+flags_on_finish = Array[String](["ysolde_told_past"])
+show_quest_marker = true

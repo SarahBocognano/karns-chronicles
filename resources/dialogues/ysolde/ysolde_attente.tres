@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://0dsekl6e2xg1"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_080j6"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="2_kd27m"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_fier.tres" id="3_fq46h"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="4_mklpd"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_w4biv"]
+
+[sub_resource type="Resource" id="Resource_83go6"]
+script = ExtResource("1_080j6")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_kd27m")
+text = "Tiens, l'Ashwarden. Tu as trouvé quelque chose, ou tu viens juste admirer ma technique ?"
+
+[sub_resource type="Resource" id="Resource_8151k"]
+script = ExtResource("1_080j6")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_fq46h")
+text = "Un peu des deux ?"
+
+[sub_resource type="Resource" id="Resource_t61g1"]
+script = ExtResource("1_080j6")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_mklpd")
+text = "Reviens quand tu auras du concret."
+
+[resource]
+script = ExtResource("5_w4biv")
+lines = Array[ExtResource("1_080j6")]([SubResource("Resource_83go6"), SubResource("Resource_8151k"), SubResource("Resource_t61g1")])
+required_flags = Array[String](["met_ysolde"])
+forbidden_flags = Array[String](["found_merchant_cart"])

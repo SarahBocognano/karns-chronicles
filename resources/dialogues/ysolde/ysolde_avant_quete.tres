@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://ccnny43l1r4ij"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_tmk8a"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_colere.tres" id="2_vfe5s"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_23flb"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="4_avobn"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_bkfrg"]
+
+[sub_resource type="Resource" id="Resource_gtpou"]
+script = ExtResource("1_tmk8a")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_vfe5s")
+text = "Pas un pas de plus. ... Ah. Un voyageur."
+
+[sub_resource type="Resource" id="Resource_s1hsi"]
+script = ExtResource("1_tmk8a")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_23flb")
+text = "Retourne au village. Ces bois ne sont plus sûrs, et je n'ai pas le temps de jouer les nourrices."
+
+[sub_resource type="Resource" id="Resource_fi7jl"]
+script = ExtResource("1_tmk8a")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_avobn")
+text = "Les nourrices ? Je suis un Ashwarden, moi."
+
+[sub_resource type="Resource" id="Resource_mtuf8"]
+script = ExtResource("1_tmk8a")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_23flb")
+text = "Alors va le crier ailleurs. Tu fais fuir le gibier."
+
+[resource]
+script = ExtResource("5_bkfrg")
+lines = Array[ExtResource("1_tmk8a")]([SubResource("Resource_gtpou"), SubResource("Resource_s1hsi"), SubResource("Resource_fi7jl"), SubResource("Resource_mtuf8")])
+forbidden_flags = Array[String](["has_accepted_zylrak_quest", "met_ysolde"])
