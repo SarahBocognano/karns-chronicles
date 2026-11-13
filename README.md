@@ -75,9 +75,9 @@ scripts/
 - Monstres morts-vivants : **Fat Cat Games**, pack *10 FREE Undead fantasy JRPG pixelart characters* (https://fatcatgamesstudio.itch.io/10-jrpg-pixelart-battlers).
 - Zombie : *[LPC] Zombie* par **Benjamin K. Smith (BenCreating)**, commandé par castelonia, d'après la base LPC de **Stephen Challener (Redshrike)** et les animations de **Johannes Sjölund (wulax)** — CC-BY-SA 3.0 (https://opengameart.org/content/lpc-zombie).
 - Musique :
-  - forêt : *Place_Fantasy_Desert_Loop*, pack gratuit *RPG Music* de **The Sound Guild** ;
-  - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : source et licence à compléter ;
-  - combats : *RPG/JRPG Combat Exploration Themes* (version en boucle) : source et licence à compléter.
+  - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : *Exploration Fantasy Free Pack* par **EugeneDesMusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/exploration-fantasy-free-pack) ;
+  - forêt (*Place_Fantasy_Desert_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
+  - combats : *JRPG/RPG Combat Exploration Theme* (version en boucle) par **lardven** — licence GameDev Market (https://www.gamedevmarket.net/asset/jrpgrpg-combat-exploration-theme).
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
 - Interface de combat :
@@ -87,6 +87,6 @@ scripts/
 
 ## À venir
 
-- Système de combat : transition animée, écran de combat vu de face avec un décor.
+- Carte des ruines : Ysolde rejoint Zylrak et combat à ses côtés avec son arc.
 - Mini quête de Pépin : il vole la bourse de Zylrak et tombe dans une embuscade de monstres.
 - Nouvelles cartes : le lac, les ruines, l'intérieur de la grotte.
