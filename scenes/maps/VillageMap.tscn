@@ -21048,6 +21048,7 @@ shape = SubResource("RectangleShape2D_eyusc")
 [node name="Presence" type="Node" parent="PNJArrow"]
 script = ExtResource("flag_presence_script")
 required_flags = Array[String](["met_ysolde"])
+forbidden_flags = Array[String](["ysolde_joined"])
 
 [connection signal="timeout" from="PNJChildBlondHair/DirectionTimer" to="YSortLayer/Player" method="_on_direction_timer_timeout"]
 

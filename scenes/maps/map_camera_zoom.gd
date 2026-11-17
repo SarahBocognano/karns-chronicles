@@ -28,6 +28,27 @@ func _ready() -> void:
 	_apply_camera_settings()
 	if fill_screen:
 		get_viewport().size_changed.connect(_fit_room_to_screen)
+	_spawn_companions()
+
+## Ysolde, une fois qu'elle a rejoint Zylrak (flag "ysolde_joined"), le suit sur toutes les cartes.
+func _spawn_companions() -> void:
+	var player_data := get_node_or_null("/root/PlayerData")
+	if player_data == null or not player_data.get_flag("ysolde_joined"):
+		return
+	for node in get_tree().get_nodes_in_group("Compagnon"):
+		if not node.is_queued_for_deletion():
+			return   # déjà placée dans la carte
+	var player := _get_real_player()
+	if player == null:
+		return
+	var companion: Node2D = load("res://scenes/characters/YsoldeCompagnon.tscn").instantiate()
+	companion.facing = player_data.facing
+	player.get_parent().add_child(companion)
+	# Avant Zylrak dans l'arbre : dans les intérieurs (sans tri en Y), elle passe sous lui.
+	player.get_parent().move_child(companion, player.get_index())
+	# Juste derrière Zylrak, dans le sens où il arrive.
+	var back := {"up": Vector2.DOWN, "down": Vector2.UP, "left": Vector2.RIGHT, "right": Vector2.LEFT}
+	companion.global_position = player.global_position + back.get(player_data.facing, Vector2.UP) * 28.0
 
 func _apply_camera_settings() -> void:
 	var player := _get_real_player()

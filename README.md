@@ -30,6 +30,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 | --- | --- |
 | Flèches | Déplacer Zylrak |
 | Entrée | Parler, lire la réplique suivante |
+| M | Afficher / masquer la mini-carte |
 
 ## Contenu actuel
 
