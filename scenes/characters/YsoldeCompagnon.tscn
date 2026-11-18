@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/companion.gd" id="1_comp"]
+[ext_resource type="Texture2D" uid="uid://ch6cpovx6l13k" path="res://assets/sprites/characters/arrow_pnj_girl.png" id="2_sheet"]
+
+[node name="Ysolde" type="Node2D"]
+script = ExtResource("1_comp")
+sheet = ExtResource("2_sheet")

@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
 var current_direction: String = "down"
+## true pendant une scène automatique : Zylrak marche tout seul (voir walk_to).
+var scripted := false
 
 func _ready() -> void:
 	_apply_spawn_point()
@@ -30,6 +32,8 @@ func _apply_spawn_point() -> void:
 	PlayerData.next_spawn_point = ""  # on consomme le spawn point pour éviter de le réutiliser par erreur
 
 func _physics_process(_delta: float) -> void:
+	if scripted:
+		return
 	if PlayerData.controls_locked:
 		velocity = Vector2.ZERO
 		stop_animation()
@@ -63,6 +67,31 @@ func play_animation(anim_name: String) -> void:
 
 func stop_animation() -> void:
 	body_sprite.stop()
+
+# --- Scènes automatiques ---
+
+## Fait marcher Zylrak jusqu'à `target` (sans tenir compte des obstacles : le trajet doit être dégagé).
+## À appeler avec `await`, pendant que les commandes sont bloquées.
+func walk_to(target: Vector2, walk_speed: float = 90.0) -> void:
+	scripted = true
+	while is_inside_tree() and global_position.distance_to(target) > 0.5:
+		direction = (target - global_position).normalized()
+		update_facing_direction()
+		play_animation("walk_" + current_direction)
+		global_position = global_position.move_toward(target, walk_speed * get_physics_process_delta_time())
+		await get_tree().physics_frame
+	global_position = target
+	stop_animation()
+	scripted = false
+
+## Tourne Zylrak vers "up", "down", "left" ou "right", sans bouger.
+func face(dir: String) -> void:
+	current_direction = dir
+	PlayerData.facing = dir
+	if body_sprite.sprite_frames and body_sprite.sprite_frames.has_animation("walk_" + dir):
+		body_sprite.animation = "walk_" + dir
+		body_sprite.frame = 0
+		body_sprite.stop()
 
 
 func _on_direction_timer_timeout() -> void:
