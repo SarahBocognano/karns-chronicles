@@ -33,6 +33,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 | Flèches | Déplacer Zylrak |
 | Entrée | Parler, lire la réplique suivante |
 | M | Afficher / masquer la mini-carte |
+| Clic sur le haut-parleur (en haut à droite) | Couper / remettre la musique |
 
 ## Contenu actuel
 
@@ -43,13 +44,12 @@ Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 
 ### La forêt (au sud du village)
-- Deux niveaux reliés par un col entre deux falaises.
-- Un ruisseau avec une cascade, un étang et un pont de rondins.
-- Une prairie d'herbes hautes et un sous-bois.
-- **Le chariot du marchand**, renversé sur la route de l'est : une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines.
-- **Une grotte** au sud-est, qu'on ne peut pas encore explorer (il faut une torche).
+Trois petites cartes, reliées par les chemins (la musique continue de l'une à l'autre) :
+- **La lisière** : le chemin qui descend du village, un carrefour et une prairie d'herbes hautes.
+- **La cascade** (à l'ouest) : un ruisseau qui tombe de la falaise, un étang et un pont de rondins ; le chemin du lac est encore fermé.
+- **Le chariot** (à l'est) : **le chariot du marchand**, renversé sur la route. Une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines. Un sentier monte de la route jusqu'à **une grotte**, creusée dans la paroi du nord ; on ne peut pas encore l'explorer (il faut une torche). À l'est, la route mène aux ruines (une fois le chariot trouvé).
+- Le vent fait doucement balancer les arbres, les buissons et les herbes (shader `vent.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
-- À l'est, la route mène aux ruines (une fois le chariot trouvé).
 
 ### Les combats
 - Au tour par tour, déclenchés au hasard dans les zones dangereuses.
@@ -72,12 +72,12 @@ assets/
   ui/           boîte de dialogue
 resources/
   dialogues/    une conversation par fichier .tres, rangées par PNJ
-  shaders/      eau animée et ambiance de la forêt
+  shaders/      eau animée, vent dans la végétation, ambiance de la forêt
   tilesets/     tilesets de la forêt
 scenes/
   characters/   Player.tscn (Zylrak)
   Dialog/       boîte de dialogue et ressources de dialogue
-  maps/         cartes (village, auberge, étage, forge, forêt) et leurs scripts
+  maps/         cartes (village, auberge, étage, forge, forêt, ruines) et leurs scripts
 scripts/
   player_data.gd       autoload : PV, inventaire, flags de quête
   scene_transition.gd  autoload : changement de carte avec fondu au noir

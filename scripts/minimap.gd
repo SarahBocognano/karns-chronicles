@@ -9,6 +9,10 @@ extends CanvasLayer
 const DATA_DIR := "res://assets/ui/minimap/"
 ## Pixels d'écran par case de la carte.
 const K := 4
+## Agrandissement à l'écran de la carte peinte (pixels nets)…
+const ZOOM := 2.0
+## … sans dépasser cette largeur (le village, plus grand, est un peu moins agrandi).
+const MAX_WIDTH := 400.0
 const MARGIN := Vector2(26, 22)
 ## Cadre : celui des boîtes de dialogue (bronze, pierres bleues), recomposé à la taille de la carte.
 const DIALOG_FRAME := preload("res://assets/ui/image_ad298c1e-removebg-preview.png")
@@ -32,6 +36,7 @@ var _scene: Node
 var _world_rect := Rect2()   # emprise de la carte, en pixels du monde
 var _cell := 32.0
 var _root: Control
+var _content: Control   # carte + repères, agrandis de ZOOM
 var _map: TextureRect
 var _marks: Control
 var _frame: TextureRect
@@ -46,14 +51,18 @@ func _ready() -> void:
 	_root.position = MARGIN
 	_root.modulate.a = 0.0
 	add_child(_root)
+	_content = Control.new()
+	_content.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_content.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_root.add_child(_content)
 	_map = TextureRect.new()
 	_map.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_map.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_root.add_child(_map)
+	_content.add_child(_map)
 	_marks = Control.new()
 	_marks.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_marks.draw.connect(_draw_marks)
-	_root.add_child(_marks)
+	_content.add_child(_marks)
 	_frame = TextureRect.new()
 	_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_root.add_child(_frame)
@@ -100,7 +109,9 @@ func _load_scene(scene: Node) -> void:
 	_map.texture = _cache[path]
 	_map.size = _map.texture.get_size()
 	_marks.size = _map.size
-	var frame_size := Vector2i(_map.size + FRAME_PAD * 2.0)
+	var zoom := minf(ZOOM, MAX_WIDTH / _map.size.x)
+	_content.scale = Vector2(zoom, zoom)
+	var frame_size := Vector2i(_map.size * zoom + FRAME_PAD * 2.0)
 	if not _frame_cache.has(frame_size):
 		_frame_cache[frame_size] = ImageTexture.create_from_image(_build_frame(frame_size))
 	_frame.texture = _frame_cache[frame_size]
@@ -117,6 +128,12 @@ func _paint(data: Image) -> Image:
 	for y in h:
 		for x in w:
 			cls[y * w + x] = _classify(data.get_pixel(x, y))
+	# Petits objets (chariots, tonneaux, rochers…) : seuls les bâtiments et les falaises sont en
+	# marron ; un objet prend la couleur du sol le plus présent autour de lui.
+	for y in h:
+		for x in w:
+			if _prop(data, x, y) and cls[y * w + x] == BUILT:
+				cls[y * w + x] = _ground_around(data, cls, x, y)
 	# Lissage : une case isolée prend la catégorie majoritaire autour d'elle.
 	var smooth := cls.duplicate()
 	for y in h:
@@ -156,11 +173,36 @@ func _paint(data: Image) -> Image:
 	return out
 
 func _free(data: Image, x: int, y: int) -> bool:
-	return data.get_pixel(x, y).a > 0.5
+	return data.get_pixel(x, y).a > 0.9
+
+## Case bloquée par un petit objet (alpha 160, voir tools/bake_minimaps.gd).
+func _prop(data: Image, x: int, y: int) -> bool:
+	var a := data.get_pixel(x, y).a
+	return a > 0.5 and a <= 0.9
+
+func _ground_around(data: Image, cls: PackedInt32Array, x: int, y: int) -> int:
+	var w := data.get_width()
+	var h := data.get_height()
+	var counts := {}
+	for r in [1, 2, 3]:
+		for dy in range(-r, r + 1):
+			for dx in range(-r, r + 1):
+				var nx := x + dx
+				var ny := y + dy
+				if nx >= 0 and ny >= 0 and nx < w and ny < h and _free(data, nx, ny):
+					var c := cls[ny * w + nx]
+					counts[c] = counts.get(c, 0) + 1
+		if not counts.is_empty():
+			break
+	var best := GRASS
+	for c in counts:
+		if counts[c] > counts.get(best, 0):
+			best = c
+	return best
 
 func _classify(c: Color) -> int:
 	var hue := c.h * 360.0
-	if c.a > 0.5:
+	if c.a > 0.9:
 		if c.s < 0.22:
 			return STONE
 		if hue < 55.0 or hue > 330.0:

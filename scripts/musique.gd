@@ -2,12 +2,16 @@ extends Node
 
 ## Lecteur de musique du jeu (autoload « Musique ») : fondu enchaîné d'un morceau à l'autre,
 ## et pendant un combat, la musique de la carte est mise de côté puis reprend là où elle en était.
+## Un petit bouton en haut à droite de l'écran coupe ou remet la musique (bus audio « Musique »).
 
 ## Durée des fondus, en secondes.
 const FADE := 0.8
 ## Volume de la musique (en décibels ; 0 = volume du fichier).
 const VOLUME_DB := -6.0
 const SILENCE_DB := -40.0
+const BUS := "Musique"
+## Écart entre le bouton et les bords de l'écran (même marge que la mini-carte).
+const BUTTON_MARGIN := Vector2(26, 22)
 
 var current: AudioStream
 var _player: AudioStreamPlayer
@@ -15,8 +19,34 @@ var _fading_out: Array[AudioStreamPlayer] = []
 var _saved: AudioStream
 var _saved_position := 0.0
 
+var _button: BoutonSon
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if AudioServer.get_bus_index(BUS) == -1:
+		AudioServer.add_bus()
+		AudioServer.set_bus_name(AudioServer.bus_count - 1, BUS)
+		AudioServer.set_bus_send(AudioServer.bus_count - 1, "Master")
+	var layer := CanvasLayer.new()
+	layer.layer = 41
+	add_child(layer)
+	_button = BoutonSon.new()
+	layer.add_child(_button)
+	_button.anchor_left = 1.0
+	_button.anchor_right = 1.0
+	_button.offset_left = -BoutonSon.SIZE - BUTTON_MARGIN.x
+	_button.offset_right = -BUTTON_MARGIN.x
+	_button.offset_top = BUTTON_MARGIN.y
+	_button.offset_bottom = BUTTON_MARGIN.y + BoutonSon.SIZE
+	_button.toggled_mute.connect(func(): set_muted(not is_muted()))
+
+## Coupe (true) ou remet (false) la musique ; les morceaux continuent de défiler en silence.
+func set_muted(value: bool) -> void:
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(BUS), value)
+	_button.muted = value
+
+func is_muted() -> bool:
+	return AudioServer.is_bus_mute(AudioServer.get_bus_index(BUS))
 
 ## Joue `stream` en boucle, en fondu depuis le morceau en cours (rien ne change si c'est déjà lui).
 func play(stream: AudioStream, fade := FADE, from_position := 0.0) -> void:
@@ -30,6 +60,7 @@ func play(stream: AudioStream, fade := FADE, from_position := 0.0) -> void:
 		stream.loop = true
 	current = stream
 	_player = AudioStreamPlayer.new()
+	_player.bus = BUS
 	_player.stream = stream
 	_player.volume_db = SILENCE_DB if fade > 0.0 else VOLUME_DB
 	add_child(_player)
