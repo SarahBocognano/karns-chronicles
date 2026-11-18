@@ -42,6 +42,7 @@ func _meeting() -> void:
 	await cs.wait(0.3)
 	await cs.say(team_up.lines)
 	ysolde.face("left" if side > 0 else "right")
+	PlayerData.restore_ysolde()
 	PlayerData.set_flag("ysolde_joined", true)
 	ysolde.start_following()
 	cs.queue_free()

@@ -2,7 +2,7 @@
 
 Petit projet de démo d'un **RPG 2D en pixel art**, réalisé avec **Godot 4.7**.
 
-Le but est de construire, pas à pas, le début d'un RPG à l'ancienne : un village à explorer, des personnages à qui parler, des quêtes qui s'enchaînent selon ce que le joueur a déjà fait, et une première zone dangereuse hors du village. La suite prévue est un système de combat au tour par tour.
+Le but est de construire, pas à pas, le début d'un RPG à l'ancienne : un village à explorer, des personnages à qui parler, des quêtes qui s'enchaînent selon ce que le joueur a déjà fait, une première zone dangereuse hors du village, et des combats au tour par tour.
 
 ## L'histoire
 
@@ -50,6 +50,13 @@ Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 - **Une grotte** au sud-est, qu'on ne peut pas encore explorer (il faut une torche).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 - À l'est, la route mène aux ruines (une fois le chariot trouvé).
+
+### Les combats
+- Au tour par tour, déclenchés au hasard dans les zones dangereuses.
+- **Zylrak** : Attaque, Signes (Feu, Rempart de cendres, Phoenix…), Objets, Fuite.
+- **Ysolde**, une fois qu'elle l'a rejoint : Tir, Talents (Flèche perçante, Pluie de flèches), **Pillage** (elle dérobe une potion ou une fiole de mana à un monstre), Objets, Fuite.
+- Potions et fioles se donnent à l'allié de son choix ; un héros à terre se relève à la victoire ; la défaite n'arrive que si toute l'équipe tombe.
+- Montée de niveau : Ysolde progresse avec Zylrak.
 
 ### Les ruines des Yrenn (à l'est de la forêt)
 - **La montée** : une clairière semée de ruines, une paroi rocheuse et son escalier de pierre. Ysolde y attend Zylrak, puis le suit partout.
@@ -99,7 +106,6 @@ scripts/
 
 ## À venir
 
-- Ysolde au combat, avec son arc.
 - L'énigme de la porte scellée du temple (quatre fragments à retrouver et à remettre dans l'ordre).
 - Mini quête de Pépin : il vole la bourse de Zylrak et tombe dans une embuscade de monstres.
 - Nouvelles cartes : le lac, l'intérieur du temple, l'intérieur de la grotte.

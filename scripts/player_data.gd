@@ -23,6 +23,35 @@ var xp: int = 0          # expérience totale depuis le début
 
 const MAX_LEVEL := 30
 
+# --- Ysolde, l'archère (une fois qu'elle a rejoint Zylrak) ---
+# Ses statistiques suivent le niveau de Zylrak ; ses PV et son mana sont gardés d'un combat à l'autre.
+var ysolde_hp: int = 22
+var ysolde_energy: int = 10
+
+func ysolde_max_hp() -> int:
+	return 22 + 4 * (level - 1)
+
+func ysolde_max_energy() -> int:
+	return 10 + 2 * (level - 1)
+
+func ysolde_attack() -> int:
+	return 6 + (level - 1)
+
+func ysolde_defense() -> int:
+	return 2 + (level - 1) / 2
+
+func ysolde_speed() -> int:
+	return 8 + (level - 1) / 3
+
+## Ysolde se bat-elle aux côtés de Zylrak ?
+func ysolde_in_party() -> bool:
+	return get_flag("ysolde_joined")
+
+## PV et mana d'Ysolde au maximum (quand elle rejoint Zylrak, après une défaite…).
+func restore_ysolde() -> void:
+	ysolde_hp = ysolde_max_hp()
+	ysolde_energy = ysolde_max_energy()
+
 ## Expérience totale nécessaire pour atteindre le niveau `n` (niveau 2 : 20, 3 : 50, 4 : 90, 5 : 140…).
 static func xp_for_level(n: int) -> int:
 	return 5 * (n - 1) * (n + 2)
@@ -54,6 +83,8 @@ func gain_xp(amount: int) -> Array[Dictionary]:
 		defense += gains.defense
 		magic += gains.magic
 		speed += gains.speed
+		ysolde_hp += 4
+		ysolde_energy += 2
 		var learned: Array[String] = []
 		for s in BattleCatalog.SIGNES:
 			if s.get("niveau", 1) == level:

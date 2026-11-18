@@ -7,6 +7,7 @@ signal _message_closed
 ## Taille du décor en pixels (les fonds font 480×270, affichés en plein écran).
 const BASE := Vector2(480, 270)
 const ZYLRAK_SHEET := preload("res://assets/sprites/characters/zylrak_with_cape_spridesheet.png")
+const YSOLDE_SHEET := preload("res://assets/sprites/characters/arrow_pnj_girl.png")
 const FONT := preload("res://assets/fonts/Cinzel-VariableFont_wght.ttf")
 ## Interface en pixel art (agrandie en nombre entier pour rester nette) :
 ## cadre et contour des barres de « Tiny RPG – Mana Soul GUI » (tiopalada, CC0),
@@ -22,6 +23,9 @@ const HAND := preload("res://assets/ui/main_curseur.png")
 
 var _px_cache := {}
 const HERO_HOME := Vector2(378, 178)
+## Avec Ysolde : Zylrak devant, Ysolde un peu en retrait.
+const ZYLRAK_DUO := Vector2(366, 160)
+const YSOLDE_DUO := Vector2(412, 184)
 const FOE_SLOTS := {
 	1: [Vector2(128, 176)],
 	2: [Vector2(112, 160), Vector2(166, 184)],
@@ -46,18 +50,19 @@ var _world_layer: CanvasLayer
 var _ui_layer: CanvasLayer
 var _world: Node2D
 var _hero: AnimatedSprite2D
-var _defending := false
+var _ysolde: AnimatedSprite2D
+## Position de Zylrak dans le décor (HERO_HOME seul, ZYLRAK_DUO avec Ysolde).
+var hero_home := HERO_HOME
+## L'équipe : [{"id": "zylrak" | "ysolde", "name", "sprite", "home", "ui"}].
+var party: Array[Dictionary] = []
+## Membre dont c'est le tour (son nom s'écrit en doré).
+var _active_id := ""
 var _rempart_turns := 0
 
 # Interface
 var _foe_panel: Panel
 var _foe_names: VBoxContainer
 var _hero_panel: Panel
-var _name_label: Label
-var _hp_label: Label
-var _ep_label: Label
-var _hp_bar: Control
-var _ep_bar: Control
 var _menu_panel: Panel
 var _menu_box: VBoxContainer
 var _menu_cursor: Sprite2D
@@ -132,12 +137,16 @@ func _run() -> void:
 			if result != "":
 				break
 			if actor is String:
-				await _hero_turn()
+				if _alive(_member(actor)):
+					if actor == "zylrak":
+						await _hero_turn()
+					else:
+						await _ysolde_turn()
 			elif actor.alive:
 				await _foe_turn(actor)
 			if _alive_foes().is_empty():
 				result = "victoire"
-			elif PlayerData.current_hp <= 0:
+			elif _alive_party().is_empty():
 				result = "defaite"
 		if _rempart_turns > 0:
 			_rempart_turns -= 1
@@ -146,7 +155,9 @@ func _run() -> void:
 	finished.emit(result)
 
 func _turn_order() -> Array:
-	var order: Array = [["hero", PlayerData.speed + rng.randf_range(0, 3)]]
+	var order: Array = [["zylrak", PlayerData.speed + rng.randf_range(0, 3)]]
+	if not _member("ysolde").is_empty():
+		order.append(["ysolde", PlayerData.ysolde_speed() + rng.randf_range(0, 3)])
 	for f in foes:
 		if f.alive:
 			order.append([f, f.data.speed + rng.randf_range(0, 3)])
@@ -154,19 +165,20 @@ func _turn_order() -> Array:
 	return order.map(func(e): return e[0])
 
 func _hero_turn() -> void:
-	if PlayerData.current_hp <= 0:
-		return
-	_defending = false
+	_active_id = "zylrak"
+	_refresh_hero()
 	var action := await _choose_action()
+	_active_id = ""
+	_refresh_hero()
 	_hide_menu()
 	state = "anim"
 	match action.type:
 		"attaque":
 			await _hero_attack(action.target)
 		"signe":
-			await _hero_sign(action.signe, action.get("target", {}))
+			await _hero_sign(action.signe, action.get("target", action.get("ally", {})))
 		"objet":
-			await _hero_item(action.objet)
+			await _use_item(_member("zylrak"), action.objet, action.ally)
 		"fuite":
 			await _hero_flee()
 
@@ -184,18 +196,22 @@ func _foe_turn(foe: Dictionary) -> void:
 	if sprite is AnimatedSprite2D:
 		tw.tween_callback(func(): sprite.play("repos"))
 	await get_tree().create_timer(0.18).timeout
-	var dmg := _damage(foe.data.attack, PlayerData.defense)
-	if _defending:
-		dmg = max(1, dmg / 2)
+	# Le monstre s'en prend à un héros encore debout, au hasard.
+	var alive := _alive_party()
+	var target: Dictionary = alive[rng.randi() % alive.size()]
+	var dmg := _damage(foe.data.attack, _defense_of(target))
 	if _rempart_turns > 0:
 		dmg = max(1, dmg / 2)
-	PlayerData.current_hp = max(0, PlayerData.current_hp - dmg)
-	_popup(str(dmg), HERO_HOME + Vector2(0, -48), Color(1.0, 0.85, 0.80))
-	_shake(_hero, HERO_HOME)
-	await _flash(_hero, Color(1.8, 0.5, 0.45), 0.18)
+	_set_hp(target, max(0, _hp(target) - dmg))
+	var sprite_t: AnimatedSprite2D = target.sprite
+	_popup(str(dmg), target.home + Vector2(0, -48), Color(1.0, 0.85, 0.80))
+	_shake(sprite_t, target.home)
+	await _flash(sprite_t, Color(1.8, 0.5, 0.45), 0.18)
 	_refresh_hero()
-	if PlayerData.current_hp <= 0:
-		_hero.play("blesse")
+	if _hp(target) <= 0:
+		sprite_t.play("blesse")
+		await get_tree().create_timer(0.3).timeout
+		_show_message("%s est à terre !" % target.name)
 	await get_tree().create_timer(0.55).timeout
 	_hide_message()
 
@@ -229,6 +245,11 @@ func _choose_action() -> Dictionary:
 					if t2.is_empty():
 						continue
 					return {"type": "signe", "signe": signe, "target": t2}
+				if signe.type == "soin":
+					var who := await _choose_ally(false)
+					if who.is_empty():
+						continue
+					return {"type": "signe", "signe": signe, "ally": who}
 				return {"type": "signe", "signe": signe}
 			2:
 				var ids: Array[String] = []
@@ -243,10 +264,29 @@ func _choose_action() -> Dictionary:
 				var k2 := await _menu(entries2, enabled2, true)
 				if k2 < 0:
 					continue
-				return {"type": "objet", "objet": ids[k2]}
+				var ally := await _choose_ally(BattleCatalog.OBJETS[ids[k2]].has("mana"))
+				if ally.is_empty():
+					continue
+				return {"type": "objet", "objet": ids[k2], "ally": ally}
 			3:
 				return {"type": "fuite"}
 	return {}
+
+## Choix d'un allié (soins, objets) : seul, Zylrak est choisi d'office.
+## `mana` : l'objet rend du mana (la liste montre alors le mana de chacun).
+func _choose_ally(mana: bool) -> Dictionary:
+	if party.size() == 1:
+		return party[0]
+	var names: Array[String] = []
+	var enabled: Array[bool] = []
+	for m in party:
+		if mana:
+			names.append("%s   %d/%d" % [m.name, _mp(m), _max_mp(m)])
+		else:
+			names.append("%s   %d/%d" % [m.name, _hp(m), _max_hp(m)])
+		enabled.append(_alive(m))
+	var k := await _menu(names, enabled, true)
+	return {} if k < 0 else party[k]
 
 func _menu(entries: Array, enabled: Array, cancelable: bool) -> int:
 	_menu_entries.assign(entries)
@@ -358,28 +398,39 @@ func _hero_sign(signe: Dictionary, target: Dictionary) -> void:
 			await _hit_foe(target, max(1, dmg), Color(1.0, 0.7, 0.35), "")
 		"protection":
 			_rempart_turns = signe.tours
-			_embers(HERO_HOME + Vector2(0, -24), Color(0.95, 0.75, 0.45))
-			await _flash(_hero, Color(1.5, 1.25, 0.8), 0.35)
-			_show_message("Un rempart de cendres protège Zylrak.")
+			for m in _alive_party():
+				_embers(m.home + Vector2(0, -24), Color(0.95, 0.75, 0.45))
+				_flash(m.sprite, Color(1.5, 1.25, 0.8), 0.35)
+			await get_tree().create_timer(0.35).timeout
+			_show_message("Un rempart de cendres protège Zylrak." if party.size() == 1 else "Un rempart de cendres protège l'équipe.")
 			await get_tree().create_timer(0.8).timeout
 		"soin":
-			var heal := int(ceil(PlayerData.max_hp * signe.soin))
-			_heal(heal)
-			_embers(HERO_HOME + Vector2(0, -24), Color(1.0, 0.6, 0.3))
-			await _flash(_hero, Color(1.4, 1.1, 0.8), 0.3)
+			var who: Dictionary = target if not target.is_empty() else _member("zylrak")
+			var heal := int(ceil(_max_hp(who) * signe.soin))
+			_heal(who, heal)
+			_embers(who.home + Vector2(0, -24), Color(1.0, 0.6, 0.3))
+			await _flash(who.sprite, Color(1.4, 1.1, 0.8), 0.3)
 			await get_tree().create_timer(0.5).timeout
 	if _hero.animation == "sort" and _hero.is_playing():
 		await _hero.animation_finished
 	_hero.play("garde")
 	_hide_message()
 
-func _hero_item(item_id: String) -> void:
+## `user` utilise un objet sur `ally` (potion : PV ; fiole : mana).
+func _use_item(user: Dictionary, item_id: String, ally: Dictionary) -> void:
 	var item: Dictionary = BattleCatalog.OBJETS[item_id]
 	PlayerData.use_item(item_id)
-	_show_message("Zylrak utilise : %s." % item.nom)
+	if ally.id == user.id:
+		_show_message("%s utilise : %s." % [user.name, item.nom])
+	else:
+		_show_message("%s donne : %s à %s." % [user.name, item.nom, ally.name])
 	await get_tree().create_timer(0.3).timeout
-	_heal(item.soin)
-	await _flash(_hero, Color(1.1, 1.5, 1.1), 0.3)
+	if item.has("soin"):
+		_heal(ally, item.soin)
+		await _flash(ally.sprite, Color(1.1, 1.5, 1.1), 0.3)
+	if item.has("mana"):
+		_restore_mana(ally, item.mana)
+		await _flash(ally.sprite, Color(1.1, 1.2, 1.6), 0.3)
 	await get_tree().create_timer(0.6).timeout
 	_hide_message()
 
@@ -391,11 +442,12 @@ func _hero_flee() -> void:
 	foe_speed /= max(1, alive.size())
 	var chance: float = clamp(0.5 + 0.08 * (PlayerData.speed - foe_speed), 0.2, 0.9)
 	if rng.randf() < chance:
-		_show_message("Zylrak prend la fuite !")
-		_hero.flip_h = true
-		_hero.play("marche")
-		var tw := create_tween()
-		tw.tween_property(_hero, "position:x", BASE.x + 40, 0.6)
+		_show_message("Zylrak prend la fuite !" if party.size() == 1 else "L'équipe prend la fuite !")
+		var tw := create_tween().set_parallel()
+		for m in _alive_party():
+			m.sprite.flip_h = true
+			m.sprite.play("marche")
+			tw.tween_property(m.sprite, "position:x", BASE.x + 40, 0.6)
 		await tw.finished
 		result = "fuite"
 	else:
@@ -404,7 +456,7 @@ func _hero_flee() -> void:
 func _hero_step(dx: float) -> void:
 	_hero.play("marche")
 	var tw := create_tween()
-	tw.tween_property(_hero, "position:x", HERO_HOME.x + dx, 0.2)
+	tw.tween_property(_hero, "position:x", hero_home.x + dx, 0.2)
 	await tw.finished
 	_hero.play("garde")
 
@@ -427,14 +479,259 @@ func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 		foe.bar.visible = false
 		_refresh_foes()
 
-func _heal(amount: int) -> void:
-	var before := PlayerData.current_hp
-	PlayerData.current_hp = min(PlayerData.max_hp, PlayerData.current_hp + amount)
-	_popup("+%d" % (PlayerData.current_hp - before), HERO_HOME + Vector2(0, -48), Color(0.6, 1.0, 0.6))
+func _heal(m: Dictionary, amount: int) -> void:
+	var before := _hp(m)
+	_set_hp(m, min(_max_hp(m), before + amount))
+	_popup("+%d" % (_hp(m) - before), m.home + Vector2(0, -48), Color(0.6, 1.0, 0.6))
+	_refresh_hero()
+
+func _restore_mana(m: Dictionary, amount: int) -> void:
+	var before := _mp(m)
+	_set_mp(m, min(_max_mp(m), before + amount))
+	_popup("+%d" % (_mp(m) - before), m.home + Vector2(0, -48), Color(0.6, 0.8, 1.0))
 	_refresh_hero()
 
 func _damage(atk: int, def: int) -> int:
 	return max(1, int(round(atk * rng.randf_range(0.85, 1.15) - def * 0.5)))
+
+# =============================================================== Ysolde
+func _ysolde_turn() -> void:
+	_active_id = "ysolde"
+	_refresh_hero()
+	var ys := _member("ysolde")
+	var action := await _ysolde_choose()
+	_active_id = ""
+	_refresh_hero()
+	_hide_menu()
+	state = "anim"
+	match action.type:
+		"tir":
+			await _ysolde_shoot(action.target)
+		"talent":
+			await _ysolde_talent(action.talent, action.get("target", {}))
+		"pillage":
+			await _ysolde_pillage(action.target)
+		"objet":
+			await _use_item(ys, action.objet, action.ally)
+		"fuite":
+			await _hero_flee()
+
+func _ysolde_choose() -> Dictionary:
+	while true:
+		var has_items := false
+		for id in BattleCatalog.OBJETS:
+			if PlayerData.count_item(id) > 0:
+				has_items = true
+		var i := await _menu(["Tir", "Talents", "Pillage", "Objets", "Fuite"], [true, true, true, has_items, true], false)
+		match i:
+			0:
+				var t := await _choose_target()
+				if not t.is_empty():
+					return {"type": "tir", "target": t}
+			1:
+				var entries: Array[String] = []
+				var enabled: Array[bool] = []
+				for tl in BattleCatalog.TALENTS:
+					entries.append("%s  %d" % [tl.nom, tl.cout])
+					enabled.append(PlayerData.ysolde_energy >= tl.cout)
+				var k := await _menu(entries, enabled, true)
+				if k < 0:
+					continue
+				var talent: Dictionary = BattleCatalog.TALENTS[k]
+				if talent.type == "pluie":
+					return {"type": "talent", "talent": talent}
+				var t2 := await _choose_target()
+				if t2.is_empty():
+					continue
+				return {"type": "talent", "talent": talent, "target": t2}
+			2:
+				var t3 := await _choose_target()
+				if not t3.is_empty():
+					return {"type": "pillage", "target": t3}
+			3:
+				var ids: Array[String] = []
+				var entries2: Array[String] = []
+				var enabled2: Array[bool] = []
+				for id in BattleCatalog.OBJETS:
+					var n := PlayerData.count_item(id)
+					if n > 0:
+						ids.append(id)
+						entries2.append("%s  ×%d" % [BattleCatalog.OBJETS[id].nom, n])
+						enabled2.append(true)
+				var k2 := await _menu(entries2, enabled2, true)
+				if k2 < 0:
+					continue
+				var ally := await _choose_ally(BattleCatalog.OBJETS[ids[k2]].has("mana"))
+				if ally.is_empty():
+					continue
+				return {"type": "objet", "objet": ids[k2], "ally": ally}
+			4:
+				return {"type": "fuite"}
+	return {}
+
+## Tir simple : Ysolde bande son arc, la flèche file vers le monstre.
+func _ysolde_shoot(foe: Dictionary) -> void:
+	_show_message("Ysolde tire !")
+	await _bow_draw()
+	await _arrow(foe)
+	var dmg := _damage(PlayerData.ysolde_attack(), foe.data.defense)
+	var crit := rng.randf() < 0.15
+	if crit:
+		dmg = int(dmg * 1.5)
+	await _hit_foe(foe, dmg, Color(1, 1, 1), "Critique ! " if crit else "")
+	_ysolde.play("garde")
+	_hide_message()
+
+func _ysolde_talent(talent: Dictionary, target: Dictionary) -> void:
+	PlayerData.ysolde_energy -= talent.cout
+	_refresh_hero()
+	_show_message("Talent : %s !" % talent.nom)
+	await _bow_draw()
+	match talent.type:
+		"percant":
+			# la flèche traverse l'armure : la défense du monstre ne compte pas
+			await _arrow(target, Color(0.75, 0.9, 1.0))
+			var dmg: int = max(1, int(round(PlayerData.ysolde_attack() * talent.puissance * rng.randf_range(0.9, 1.1))))
+			await _hit_foe(target, dmg, Color(0.75, 0.9, 1.0), "")
+		"pluie":
+			var alive := _alive_foes()
+			for f in alive:
+				_arrow(f, Color(1.0, 0.95, 0.8))
+				await get_tree().create_timer(0.08).timeout
+			await get_tree().create_timer(0.22).timeout
+			for f in alive:
+				var dmg := _damage(int(round(PlayerData.ysolde_attack() * talent.puissance)), f.data.defense)
+				_hit_foe(f, dmg, Color(1.0, 0.95, 0.8), "")
+			await get_tree().create_timer(0.9).timeout
+	_ysolde.play("garde")
+	_hide_message()
+
+## Pillage : Ysolde file jusqu'au monstre et lui dérobe un objet (une fois par monstre).
+func _ysolde_pillage(foe: Dictionary) -> void:
+	_show_message("Ysolde tente un pillage !")
+	var home: Vector2 = YSOLDE_DUO
+	_ysolde.play("marche")
+	var tw := create_tween()
+	tw.tween_property(_ysolde, "position", foe.home + Vector2(30, 0), 0.32).set_trans(Tween.TRANS_QUAD)
+	await tw.finished
+	_shake(foe.sprite, foe.home)
+	await get_tree().create_timer(0.2).timeout
+	var text := ""
+	if foe.get("pille", false):
+		text = "Il n'y a plus rien à prendre."
+	else:
+		var chance: float = clamp(0.65 + 0.05 * (PlayerData.ysolde_speed() - foe.data.speed), 0.3, 0.95)
+		if rng.randf() < chance:
+			foe["pille"] = true
+			var item_id := _loot()
+			PlayerData.inventory.append(item_id)
+			text = "Ysolde dérobe : %s !" % BattleCatalog.OBJETS[item_id].nom
+			_popup(BattleCatalog.OBJETS[item_id].nom, foe.home + Vector2(0, -foe.height - 6), Color(1.0, 0.86, 0.45))
+		else:
+			text = "Raté ! %s se méfie." % foe.name
+	var back := create_tween()
+	back.tween_property(_ysolde, "position", home, 0.32).set_trans(Tween.TRANS_QUAD)
+	await back.finished
+	_ysolde.play("garde")
+	await _say(text, 1.3)
+
+func _loot() -> String:
+	var total := 0
+	for e in BattleCatalog.BUTIN:
+		total += e[1]
+	var r := rng.randi() % total
+	for e in BattleCatalog.BUTIN:
+		r -= e[1]
+		if r < 0:
+			return e[0]
+	return BattleCatalog.BUTIN[0][0]
+
+func _bow_draw() -> void:
+	_ysolde.play("tir")
+	await get_tree().create_timer(0.5).timeout
+
+## Une flèche (petit trait) part d'Ysolde vers le monstre.
+func _arrow(foe: Dictionary, color := Color(0.95, 0.9, 0.8)) -> void:
+	var a := Line2D.new()
+	a.points = PackedVector2Array([Vector2(-7, 0), Vector2(5, 0)])
+	a.width = 1.5
+	a.default_color = color
+	var tip := Polygon2D.new()
+	tip.polygon = PackedVector2Array([Vector2(-9, -1.5), Vector2(-6, 0), Vector2(-9, 1.5)])
+	tip.color = Color(0.85, 0.85, 0.9)
+	a.add_child(tip)
+	var from: Vector2 = YSOLDE_DUO + Vector2(-12, -24)
+	var to: Vector2 = foe.home + Vector2(0, -foe.height * 0.55)
+	a.position = from
+	a.rotation = (from - to).angle()
+	_world.add_child(a)
+	var tw := create_tween()
+	tw.tween_property(a, "position", to, 0.18)
+	await tw.finished
+	a.queue_free()
+
+## Animations d'Ysolde (planche LPC, rangées « gauche ») ; garde = pose debout de la marche
+## (les rangées « idle » de sa planche n'ont pas tous ses vêtements).
+func _ysolde_frames() -> SpriteFrames:
+	var f := SpriteFrames.new()
+	f.remove_animation("default")
+	_add_sheet_anim(f, YSOLDE_SHEET, "garde", 9, 1, 1.0, true)
+	f.add_animation("marche")
+	f.set_animation_loop("marche", true)
+	f.set_animation_speed("marche", 12.0)
+	for i in range(1, 9):
+		var at := AtlasTexture.new()
+		at.atlas = YSOLDE_SHEET
+		at.region = Rect2(i * 64, 9 * 64, 64, 64)
+		f.add_frame("marche", at)
+	_add_sheet_anim(f, YSOLDE_SHEET, "tir", 17, 13, 16.0, false)
+	_add_sheet_anim(f, YSOLDE_SHEET, "blesse", 20, 6, 10.0, false)
+	_add_sheet_anim(f, YSOLDE_SHEET, "victoire", 10, 1, 1.0, false)
+	return f
+
+# =============================================================== l'équipe
+func _member(id: String) -> Dictionary:
+	for m in party:
+		if m.id == id:
+			return m
+	return {}
+
+func _alive(m: Dictionary) -> bool:
+	return not m.is_empty() and _hp(m) > 0
+
+func _alive_party() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for m in party:
+		if _hp(m) > 0:
+			out.append(m)
+	return out
+
+func _hp(m: Dictionary) -> int:
+	return PlayerData.current_hp if m.id == "zylrak" else PlayerData.ysolde_hp
+
+func _set_hp(m: Dictionary, v: int) -> void:
+	if m.id == "zylrak":
+		PlayerData.current_hp = v
+	else:
+		PlayerData.ysolde_hp = v
+
+func _max_hp(m: Dictionary) -> int:
+	return PlayerData.max_hp if m.id == "zylrak" else PlayerData.ysolde_max_hp()
+
+func _mp(m: Dictionary) -> int:
+	return PlayerData.current_energy if m.id == "zylrak" else PlayerData.ysolde_energy
+
+func _set_mp(m: Dictionary, v: int) -> void:
+	if m.id == "zylrak":
+		PlayerData.current_energy = v
+	else:
+		PlayerData.ysolde_energy = v
+
+func _max_mp(m: Dictionary) -> int:
+	return PlayerData.max_energy if m.id == "zylrak" else PlayerData.ysolde_max_energy()
+
+func _defense_of(m: Dictionary) -> int:
+	return PlayerData.defense if m.id == "zylrak" else PlayerData.ysolde_defense()
 
 # =============================================================== fin du combat
 func _ending() -> void:
@@ -444,34 +741,45 @@ func _ending() -> void:
 			var gained := 0
 			for f in foes:
 				gained += f.data.xp
+			# un héros à terre se relève avec 1 PV
+			for m in party:
+				if _hp(m) <= 0:
+					_set_hp(m, 1)
+					m.sprite.play("garde")
+			_refresh_hero()
 			await _victory_pose()
-			await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, 2.2, true)
+			if party.size() == 1:
+				await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, 2.2, true)
+			else:
+				await _say("Victoire ! Zylrak et Ysolde gagnent %d points d'expérience." % gained, 2.2, true)
 			for up in PlayerData.gain_xp(gained):
 				await _level_up(up)
 		"defaite":
-			await _say("Zylrak s'effondre...", 2.2, true)
+			await _say("Zylrak s'effondre..." if party.size() == 1 else "Zylrak et Ysolde s'effondrent...", 2.2, true)
 		"fuite":
 			pass
 
 ## Zylrak se tourne vers nous, fait un petit bond, puis lève les bras (il garde la pose ensuite).
 func _victory_pose() -> void:
+	if _ysolde:
+		_ysolde.play("victoire")
 	_hero.play("bond")
 	var tw := create_tween()
-	tw.tween_property(_hero, "position:y", HERO_HOME.y - 8, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tw.tween_property(_hero, "position:y", HERO_HOME.y, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(_hero, "position:y", hero_home.y - 8, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(_hero, "position:y", hero_home.y, 0.18).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	await tw.finished
 	if _hero.animation == "bond" and _hero.is_playing():
 		await _hero.animation_finished
 	_hero.play("victoire")
-	_embers(HERO_HOME + Vector2(0, -40), Color(1.0, 0.85, 0.45))
+	_embers(hero_home + Vector2(0, -40), Color(1.0, 0.85, 0.45))
 	await _hero.animation_finished
 
 ## Montée de niveau : flash doré, braises, puis les gains et les Signes appris.
 func _level_up(up: Dictionary) -> void:
 	_refresh_hero()
-	_embers(HERO_HOME + Vector2(0, -20), Color(1.0, 0.85, 0.4))
-	_embers(HERO_HOME + Vector2(0, -34), Color(1.0, 0.7, 0.3))
-	_popup("Niveau %d !" % up.level, HERO_HOME + Vector2(0, -62), Color(1.0, 0.86, 0.45))
+	_embers(hero_home + Vector2(0, -20), Color(1.0, 0.85, 0.4))
+	_embers(hero_home + Vector2(0, -34), Color(1.0, 0.7, 0.3))
+	_popup("Niveau %d !" % up.level, hero_home + Vector2(0, -62), Color(1.0, 0.86, 0.45))
 	_flash(_hero, Color(1.8, 1.55, 0.9), 0.4)
 	await _say("Zylrak passe au niveau %d !" % up.level, 2.0, true)
 	var names := {"max_hp": "PV max", "max_energy": "Mana max", "attack": "Attaque", "defense": "Défense", "magic": "Magie", "speed": "Vitesse"}
@@ -481,8 +789,11 @@ func _level_up(up: Dictionary) -> void:
 			parts.append("%s +%d" % [names[key], up.gains[key]])
 	await _say(", ".join(parts), 2.8, true)
 	for signe in up.signes:
-		_embers(HERO_HOME + Vector2(0, -24), Color(1.0, 0.55, 0.15))
+		_embers(hero_home + Vector2(0, -24), Color(1.0, 0.55, 0.15))
 		await _say("Zylrak apprend le Signe : %s !" % signe, 2.2, true)
+	if _ysolde:
+		_embers(YSOLDE_DUO + Vector2(0, -20), Color(1.0, 0.85, 0.4))
+		await _say("Ysolde progresse aussi ! PV max +4, Mana max +2, Attaque +1.", 2.4, true)
 
 # =============================================================== construction
 func _build_world() -> void:
@@ -544,17 +855,35 @@ func _build_world() -> void:
 			label += " " + "ABC"[seen[data.display_name] - 1]
 		foes.append({"data": data, "hp": data.max_hp, "alive": true, "sprite": s, "shadow": shadow, "home": home, "name": label, "height": height, "bar": null})
 
-	# Zylrak, tourné vers la gauche
-	_shadow(HERO_HOME, 14)
+	# Zylrak, tourné vers la gauche (et Ysolde, si elle est de l'équipe)
+	if PlayerData.ysolde_in_party():
+		hero_home = ZYLRAK_DUO
+	_shadow(hero_home, 14)
 	_hero = AnimatedSprite2D.new()
 	_hero.sprite_frames = _hero_frames()
 	_hero.offset = Vector2(0, -28)
-	_hero.position = HERO_HOME
+	_hero.position = hero_home
 	_world.add_child(_hero)
 	_hero.play("garde")
 	_hero.animation_finished.connect(func():
 		if _hero.animation == "coup" or _hero.animation == "sort":
 			_hero.play("garde"))
+	party.append({"id": "zylrak", "name": "Zylrak", "sprite": _hero, "home": hero_home, "ui": {}})
+	if PlayerData.ysolde_in_party():
+		_shadow(YSOLDE_DUO, 13)
+		_ysolde = AnimatedSprite2D.new()
+		_ysolde.sprite_frames = _ysolde_frames()
+		_ysolde.offset = Vector2(0, -28)
+		_ysolde.position = YSOLDE_DUO
+		_world.add_child(_ysolde)
+		_ysolde.play("garde")
+		_ysolde.animation_finished.connect(func():
+			if _ysolde.animation == "tir":
+				_ysolde.play("garde"))
+		party.append({"id": "ysolde", "name": "Ysolde", "sprite": _ysolde, "home": YSOLDE_DUO, "ui": {}})
+	for m in party:
+		if _hp(m) <= 0:
+			m.sprite.play("blesse")
 
 
 func _hero_frames() -> SpriteFrames:
@@ -663,19 +992,30 @@ func _build_ui() -> void:
 	_menu_cursor.visible = false
 	_ui_layer.add_child(_menu_cursor)
 
+	# Comme dans Final Fantasy : une ligne par héros (nom, PV et PM en chiffres),
+	# avec seulement la jauge de vie, fine, juste en dessous.
 	_hero_panel = _panel()
 	var hero_box := VBoxContainer.new()
+	hero_box.add_theme_constant_override("separation", 0)
 	_hero_panel.add_child(hero_box)
-	_name_label = _label("", _font_size(), GOLD)
-	hero_box.add_child(_name_label)
-	_hp_label = _label("", _font_size(), TEXT)
-	hero_box.add_child(_hp_label)
-	_hp_bar = _bar(BAR_RED)
-	hero_box.add_child(_hp_bar)
-	_ep_label = _label("", _font_size(), TEXT)
-	hero_box.add_child(_ep_label)
-	_ep_bar = _bar(BAR_BLUE)
-	hero_box.add_child(_ep_bar)
+	var fs := _font_size()
+	var small := int(fs * 0.8)
+	for m in party:
+		if m != party[0]:
+			var gap := Control.new()
+			gap.custom_minimum_size = Vector2(0, fs * 0.35)
+			hero_box.add_child(gap)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", int(fs * 0.3))
+		hero_box.add_child(row)
+		var name := _label(m.name, fs, TEXT)
+		name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(name)
+		var hp_value := _stat(row, "PV", fs, small, 3.0)
+		var mp_value := _stat(row, "PM", fs, small, 1.4)
+		var hp := _bar(BAR_RED, 1)
+		hero_box.add_child(hp)
+		m.ui = {"name": name, "hp": hp, "hp_value": hp_value, "mp_value": mp_value}
 
 	_message_panel = _panel()
 	_message_label = _label("", _font_size(), TEXT)
@@ -744,9 +1084,11 @@ func _label(text: String, size: int, color: Color) -> Label:
 const GAUGE_K := 2
 const GAUGE_INNER := Rect2(6, 4, 83, 7)   # intérieur du contour, en pixels de l'image d'origine
 
-func _bar(fill_tex: Texture2D) -> Control:
+## `k` : agrandissement du contour (2 pour la vie, 1 pour la jauge de mana, plus fine).
+func _bar(fill_tex: Texture2D, k: int = GAUGE_K) -> Control:
 	var g := Control.new()
-	g.custom_minimum_size = Vector2(0, BAR_FRAME.get_height() * GAUGE_K)
+	g.set_meta("k", k)
+	g.custom_minimum_size = Vector2(0, BAR_FRAME.get_height() * k)
 	g.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var back := ColorRect.new()
 	back.name = "Fond"
@@ -764,9 +1106,9 @@ func _bar(fill_tex: Texture2D) -> Control:
 	g.add_child(fill)
 	var frame := NinePatchRect.new()
 	frame.name = "Cadre"
-	frame.texture = _px(BAR_FRAME, GAUGE_K)
-	frame.patch_margin_left = 8 * GAUGE_K
-	frame.patch_margin_right = 8 * GAUGE_K
+	frame.texture = _px(BAR_FRAME, k)
+	frame.patch_margin_left = 8 * k
+	frame.patch_margin_right = 8 * k
 	frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	g.add_child(frame)
 	g.set_meta("ratio", 1.0)
@@ -774,7 +1116,7 @@ func _bar(fill_tex: Texture2D) -> Control:
 	return g
 
 func _layout_gauge(g: Control) -> void:
-	var k := float(GAUGE_K)
+	var k := float(g.get_meta("k", GAUGE_K))
 	var inner := Rect2(GAUGE_INNER.position * k, Vector2(g.size.x - (GAUGE_INNER.position.x + BAR_FRAME.get_width() - GAUGE_INNER.end.x) * k, GAUGE_INNER.size.y * k))
 	var back: ColorRect = g.get_node("Fond")
 	back.position = inner.position
@@ -800,12 +1142,29 @@ func _refresh_foes() -> void:
 		if f.alive:
 			_foe_names.add_child(_label(f.name, _font_size(), TEXT))
 
+## « PV  18/20 » : l'intitulé en doré, la valeur en clair (largeur fixe pour que tout s'aligne).
+func _stat(row: HBoxContainer, kind: String, fs: int, small: int, width: float) -> Label:
+	var k := _label(kind, small, GOLD)
+	row.add_child(k)
+	var value := _label("", fs, TEXT)
+	value.custom_minimum_size = Vector2(fs * width, 0)
+	value.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	row.add_child(value)
+	return value
+
 func _refresh_hero() -> void:
-	_name_label.text = "Zylrak    Niv. %d" % PlayerData.level
-	_hp_label.text = "PV  %d / %d" % [PlayerData.current_hp, PlayerData.max_hp]
-	_ep_label.text = "Mana  %d / %d" % [PlayerData.current_energy, PlayerData.max_energy]
-	_set_gauge(_hp_bar, PlayerData.current_hp, PlayerData.max_hp)
-	_set_gauge(_ep_bar, PlayerData.current_energy, PlayerData.max_energy)
+	for m in party:
+		if m.ui.is_empty():
+			continue
+		(m.ui.hp_value as Label).text = "%d/%d" % [_hp(m), _max_hp(m)]
+		(m.ui.mp_value as Label).text = "%d" % _mp(m)
+		var color := TEXT
+		if _hp(m) <= 0:
+			color = GREY
+		elif m.id == _active_id or (_active_id == "" and party.size() == 1):
+			color = GOLD
+		(m.ui.name as Label).add_theme_color_override("font_color", color)
+		_set_gauge(m.ui.hp, _hp(m), _max_hp(m))
 
 func _place_menu_cursor() -> void:
 	if _menu_cursor == null or not _menu_panel.visible or _menu_box.get_child_count() <= menu_index:
