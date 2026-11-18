@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bn58co26g8ory"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_75qxm"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="2_2t3ys"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="3_bxyyr"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_54cxy"]
+
+[sub_resource type="Resource" id="Resource_3wngg"]
+script = ExtResource("1_75qxm")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_2t3ys")
+text = "Quelqu'un au village saurait peut-être lire l'écriture des Yrenn. Un érudit, un vieux fou..."
+
+[sub_resource type="Resource" id="Resource_r1lh2"]
+script = ExtResource("1_75qxm")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_bxyyr")
+text = "Un vieux fou érudit ? Je crois que j'en ai croisé un à l'auberge."
+
+[resource]
+script = ExtResource("4_54cxy")
+lines = Array[ExtResource("1_75qxm")]([SubResource("Resource_3wngg"), SubResource("Resource_r1lh2")])

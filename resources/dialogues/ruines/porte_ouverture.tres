@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://b4ockmyifgk4g"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_10p2w"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_uyv24"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_fier.tres" id="3_eysqq"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="4_tqukt"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="5_plbjd"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_twukb"]
+
+[sub_resource type="Resource" id="Resource_alncl"]
+script = ExtResource("1_10p2w")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_uyv24")
+text = "Le sceau... Il se dissipe !"
+
+[sub_resource type="Resource" id="Resource_8hfq8"]
+script = ExtResource("1_10p2w")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_eysqq")
+text = "Lune, loup, épée, flamme. C'était donc ça."
+
+[sub_resource type="Resource" id="Resource_d5s4f"]
+script = ExtResource("1_10p2w")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_tqukt")
+text = "Le sang continue à l'intérieur. Le marchand est quelque part là-dedans."
+
+[sub_resource type="Resource" id="Resource_3teyg"]
+script = ExtResource("1_10p2w")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_plbjd")
+text = "Alors on va le chercher."
+
+[resource]
+script = ExtResource("6_twukb")
+lines = Array[ExtResource("1_10p2w")]([SubResource("Resource_alncl"), SubResource("Resource_8hfq8"), SubResource("Resource_d5s4f"), SubResource("Resource_3teyg")])

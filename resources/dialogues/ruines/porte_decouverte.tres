@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://v73wxabgg1dd"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_xb5ih"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_kkwq5"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_ge8dw"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="4_qiuio"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="5_mdqhr"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_normal.tres" id="6_yy8uj"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="7_yqdgk"]
+
+[sub_resource type="Resource" id="Resource_8nrun"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_kkwq5")
+text = "Les traces de sang... Elles s'arrêtent juste devant cette porte."
+
+[sub_resource type="Resource" id="Resource_0mdwi"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_ge8dw")
+text = "Le marchand est entré là-dedans. Ou on l'y a traîné."
+
+[sub_resource type="Resource" id="Resource_kj0bi"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_qiuio")
+text = "Il y a quelque chose dans l'entrée. Comme un voile de lumière."
+
+[sub_resource type="Resource" id="Resource_wwa0k"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_mdqhr")
+text = "N'y touche pas ! C'est un sceau. Les Yrenn fermaient leurs temples par magie."
+
+[sub_resource type="Resource" id="Resource_y5vit"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_kkwq5")
+text = "Regarde les dalles, à nos pieds : quatre encoches, et des symboles gravés tout autour."
+
+[sub_resource type="Resource" id="Resource_f4e0o"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_ge8dw")
+text = "Il manque les pierres qui vont dedans. J'ai vu des éclats gravés briller dans les ruines, en montant."
+
+[sub_resource type="Resource" id="Resource_1w66h"]
+script = ExtResource("1_xb5ih")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_yy8uj")
+text = "Alors on les ramasse. Et ensuite, on trouve dans quel ordre les poser."
+
+[resource]
+script = ExtResource("7_yqdgk")
+lines = Array[ExtResource("1_xb5ih")]([SubResource("Resource_8nrun"), SubResource("Resource_0mdwi"), SubResource("Resource_kj0bi"), SubResource("Resource_wwa0k"), SubResource("Resource_y5vit"), SubResource("Resource_f4e0o"), SubResource("Resource_1w66h")])

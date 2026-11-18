@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://c3ytp6te4muis"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_e6s17"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_4ijky"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="3_lhm32"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_dwmfs"]
+
+[sub_resource type="Resource" id="Resource_0mwbk"]
+script = ExtResource("1_e6s17")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_4ijky")
+text = "Le vieux mage de l'auberge, Théobald... Il parlait d'une lune, d'un loup, d'une épée et d'une flamme."
+
+[sub_resource type="Resource" id="Resource_8kifo"]
+script = ExtResource("1_e6s17")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_lhm32")
+text = "Alors souviens-t'en bien, l'Ashwarden."
+
+[resource]
+script = ExtResource("4_dwmfs")
+lines = Array[ExtResource("1_e6s17")]([SubResource("Resource_0mwbk"), SubResource("Resource_8kifo")])
