@@ -26,21 +26,37 @@ func _meeting() -> void:
 	var cs := Cutscene.new()
 	add_child(cs)
 	await cs.wait(0.5)   # fin du fondu d'arrivée
+	if not is_inside_tree():
+		return   # la carte a changé pendant la scène (on arrête tout)
 	await player.walk_to((get_node(zylrak_stop_path) as Node2D).global_position)
+	if not is_inside_tree():
+		return
 	# Ysolde surgit au bord de la terrasse et bande son arc vers lui.
 	ysolde.aim(_direction(player.global_position - ysolde.global_position))
 	player.face(_direction(ysolde.global_position - player.global_position))
 	await cs.wait(0.5)
+	if not is_inside_tree():
+		return
 	await cs.say(accusation.lines)
+	if not is_inside_tree():
+		return
 	# Elle descend l'escalier et vient se planter devant lui.
 	for p in ysolde_route:
 		await ysolde.walk_to((get_node(p) as Node2D).global_position)
+		if not is_inside_tree():
+			return
 	var side := 1.0 if ysolde.global_position.x >= player.global_position.x else -1.0
 	await ysolde.walk_to(player.global_position + Vector2(34.0 * side, -2.0))
+	if not is_inside_tree():
+		return
 	ysolde.aim("left" if side > 0 else "right")
 	player.face("right" if side > 0 else "left")
 	await cs.wait(0.3)
+	if not is_inside_tree():
+		return
 	await cs.say(team_up.lines)
+	if not is_inside_tree():
+		return
 	ysolde.face("left" if side > 0 else "right")
 	PlayerData.restore_ysolde()
 	PlayerData.set_flag("ysolde_joined", true)

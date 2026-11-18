@@ -27,12 +27,16 @@ func _ready() -> void:
 ## Affiche les répliques une par une ; le joueur passe à la suivante avec la touche d'action.
 func say(lines: Array[DialogueLine]) -> void:
 	for line in lines:
+		if not is_inside_tree():
+			return   # la carte a changé pendant la scène
 		_box.show_dialogue(line.speaker_name, line.text, line.portrait)
 		_waiting = true
 		await _advanced
 	_box.hide_dialogue()
 
 func wait(seconds: float) -> void:
+	if not is_inside_tree():
+		return   # la carte a changé pendant la scène
 	await get_tree().create_timer(seconds).timeout
 
 func _unhandled_input(event: InputEvent) -> void:

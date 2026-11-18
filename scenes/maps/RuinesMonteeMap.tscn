@@ -3625,7 +3625,7 @@ position = Vector2(640, 403.2)
 [node name="ExitToForest" type="Area2D" parent="." unique_id=1719285943]
 position = Vector2(-16, 560)
 script = ExtResource("18_75c6m")
-target_scene = "res://scenes/maps/ForestMap.tscn"
+target_scene = "res://scenes/maps/ForestChariotMap.tscn"
 spawn_point = "SpawnFromRuines"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToForest" unique_id=159954298]
