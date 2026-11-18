@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://6f5nymgqlknm" path="res://assets/sprites/tilesets/traces/sang_trace_2.png" id="15_pyqg6"]
 [ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="16_efkrp"]
 [ext_resource type="Texture2D" uid="uid://u88lu1kukn0o" path="res://assets/sprites/tilesets/traces/griffures_bois.png" id="17_ntxlg"]
-[ext_resource type="PackedScene" path="res://scenes/characters/YsoldeForet.tscn" id="18_a8w1m"]
 [ext_resource type="Texture2D" uid="uid://bhxvbn0erg5la" path="res://assets/sprites/tilesets/TreesAndPlants/rocks_with_shadows.png" id="19_s0q5v"]
 [ext_resource type="Shader" uid="uid://cmy1ahhn88v51" path="res://resources/shaders/forest_ambience.gdshader" id="20_dn7b3"]
 [ext_resource type="Script" uid="uid://b0lbv7eakk51o" path="res://scenes/maps/exit_forest_to_village.gd" id="21_41l76"]
@@ -38,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://bhkpyugwbp2q4" path="res://resources/dialogues/foret/chariot_rappel.tres" id="36_rdwqh"]
 [ext_resource type="Resource" uid="uid://dl6s2p8gkndu4" path="res://resources/dialogues/foret/chariot_avant_quete.tres" id="37_d4kk4"]
 [ext_resource type="AudioStream" uid="uid://du0v6j83mw6bs" path="res://assets/audio/musique/foret.wav" id="musique_carte"]
+[ext_resource type="Script" uid="uid://cd066m5563hct" path="res://scenes/maps/map_exit.gd" id="map_exit_script"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ob655"]
 seed = 3
@@ -5253,9 +5253,6 @@ centered = false
 offset = Vector2(-20, -86)
 region_enabled = true
 region_rect = Rect2(842, 192, 40, 92)
-
-[node name="Ysolde" parent="YSortLayer" unique_id=1391879221 instance=ExtResource("18_a8w1m")]
-position = Vector2(1688, 732)
 
 [node name="@Sprite2D@63" type="Sprite2D" parent="YSortLayer" unique_id=208135290]
 position = Vector2(909, 515)
@@ -20587,6 +20584,9 @@ mouse_filter = 2
 [node name="SpawnFromVillage" type="Marker2D" parent="." unique_id=1610598265]
 position = Vector2(1040, 80)
 
+[node name="SpawnFromRuines" type="Marker2D" parent="."]
+position = Vector2(2000, 688)
+
 [node name="ForestWalls" type="StaticBody2D" parent="." unique_id=199230946]
 
 [node name="R0" type="CollisionShape2D" parent="ForestWalls" unique_id=1633997958]
@@ -21374,9 +21374,12 @@ shape = SubResource("RectangleShape2D_t5txc")
 
 [node name="CheminEst" type="Area2D" parent="." unique_id=493076402]
 position = Vector2(2032, 688)
-script = ExtResource("22_4uftb")
+script = ExtResource("map_exit_script")
 lines = Array[ExtResource("23_cltab")]([SubResource("Resource_aytr8"), SubResource("Resource_tmisi")])
 push_back = Vector2(-28, 0)
+target_scene = "res://scenes/maps/RuinesMonteeMap.tscn"
+spawn_point = "SpawnFromForest"
+required_flags = Array[String](["found_merchant_cart"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheminEst" unique_id=1642996925]
 shape = SubResource("RectangleShape2D_d6otf")

@@ -99,9 +99,7 @@ var quest_flags: Dictionary = {
 	"talked_to_pepin": false,            # Pépin, le gamin qui se moque de Zylrak
 	"talked_to_inconnu": false,          # l'inconnu encapuchonné de l'auberge
 	"found_merchant_cart": false,        # chariot du marchand retrouvé dans la forêt (indices vers les ruines)
-	"met_ysolde": false,                 # Ysolde, l'archère, rencontrée au chariot (elle rentre ensuite au village)
-	"ysolde_told_past": false,           # Ysolde a raconté sa famille tuée par des brigands (elle veut venir aux ruines)
-	"ysolde_joined": false,              # Ysolde a rejoint Zylrak à l'entrée des ruines : elle le suit partout
+	"ysolde_joined": false,              # Ysolde a rencontré Zylrak aux ruines et fait équipe avec lui : elle le suit partout
 }
 
 # --- Système de spawn entre scènes ---

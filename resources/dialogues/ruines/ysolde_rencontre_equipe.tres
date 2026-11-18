@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://cycjpp31lps3b"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_dnxsw"]
+[ext_resource type="Texture2D" uid="uid://ci4k1gnvpyv2b" path="res://assets/portrait/zylrak_fier.tres" id="2_o0dtp"]
+[ext_resource type="Texture2D" uid="uid://db7dja2brnbal" path="res://assets/portrait/ysolde_surprise.tres" id="3_1snxd"]
+[ext_resource type="Texture2D" uid="uid://cpluhr7ep0qqy" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="4_bq181"]
+[ext_resource type="Texture2D" uid="uid://csu8vnqga2wqd" path="res://assets/portrait/ysolde_neutre.tres" id="5_72qpy"]
+[ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="6_gy08y"]
+[ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/zylrak_normal.tres" id="7_xp563"]
+[ext_resource type="Texture2D" uid="uid://571t7ekjlouw" path="res://assets/portrait/ysolde_colere.tres" id="8_vvlj0"]
+[ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="9_nkroj"]
+[ext_resource type="Texture2D" uid="uid://cn26myobms36b" path="res://assets/portrait/ysolde_sourire.tres" id="10_wjmkg"]
+[ext_resource type="Texture2D" uid="uid://da38gcltks54f" path="res://assets/portrait/zylrak_rire.tres" id="11_1nhq7"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="12_qrj6q"]
+
+[sub_resource type="Resource" id="Resource_cdktc"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_o0dtp")
+text = "Zylrak, Ashwarden de l'Ordre des Cendres. C'est Oswin, l'aubergiste du village, qui m'envoie."
+
+[sub_resource type="Resource" id="Resource_xm2gu"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_1snxd")
+text = "Un Ashwarden ? Ici ?"
+
+[sub_resource type="Resource" id="Resource_audoq"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_bq181")
+text = "En chair, en os et en cape. Et je n'ai jamais eu de griffes, si c'est ce qui t'inquiète."
+
+[sub_resource type="Resource" id="Resource_kg2mw"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_72qpy")
+text = "... Les traces autour du chariot. Trois griffes, et des sillons, comme si on avait traîné quelqu'un."
+
+[sub_resource type="Resource" id="Resource_6qvea"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_gy08y")
+text = "Des goules. Elles rôdent autour du village depuis des semaines. Le sang mène jusqu'au temple, là-haut."
+
+[sub_resource type="Resource" id="Resource_pw0jc"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_72qpy")
+text = "Alors on suit la même piste. Pardon pour la flèche. Je m'appelle Ysolde."
+
+[sub_resource type="Resource" id="Resource_7qnsk"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("7_xp563")
+text = "Et toi, pourquoi tu les traques ?"
+
+[sub_resource type="Resource" id="Resource_3rv83"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_72qpy")
+text = "Des brigands ont tué ma famille, il y a des années. Ce soir-là, je suis arrivée trop tard."
+
+[sub_resource type="Resource" id="Resource_l0d3o"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("8_vvlj0")
+text = "Depuis, je me suis juré de ne plus jamais laisser quelqu'un disparaître sous mes yeux."
+
+[sub_resource type="Resource" id="Resource_klt83"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_gy08y")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_per86"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("9_nkroj")
+text = "Seul, je risque d'y laisser des plumes, là-haut. Et toi aussi."
+
+[sub_resource type="Resource" id="Resource_6yfkh"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_bq181")
+text = "Alors... on fait équipe ?"
+
+[sub_resource type="Resource" id="Resource_wffw3"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Ysolde"
+portrait = ExtResource("10_wjmkg")
+text = "D'accord, l'Ashwarden. Mais tu marches devant, et tu ne te mets pas dans ma ligne de tir."
+
+[sub_resource type="Resource" id="Resource_vp1yi"]
+script = ExtResource("1_dnxsw")
+speaker_name = "Zylrak"
+portrait = ExtResource("11_1nhq7")
+text = "Marché conclu."
+
+[resource]
+script = ExtResource("12_qrj6q")
+lines = Array[ExtResource("1_dnxsw")]([SubResource("Resource_cdktc"), SubResource("Resource_xm2gu"), SubResource("Resource_audoq"), SubResource("Resource_kg2mw"), SubResource("Resource_6qvea"), SubResource("Resource_pw0jc"), SubResource("Resource_7qnsk"), SubResource("Resource_3rv83"), SubResource("Resource_l0d3o"), SubResource("Resource_klt83"), SubResource("Resource_per86"), SubResource("Resource_6yfkh"), SubResource("Resource_wffw3"), SubResource("Resource_vp1yi")])
