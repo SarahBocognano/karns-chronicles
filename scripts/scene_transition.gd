@@ -85,9 +85,10 @@ func start_battle(background: Texture2D, monsters: Array) -> void:
 		map.process_mode = Node.PROCESS_MODE_INHERIT
 
 	if result == "defaite":
-		# Zylrak se réveille au village, soigné.
+		# Zylrak (et Ysolde) se réveillent au village, soignés.
 		PlayerData.current_hp = PlayerData.max_hp
 		PlayerData.current_energy = PlayerData.max_energy
+		PlayerData.restore_ysolde()
 		in_battle = false
 		await change_scene(DEFEAT_SCENE, DEFEAT_SPAWN)
 	else:
