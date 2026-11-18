@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bot8cwiyxo0dg"]
+
+[ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="1_1brvu"]
+[ext_resource type="Texture2D" uid="uid://571t7ekjlouw" path="res://assets/portrait/ysolde_colere.tres" id="2_r3rli"]
+[ext_resource type="Texture2D" uid="uid://di7mlxwll8ovy" path="res://assets/portrait/zylrak_embarrassé.tres" id="3_ifnmt"]
+[ext_resource type="Texture2D" uid="uid://3fdfomk8sevn" path="res://assets/portrait/zylrak_colère.tres" id="4_7f3cs"]
+[ext_resource type="Texture2D" uid="uid://csu8vnqga2wqd" path="res://assets/portrait/ysolde_neutre.tres" id="5_t7pu3"]
+[ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_7qn5l"]
+
+[sub_resource type="Resource" id="Resource_0iejd"]
+script = ExtResource("1_1brvu")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_r3rli")
+text = "Hé, toi, là-bas ! Pas un pas de plus !"
+
+[sub_resource type="Resource" id="Resource_w7p6m"]
+script = ExtResource("1_1brvu")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_ifnmt")
+text = "Hein ? Moi ?"
+
+[sub_resource type="Resource" id="Resource_5kuuk"]
+script = ExtResource("1_1brvu")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_r3rli")
+text = "Oui, toi. C'est toi qui as attaqué le chariot, sur la route de l'est ? Tu vas me le payer !"
+
+[sub_resource type="Resource" id="Resource_swdmt"]
+script = ExtResource("1_1brvu")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_7f3cs")
+text = "Quoi ?! Mais je suis justement là pour retrouver le marchand !"
+
+[sub_resource type="Resource" id="Resource_4ce5h"]
+script = ExtResource("1_1brvu")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_t7pu3")
+text = "C'est ce que dirait n'importe quel pilleur. Ne bouge pas. Je descends."
+
+[resource]
+script = ExtResource("6_7qn5l")
+lines = Array[ExtResource("1_1brvu")]([SubResource("Resource_0iejd"), SubResource("Resource_w7p6m"), SubResource("Resource_5kuuk"), SubResource("Resource_swdmt"), SubResource("Resource_4ce5h")])

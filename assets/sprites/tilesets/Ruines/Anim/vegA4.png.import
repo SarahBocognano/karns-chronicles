@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yvwdof1awvb0"
-path="res://.godot/imported/fleche_quete.png-2e0706c3f918db9ad281265d1cf422cc.ctex"
+uid="uid://lyu08o2xiiw7"
+path="res://.godot/imported/vegA4.png-a7fbad95c2f26c12032d21e7bb027327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/mana_soul/fleche_quete.png"
-dest_files=["res://.godot/imported/fleche_quete.png-2e0706c3f918db9ad281265d1cf422cc.ctex"]
+source_file="res://assets/sprites/tilesets/Ruines/Anim/vegA4.png"
+dest_files=["res://.godot/imported/vegA4.png-a7fbad95c2f26c12032d21e7bb027327.ctex"]
 
 [params]
 

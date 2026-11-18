@@ -12,7 +12,7 @@ extends Node2D
 @export var interaction_radius: float = 30.0
 
 @export_group("Marqueur de quête")
-## Décalage du « ! » (placé automatiquement au-dessus de la tête du sprite).
+## Décalage de la bulle « ! » (placée automatiquement au-dessus de la tête du sprite).
 @export var marker_offset: Vector2 = Vector2.ZERO
 
 @export_group("Approche automatique")
@@ -170,14 +170,13 @@ func _marker_base_position() -> Vector2:
 			head = center + Vector2(0, -frame_size.y / 2.0 + 12.0 * sprite.scale.y)
 	return head + marker_offset
 
-## Marqueur de quête : la flèche dorée de « Tiny RPG – Mana Soul GUI » (tiopalada, CC0),
-## pointe en bas, juste au-dessus de la tête du PNJ.
+## Marqueur de quête : une petite bulle « ! » (fond parchemin), juste au-dessus de la tête du PNJ.
 class QuestMarker extends Node2D:
-	const ARROW := preload("res://assets/ui/mana_soul/fleche_quete.png")
+	const BUBBLE := preload("res://assets/ui/bulle_quete.png")
 	func _ready() -> void:
 		texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	func _draw() -> void:
-		draw_texture(ARROW, Vector2(-ARROW.get_width() / 2.0, -ARROW.get_height() - 1.0))
+		draw_texture(BUBBLE, Vector2(-BUBBLE.get_width() / 2.0, -BUBBLE.get_height() - 1.0))
 
 func _update_quest_marker() -> void:
 	if not _marker_holder:

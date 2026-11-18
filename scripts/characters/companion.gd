@@ -16,6 +16,8 @@ extends Node2D
 
 const FRAME := 64
 const WALK_ROWS := {"up": 8, "left": 9, "down": 10, "right": 11}
+## Tir à l'arc (feuilles LPC) : les 9 premières images bandent l'arc.
+const AIM_ROWS := {"up": 16, "left": 17, "down": 18, "right": 19}
 ## Au-delà de cette distance, le compagnon rejoint Zylrak d'un coup (ex. après un passage étroit).
 const TELEPORT_DISTANCE := 240.0
 
@@ -96,6 +98,12 @@ func face(dir: String) -> void:
 	facing = dir
 	_play("idle_" + dir)
 
+## Bande son arc vers "up", "down", "left" ou "right", et garde la pose (arc tendu).
+func aim(dir: String) -> void:
+	facing = dir
+	if sprite and sprite.sprite_frames.has_animation("aim_" + dir):
+		sprite.play("aim_" + dir)
+
 # --- Outils ---
 
 func _trail_length() -> float:
@@ -147,6 +155,13 @@ func _build_frames() -> SpriteFrames:
 		var idle := "idle_" + dir
 		frames.add_animation(idle)
 		frames.add_frame(idle, _frame(0, WALK_ROWS[dir]))
+		if sheet.get_height() >= (AIM_ROWS[dir] + 1) * FRAME:
+			var aim_anim := "aim_" + dir
+			frames.add_animation(aim_anim)
+			frames.set_animation_speed(aim_anim, 14.0)
+			frames.set_animation_loop(aim_anim, false)
+			for i in 9:
+				frames.add_frame(aim_anim, _frame(i, AIM_ROWS[dir]))
 	return frames
 
 func _frame(col: int, row: int) -> AtlasTexture:

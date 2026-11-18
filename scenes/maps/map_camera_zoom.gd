@@ -10,6 +10,9 @@ extends Node2D
 ## Musique de la carte, jouée en fondu à l'arrivée (vide : la musique s'arrête en fondu).
 ## Deux cartes avec le même morceau (l'auberge et son étage) le gardent sans le redémarrer.
 @export var music: AudioStream
+## Limites de la caméra (pixels du monde). Vide : l'emprise du sol (Ground).
+## Sert aux cartes en hauteur, où l'on doit voir le vide (et le décor lointain) au-delà du plateau.
+@export var camera_bounds: Rect2 = Rect2()
 
 var _cam: Camera2D
 var _room := Rect2()
@@ -66,6 +69,9 @@ func _apply_camera_settings() -> void:
 		var tile_size: Vector2 = ground.tile_set.tile_size
 		var top_left: Vector2 = ground.to_global(Vector2(used_rect.position) * tile_size)
 		var bottom_right: Vector2 = ground.to_global(Vector2(used_rect.position + used_rect.size) * tile_size)
+		if camera_bounds.size != Vector2.ZERO:
+			top_left = camera_bounds.position
+			bottom_right = camera_bounds.end
 		_room = Rect2(top_left, bottom_right - top_left)
 
 		cam.limit_left = int(top_left.x)

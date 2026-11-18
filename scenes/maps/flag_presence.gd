@@ -2,7 +2,7 @@ extends Node
 
 ## À placer comme enfant d'un personnage : au chargement de la carte, le personnage n'est présent
 ## que si les conditions sont remplies (sinon il est retiré de la scène).
-## Ex. Ysolde est dans la forêt avant la rencontre, puis au village après.
+## Ex. Ysolde attend Zylrak aux ruines tant qu'elle ne l'a pas rejoint.
 
 ## Flags de PlayerData qui doivent être à true.
 @export var required_flags: Array[String] = []

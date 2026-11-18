@@ -12,6 +12,8 @@ extends Node
 const MAPS := [
 	"res://scenes/maps/VillageMap.tscn",
 	"res://scenes/maps/ForestMap.tscn",
+	"res://scenes/maps/RuinesMonteeMap.tscn",
+	"res://scenes/maps/RuinesParvisMap.tscn",
 ]
 const OUT_DIR := "res://assets/ui/minimap/"
 
