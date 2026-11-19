@@ -522,7 +522,8 @@ func _ysolde_choose() -> Dictionary:
 		for id in BattleCatalog.OBJETS:
 			if PlayerData.count_item(id) > 0:
 				has_items = true
-		var i := await _menu(["Tir", "Talents", "Pillage", "Objets", "Fuite"], [true, true, true, has_items, true], false)
+		# Même menu que Zylrak : Attaque (un tir à l'arc), Talents (dont le Pillage), Objets, Fuite.
+		var i := await _menu(["Attaque", "Talents", "Objets", "Fuite"], [true, true, has_items, true], false)
 		match i:
 			0:
 				var t := await _choose_target()
@@ -532,12 +533,17 @@ func _ysolde_choose() -> Dictionary:
 				var entries: Array[String] = []
 				var enabled: Array[bool] = []
 				for tl in BattleCatalog.TALENTS:
-					entries.append("%s  %d" % [tl.nom, tl.cout])
+					entries.append("%s  %d" % [tl.nom, tl.cout] if tl.cout > 0 else tl.nom)
 					enabled.append(PlayerData.ysolde_energy >= tl.cout)
 				var k := await _menu(entries, enabled, true)
 				if k < 0:
 					continue
 				var talent: Dictionary = BattleCatalog.TALENTS[k]
+				if talent.type == "pillage":
+					var t3 := await _choose_target()
+					if t3.is_empty():
+						continue
+					return {"type": "pillage", "target": t3}
 				if talent.type == "pluie":
 					return {"type": "talent", "talent": talent}
 				var t2 := await _choose_target()
@@ -545,10 +551,6 @@ func _ysolde_choose() -> Dictionary:
 					continue
 				return {"type": "talent", "talent": talent, "target": t2}
 			2:
-				var t3 := await _choose_target()
-				if not t3.is_empty():
-					return {"type": "pillage", "target": t3}
-			3:
 				var ids: Array[String] = []
 				var entries2: Array[String] = []
 				var enabled2: Array[bool] = []
@@ -565,13 +567,13 @@ func _ysolde_choose() -> Dictionary:
 				if ally.is_empty():
 					continue
 				return {"type": "objet", "objet": ids[k2], "ally": ally}
-			4:
+			3:
 				return {"type": "fuite"}
 	return {}
 
 ## Tir simple : Ysolde bande son arc, la flèche file vers le monstre.
 func _ysolde_shoot(foe: Dictionary) -> void:
-	_show_message("Ysolde tire !")
+	_show_message("Ysolde attaque !")
 	await _bow_draw()
 	await _arrow(foe)
 	var dmg := _damage(PlayerData.ysolde_attack(), foe.data.defense)

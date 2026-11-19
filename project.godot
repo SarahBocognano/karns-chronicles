@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Karn's Chronicles"
-run/main_scene="uid://chktbrd73cebm"
+run/main_scene="res://scenes/EcranTitre.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,8 @@ PlayerData="*uid://ddab6qmwc70wa"
 SceneTransition="*uid://dg5gv3rd34j3i"
 Musique="*res://scripts/musique.gd"
 MiniCarte="*res://scripts/minimap.gd"
+Sauvegarde="*res://scripts/sauvegarde.gd"
+MenuPause="*res://scripts/ui/menu_pause.gd"
 
 [display]
 

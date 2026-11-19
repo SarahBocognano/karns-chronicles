@@ -141,8 +141,43 @@ var quest_flags: Dictionary = {
 
 # --- Système de spawn entre scènes ---
 var next_spawn_point: String = ""
+## Position exacte où placer Zylrak à l'arrivée sur la carte (chargement d'une sauvegarde) ;
+## Vector2.INF : aucune (on utilise next_spawn_point ou la position de départ de la carte).
+var load_position: Vector2 = Vector2.INF
+## Temps de jeu, en secondes (compté par l'autoload Sauvegarde).
+var play_time: float = 0.0
 ## Direction dans laquelle Zylrak regarde ("up", "down", "left", "right"), gardée d'une carte à l'autre.
 var facing: String = "down"
+
+# --- Sauvegarde ---
+
+const SAVED_FIELDS := ["current_hp", "max_hp", "current_energy", "max_energy", "attack", "defense", "magic",
+	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time"]
+
+## Tout ce qu'une sauvegarde doit retenir de Zylrak, d'Ysolde et de la quête.
+func to_dict() -> Dictionary:
+	var d := {}
+	for f in SAVED_FIELDS:
+		d[f] = get(f)
+	d["inventory"] = inventory.duplicate()
+	d["quest_flags"] = quest_flags.duplicate()
+	return d
+
+## Remet l'état tel qu'il était dans `d` (voir to_dict ; les nombres relus du JSON sont des flottants).
+func from_dict(d: Dictionary) -> void:
+	for f in SAVED_FIELDS:
+		if d.has(f):
+			var v = d[f]
+			set(f, int(v) if typeof(get(f)) == TYPE_INT else v)
+	inventory.assign(d.get("inventory", []))
+	quest_flags.clear()
+	for k in d.get("quest_flags", {}):
+		quest_flags[k] = bool(d.quest_flags[k])
+	controls_locked = false
+	next_spawn_point = ""
+	load_position = Vector2.INF
+	for k in quest_flags:
+		flag_changed.emit(k, quest_flags[k])
 
 func set_flag(flag_name: String, value: bool) -> void:
 	quest_flags[flag_name] = value

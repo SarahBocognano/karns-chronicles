@@ -22,7 +22,7 @@ Au pied des ruines, une archère, **Ysolde**, le prend pour l'agresseur du march
 
 1. Installer [Godot 4.7](https://godotengine.org/download) (version standard, pas .NET).
 2. Ouvrir Godot, cliquer sur **Importer** et choisir le fichier `project.godot` de ce dépôt.
-3. Ouvrir `scenes/maps/VillageMap.tscn` et appuyer sur **F6** (lancer la scène ouverte). La scène principale `Main.tscn` ne contient pour l'instant que Zylrak.
+3. Appuyer sur **F5** : le jeu s'ouvre sur l'écran titre (Continuer, Nouvelle partie, Charger, Quitter). Pour tester une carte directement, l'ouvrir et appuyer sur **F6**.
 
 Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'écran).
 
@@ -33,6 +33,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 | Flèches | Déplacer Zylrak |
 | Entrée | Parler, lire la réplique suivante |
 | M | Afficher / masquer la mini-carte |
+| Échap | Ouvrir le menu (Objets, Statut, Sauvegarder, Charger, Écran titre) ; dans un menu : revenir en arrière |
 | Clic sur le haut-parleur (en haut à droite) | Couper / remettre la musique |
 
 ## Contenu actuel
@@ -51,10 +52,19 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - Le vent fait doucement balancer les arbres, les buissons et les herbes (shader `vent.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 
+### Les menus
+- **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
+- **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak entre dans l'auberge, où Oswin lui tombe dessus.
+- **Menu** (Échap, sur les cartes, hors combat et hors dialogue ; le jeu est en pause) :
+  - l'équipe, avec portraits, niveau, PV et PM ; le lieu et le temps de jeu ;
+  - **Objets** : potions et fioles à donner à Zylrak ou Ysolde ; les objets précieux (fragments gravés) ;
+  - **Statut** : caractéristiques, Signes de Zylrak, talents d'Ysolde, expérience ;
+  - **Sauvegarder** n'importe où, dans l'un des **3 emplacements** (lieu, niveau, temps de jeu, date) ; **Charger** une partie ; revenir à l'**écran titre**.
+
 ### Les combats
 - Au tour par tour, déclenchés au hasard dans les zones dangereuses.
 - **Zylrak** : Attaque, Signes (Feu, Rempart de cendres, Phoenix…), Objets, Fuite.
-- **Ysolde**, une fois qu'elle l'a rejoint : Tir, Talents (Flèche perçante, Pluie de flèches), **Pillage** (elle dérobe une potion ou une fiole de mana à un monstre), Objets, Fuite.
+- **Ysolde**, une fois qu'elle l'a rejoint : Attaque (un tir à l'arc), Talents (Flèche perçante, Pluie de flèches, **Pillage** : elle dérobe une potion ou une fiole de mana à un monstre), Objets, Fuite.
 - Potions et fioles se donnent à l'allié de son choix ; un héros à terre se relève à la victoire ; la défaite n'arrive que si toute l'équipe tombe.
 - Montée de niveau : Ysolde progresse avec Zylrak.
 
