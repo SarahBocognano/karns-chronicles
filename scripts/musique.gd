@@ -45,6 +45,10 @@ func set_muted(value: bool) -> void:
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(BUS), value)
 	_button.muted = value
 
+## Affiche ou cache le bouton du son (caché pendant l'intro).
+func set_button_visible(value: bool) -> void:
+	_button.visible = value
+
 func is_muted() -> bool:
 	return AudioServer.is_bus_mute(AudioServer.get_bus_index(BUS))
 

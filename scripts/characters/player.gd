@@ -19,6 +19,11 @@ func _ready() -> void:
 		body_sprite.frame = 0
 
 func _apply_spawn_point() -> void:
+	if PlayerData.load_position != Vector2.INF:
+		global_position = PlayerData.load_position   # chargement d'une sauvegarde
+		PlayerData.load_position = Vector2.INF
+		PlayerData.next_spawn_point = ""
+		return
 	if PlayerData.next_spawn_point == "":
 		return
 
