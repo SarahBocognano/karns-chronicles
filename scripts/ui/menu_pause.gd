@@ -355,7 +355,7 @@ func _status() -> void:
 		col.add_child(gap)
 		col.add_child(UiKit.label(h.talents_nom, 30, UiKit.GOLD))
 		for t in h.talents:
-			col.add_child(UiKit.label("%s   (%d PM)" % [t.nom, t.cout], 26))
+			col.add_child(UiKit.label("%s   (%d PM)" % [t.nom, t.cout] if t.cout > 0 else t.nom, 26))
 	var xp := UiKit.label("Expérience : %d    Prochain niveau dans %d" % [PlayerData.xp, maxi(0, PlayerData.xp_for_level(PlayerData.level + 1) - PlayerData.xp)], 26)
 	xp.position = Vector2(0, 760)
 	_content.add_child(xp)

@@ -7,10 +7,12 @@ const SIGNES: Array[Dictionary] = [
 	{"id": "phoenix", "nom": "Phoenix", "cout": 5, "type": "soin", "soin": 0.4, "niveau": 2},
 ]
 
-## Talents d'Ysolde (coût en mana). type : "percant" (ignore la défense), "pluie" (tous les ennemis).
+## Talents d'Ysolde (coût en mana). type : "percant" (ignore la défense), "pluie" (tous les ennemis),
+## "pillage" (elle dérobe un objet à un monstre ; gratuit).
 const TALENTS: Array[Dictionary] = [
 	{"id": "percante", "nom": "Flèche perçante", "cout": 3, "type": "percant", "puissance": 1.5},
 	{"id": "pluie", "nom": "Pluie de flèches", "cout": 5, "type": "pluie", "puissance": 0.8},
+	{"id": "pillage", "nom": "Pillage", "cout": 0, "type": "pillage"},
 ]
 
 ## soin : PV rendus ; mana : mana rendu.
