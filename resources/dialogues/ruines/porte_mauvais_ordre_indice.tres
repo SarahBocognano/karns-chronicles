@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://de430twwpugih"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_jl81l"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_5n1to"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_cmgr4"]
+
+[sub_resource type="Resource" id="Resource_pbsmx"]
+script = ExtResource("1_jl81l")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_5n1to")
+text = "« Chez les Yrenn, l'ordre compte toujours »... Dans quel ordre Théobald les avait-il citées, déjà ?"
+
+[resource]
+script = ExtResource("3_cmgr4")
+lines = Array[ExtResource("1_jl81l")]([SubResource("Resource_pbsmx")])

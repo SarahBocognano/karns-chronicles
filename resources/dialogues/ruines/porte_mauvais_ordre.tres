@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://eckqm8rgfqkv"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_tpj5d"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_embarrassé.tres" id="2_2t26i"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_7pb13"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_rwmiq"]
+
+[sub_resource type="Resource" id="Resource_cecr5"]
+script = ExtResource("1_tpj5d")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_2t26i")
+text = "Hé ! Les pierres ressortent toutes seules de leurs encoches."
+
+[sub_resource type="Resource" id="Resource_whoft"]
+script = ExtResource("1_tpj5d")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_7pb13")
+text = "Ce n'est pas le bon ordre. Il doit y avoir une logique."
+
+[resource]
+script = ExtResource("4_rwmiq")
+lines = Array[ExtResource("1_tpj5d")]([SubResource("Resource_cecr5"), SubResource("Resource_whoft")])

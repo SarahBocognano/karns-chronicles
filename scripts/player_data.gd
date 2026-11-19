@@ -131,6 +131,12 @@ var quest_flags: Dictionary = {
 	"talked_to_inconnu": false,          # l'inconnu encapuchonné de l'auberge
 	"found_merchant_cart": false,        # chariot du marchand retrouvé dans la forêt (indices vers les ruines)
 	"ysolde_joined": false,              # Ysolde a rencontré Zylrak aux ruines et fait équipe avec lui : elle le suit partout
+	"porte_temple_vue": false,           # Zylrak et Ysolde ont découvert la porte scellée du temple : les fragments apparaissent
+	"fragment_lune": false,              # fragments gravés ramassés dans les ruines (énigme de la porte)
+	"fragment_loup": false,
+	"fragment_epee": false,
+	"fragment_flamme": false,
+	"temple_ouvert": false,              # les fragments posés dans l'ordre (lune, loup, épée, flamme) : le sceau est brisé
 }
 
 # --- Système de spawn entre scènes ---

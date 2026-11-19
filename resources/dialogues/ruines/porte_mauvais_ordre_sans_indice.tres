@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bj1i8qevmkt2n"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_n0rop"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="2_ubf72"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_1eer5"]
+
+[sub_resource type="Resource" id="Resource_51rfw"]
+script = ExtResource("1_n0rop")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_ubf72")
+text = "Le vieil érudit de l'auberge, il saurait peut-être. Ça vaudrait le coup de lui demander."
+
+[resource]
+script = ExtResource("3_1eer5")
+lines = Array[ExtResource("1_n0rop")]([SubResource("Resource_51rfw")])
