@@ -42,6 +42,8 @@
 [ext_resource type="Resource" uid="uid://ci06gmb0rc8p2" path="res://resources/dialogues/pepin/pepin_rencontre.tres" id="dlg_pepin_rencontre"]
 [ext_resource type="Resource" uid="uid://jj4bj1ca22bc" path="res://resources/dialogues/pepin/pepin_rappel.tres" id="dlg_pepin_rappel"]
 [ext_resource type="AudioStream" uid="uid://cglk6endh6exu" path="res://assets/audio/musique/village.wav" id="musique_carte"]
+[ext_resource type="Texture2D" path="res://assets/sprites/objets/enseignes.png" id="enseignes_tex"]
+[ext_resource type="Script" path="res://scenes/maps/coffre.gd" id="coffre_script"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i6q"]
 texture = ExtResource("3_80giv")
@@ -21033,3 +21035,25 @@ shape = SubResource("RectangleShape2D_exit_forest")
 
 [node name="SpawnFromForest" type="Marker2D" parent="."]
 position = Vector2(16, 480)
+
+[node name="EnseigneAuberge" type="Sprite2D" parent="YSortLayer"]
+z_index = 1
+position = Vector2(-652.8, -32)
+texture = ExtResource("enseignes_tex")
+offset = Vector2(18, -50)
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 44)
+
+[node name="EnseigneForge" type="Sprite2D" parent="YSortLayer"]
+z_index = 1
+position = Vector2(-44.8, -160)
+texture = ExtResource("enseignes_tex")
+offset = Vector2(18, -50)
+region_enabled = true
+region_rect = Rect2(40, 0, 40, 44)
+
+[node name="CoffreVillage" type="Node2D" parent="YSortLayer"]
+position = Vector2(-492.8, -201.6)
+script = ExtResource("coffre_script")
+contenu = "fiole"
+quantite = 2

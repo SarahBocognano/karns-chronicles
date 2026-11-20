@@ -1,71 +1,66 @@
 [gd_scene format=4 uid="uid://cuao31pho3no8"]
 
-[ext_resource type="Script" uid="uid://cqn5bdx4vwqcf" path="res://scenes/maps/map_camera_zoom.gd" id="1_3plvs"]
-[ext_resource type="AudioStream" uid="uid://dhhwc72soem37" path="res://assets/audio/musique/ruines.wav" id="2_2cpv8"]
-[ext_resource type="Script" uid="uid://bbrhxe4ukoho1" path="res://scenes/maps/backdrop.gd" id="3_fsjw3"]
-[ext_resource type="TileSet" uid="uid://cxlug06m8skgt" path="res://resources/tilesets/foret_sol.tres" id="4_qol28"]
-[ext_resource type="TileSet" uid="uid://dwua16xjewqau" path="res://resources/tilesets/foret_chemins.tres" id="5_bpcgt"]
-[ext_resource type="TileSet" uid="uid://dcbqmtkl3vbgx" path="res://resources/tilesets/ruines_dalles.tres" id="6_xi50e"]
-[ext_resource type="TileSet" uid="uid://dy744e4v46hyb" path="res://resources/tilesets/ruines_hauteurs.tres" id="7_06283"]
-[ext_resource type="TileSet" uid="uid://b0k7yxtoikmfv" path="res://resources/tilesets/foret_vegetation.tres" id="8_a2awg"]
-[ext_resource type="Texture2D" uid="uid://bxjkovdp5lt0t" path="res://assets/sprites/tilesets/Temple/castle_outside.png" id="9_mmfd8"]
-[ext_resource type="Texture2D" uid="uid://bl1cw85o2k61w" path="res://assets/sprites/tilesets/traces/sillons.png" id="10_270vs"]
-[ext_resource type="Texture2D" uid="uid://btfshct82uhqc" path="res://assets/sprites/tilesets/traces/empreinte_goule.png" id="11_i5xo5"]
-[ext_resource type="Texture2D" uid="uid://6f5nymgqlknm" path="res://assets/sprites/tilesets/traces/sang_trace_2.png" id="12_vxrul"]
-[ext_resource type="Texture2D" uid="uid://kg77lkngpbmk" path="res://assets/sprites/tilesets/traces/sang_trace.png" id="13_6d83i"]
-[ext_resource type="Texture2D" uid="uid://3gy6vpdfofb2" path="res://assets/sprites/tilesets/traces/sang_flaque.png" id="14_lo7af"]
-[ext_resource type="Texture2D" uid="uid://ys46jtlebvc" path="res://assets/sprites/tilesets/TreesAndPlants/veg_decoratives.png" id="15_ti3wg"]
-[ext_resource type="Texture2D" uid="uid://by8pc4h86c0pd" path="res://assets/sprites/tilesets/Ruines/propsB.png" id="16_wtav4"]
-[ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="17_l1pme"]
-[ext_resource type="Script" uid="uid://cj4lij1cwrblo" path="res://scenes/maps/sceau_yrenn.gd" id="18_sw6q7"]
-[ext_resource type="Script" uid="uid://wb4alo18mse0" path="res://scenes/maps/fragment_yrenn.gd" id="19_pf3d0"]
-[ext_resource type="Script" uid="uid://cd066m5563hct" path="res://scenes/maps/map_exit.gd" id="20_m03a2"]
-[ext_resource type="Script" uid="uid://c1m0keo7dqgrn" path="res://scenes/maps/temple_scenario.gd" id="21_s6aah"]
-[ext_resource type="Resource" uid="uid://v73wxabgg1dd" path="res://resources/dialogues/ruines/porte_decouverte.tres" id="22_nwk4o"]
-[ext_resource type="Resource" uid="uid://c3ytp6te4muis" path="res://resources/dialogues/ruines/porte_decouverte_indice.tres" id="23_20jl3"]
-[ext_resource type="Resource" uid="uid://bn58co26g8ory" path="res://resources/dialogues/ruines/porte_decouverte_sans_indice.tres" id="24_jnjfk"]
-[ext_resource type="Resource" uid="uid://eckqm8rgfqkv" path="res://resources/dialogues/ruines/porte_mauvais_ordre.tres" id="25_kf0ur"]
-[ext_resource type="Resource" uid="uid://de430twwpugih" path="res://resources/dialogues/ruines/porte_mauvais_ordre_indice.tres" id="26_kji8e"]
-[ext_resource type="Resource" uid="uid://bj1i8qevmkt2n" path="res://resources/dialogues/ruines/porte_mauvais_ordre_sans_indice.tres" id="27_w37ga"]
-[ext_resource type="Resource" uid="uid://b4ockmyifgk4g" path="res://resources/dialogues/ruines/porte_ouverture.tres" id="28_bh66x"]
-[ext_resource type="Resource" uid="uid://b4lsc4hxctfl4" path="res://resources/dialogues/ruines/porte_ouverte.tres" id="29_4hqs1"]
-[ext_resource type="Shader" uid="uid://cmy1ahhn88v51" path="res://resources/shaders/forest_ambience.gdshader" id="30_igspb"]
-[ext_resource type="Script" uid="uid://d0o4v7vpl7d5c" path="res://scenes/maps/encounter_zone.gd" id="31_wqruc"]
-[ext_resource type="Script" uid="uid://b6rfqg4b2460u" path="res://scripts/battle/monster_data.gd" id="32_7v6vp"]
-[ext_resource type="Resource" path="res://resources/monsters/goule.tres" id="33_m7ctx"]
-[ext_resource type="Resource" path="res://resources/monsters/zombie.tres" id="34_mbg0q"]
-[ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="35_roq4k"]
-[ext_resource type="Texture2D" uid="uid://y7awa42exgqy" path="res://assets/battle_backgrounds/battle_temple.png" id="36_ggmnl"]
+[ext_resource type="Script" uid="uid://cqn5bdx4vwqcf" path="res://scenes/maps/map_camera_zoom.gd" id="1_2cpv8"]
+[ext_resource type="AudioStream" uid="uid://dhhwc72soem37" path="res://assets/audio/musique/ruines.wav" id="2_fsjw3"]
+[ext_resource type="Script" uid="uid://bbrhxe4ukoho1" path="res://scenes/maps/backdrop.gd" id="3_qol28"]
+[ext_resource type="TileSet" uid="uid://cxlug06m8skgt" path="res://resources/tilesets/foret_sol.tres" id="4_bpcgt"]
+[ext_resource type="TileSet" uid="uid://dwua16xjewqau" path="res://resources/tilesets/foret_chemins.tres" id="5_xi50e"]
+[ext_resource type="TileSet" uid="uid://dcbqmtkl3vbgx" path="res://resources/tilesets/ruines_dalles.tres" id="6_06283"]
+[ext_resource type="TileSet" uid="uid://dy744e4v46hyb" path="res://resources/tilesets/ruines_hauteurs.tres" id="7_a2awg"]
+[ext_resource type="TileSet" uid="uid://b0k7yxtoikmfv" path="res://resources/tilesets/foret_vegetation.tres" id="8_mmfd8"]
+[ext_resource type="Texture2D" uid="uid://bxjkovdp5lt0t" path="res://assets/sprites/tilesets/Temple/castle_outside.png" id="9_270vs"]
+[ext_resource type="Texture2D" uid="uid://bl1cw85o2k61w" path="res://assets/sprites/tilesets/traces/sillons.png" id="10_i5xo5"]
+[ext_resource type="Texture2D" uid="uid://btfshct82uhqc" path="res://assets/sprites/tilesets/traces/empreinte_goule.png" id="11_vxrul"]
+[ext_resource type="Texture2D" uid="uid://6f5nymgqlknm" path="res://assets/sprites/tilesets/traces/sang_trace_2.png" id="12_6d83i"]
+[ext_resource type="Texture2D" uid="uid://kg77lkngpbmk" path="res://assets/sprites/tilesets/traces/sang_trace.png" id="13_lo7af"]
+[ext_resource type="Texture2D" uid="uid://3gy6vpdfofb2" path="res://assets/sprites/tilesets/traces/sang_flaque.png" id="14_ti3wg"]
+[ext_resource type="Texture2D" uid="uid://ys46jtlebvc" path="res://assets/sprites/tilesets/TreesAndPlants/veg_decoratives.png" id="15_wtav4"]
+[ext_resource type="Texture2D" uid="uid://by8pc4h86c0pd" path="res://assets/sprites/tilesets/Ruines/propsB.png" id="16_l1pme"]
+[ext_resource type="PackedScene" uid="uid://cpbycjr43dvwu" path="res://scenes/characters/Player.tscn" id="17_sw6q7"]
+[ext_resource type="Script" uid="uid://cj4lij1cwrblo" path="res://scenes/maps/sceau_yrenn.gd" id="18_pf3d0"]
+[ext_resource type="Script" uid="uid://wb4alo18mse0" path="res://scenes/maps/fragment_yrenn.gd" id="19_m03a2"]
+[ext_resource type="Script" uid="uid://cqbgq8nuk6y8x" path="res://scenes/maps/coffre.gd" id="20_s6aah"]
+[ext_resource type="Script" uid="uid://cd066m5563hct" path="res://scenes/maps/map_exit.gd" id="21_nwk4o"]
+[ext_resource type="Script" uid="uid://c1m0keo7dqgrn" path="res://scenes/maps/temple_scenario.gd" id="22_20jl3"]
+[ext_resource type="Resource" uid="uid://v73wxabgg1dd" path="res://resources/dialogues/ruines/porte_decouverte.tres" id="23_jnjfk"]
+[ext_resource type="Resource" uid="uid://c3ytp6te4muis" path="res://resources/dialogues/ruines/porte_decouverte_indice.tres" id="24_kf0ur"]
+[ext_resource type="Resource" uid="uid://bn58co26g8ory" path="res://resources/dialogues/ruines/porte_decouverte_sans_indice.tres" id="25_kji8e"]
+[ext_resource type="Resource" uid="uid://eckqm8rgfqkv" path="res://resources/dialogues/ruines/porte_mauvais_ordre.tres" id="26_w37ga"]
+[ext_resource type="Resource" uid="uid://de430twwpugih" path="res://resources/dialogues/ruines/porte_mauvais_ordre_indice.tres" id="27_bh66x"]
+[ext_resource type="Resource" uid="uid://bj1i8qevmkt2n" path="res://resources/dialogues/ruines/porte_mauvais_ordre_sans_indice.tres" id="28_4hqs1"]
+[ext_resource type="Resource" uid="uid://b4ockmyifgk4g" path="res://resources/dialogues/ruines/porte_ouverture.tres" id="29_igspb"]
+[ext_resource type="Resource" uid="uid://b4lsc4hxctfl4" path="res://resources/dialogues/ruines/porte_ouverte.tres" id="30_wqruc"]
+[ext_resource type="Shader" uid="uid://cmy1ahhn88v51" path="res://resources/shaders/forest_ambience.gdshader" id="31_7v6vp"]
+[ext_resource type="Script" uid="uid://d0o4v7vpl7d5c" path="res://scenes/maps/encounter_zone.gd" id="32_m7ctx"]
+[ext_resource type="Script" uid="uid://b6rfqg4b2460u" path="res://scripts/battle/monster_data.gd" id="33_mbg0q"]
+[ext_resource type="Resource" path="res://resources/monsters/goule.tres" id="34_roq4k"]
+[ext_resource type="Resource" path="res://resources/monsters/zombie.tres" id="35_ggmnl"]
+[ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="36_ax2y8"]
+[ext_resource type="Texture2D" uid="uid://y7awa42exgqy" path="res://assets/battle_backgrounds/battle_temple.png" id="37_f7a60"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax2y8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myksi"]
 size = Vector2(160, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7a60"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mojb0"]
 size = Vector2(128, 32)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_myksi"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hu5ye"]
 seed = 31
 frequency = 0.006
 fractal_octaves = 3
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mojb0"]
-noise = SubResource("FastNoiseLite_myksi")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ynpn0"]
+noise = SubResource("FastNoiseLite_hu5ye")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hu5ye"]
-shader = ExtResource("30_igspb")
-shader_parameter/noise = SubResource("NoiseTexture2D_mojb0")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqtg5"]
+shader = ExtResource("31_7v6vp")
+shader_parameter/noise = SubResource("NoiseTexture2D_ynpn0")
 shader_parameter/fog_color = null
 shader_parameter/fog_density = null
 shader_parameter/ray_color = null
 shader_parameter/ray_strength = null
 shader_parameter/ray_spacing = null
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynpn0"]
-size = Vector2(960, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtg5"]
-size = Vector2(960, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkb0n"]
 size = Vector2(960, 32)
@@ -95,34 +90,34 @@ size = Vector2(960, 32)
 size = Vector2(960, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg1wm"]
-size = Vector2(96, 32)
+size = Vector2(960, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trywd"]
-size = Vector2(192, 32)
+size = Vector2(960, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgsag"]
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13plm"]
-size = Vector2(64, 32)
+size = Vector2(192, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5somu"]
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3j0rv"]
-size = Vector2(96, 32)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv5bi"]
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4jtv"]
-size = Vector2(64, 32)
+size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_867q0"]
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5feuk"]
-size = Vector2(96, 32)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rnkx"]
 size = Vector2(96, 32)
@@ -131,1916 +126,1941 @@ size = Vector2(96, 32)
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77knd"]
-size = Vector2(128, 32)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bgh1l"]
 size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh3sh"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tado7"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oxpk"]
-size = Vector2(128, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vwgp"]
-size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b8hr"]
-size = Vector2(256, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x026b"]
-size = Vector2(288, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_swi2r"]
-size = Vector2(256, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrn2f"]
-size = Vector2(288, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ln8f"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ydb"]
-size = Vector2(64, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpdeo"]
-size = Vector2(128, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mow1g"]
-size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c4k7"]
 size = Vector2(96, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tado7"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oxpk"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vwgp"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b8hr"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x026b"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swi2r"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrn2f"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ln8f"]
+size = Vector2(288, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2ydb"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpdeo"]
+size = Vector2(288, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mow1g"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c4k7"]
+size = Vector2(64, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_op8v5"]
-size = Vector2(448, 32)
+size = Vector2(128, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyhht"]
-size = Vector2(192, 32)
+size = Vector2(160, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhgv"]
-size = Vector2(192, 32)
+size = Vector2(96, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1127"]
-size = Vector2(416, 32)
+size = Vector2(448, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpkg5"]
-size = Vector2(384, 32)
+size = Vector2(192, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eu5b"]
-size = Vector2(32, 32)
+size = Vector2(192, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yg0oj"]
-size = Vector2(320, 32)
+size = Vector2(416, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th2pn"]
-size = Vector2(32, 32)
+size = Vector2(384, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj0ec"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx7hw"]
-size = Vector2(32, 32)
+size = Vector2(320, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5b1g"]
-size = Vector2(544, 32)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox22i"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pyh3"]
-size = Vector2(768, 32)
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ffgq"]
-size = Vector2(736, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q4gn"]
-size = Vector2(224, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt8oy"]
-size = Vector2(288, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_loe2m"]
-size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dn8f"]
 size = Vector2(544, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q4gn"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt8oy"]
+size = Vector2(480, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loe2m"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dn8f"]
+size = Vector2(736, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tuov"]
+size = Vector2(224, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkbt0"]
+size = Vector2(288, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83dtk"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_farbt"]
+size = Vector2(544, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daaye"]
 size = Vector2(416, 32)
 
-[node name="RuinesParvisMap" type="Node2D" unique_id=1665799914]
-script = ExtResource("1_3plvs")
-music = ExtResource("2_2cpv8")
+[node name="RuinesParvisMap" type="Node2D" unique_id=1996580628]
+script = ExtResource("1_2cpv8")
+music = ExtResource("2_fsjw3")
 camera_bounds = Rect2(0, 0, 896, 640)
 
-[node name="DecorLointain" type="CanvasLayer" parent="." unique_id=1076754360]
-script = ExtResource("3_fsjw3")
+[node name="DecorLointain" type="CanvasLayer" parent="." unique_id=1298035423]
+script = ExtResource("3_qol28")
 horizon_y = 70.0
 
-[node name="Ground" type="TileMapLayer" parent="." unique_id=1386564222]
-tile_map_data = PackedByteArray("AAAdABUA//////////8cABUA//////////8bABUA//////////8aABUA//////////8ZABUA//////////8YABUA//////////8XABUA//////////8WABUA//////////8VABUA//////////8UABUA//////////8TABUA//////////8SABUA//////////8RABUA//////////8QABUA//////////8PABUA//////////8OABUA//////////8NABUA//////////8MABUA//////////8LABUA//////////8KABUA//////////8JABUA//////////8IABUA//////////8HABUA//////////8GABUA//////////8FABUA//////////8EABUA//////////8DABUA//////////8CABUA//////////8BABUA//////////8AABUA/////////////xUA///////////+/xUA//////////8dABQA//////////8cABQA//////////8bABQA//////////8aABQA//////////8ZABQA//////////8YABQA//////////8XABQA//////////8WABQA//////////8VABQA//////////8UABQA//////////8TABQA//////////8SABQA//////////8RABQA//////////8QABQA//////////8PABQA//////////8OABQA//////////8NABQA//////////8MABQA//////////8LABQA//////////8KABQA//////////8JABQA//////////8IABQA//////////8HABQA//////////8GABQA//////////8FABQA//////////8EABQA//////////8DABQA//////////8CABQA//////////8BABQA//////////8AABQA/////////////xQA///////////+/xQA//////////8dABMA//////////8cABMA//////////8bABMAAQAKAAIAAAAaABMAAQAHAAMAAAAZABMAAQANAAMAAAAYABMAAQAEAAMAAAAXABMAAQAOAAAAAAAWABMAAQAOAAIAAAAVABMAAQAMAAAAAAAUABMAAQAOAAEAAAATABMAAQAJAAAAAAASABMAAQAMAAEAAAARABMAAQAJAAAAAAAQABMAAQALAAEAAAAPABMAAQAFAAEAAAAOABMAAQAMAAAAAAANABMAAQAIAAIAAAAMABMAAQAOAAIAAAALABMAAQANAAIAAAAKABMAAQAGAAIAAAAJABMAAQAEAAAAAAAIABMAAQALAAEAAAAHABMAAQAKAAMAAAAGABMAAQAMAAIAAAAFABMAAQAJAAEAAAAEABMAAQAJAAAAAAADABMAAQAFAAIAAAACABMAAQAPAAMAAAABABMAAQAPAAMAAAAAABMAAQAJAAAAAAD//xMA///////////+/xMA//////////8dABIA//////////8cABIA//////////8bABIAAQAJAAEAAAAaABIAAQACAAEAAAAZABIAAQAFAAEAAAAYABIAAQAPAAIAAAAXABIAAQAGAAIAAAAWABIAAQAOAAIAAAAVABIAAQAMAAEAAAAUABIAAQANAAMAAAATABIAAQAJAAAAAAASABIAAQANAAEAAAARABIAAQAJAAEAAAAQABIAAQAPAAAAAAAPABIAAQAMAAMAAAAOABIAAQAMAAEAAAANABIAAQAHAAMAAAAMABIAAQANAAIAAAALABIAAQANAAEAAAAKABIAAQAKAAIAAAAJABIAAQAMAAMAAAAIABIAAQAKAAMAAAAHABIAAQAOAAAAAAAGABIAAQAEAAAAAAAFABIAAQAGAAEAAAAEABIAAQAOAAAAAAADABIAAQACAAEAAAACABIAAQAOAAMAAAABABIAAQAKAAIAAAAAABIAAQAMAAMAAAD//xIA///////////+/xIA//////////8dABEA//////////8cABEA//////////8bABEAAQAKAAIAAAAaABEAAQALAAEAAAAZABEAAQAMAAMAAAAYABEAAQAKAAIAAAAXABEAAQAJAAAAAAAWABEAAQAOAAIAAAAVABEAAQAFAAIAAAAUABEAAQAMAAIAAAATABEAAQAMAAMAAAASABEAAQAEAAMAAAARABEAAQANAAIAAAAQABEAAQAOAAEAAAAPABEAAQAPAAEAAAAOABEAAQAMAAEAAAANABEAAQACAAEAAAAMABEAAQAIAAIAAAALABEAAQAHAAMAAAAKABEAAQAKAAMAAAAJABEAAQAJAAAAAAAIABEAAQAOAAAAAAAHABEAAQAEAAMAAAAGABEAAQAOAAEAAAAFABEAAQAGAAIAAAAEABEAAQAKAAIAAAADABEAAQAKAAMAAAACABEAAQAMAAIAAAABABEAAQAKAAIAAAAAABEAAQANAAIAAAD//xEA///////////+/xEA//////////8dABAA//////////8cABAA//////////8bABAAAQAOAAEAAAAaABAAAQAFAAIAAAAZABAAAQAFAAEAAAAYABAAAQAEAAAAAAAXABAAAQAOAAMAAAAWABAAAQAPAAIAAAAVABAAAQAFAAIAAAAUABAAAQAOAAAAAAATABAAAQAFAAIAAAASABAAAQAKAAIAAAARABAAAQAFAAIAAAAQABAAAQANAAEAAAAPABAAAQANAAEAAAAOABAAAQAMAAIAAAANABAAAQAPAAAAAAAMABAAAQAOAAEAAAALABAAAQANAAEAAAAKABAAAQAMAAEAAAAJABAAAQAKAAMAAAAIABAAAQACAAEAAAAHABAAAQALAAEAAAAGABAAAQAPAAIAAAAFABAAAQAKAAIAAAAEABAAAQAIAAIAAAADABAAAQAOAAAAAAACABAAAQAPAAMAAAABABAAAQANAAIAAAAAABAAAQAIAAIAAAD//xAA///////////+/xAA//////////8dAA8A//////////8cAA8A//////////8bAA8AAQAIAAIAAAAaAA8AAQAOAAEAAAAZAA8AAQAFAAEAAAAYAA8AAQAPAAIAAAAXAA8AAQAFAAIAAAAWAA8AAQAMAAEAAAAVAA8AAQAEAAAAAAAUAA8AAQALAAEAAAATAA8AAQAJAAAAAAASAA8AAQAOAAMAAAARAA8AAQAGAAEAAAAQAA8AAQAOAAEAAAAPAA8AAQAKAAIAAAAOAA8AAQAGAAIAAAANAA8AAQAJAAAAAAAMAA8AAQAFAAEAAAALAA8AAQALAAEAAAAKAA8AAQANAAMAAAAJAA8AAQAOAAEAAAAIAA8AAQAPAAAAAAAHAA8AAQAMAAMAAAAGAA8AAQACAAEAAAAFAA8AAQANAAAAAAAEAA8AAQANAAEAAAADAA8AAQAMAAAAAAACAA8AAQAHAAMAAAABAA8AAQAKAAMAAAAAAA8AAQAPAAMAAAD//w8A///////////+/w8A//////////8dAA4A//////////8cAA4A//////////8bAA4AAQAMAAAAAAAaAA4AAQALAAEAAAAZAA4AAQAMAAAAAAAYAA4AAQAKAAIAAAAXAA4AAQAGAAEAAAAWAA4AAQAMAAMAAAAVAA4AAQAKAAIAAAAUAA4AAQAFAAEAAAATAA4AAQAEAAAAAAASAA4AAQAKAAMAAAARAA4AAQAHAAAAAAAQAA4AAQAMAAEAAAAPAA4AAQAMAAAAAAAOAA4AAQAMAAIAAAANAA4AAQAFAAIAAAAMAA4AAQANAAIAAAALAA4AAQAMAAEAAAAKAA4AAQANAAIAAAAJAA4AAQAHAAMAAAAIAA4AAQAGAAIAAAAHAA4AAQACAAEAAAAGAA4AAQAOAAAAAAAFAA4AAQANAAIAAAAEAA4AAQAHAAAAAAADAA4AAQANAAMAAAACAA4AAQAEAAAAAAABAA4AAQAOAAAAAAAAAA4AAQAJAAAAAAD//w4A///////////+/w4A//////////8dAA0A//////////8cAA0A//////////8bAA0AAQAHAAAAAAAaAA0AAQAPAAIAAAAZAA0AAQAPAAMAAAAYAA0AAQANAAAAAAAXAA0AAQAPAAMAAAAWAA0AAQAHAAMAAAAVAA0AAQAMAAIAAAAUAA0AAQALAAEAAAATAA0AAQANAAMAAAASAA0AAQAOAAAAAAARAA0AAQANAAIAAAAQAA0AAQANAAIAAAAPAA0AAQAOAAEAAAAOAA0AAQAPAAIAAAANAA0AAQAMAAAAAAAMAA0AAQACAAEAAAALAA0AAQAIAAIAAAAKAA0AAQAGAAIAAAAJAA0AAQAJAAAAAAAIAA0AAQANAAIAAAAHAA0AAQAPAAIAAAAGAA0AAQAJAAAAAAAFAA0AAQAHAAAAAAAEAA0AAQAMAAEAAAADAA0AAQACAAEAAAACAA0AAQAIAAIAAAABAA0AAQANAAIAAAAAAA0AAQAOAAMAAAD//w0A///////////+/w0A//////////8dAAwA//////////8cAAwA//////////8bAAwAAQALAAEAAAAaAAwAAQAEAAAAAAAZAAwAAQAFAAEAAAAYAAwAAQAOAAMAAAAXAAwAAQAKAAMAAAAWAAwAAQAPAAIAAAAVAAwAAQAPAAMAAAAUAAwAAQAEAAAAAAATAAwAAQANAAEAAAASAAwAAQAHAAMAAAARAAwAAQAHAAAAAAAQAAwAAQAKAAIAAAAPAAwAAQAPAAIAAAAOAAwAAQAPAAMAAAANAAwAAQAIAAIAAAAMAAwAAQANAAMAAAALAAwAAQAMAAEAAAAKAAwAAQAOAAEAAAAJAAwAAQALAAEAAAAIAAwAAQALAAEAAAAHAAwAAQAEAAMAAAAGAAwAAQAMAAIAAAAFAAwAAQAKAAIAAAAEAAwAAQAHAAAAAAADAAwAAQANAAEAAAACAAwAAQAOAAAAAAABAAwAAQAMAAIAAAAAAAwAAQANAAMAAAD//wwA///////////+/wwA//////////8dAAsA//////////8cAAsA//////////8bAAsAAQAEAAMAAAAaAAsAAQAPAAEAAAAZAAsAAQAOAAMAAAAYAAsAAQALAAEAAAAXAAsAAQAOAAEAAAAWAAsAAQAPAAIAAAAVAAsAAQAKAAMAAAAUAAsAAQACAAEAAAATAAsAAQAPAAIAAAASAAsAAQAOAAEAAAARAAsAAQAMAAEAAAAQAAsAAQAHAAAAAAAPAAsAAQAEAAAAAAAOAAsAAQAMAAEAAAANAAsAAQANAAEAAAAMAAsAAQAKAAMAAAALAAsAAQAMAAIAAAAKAAsAAQACAAEAAAAJAAsAAQALAAEAAAAIAAsAAQAKAAMAAAAHAAsAAQAPAAEAAAAGAAsAAQAOAAMAAAAFAAsAAQALAAEAAAAEAAsAAQAOAAMAAAADAAsAAQAOAAAAAAACAAsAAQANAAAAAAABAAsAAQAHAAAAAAAAAAsAAQANAAAAAAD//wsA///////////+/wsA//////////8dAAoA//////////8cAAoA//////////8bAAoAAQAOAAEAAAAaAAoAAQANAAMAAAAZAAoAAQAMAAAAAAAYAAoAAQAOAAEAAAAXAAoAAQANAAMAAAAWAAoAAQAKAAMAAAAVAAoAAQAFAAIAAAAUAAoAAQAOAAMAAAATAAoAAQAFAAIAAAASAAoAAQAPAAIAAAARAAoAAQACAAEAAAAQAAoAAQAOAAEAAAAPAAoAAQALAAEAAAAOAAoAAQANAAMAAAANAAoAAQAKAAIAAAAMAAoAAQAPAAIAAAALAAoAAQAOAAMAAAAKAAoAAQAMAAAAAAAJAAoAAQAPAAEAAAAIAAoAAQAPAAIAAAAHAAoAAQAHAAMAAAAGAAoAAQAEAAMAAAAFAAoAAQAOAAAAAAAEAAoAAQANAAMAAAADAAoAAQAKAAMAAAACAAoAAQAKAAMAAAABAAoAAQAKAAMAAAAAAAoAAQAOAAAAAAD//woA///////////+/woA//////////8dAAkA//////////8cAAkA//////////8bAAkAAQAOAAAAAAAaAAkAAQAMAAMAAAAZAAkAAQAMAAMAAAAYAAkAAQAPAAMAAAAXAAkAAQAKAAMAAAAWAAkAAQAEAAMAAAAVAAkAAQANAAAAAAAUAAkAAQAKAAIAAAATAAkAAQAOAAIAAAASAAkAAQAHAAMAAAARAAkAAQAOAAIAAAAQAAkAAQALAAEAAAAPAAkAAQAFAAIAAAAOAAkAAQAGAAIAAAANAAkAAQAOAAEAAAAMAAkAAQACAAEAAAALAAkAAQAOAAIAAAAKAAkAAQAPAAAAAAAJAAkAAQAKAAIAAAAIAAkAAQANAAAAAAAHAAkAAQAPAAIAAAAGAAkAAQAJAAEAAAAFAAkAAQANAAMAAAAEAAkAAQAIAAIAAAADAAkAAQAEAAMAAAACAAkAAQANAAAAAAABAAkAAQAGAAEAAAAAAAkAAQAPAAMAAAD//wkA///////////+/wkA//////////8dAAgA//////////8cAAgA//////////8bAAgAAQAJAAEAAAAaAAgAAQANAAEAAAAZAAgAAQAEAAAAAAAYAAgAAQANAAAAAAAXAAgAAQAPAAIAAAAWAAgAAQAEAAMAAAAVAAgAAQAMAAMAAAAUAAgAAQAIAAIAAAATAAgAAQAHAAMAAAASAAgAAQAPAAIAAAARAAgAAQAPAAMAAAAQAAgAAQAPAAMAAAAPAAgAAQAOAAEAAAAOAAgAAQAGAAEAAAANAAgAAQAPAAIAAAAMAAgAAQAMAAMAAAALAAgAAQAFAAIAAAAKAAgAAQAGAAEAAAAJAAgAAQAEAAAAAAAIAAgAAQAMAAAAAAAHAAgAAQAGAAEAAAAGAAgAAQAMAAAAAAAFAAgAAQAJAAAAAAAEAAgAAQANAAEAAAADAAgAAQAFAAEAAAACAAgAAQAEAAMAAAABAAgAAQAMAAEAAAAAAAgAAQANAAEAAAD//wgA///////////+/wgA//////////8dAAcA//////////8cAAcA//////////8bAAcAAQAFAAAAAAAaAAcAAQAFAAAAAAAZAAcAAQAFAAAAAAAYAAcAAQACAAAAAAAXAAcAAQACAAAAAAAWAAcAAQAFAAAAAAAVAAcAAQAFAAAAAAAUAAcAAQAFAAAAAAATAAcAAQAFAAAAAAASAAcAAQAFAAAAAAARAAcAAQACAAAAAAAQAAcAAQACAAAAAAAPAAcAAQAFAAAAAAAOAAcAAQAFAAAAAAANAAcAAQACAAAAAAAMAAcAAQACAAAAAAALAAcAAQACAAAAAAAKAAcAAQACAAAAAAAJAAcAAQAFAAAAAAAIAAcAAQACAAAAAAAHAAcAAQACAAAAAAAGAAcAAQAFAAAAAAAFAAcAAQACAAAAAAAEAAcAAQACAAAAAAADAAcAAQACAAAAAAACAAcAAQACAAAAAAABAAcAAQAFAAAAAAAAAAcAAQACAAAAAAD//wcA///////////+/wcA///////////+/wYA//////////8dAAYA//////////8=")
-tile_set = ExtResource("4_qol28")
+[node name="Ground" type="TileMapLayer" parent="." unique_id=496325303]
+tile_map_data = PackedByteArray("AAAdABUA//////////8cABUA//////////8bABUA//////////8aABUA//////////8ZABUA//////////8YABUA//////////8XABUA//////////8WABUA//////////8VABUA//////////8UABUA//////////8TABUA//////////8SABUA//////////8RABUA//////////8QABUA//////////8PABUA//////////8OABUA//////////8NABUA//////////8MABUA//////////8LABUA//////////8KABUA//////////8JABUA//////////8IABUA//////////8HABUA//////////8GABUA//////////8FABUA//////////8EABUA//////////8DABUA//////////8CABUA//////////8BABUA//////////8AABUA/////////////xUA///////////+/xUA//////////8dABQA//////////8cABQA//////////8bABQA//////////8aABQA//////////8ZABQA//////////8YABQA//////////8XABQA//////////8WABQA//////////8VABQA//////////8UABQA//////////8TABQA//////////8SABQA//////////8RABQA//////////8QABQA//////////8PABQA//////////8OABQA//////////8NABQA//////////8MABQA//////////8LABQA//////////8KABQA//////////8JABQA//////////8IABQA//////////8HABQA//////////8GABQA//////////8FABQA//////////8EABQA//////////8DABQA//////////8CABQA//////////8BABQA//////////8AABQA/////////////xQA///////////+/xQA//////////8dABMA//////////8cABMA//////////8bABMAAQANAAIAAAAaABMAAQANAAAAAAAZABMAAQACAAEAAAAYABMAAQAPAAEAAAAXABMAAQANAAEAAAAWABMAAQAFAAEAAAAVABMAAQAMAAMAAAAUABMAAQALAAEAAAATABMAAQANAAMAAAASABMAAQANAAAAAAARABMAAQAKAAMAAAAQABMAAQANAAAAAAAPABMAAQAIAAIAAAAOABMAAQAMAAAAAAANABMAAQAFAAEAAAAMABMAAQAIAAIAAAALABMAAQAOAAMAAAAKABMAAQAKAAMAAAAJABMAAQAOAAEAAAAIABMAAQAKAAMAAAAHABMAAQAKAAMAAAAGABMAAQAMAAMAAAAFABMAAQANAAAAAAAEABMAAQANAAEAAAADABMAAQANAAMAAAACABMAAQAGAAEAAAABABMAAQAIAAIAAAAAABMAAQAEAAMAAAD//xMA///////////+/xMA//////////8dABIA//////////8cABIA//////////8bABIAAQAFAAEAAAAaABIAAQANAAIAAAAZABIAAQAOAAMAAAAYABIAAQAGAAIAAAAXABIAAQANAAMAAAAWABIAAQAMAAIAAAAVABIAAQACAAEAAAAUABIAAQAHAAAAAAATABIAAQANAAIAAAASABIAAQAOAAAAAAARABIAAQAGAAIAAAAQABIAAQANAAAAAAAPABIAAQANAAIAAAAOABIAAQAOAAEAAAANABIAAQAEAAAAAAAMABIAAQAMAAAAAAALABIAAQAGAAIAAAAKABIAAQANAAIAAAAJABIAAQANAAAAAAAIABIAAQAKAAMAAAAHABIAAQALAAEAAAAGABIAAQAEAAMAAAAFABIAAQAOAAEAAAAEABIAAQAOAAIAAAADABIAAQAIAAIAAAACABIAAQAEAAAAAAABABIAAQAJAAEAAAAAABIAAQANAAIAAAD//xIA///////////+/xIA//////////8dABEA//////////8cABEA//////////8bABEAAQAKAAIAAAAaABEAAQAOAAIAAAAZABEAAQAOAAIAAAAYABEAAQAMAAMAAAAXABEAAQANAAIAAAAWABEAAQAGAAEAAAAVABEAAQAMAAIAAAAUABEAAQANAAEAAAATABEAAQANAAIAAAASABEAAQAJAAEAAAARABEAAQAKAAMAAAAQABEAAQAFAAEAAAAPABEAAQAGAAIAAAAOABEAAQAOAAEAAAANABEAAQAJAAAAAAAMABEAAQANAAIAAAALABEAAQAOAAMAAAAKABEAAQACAAEAAAAJABEAAQANAAMAAAAIABEAAQAEAAMAAAAHABEAAQAMAAAAAAAGABEAAQAJAAAAAAAFABEAAQAPAAMAAAAEABEAAQAPAAAAAAADABEAAQANAAIAAAACABEAAQAMAAAAAAABABEAAQANAAEAAAAAABEAAQAHAAAAAAD//xEA///////////+/xEA//////////8dABAA//////////8cABAA//////////8bABAAAQAEAAMAAAAaABAAAQAFAAIAAAAZABAAAQAGAAEAAAAYABAAAQAPAAAAAAAXABAAAQAPAAMAAAAWABAAAQACAAEAAAAVABAAAQAJAAAAAAAUABAAAQANAAEAAAATABAAAQAFAAEAAAASABAAAQAJAAAAAAARABAAAQAGAAEAAAAQABAAAQAKAAMAAAAPABAAAQAMAAEAAAAOABAAAQANAAMAAAANABAAAQAOAAIAAAAMABAAAQAOAAMAAAALABAAAQANAAEAAAAKABAAAQAGAAEAAAAJABAAAQACAAEAAAAIABAAAQAOAAIAAAAHABAAAQAMAAMAAAAGABAAAQAPAAMAAAAFABAAAQAFAAIAAAAEABAAAQALAAEAAAADABAAAQAFAAIAAAACABAAAQAMAAIAAAABABAAAQACAAEAAAAAABAAAQAOAAEAAAD//xAA///////////+/xAA//////////8dAA8A//////////8cAA8A//////////8bAA8AAQAEAAMAAAAaAA8AAQAPAAIAAAAZAA8AAQAIAAIAAAAYAA8AAQAJAAAAAAAXAA8AAQAJAAEAAAAWAA8AAQAHAAMAAAAVAA8AAQAOAAMAAAAUAA8AAQAPAAMAAAATAA8AAQANAAMAAAASAA8AAQAMAAMAAAARAA8AAQAGAAEAAAAQAA8AAQANAAAAAAAPAA8AAQANAAMAAAAOAA8AAQACAAEAAAANAA8AAQAMAAMAAAAMAA8AAQAKAAMAAAALAA8AAQANAAIAAAAKAA8AAQAIAAIAAAAJAA8AAQAKAAIAAAAIAA8AAQAGAAIAAAAHAA8AAQAPAAIAAAAGAA8AAQAJAAAAAAAFAA8AAQAMAAEAAAAEAA8AAQAGAAEAAAADAA8AAQAEAAMAAAACAA8AAQAJAAEAAAABAA8AAQAOAAIAAAAAAA8AAQAJAAEAAAD//w8A///////////+/w8A//////////8dAA4A//////////8cAA4A//////////8bAA4AAQAEAAMAAAAaAA4AAQAIAAIAAAAZAA4AAQAGAAEAAAAYAA4AAQAIAAIAAAAXAA4AAQAKAAMAAAAWAA4AAQAGAAIAAAAVAA4AAQAOAAIAAAAUAA4AAQAPAAAAAAATAA4AAQAPAAIAAAASAA4AAQANAAIAAAARAA4AAQANAAMAAAAQAA4AAQAHAAAAAAAPAA4AAQAKAAMAAAAOAA4AAQAGAAIAAAANAA4AAQANAAMAAAAMAA4AAQAPAAEAAAALAA4AAQAJAAEAAAAKAA4AAQAGAAEAAAAJAA4AAQAKAAIAAAAIAA4AAQAPAAAAAAAHAA4AAQAFAAEAAAAGAA4AAQANAAAAAAAFAA4AAQAPAAEAAAAEAA4AAQAGAAIAAAADAA4AAQAJAAEAAAACAA4AAQAIAAIAAAABAA4AAQAHAAAAAAAAAA4AAQAOAAAAAAD//w4A///////////+/w4A//////////8dAA0A//////////8cAA0A//////////8bAA0AAQAPAAIAAAAaAA0AAQAJAAEAAAAZAA0AAQAJAAEAAAAYAA0AAQAOAAIAAAAXAA0AAQAEAAMAAAAWAA0AAQAGAAIAAAAVAA0AAQAKAAMAAAAUAA0AAQANAAIAAAATAA0AAQAKAAIAAAASAA0AAQAMAAAAAAARAA0AAQAPAAAAAAAQAA0AAQAHAAMAAAAPAA0AAQAOAAEAAAAOAA0AAQAKAAMAAAANAA0AAQAMAAIAAAAMAA0AAQACAAEAAAALAA0AAQAFAAEAAAAKAA0AAQAIAAIAAAAJAA0AAQACAAEAAAAIAA0AAQAMAAMAAAAHAA0AAQAOAAAAAAAGAA0AAQAEAAMAAAAFAA0AAQAEAAMAAAAEAA0AAQAKAAMAAAADAA0AAQAPAAIAAAACAA0AAQAEAAAAAAABAA0AAQAMAAAAAAAAAA0AAQAKAAMAAAD//w0A///////////+/w0A//////////8dAAwA//////////8cAAwA//////////8bAAwAAQAMAAAAAAAaAAwAAQANAAMAAAAZAAwAAQAMAAAAAAAYAAwAAQAGAAEAAAAXAAwAAQAMAAAAAAAWAAwAAQAMAAAAAAAVAAwAAQAPAAMAAAAUAAwAAQAOAAAAAAATAAwAAQAOAAIAAAASAAwAAQALAAEAAAARAAwAAQAPAAEAAAAQAAwAAQAMAAMAAAAPAAwAAQAJAAAAAAAOAAwAAQAOAAMAAAANAAwAAQAKAAIAAAAMAAwAAQAKAAIAAAALAAwAAQALAAEAAAAKAAwAAQAPAAAAAAAJAAwAAQAPAAIAAAAIAAwAAQAGAAIAAAAHAAwAAQAPAAIAAAAGAAwAAQALAAEAAAAFAAwAAQAMAAIAAAAEAAwAAQAMAAAAAAADAAwAAQANAAEAAAACAAwAAQAOAAIAAAABAAwAAQAKAAIAAAAAAAwAAQAOAAIAAAD//wwA///////////+/wwA//////////8dAAsA//////////8cAAsA//////////8bAAsAAQAOAAIAAAAaAAsAAQAOAAEAAAAZAAsAAQAPAAIAAAAYAAsAAQAPAAMAAAAXAAsAAQANAAMAAAAWAAsAAQAEAAAAAAAVAAsAAQAEAAAAAAAUAAsAAQAPAAEAAAATAAsAAQANAAIAAAASAAsAAQAPAAMAAAARAAsAAQAMAAMAAAAQAAsAAQAPAAAAAAAPAAsAAQAIAAIAAAAOAAsAAQAEAAAAAAANAAsAAQAKAAIAAAAMAAsAAQAHAAMAAAALAAsAAQAEAAMAAAAKAAsAAQAGAAEAAAAJAAsAAQAIAAIAAAAIAAsAAQAOAAEAAAAHAAsAAQAOAAAAAAAGAAsAAQAOAAAAAAAFAAsAAQAMAAMAAAAEAAsAAQAMAAIAAAADAAsAAQANAAAAAAACAAsAAQAOAAAAAAABAAsAAQAMAAIAAAAAAAsAAQACAAEAAAD//wsA///////////+/wsA//////////8dAAoA//////////8cAAoA//////////8bAAoAAQAKAAMAAAAaAAoAAQAOAAEAAAAZAAoAAQAKAAIAAAAYAAoAAQALAAEAAAAXAAoAAQAIAAIAAAAWAAoAAQAEAAAAAAAVAAoAAQAFAAIAAAAUAAoAAQAPAAEAAAATAAoAAQAMAAAAAAASAAoAAQAPAAMAAAARAAoAAQACAAEAAAAQAAoAAQAOAAAAAAAPAAoAAQAJAAAAAAAOAAoAAQANAAEAAAANAAoAAQAPAAEAAAAMAAoAAQAHAAAAAAALAAoAAQALAAEAAAAKAAoAAQAOAAEAAAAJAAoAAQAKAAIAAAAIAAoAAQANAAMAAAAHAAoAAQAFAAIAAAAGAAoAAQAJAAEAAAAFAAoAAQAKAAIAAAAEAAoAAQAOAAAAAAADAAoAAQAOAAEAAAACAAoAAQANAAIAAAABAAoAAQAOAAEAAAAAAAoAAQAOAAAAAAD//woA///////////+/woA//////////8dAAkA//////////8cAAkA//////////8bAAkAAQALAAEAAAAaAAkAAQAHAAMAAAAZAAkAAQAGAAIAAAAYAAkAAQAGAAIAAAAXAAkAAQAPAAIAAAAWAAkAAQAKAAIAAAAVAAkAAQAOAAIAAAAUAAkAAQAFAAEAAAATAAkAAQAMAAMAAAASAAkAAQAOAAMAAAARAAkAAQAPAAIAAAAQAAkAAQAEAAMAAAAPAAkAAQAEAAMAAAAOAAkAAQAKAAIAAAANAAkAAQANAAMAAAAMAAkAAQANAAIAAAALAAkAAQACAAEAAAAKAAkAAQAKAAMAAAAJAAkAAQAEAAAAAAAIAAkAAQAMAAEAAAAHAAkAAQAPAAIAAAAGAAkAAQAMAAIAAAAFAAkAAQAPAAIAAAAEAAkAAQAGAAEAAAADAAkAAQAMAAIAAAACAAkAAQAPAAAAAAABAAkAAQACAAEAAAAAAAkAAQANAAAAAAD//wkA///////////+/wkA//////////8dAAgA//////////8cAAgA//////////8bAAgAAQAHAAMAAAAaAAgAAQAPAAMAAAAZAAgAAQAEAAMAAAAYAAgAAQAJAAAAAAAXAAgAAQAGAAEAAAAWAAgAAQAGAAIAAAAVAAgAAQANAAMAAAAUAAgAAQAMAAEAAAATAAgAAQAOAAIAAAASAAgAAQAJAAEAAAARAAgAAQAKAAIAAAAQAAgAAQAOAAEAAAAPAAgAAQAHAAAAAAAOAAgAAQAPAAEAAAANAAgAAQAEAAAAAAAMAAgAAQAOAAIAAAALAAgAAQACAAEAAAAKAAgAAQAOAAAAAAAJAAgAAQACAAEAAAAIAAgAAQAPAAAAAAAHAAgAAQAPAAEAAAAGAAgAAQANAAEAAAAFAAgAAQAKAAMAAAAEAAgAAQAPAAIAAAADAAgAAQAPAAMAAAACAAgAAQALAAEAAAABAAgAAQAKAAMAAAAAAAgAAQAEAAMAAAD//wgA///////////+/wgA//////////8dAAcA//////////8cAAcA//////////8bAAcAAQAFAAAAAAAaAAcAAQACAAAAAAAZAAcAAQAFAAAAAAAYAAcAAQAFAAAAAAAXAAcAAQACAAAAAAAWAAcAAQAFAAAAAAAVAAcAAQAFAAAAAAAUAAcAAQACAAAAAAATAAcAAQAFAAAAAAASAAcAAQACAAAAAAARAAcAAQACAAAAAAAQAAcAAQACAAAAAAAPAAcAAQACAAAAAAAOAAcAAQAFAAAAAAANAAcAAQACAAAAAAAMAAcAAQACAAAAAAALAAcAAQAFAAAAAAAKAAcAAQACAAAAAAAJAAcAAQAFAAAAAAAIAAcAAQACAAAAAAAHAAcAAQACAAAAAAAGAAcAAQAFAAAAAAAFAAcAAQAFAAAAAAAEAAcAAQACAAAAAAADAAcAAQACAAAAAAACAAcAAQACAAAAAAABAAcAAQACAAAAAAAAAAcAAQAFAAAAAAD//wcA///////////+/wcA///////////+/wYA//////////8dAAYA//////////8=")
+tile_set = ExtResource("4_bpcgt")
 
-[node name="Path" type="TileMapLayer" parent="." unique_id=628582386]
-tile_map_data = PackedByteArray("AAAOAA8AAAAHAAMAAAAOABAAAAAHAAMAAAAOABEAAAAHAAMAAAAPABIAAAAHAAEAAAANABIAAAAFAAAAAAAOABIAAAAJAAAAAAAPABMAAAAEAAAAAAANABMAAAAFAAMAAAAOABMAAAAFAAMAAAAPABQA//////////8MABMAAAABAAMAAAAPABEAAAAAAAAAAAAOAA4AAAAAAAAAAAA=")
-tile_set = ExtResource("5_bpcgt")
+[node name="Path" type="TileMapLayer" parent="." unique_id=1430656689]
+tile_map_data = PackedByteArray("AAAOAA8AAAAAAAEAAAAOABAAAAAHAAMAAAAOABEAAAAHAAMAAAAPABIAAAAHAAEAAAANABIAAAAFAAAAAAAOABIAAAAJAAAAAAAPABMAAAAHAAIAAAANABMAAAAFAAMAAAAOABMAAAAFAAMAAAAPABQA//////////8MABMAAAABAAMAAAAPABEAAAAAAAAAAAAOAA4AAAAAAAAAAAA=")
+tile_set = ExtResource("5_xi50e")
 
-[node name="Dalles" type="TileMapLayer" parent="." unique_id=1962923387]
-tile_map_data = PackedByteArray("AAAQAAsAAAALAAkAAAAQAAoAAAAHAAkAAAAPAAoAAAAJAAgAAAAOAAoAAAAJAAgAAAANAAoAAAAJAAgAAAAMAAoAAAAJAAgAAAALAAoAAAAFAAgAAAANABAAAAAHAAoAAAAMABAAAAAGAAoAAAALABAAAAAIAAoAAAASAA8AAAAEAAgAAAARAA8AAAAGAAoAAAAQAA8AAAAFAAoAAAAPAA8AAAAGAAoAAAAOAA8AAAAFAAoAAAANAA8AAAAGAAoAAAAMAA8AAAANAAgAAAALAA8AAAAFAAoAAAAKAA8AAAAFAAsAAAAUAA4AAAAHAAoAAAATAA4AAAAGAAoAAAASAA4AAAANAAsAAAARAA4AAAAMAAsAAAAQAA4AAAAPAAkAAAAPAA4AAAAMAAkAAAAOAA4AAAAMAAoAAAANAA4AAAAMAAgAAAAMAA4AAAAMAAoAAAALAA4AAAAMAAkAAAAKAA4AAAAIAAkAAAAUAA0AAAALAAkAAAATAA0AAAAOAAgAAAASAA0AAAANAAoAAAARAA0AAAANAAoAAAAQAA0AAAAPAAsAAAAPAA0AAAAMAAgAAAAOAA0AAAANAAkAAAANAA0AAAANAAkAAAAMAA0AAAANAAkAAAALAA0AAAANAAoAAAAKAA0AAAAFAAoAAAAJAA0AAAAFAAsAAAAUAAwAAAAHAAkAAAATAAwAAAAJAAgAAAASAAwAAAAJAAgAAAARAAwAAAAJAAgAAAAQAAwAAAAGAAkAAAAPAAwAAAAPAAkAAAAOAAwAAAAPAAoAAAANAAwAAAAPAAsAAAAMAAwAAAANAAgAAAALAAwAAAAPAAgAAAAKAAwAAAAFAAkAAAAPAAsAAAAOAAoAAAAOAAsAAAANAAgAAAANAAsAAAAMAAoAAAAMAAsAAAAPAAsAAAALAAsAAAAFAAkAAAAKAAsAAAAFAAgAAAAJAAwAAAAIAAgAAAAUAAsAAAAAAAgAAAAIAA0AAAABAAsAAAAJAA8AAAABAAsAAAATAA8AAAAAAAoAAAAUAA8AAAAAAAoAAAAOABAAAAAIAAsAAAAPABAAAAAAAAoAAAAQABAAAAAIAAsAAAARABAAAAAAAAoAAAASABAAAAAAAAoAAAAMABEAAAAAAAoAAAALABEAAAAAAAoAAAANABEAAAAAAAoAAAAQAAkAAAAAAAgAAAA=")
-tile_set = ExtResource("6_xi50e")
+[node name="Dalles" type="TileMapLayer" parent="." unique_id=931409931]
+tile_map_data = PackedByteArray("AAAQAAsAAAALAAkAAAAQAAoAAAAHAAkAAAAPAAoAAAAJAAgAAAAOAAoAAAAJAAgAAAANAAoAAAAJAAgAAAAMAAoAAAAJAAgAAAALAAoAAAAFAAgAAAANABAAAAAEAAgAAAAMABAAAAAGAAoAAAALABAAAAAIAAkAAAASAA8AAAAEAAgAAAARAA8AAAAGAAoAAAAQAA8AAAAFAAoAAAAPAA8AAAAGAAoAAAAOAA8AAAAFAAoAAAANAA8AAAAGAAoAAAAMAA8AAAANAAgAAAALAA8AAAAFAAoAAAAKAA8AAAAFAAsAAAAUAA4AAAAEAAgAAAATAA4AAAAGAAoAAAASAA4AAAAPAAgAAAARAA4AAAAOAAsAAAAQAA4AAAANAAkAAAAPAA4AAAAOAAgAAAAOAA4AAAAOAAkAAAANAA4AAAAOAAkAAAAMAA4AAAAMAAgAAAALAA4AAAAMAAsAAAAKAA4AAAAIAAoAAAAUAA0AAAALAAkAAAATAA0AAAAPAAoAAAASAA0AAAAOAAkAAAARAA0AAAAOAAgAAAAQAA0AAAAMAAgAAAAPAA0AAAAPAAgAAAAOAA0AAAAMAAoAAAANAA0AAAAMAAgAAAAMAA0AAAAOAAgAAAALAA0AAAANAAkAAAAKAA0AAAAFAAoAAAAJAA0AAAAFAAsAAAAUAAwAAAAHAAkAAAATAAwAAAAJAAgAAAASAAwAAAAJAAgAAAARAAwAAAAJAAgAAAAQAAwAAAAGAAkAAAAPAAwAAAAMAAoAAAAOAAwAAAAPAAkAAAANAAwAAAAMAAkAAAAMAAwAAAAPAAoAAAALAAwAAAAMAAoAAAAKAAwAAAAFAAkAAAAPAAsAAAAPAAsAAAAOAAsAAAAOAAkAAAANAAsAAAAMAAoAAAAMAAsAAAAPAAkAAAALAAsAAAAFAAkAAAAKAAsAAAAFAAgAAAAJAAwAAAAIAAgAAAAUAAsAAAAAAAgAAAAIAA0AAAABAAsAAAAJAA8AAAABAAsAAAATAA8AAAAAAAoAAAAUAA8AAAAAAAoAAAAOABAAAAAIAAsAAAAPABAAAAAAAAoAAAAQABAAAAAIAAsAAAARABAAAAAAAAoAAAASABAAAAAAAAoAAAAMABEAAAAAAAoAAAALABEAAAAAAAoAAAANABEAAAAAAAoAAAAQAAkAAAAAAAgAAAA=")
+tile_set = ExtResource("6_06283")
 
-[node name="Falaises" type="TileMapLayer" parent="." unique_id=842800592]
+[node name="Falaises" type="TileMapLayer" parent="." unique_id=11944817]
 tile_map_data = PackedByteArray("AAD//wIAAAAJAAAAAAD//wMAAAAJAAEAAAD//wQAAAAJAAIAAAD//wUAAAAUAAcAAAD//wYAAAAUAAgAAAD//wcAAAATAAYAAAD//wgAAAAJAAQAAAD//wkAAAAJAAUAAAAAAAIAAAAJAAAAAAAAAAMAAAAJAAEAAAAAAAQAAAAJAAIAAAAAAAUAAAAVAAgAAAAAAAYAAAATAAgAAAAAAAcAAAARAAYAAAAAAAgAAAAJAAQAAAAAAAkAAAAJAAUAAAABAAIAAAAJAAAAAAABAAMAAAAJAAEAAAABAAQAAAAJAAIAAAABAAUAAAASAAgAAAABAAYAAAATAAgAAAABAAcAAAAQAAgAAAABAAgAAAAJAAQAAAABAAkAAAAJAAUAAAACAAIAAAAJAAAAAAACAAMAAAAJAAEAAAACAAQAAAAJAAIAAAACAAUAAAAVAAgAAAACAAYAAAAVAAcAAAACAAcAAAAUAAYAAAACAAgAAAAJAAQAAAACAAkAAAAJAAUAAAADAAIAAAAJAAAAAAADAAMAAAAJAAEAAAADAAQAAAAJAAIAAAADAAUAAAAQAAYAAAADAAYAAAARAAYAAAADAAcAAAATAAgAAAADAAgAAAAJAAQAAAADAAkAAAAJAAUAAAAEAAIAAAAJAAAAAAAEAAMAAAAJAAEAAAAEAAQAAAAJAAIAAAAEAAUAAAAUAAgAAAAEAAYAAAAVAAYAAAAEAAcAAAAVAAcAAAAEAAgAAAAJAAQAAAAEAAkAAAAJAAUAAAAFAAIAAAAJAAAAAAAFAAMAAAAJAAEAAAAFAAQAAAAJAAIAAAAFAAUAAAARAAcAAAAFAAYAAAARAAgAAAAFAAcAAAARAAgAAAAFAAgAAAAJAAQAAAAFAAkAAAAJAAUAAAAGAAIAAAAJAAAAAAAGAAMAAAAJAAEAAAAGAAQAAAAJAAIAAAAGAAUAAAAUAAYAAAAGAAYAAAARAAYAAAAGAAcAAAATAAcAAAAGAAgAAAAJAAQAAAAGAAkAAAAJAAUAAAAHAAIAAAAJAAAAAAAHAAMAAAAJAAEAAAAHAAQAAAAJAAIAAAAHAAUAAAAVAAcAAAAHAAYAAAAVAAYAAAAHAAcAAAAUAAYAAAAHAAgAAAAJAAQAAAAHAAkAAAAJAAUAAAAIAAIAAAAJAAAAAAAIAAMAAAAJAAEAAAAIAAQAAAAJAAIAAAAIAAUAAAAVAAcAAAAIAAYAAAAQAAcAAAAIAAcAAAARAAcAAAAIAAgAAAAJAAQAAAAIAAkAAAAJAAUAAAAJAAIAAAAJAAAAAAAJAAMAAAAJAAEAAAAJAAQAAAAJAAIAAAAJAAUAAAAQAAYAAAAJAAYAAAASAAYAAAAJAAcAAAAVAAgAAAAJAAgAAAAJAAQAAAAJAAkAAAAJAAUAAAAKAAIAAAAJAAAAAAAKAAMAAAAJAAEAAAAKAAQAAAAJAAIAAAAKAAUAAAAUAAgAAAAKAAYAAAASAAcAAAAKAAcAAAASAAYAAAAKAAgAAAAJAAQAAAAKAAkAAAAJAAUAAAALAAIAAAAJAAAAAAALAAMAAAAJAAEAAAALAAQAAAAJAAIAAAALAAUAAAAQAAcAAAALAAYAAAATAAcAAAALAAcAAAASAAYAAAALAAgAAAAJAAQAAAALAAkAAAAJAAUAAAAMAAIAAAAJAAAAAAAMAAMAAAAJAAEAAAAMAAQAAAAJAAIAAAAMAAUAAAARAAYAAAAMAAYAAAAVAAgAAAAMAAcAAAAQAAYAAAAMAAgAAAAJAAQAAAAMAAkAAAAJAAUAAAANAAIAAAAJAAAAAAANAAMAAAAJAAEAAAANAAQAAAAJAAIAAAANAAUAAAAQAAYAAAANAAYAAAAQAAcAAAANAAcAAAATAAYAAAANAAgAAAAJAAQAAAANAAkAAAAJAAUAAAAOAAIAAAAJAAAAAAAOAAMAAAAJAAEAAAAOAAQAAAAJAAIAAAAOAAUAAAAUAAYAAAAOAAYAAAAVAAgAAAAOAAcAAAAVAAgAAAAOAAgAAAAJAAQAAAAOAAkAAAAJAAUAAAAPAAIAAAAJAAAAAAAPAAMAAAAJAAEAAAAPAAQAAAAJAAIAAAAPAAUAAAAQAAcAAAAPAAYAAAAUAAgAAAAPAAcAAAASAAcAAAAPAAgAAAAJAAQAAAAPAAkAAAAJAAUAAAAQAAIAAAAJAAAAAAAQAAMAAAAJAAEAAAAQAAQAAAAJAAIAAAAQAAUAAAAVAAYAAAAQAAYAAAATAAYAAAAQAAcAAAASAAcAAAAQAAgAAAAJAAQAAAAQAAkAAAAJAAUAAAARAAIAAAAJAAAAAAARAAMAAAAJAAEAAAARAAQAAAAJAAIAAAARAAUAAAAVAAgAAAARAAYAAAAVAAYAAAARAAcAAAARAAcAAAARAAgAAAAJAAQAAAARAAkAAAAJAAUAAAASAAIAAAAJAAAAAAASAAMAAAAJAAEAAAASAAQAAAAJAAIAAAASAAUAAAASAAgAAAASAAYAAAASAAcAAAASAAcAAAASAAgAAAASAAgAAAAJAAQAAAASAAkAAAAJAAUAAAATAAIAAAAJAAAAAAATAAMAAAAJAAEAAAATAAQAAAAJAAIAAAATAAUAAAATAAgAAAATAAYAAAATAAcAAAATAAcAAAASAAcAAAATAAgAAAAJAAQAAAATAAkAAAAJAAUAAAAUAAIAAAAJAAAAAAAUAAMAAAAJAAEAAAAUAAQAAAAJAAIAAAAUAAUAAAASAAgAAAAUAAYAAAAVAAgAAAAUAAcAAAAQAAgAAAAUAAgAAAAJAAQAAAAUAAkAAAAJAAUAAAAVAAIAAAAJAAAAAAAVAAMAAAAJAAEAAAAVAAQAAAAJAAIAAAAVAAUAAAAUAAcAAAAVAAYAAAATAAYAAAAVAAcAAAASAAgAAAAVAAgAAAAJAAQAAAAVAAkAAAAJAAUAAAAWAAIAAAAJAAAAAAAWAAMAAAAJAAEAAAAWAAQAAAAJAAIAAAAWAAUAAAAQAAYAAAAWAAYAAAAVAAYAAAAWAAcAAAARAAgAAAAWAAgAAAAJAAQAAAAWAAkAAAAJAAUAAAAXAAIAAAAJAAAAAAAXAAMAAAAJAAEAAAAXAAQAAAAJAAIAAAAXAAUAAAAVAAcAAAAXAAYAAAAUAAgAAAAXAAcAAAATAAcAAAAXAAgAAAAJAAQAAAAXAAkAAAAJAAUAAAAYAAIAAAAJAAAAAAAYAAMAAAAJAAEAAAAYAAQAAAAJAAIAAAAYAAUAAAAVAAgAAAAYAAYAAAARAAYAAAAYAAcAAAATAAgAAAAYAAgAAAAJAAQAAAAYAAkAAAAJAAUAAAAZAAIAAAAJAAAAAAAZAAMAAAAJAAEAAAAZAAQAAAAJAAIAAAAZAAUAAAARAAgAAAAZAAYAAAATAAcAAAAZAAcAAAAVAAYAAAAZAAgAAAAJAAQAAAAZAAkAAAAJAAUAAAAaAAIAAAAJAAAAAAAaAAMAAAAJAAEAAAAaAAQAAAAJAAIAAAAaAAUAAAAQAAgAAAAaAAYAAAATAAYAAAAaAAcAAAAQAAYAAAAaAAgAAAAJAAQAAAAaAAkAAAAJAAUAAAAbAAIAAAAJAAAAAAAbAAMAAAAJAAEAAAAbAAQAAAAJAAIAAAAbAAUAAAAUAAgAAAAbAAYAAAATAAcAAAAbAAcAAAARAAcAAAAbAAgAAAAJAAQAAAAbAAkAAAAJAAUAAAAcAAIAAAAJAAAAAAAcAAMAAAAJAAEAAAAcAAQAAAAJAAIAAAAcAAUAAAASAAgAAAAcAAYAAAARAAgAAAAcAAcAAAASAAYAAAAcAAgAAAAJAAQAAAAcAAkAAAAJAAUAAAA=")
-tile_set = ExtResource("7_06283")
+tile_set = ExtResource("7_a2awg")
 
-[node name="Details" type="TileMapLayer" parent="." unique_id=214189362]
+[node name="Details" type="TileMapLayer" parent="." unique_id=1996127799]
 tile_map_data = PackedByteArray("AAAWAAoAAAAHABYAAAAIAAwAAAAAABcAAAAXAA0AAAADABYAAAACABIAAAABABYAAAAKABIAAAAEABcAAAAZABIAAAADABYAAAAHABMAAAACABcAAAAIABMAAAAEABcAAAAQABMAAAABABcAAAASABMAAAAAABcAAAA=")
-tile_set = ExtResource("8_a2awg")
+tile_set = ExtResource("8_mmfd8")
 
-[node name="DetailsSol" type="Node2D" parent="." unique_id=598819670]
+[node name="DetailsSol" type="Node2D" parent="." unique_id=261169048]
 
-[node name="DallesOrnees" type="Sprite2D" parent="DetailsSol" unique_id=1824332719]
+[node name="DallesOrnees" type="Sprite2D" parent="DetailsSol" unique_id=1438300481]
 position = Vector2(448, 384)
-texture = ExtResource("9_mmfd8")
+texture = ExtResource("9_270vs")
 centered = false
 offset = Vector2(-64, -64)
 region_enabled = true
 region_rect = Rect2(1280, 640, 128, 64)
 
-[node name="TracesMarchand" type="Node2D" parent="DetailsSol" unique_id=100056826]
+[node name="TracesMarchand" type="Node2D" parent="DetailsSol" unique_id=153019833]
 
-[node name="@Sprite2D@29" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=398572087]
+[node name="@Sprite2D@29" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1868746089]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(447, 640)
 rotation = -1.6456562
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@30" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1242607724]
+[node name="@Sprite2D@30" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=877922209]
 position = Vector2(436, 631)
 rotation = -1.4762353
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 flip_v = true
 
-[node name="@Sprite2D@31" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=968260801]
+[node name="@Sprite2D@31" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=723586872]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(446, 610)
 rotation = -1.6456562
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@32" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1620384974]
+[node name="@Sprite2D@32" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1529999336]
 position = Vector2(449, 610)
 rotation = -1.5393443
-texture = ExtResource("12_vxrul")
+texture = ExtResource("12_6d83i")
 
-[node name="@Sprite2D@33" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=445775687]
+[node name="@Sprite2D@33" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=22747424]
 position = Vector2(455, 597)
 rotation = -1.6770995
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 
-[node name="@Sprite2D@34" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2034913528]
+[node name="@Sprite2D@34" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=135932530]
 position = Vector2(432, 559)
 rotation = -1.6850353
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 flip_v = true
 
-[node name="@Sprite2D@35" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=255345800]
+[node name="@Sprite2D@35" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1240952784]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(442, 550)
 rotation = -1.6456562
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@36" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=149000551]
+[node name="@Sprite2D@36" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2121569642]
 position = Vector2(441, 524)
 rotation = -1.8210986
-texture = ExtResource("13_6d83i")
+texture = ExtResource("13_lo7af")
 
-[node name="@Sprite2D@37" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2089070237]
+[node name="@Sprite2D@37" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1767200203]
 position = Vector2(449, 522)
 rotation = -1.7380451
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 
-[node name="@Sprite2D@38" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1431599208]
+[node name="@Sprite2D@38" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=390049932]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(440, 520)
 rotation = -1.6456562
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@39" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=421747818]
+[node name="@Sprite2D@39" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=306538639]
 position = Vector2(431, 487)
 rotation = -1.1716284
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 flip_v = true
 
-[node name="@Sprite2D@40" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=198290688]
+[node name="@Sprite2D@40" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2019029477]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(447, 461)
 rotation = -1.4056476
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@41" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=958074341]
+[node name="@Sprite2D@41" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=720884432]
 position = Vector2(460, 451)
 rotation = -1.1604223
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 
-[node name="@Sprite2D@42" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1158662778]
+[node name="@Sprite2D@42" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1408016445]
 position = Vector2(451, 443)
 rotation = -1.4854698
-texture = ExtResource("13_6d83i")
+texture = ExtResource("13_lo7af")
 
-[node name="@Sprite2D@43" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=424437365]
+[node name="@Sprite2D@43" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=559960068]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(452, 431)
 rotation = -1.4056476
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@44" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=250302385]
+[node name="@Sprite2D@44" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2047169345]
 position = Vector2(444, 411)
 rotation = -1.6556463
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 flip_v = true
 
-[node name="@Sprite2D@45" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1835825606]
+[node name="@Sprite2D@45" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=2052280942]
 position = Vector2(460, 373)
 rotation = -1.7168868
-texture = ExtResource("11_i5xo5")
+texture = ExtResource("11_vxrul")
 
-[node name="@Sprite2D@46" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=550057528]
+[node name="@Sprite2D@46" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1827958320]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(449, 370)
 rotation = -1.6704649
-texture = ExtResource("10_270vs")
+texture = ExtResource("10_i5xo5")
 
-[node name="@Sprite2D@47" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=770814834]
+[node name="@Sprite2D@47" type="Sprite2D" parent="DetailsSol/TracesMarchand" unique_id=1924542810]
 position = Vector2(448, 356)
-texture = ExtResource("14_lo7af")
+texture = ExtResource("14_ti3wg")
 
-[node name="@Sprite2D@80" type="Sprite2D" parent="DetailsSol" unique_id=197265099]
+[node name="@Sprite2D@80" type="Sprite2D" parent="DetailsSol" unique_id=1889732785]
 position = Vector2(206, 378)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -16)
 region_enabled = true
 region_rect = Rect2(546, 618, 20, 18)
 
-[node name="@Sprite2D@82" type="Sprite2D" parent="DetailsSol" unique_id=1338102072]
+[node name="@Sprite2D@82" type="Sprite2D" parent="DetailsSol" unique_id=983911238]
 position = Vector2(554, 373)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -14)
 region_enabled = true
 region_rect = Rect2(2, 584, 30, 16)
 
-[node name="@Sprite2D@83" type="Sprite2D" parent="DetailsSol" unique_id=1143333390]
+[node name="@Sprite2D@83" type="Sprite2D" parent="DetailsSol" unique_id=361449467]
 position = Vector2(838, 376)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -14)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(192, 616, 30, 16)
 
-[node name="@Sprite2D@86" type="Sprite2D" parent="DetailsSol" unique_id=2055371291]
+[node name="@Sprite2D@86" type="Sprite2D" parent="DetailsSol" unique_id=1456783899]
 position = Vector2(785, 397)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-19, -14)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(112, 590, 38, 16)
 
-[node name="@Sprite2D@87" type="Sprite2D" parent="DetailsSol" unique_id=1759765377]
+[node name="@Sprite2D@87" type="Sprite2D" parent="DetailsSol" unique_id=1276485608]
 position = Vector2(817, 408)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-19, -14)
 region_enabled = true
 region_rect = Rect2(112, 590, 38, 16)
 
-[node name="@Sprite2D@88" type="Sprite2D" parent="DetailsSol" unique_id=934967133]
+[node name="@Sprite2D@88" type="Sprite2D" parent="DetailsSol" unique_id=1485561356]
 position = Vector2(856, 407)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -14)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(2, 584, 30, 16)
 
-[node name="@Sprite2D@89" type="Sprite2D" parent="DetailsSol" unique_id=553690960]
+[node name="@Sprite2D@89" type="Sprite2D" parent="DetailsSol" unique_id=7409029]
 position = Vector2(112, 428)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-7, -10)
 region_enabled = true
 region_rect = Rect2(550, 744, 14, 12)
 
-[node name="@Sprite2D@102" type="Sprite2D" parent="DetailsSol" unique_id=181378867]
+[node name="@Sprite2D@102" type="Sprite2D" parent="DetailsSol" unique_id=2049134693]
 position = Vector2(877, 531)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-26, -28)
 region_enabled = true
 region_rect = Rect2(38, 578, 52, 30)
 
-[node name="@Sprite2D@106" type="Sprite2D" parent="DetailsSol" unique_id=302803824]
+[node name="@Sprite2D@106" type="Sprite2D" parent="DetailsSol" unique_id=1147581382]
 position = Vector2(436, 562)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-18, -18)
 region_enabled = true
 region_rect = Rect2(14, 616, 36, 20)
 
-[node name="@Sprite2D@110" type="Sprite2D" parent="DetailsSol" unique_id=2042032082]
+[node name="@Sprite2D@110" type="Sprite2D" parent="DetailsSol" unique_id=135557558]
 position = Vector2(109, 591)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-18, -18)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(174, 584, 36, 20)
 
-[node name="@Sprite2D@113" type="Sprite2D" parent="DetailsSol" unique_id=2115506746]
+[node name="@Sprite2D@113" type="Sprite2D" parent="DetailsSol" unique_id=462081858]
 position = Vector2(629, 589)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -14)
 region_enabled = true
 region_rect = Rect2(192, 616, 30, 16)
 
-[node name="@Sprite2D@117" type="Sprite2D" parent="DetailsSol" unique_id=1174041769]
+[node name="@Sprite2D@117" type="Sprite2D" parent="DetailsSol" unique_id=1724792079]
 position = Vector2(327, 633)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-19, -14)
 region_enabled = true
 region_rect = Rect2(112, 590, 38, 16)
 
-[node name="@Sprite2D@118" type="Sprite2D" parent="DetailsSol" unique_id=472718453]
+[node name="@Sprite2D@118" type="Sprite2D" parent="DetailsSol" unique_id=891043956]
 position = Vector2(405, 629)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -14)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(2, 584, 30, 16)
 
-[node name="@Sprite2D@174" type="Sprite2D" parent="DetailsSol" unique_id=1742085321]
+[node name="@Sprite2D@174" type="Sprite2D" parent="DetailsSol" unique_id=749390667]
 position = Vector2(412, 442)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-16, -15)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(224, 844, 32, 18)
 
-[node name="@Sprite2D@175" type="Sprite2D" parent="DetailsSol" unique_id=1948239089]
+[node name="@Sprite2D@175" type="Sprite2D" parent="DetailsSol" unique_id=1228319448]
 position = Vector2(330, 507)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 region_enabled = true
 region_rect = Rect2(230, 870, 24, 14)
 
-[node name="@Sprite2D@176" type="Sprite2D" parent="DetailsSol" unique_id=1991800060]
+[node name="@Sprite2D@176" type="Sprite2D" parent="DetailsSol" unique_id=1652190616]
 position = Vector2(339, 500)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 region_enabled = true
 region_rect = Rect2(260, 844, 24, 14)
 
-[node name="@Sprite2D@177" type="Sprite2D" parent="DetailsSol" unique_id=1874354777]
+[node name="@Sprite2D@177" type="Sprite2D" parent="DetailsSol" unique_id=147486695]
 position = Vector2(561, 395)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(260, 844, 24, 14)
 
-[node name="@Sprite2D@178" type="Sprite2D" parent="DetailsSol" unique_id=27418173]
+[node name="@Sprite2D@178" type="Sprite2D" parent="DetailsSol" unique_id=569077357]
 position = Vector2(408, 461)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 region_enabled = true
 region_rect = Rect2(230, 870, 24, 14)
 
-[node name="@Sprite2D@179" type="Sprite2D" parent="DetailsSol" unique_id=1255909713]
+[node name="@Sprite2D@179" type="Sprite2D" parent="DetailsSol" unique_id=69073078]
 position = Vector2(590, 405)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 region_enabled = true
 region_rect = Rect2(260, 844, 24, 14)
 
-[node name="@Sprite2D@180" type="Sprite2D" parent="DetailsSol" unique_id=1328658390]
+[node name="@Sprite2D@180" type="Sprite2D" parent="DetailsSol" unique_id=325971289]
 position = Vector2(650, 442)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(230, 870, 24, 14)
 
-[node name="@Sprite2D@181" type="Sprite2D" parent="DetailsSol" unique_id=591621968]
+[node name="@Sprite2D@181" type="Sprite2D" parent="DetailsSol" unique_id=1731146740]
 position = Vector2(487, 509)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 region_enabled = true
 region_rect = Rect2(230, 870, 24, 14)
 
-[node name="@Sprite2D@182" type="Sprite2D" parent="DetailsSol" unique_id=1456105123]
+[node name="@Sprite2D@182" type="Sprite2D" parent="DetailsSol" unique_id=2118984524]
 position = Vector2(461, 447)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(260, 844, 24, 14)
 
-[node name="@Sprite2D@183" type="Sprite2D" parent="DetailsSol" unique_id=433756629]
+[node name="@Sprite2D@183" type="Sprite2D" parent="DetailsSol" unique_id=880486585]
 position = Vector2(370, 439)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-12, -11)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(230, 870, 24, 14)
 
-[node name="YSortLayer" type="Node2D" parent="." unique_id=1005974062]
+[node name="YSortLayer" type="Node2D" parent="." unique_id=1446292104]
 y_sort_enabled = true
 
-[node name="Player" parent="YSortLayer" unique_id=552404979 groups=["Player"] instance=ExtResource("17_l1pme")]
+[node name="Player" parent="YSortLayer" unique_id=552404979 groups=["Player"] instance=ExtResource("17_sw6q7")]
 position = Vector2(448, 595.2)
 
-[node name="FacadeOuest" type="Sprite2D" parent="YSortLayer" unique_id=497500537]
+[node name="FacadeOuest" type="Sprite2D" parent="YSortLayer" unique_id=1307477256]
 position = Vector2(352, 320)
-texture = ExtResource("9_mmfd8")
+texture = ExtResource("9_270vs")
 centered = false
 offset = Vector2(-64, -76)
 region_enabled = true
 region_rect = Rect2(1024, 416, 128, 78)
 
-[node name="FacadeEst" type="Sprite2D" parent="YSortLayer" unique_id=1653594395]
+[node name="FacadeEst" type="Sprite2D" parent="YSortLayer" unique_id=600213551]
 position = Vector2(544, 320)
-texture = ExtResource("9_mmfd8")
+texture = ExtResource("9_270vs")
 centered = false
 offset = Vector2(-64, -76)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(1024, 416, 128, 78)
 
-[node name="PorteScellee" type="Sprite2D" parent="YSortLayer" unique_id=952489196]
+[node name="PorteScellee" type="Sprite2D" parent="YSortLayer" unique_id=1521985367]
 position = Vector2(448, 321)
-texture = ExtResource("9_mmfd8")
+texture = ExtResource("9_270vs")
 centered = false
 offset = Vector2(-32, -116)
 region_enabled = true
 region_rect = Rect2(1440, 544, 64, 118)
 
-[node name="@Sprite2D@5" type="Sprite2D" parent="YSortLayer" unique_id=7379373]
+[node name="@Sprite2D@5" type="Sprite2D" parent="YSortLayer" unique_id=43019500]
 position = Vector2(275, 328)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -150)
 region_enabled = true
 region_rect = Rect2(708, 34, 52, 158)
 
-[node name="@Sprite2D@6" type="Sprite2D" parent="YSortLayer" unique_id=2132304210]
+[node name="@Sprite2D@6" type="Sprite2D" parent="YSortLayer" unique_id=1318038840]
 position = Vector2(621, 328)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -150)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(708, 34, 52, 158)
 
-[node name="@Sprite2D@7" type="Sprite2D" parent="YSortLayer" unique_id=1456503930]
+[node name="@Sprite2D@7" type="Sprite2D" parent="YSortLayer" unique_id=729438630]
 position = Vector2(237, 339)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-32, -56)
 region_enabled = true
 region_rect = Rect2(960, 224, 64, 64)
 
-[node name="@Sprite2D@8" type="Sprite2D" parent="YSortLayer" unique_id=460506239]
+[node name="@Sprite2D@8" type="Sprite2D" parent="YSortLayer" unique_id=1182738189]
 position = Vector2(669, 342)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-40, -36)
 region_enabled = true
 region_rect = Rect2(936, 10, 80, 44)
 
-[node name="@Sprite2D@10" type="Sprite2D" parent="YSortLayer" unique_id=170836303]
+[node name="@Sprite2D@10" type="Sprite2D" parent="YSortLayer" unique_id=1396016942]
 position = Vector2(37, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -84)
 region_enabled = true
 region_rect = Rect2(778, 96, 44, 92)
 
-[node name="@Sprite2D@11" type="Sprite2D" parent="YSortLayer" unique_id=187638249]
+[node name="@Sprite2D@11" type="Sprite2D" parent="YSortLayer" unique_id=169439381]
 position = Vector2(93, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -56)
 region_enabled = true
 region_rect = Rect2(452, 544, 20, 60)
 
-[node name="@Sprite2D@12" type="Sprite2D" parent="YSortLayer" unique_id=428918145]
+[node name="@Sprite2D@12" type="Sprite2D" parent="YSortLayer" unique_id=1136059251]
 position = Vector2(168, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(652, 550, 44, 72)
 
-[node name="@Sprite2D@13" type="Sprite2D" parent="YSortLayer" unique_id=101722400]
+[node name="@Sprite2D@13" type="Sprite2D" parent="YSortLayer" unique_id=2113831175]
 position = Vector2(248, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@14" type="Sprite2D" parent="YSortLayer" unique_id=614743157]
+[node name="@Sprite2D@14" type="Sprite2D" parent="YSortLayer" unique_id=1655337361]
 position = Vector2(270, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -84)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(778, 96, 44, 92)
 
-[node name="@Sprite2D@15" type="Sprite2D" parent="YSortLayer" unique_id=536937198]
+[node name="@Sprite2D@15" type="Sprite2D" parent="YSortLayer" unique_id=1515910346]
 position = Vector2(349, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-16, -56)
 region_enabled = true
 region_rect = Rect2(768, 450, 32, 62)
 
-[node name="@Sprite2D@16" type="Sprite2D" parent="YSortLayer" unique_id=1483257737]
+[node name="@Sprite2D@16" type="Sprite2D" parent="YSortLayer" unique_id=1248342802]
 position = Vector2(589, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@17" type="Sprite2D" parent="YSortLayer" unique_id=1802430742]
+[node name="@Sprite2D@17" type="Sprite2D" parent="YSortLayer" unique_id=447803083]
 position = Vector2(665, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -56)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(546, 544, 26, 60)
 
-[node name="@Sprite2D@18" type="Sprite2D" parent="YSortLayer" unique_id=372468753]
+[node name="@Sprite2D@18" type="Sprite2D" parent="YSortLayer" unique_id=1006182913]
 position = Vector2(744, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -66)
 region_enabled = true
 region_rect = Rect2(652, 454, 44, 72)
 
-[node name="@Sprite2D@19" type="Sprite2D" parent="YSortLayer" unique_id=1601523580]
+[node name="@Sprite2D@19" type="Sprite2D" parent="YSortLayer" unique_id=1553227679]
 position = Vector2(807, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -84)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(778, 96, 44, 92)
 
-[node name="@Sprite2D@20" type="Sprite2D" parent="YSortLayer" unique_id=668229271]
+[node name="@Sprite2D@20" type="Sprite2D" parent="YSortLayer" unique_id=341658639]
 position = Vector2(857, 115)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 554, 48, 72)
 
-[node name="@Sprite2D@21" type="Sprite2D" parent="YSortLayer" unique_id=1518603432]
+[node name="@Sprite2D@21" type="Sprite2D" parent="YSortLayer" unique_id=1486784191]
 position = Vector2(128, 365)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-64, -244)
 region_enabled = true
 region_rect = Rect2(320, 128, 128, 256)
 
-[node name="@Sprite2D@22" type="Sprite2D" parent="YSortLayer" unique_id=370815991]
+[node name="@Sprite2D@22" type="Sprite2D" parent="YSortLayer" unique_id=2065446498]
 position = Vector2(774, 358)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-48, -214)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(480, 160, 96, 224)
 
-[node name="@Sprite2D@23" type="Sprite2D" parent="YSortLayer" unique_id=2016940147]
+[node name="@Sprite2D@23" type="Sprite2D" parent="YSortLayer" unique_id=670506134]
 position = Vector2(288, 461)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -150)
 region_enabled = true
 region_rect = Rect2(708, 34, 52, 158)
 
-[node name="@Sprite2D@24" type="Sprite2D" parent="YSortLayer" unique_id=1204939964]
+[node name="@Sprite2D@24" type="Sprite2D" parent="YSortLayer" unique_id=132714468]
 position = Vector2(288, 550)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -56)
 region_enabled = true
 region_rect = Rect2(868, 128, 52, 64)
 
-[node name="@Sprite2D@25" type="Sprite2D" parent="YSortLayer" unique_id=845658767]
+[node name="@Sprite2D@25" type="Sprite2D" parent="YSortLayer" unique_id=1747871759]
 position = Vector2(608, 461)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -102)
 region_enabled = true
 region_rect = Rect2(804, 82, 52, 110)
 
-[node name="@Sprite2D@26" type="Sprite2D" parent="YSortLayer" unique_id=457873095]
+[node name="@Sprite2D@26" type="Sprite2D" parent="YSortLayer" unique_id=2112829402]
 position = Vector2(621, 557)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-40, -36)
 region_enabled = true
 region_rect = Rect2(838, 10, 80, 44)
 
-[node name="@Sprite2D@27" type="Sprite2D" parent="YSortLayer" unique_id=1773003014]
+[node name="@Sprite2D@27" type="Sprite2D" parent="YSortLayer" unique_id=2087933947]
 position = Vector2(160, 576)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-108, -104)
 region_enabled = true
 region_rect = Rect2(608, 326, 216, 116)
 
-[node name="@Sprite2D@28" type="Sprite2D" parent="YSortLayer" unique_id=1235173147]
+[node name="@Sprite2D@28" type="Sprite2D" parent="YSortLayer" unique_id=2092393769]
 position = Vector2(749, 518)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-96, -84)
 region_enabled = true
 region_rect = Rect2(32, 418, 192, 94)
 
-[node name="@Sprite2D@48" type="Sprite2D" parent="YSortLayer" unique_id=1903409037]
+[node name="@Sprite2D@48" type="Sprite2D" parent="YSortLayer" unique_id=308907652]
 position = Vector2(183, 446)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 region_enabled = true
 region_rect = Rect2(34, 672, 28, 30)
 
-[node name="@Sprite2D@49" type="Sprite2D" parent="YSortLayer" unique_id=290231341]
+[node name="@Sprite2D@49" type="Sprite2D" parent="YSortLayer" unique_id=1944887579]
 position = Vector2(162, 426)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@50" type="Sprite2D" parent="YSortLayer" unique_id=875050811]
+[node name="@Sprite2D@50" type="Sprite2D" parent="YSortLayer" unique_id=608226981]
 position = Vector2(169, 428)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 region_enabled = true
 region_rect = Rect2(2, 672, 28, 30)
 
-[node name="@Sprite2D@51" type="Sprite2D" parent="YSortLayer" unique_id=1245364516]
+[node name="@Sprite2D@51" type="Sprite2D" parent="YSortLayer" unique_id=1870887509]
 position = Vector2(214, 432)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 region_enabled = true
 region_rect = Rect2(454, 768, 26, 32)
 
-[node name="@Sprite2D@52" type="Sprite2D" parent="YSortLayer" unique_id=1922885987]
+[node name="@Sprite2D@52" type="Sprite2D" parent="YSortLayer" unique_id=607672050]
 position = Vector2(207, 429)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-11, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(228, 770, 22, 30)
 
-[node name="@Sprite2D@53" type="Sprite2D" parent="YSortLayer" unique_id=494311477]
+[node name="@Sprite2D@53" type="Sprite2D" parent="YSortLayer" unique_id=903422864]
 position = Vector2(138, 460)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 region_enabled = true
 region_rect = Rect2(454, 768, 26, 32)
 
-[node name="@Sprite2D@54" type="Sprite2D" parent="YSortLayer" unique_id=1595833817]
+[node name="@Sprite2D@54" type="Sprite2D" parent="YSortLayer" unique_id=1441909409]
 position = Vector2(136, 470)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 region_enabled = true
 region_rect = Rect2(38, 644, 20, 22)
 
-[node name="@Sprite2D@55" type="Sprite2D" parent="YSortLayer" unique_id=1987504478]
+[node name="@Sprite2D@55" type="Sprite2D" parent="YSortLayer" unique_id=1065193809]
 position = Vector2(136, 464)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-12, -27)
 region_enabled = true
 region_rect = Rect2(292, 770, 24, 30)
 
-[node name="@Sprite2D@56" type="Sprite2D" parent="YSortLayer" unique_id=597461555]
+[node name="@Sprite2D@56" type="Sprite2D" parent="YSortLayer" unique_id=1740426681]
 position = Vector2(169, 458)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(38, 644, 20, 22)
 
-[node name="@Sprite2D@57" type="Sprite2D" parent="YSortLayer" unique_id=1941022379]
+[node name="@Sprite2D@57" type="Sprite2D" parent="YSortLayer" unique_id=1949182229]
 position = Vector2(166, 458)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 region_enabled = true
 region_rect = Rect2(162, 768, 28, 32)
 
-[node name="@Sprite2D@58" type="Sprite2D" parent="YSortLayer" unique_id=912062144]
+[node name="@Sprite2D@58" type="Sprite2D" parent="YSortLayer" unique_id=1851679826]
 position = Vector2(201, 460)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(196, 768, 26, 32)
 
-[node name="@Sprite2D@59" type="Sprite2D" parent="YSortLayer" unique_id=835438429]
+[node name="@Sprite2D@59" type="Sprite2D" parent="YSortLayer" unique_id=524640304]
 position = Vector2(204, 458)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(6, 644, 20, 22)
 
-[node name="@Sprite2D@60" type="Sprite2D" parent="YSortLayer" unique_id=723641437]
+[node name="@Sprite2D@60" type="Sprite2D" parent="YSortLayer" unique_id=442895859]
 position = Vector2(274, 473)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@61" type="Sprite2D" parent="YSortLayer" unique_id=2018180828]
+[node name="@Sprite2D@61" type="Sprite2D" parent="YSortLayer" unique_id=1732384132]
 position = Vector2(135, 496)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(66, 672, 28, 30)
 
-[node name="@Sprite2D@62" type="Sprite2D" parent="YSortLayer" unique_id=784357770]
+[node name="@Sprite2D@62" type="Sprite2D" parent="YSortLayer" unique_id=1986582815]
 position = Vector2(140, 497)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(454, 768, 26, 32)
 
-[node name="@Sprite2D@63" type="Sprite2D" parent="YSortLayer" unique_id=710133589]
+[node name="@Sprite2D@63" type="Sprite2D" parent="YSortLayer" unique_id=909116133]
 position = Vector2(173, 497)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@64" type="Sprite2D" parent="YSortLayer" unique_id=2090829650]
+[node name="@Sprite2D@64" type="Sprite2D" parent="YSortLayer" unique_id=1510660428]
 position = Vector2(207, 506)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 region_enabled = true
 region_rect = Rect2(70, 644, 20, 22)
 
-[node name="@Sprite2D@65" type="Sprite2D" parent="YSortLayer" unique_id=1261923455]
+[node name="@Sprite2D@65" type="Sprite2D" parent="YSortLayer" unique_id=1736731732]
 position = Vector2(285, 501)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(6, 644, 20, 22)
 
-[node name="@Sprite2D@66" type="Sprite2D" parent="YSortLayer" unique_id=1709289607]
+[node name="@Sprite2D@66" type="Sprite2D" parent="YSortLayer" unique_id=1005696652]
 position = Vector2(649, 520)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@67" type="Sprite2D" parent="YSortLayer" unique_id=1566556834]
+[node name="@Sprite2D@67" type="Sprite2D" parent="YSortLayer" unique_id=1061637469]
 position = Vector2(654, 555)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 region_enabled = true
 region_rect = Rect2(454, 768, 26, 32)
 
-[node name="@Sprite2D@68" type="Sprite2D" parent="YSortLayer" unique_id=640018098]
+[node name="@Sprite2D@68" type="Sprite2D" parent="YSortLayer" unique_id=1456646579]
 position = Vector2(667, 561)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@69" type="Sprite2D" parent="YSortLayer" unique_id=1914219148]
+[node name="@Sprite2D@69" type="Sprite2D" parent="YSortLayer" unique_id=80023570]
 position = Vector2(675, 559)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(196, 768, 26, 32)
 
-[node name="@Sprite2D@70" type="Sprite2D" parent="YSortLayer" unique_id=1180629031]
+[node name="@Sprite2D@70" type="Sprite2D" parent="YSortLayer" unique_id=870022677]
 position = Vector2(681, 562)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 region_enabled = true
 region_rect = Rect2(2, 672, 28, 30)
 
-[node name="@Sprite2D@71" type="Sprite2D" parent="YSortLayer" unique_id=1487236294]
+[node name="@Sprite2D@71" type="Sprite2D" parent="YSortLayer" unique_id=1653449001]
 position = Vector2(731, 564)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(420, 768, 28, 32)
 
-[node name="@Sprite2D@72" type="Sprite2D" parent="YSortLayer" unique_id=631925289]
+[node name="@Sprite2D@72" type="Sprite2D" parent="YSortLayer" unique_id=1701328048]
 position = Vector2(786, 569)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(34, 672, 28, 30)
 
-[node name="@Sprite2D@73" type="Sprite2D" parent="YSortLayer" unique_id=1752500369]
+[node name="@Sprite2D@73" type="Sprite2D" parent="YSortLayer" unique_id=1664139549]
 position = Vector2(776, 560)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(162, 768, 28, 32)
 
-[node name="@Sprite2D@74" type="Sprite2D" parent="YSortLayer" unique_id=1757668004]
+[node name="@Sprite2D@74" type="Sprite2D" parent="YSortLayer" unique_id=538297957]
 position = Vector2(689, 607)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-12, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(292, 770, 24, 30)
 
-[node name="@Sprite2D@75" type="Sprite2D" parent="YSortLayer" unique_id=1796867170]
+[node name="@Sprite2D@75" type="Sprite2D" parent="YSortLayer" unique_id=185456632]
 position = Vector2(694, 598)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(454, 768, 26, 32)
 
-[node name="@Sprite2D@76" type="Sprite2D" parent="YSortLayer" unique_id=2025931817]
+[node name="@Sprite2D@76" type="Sprite2D" parent="YSortLayer" unique_id=1395823775]
 position = Vector2(727, 593)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-11, -27)
 region_enabled = true
 region_rect = Rect2(228, 770, 22, 30)
 
-[node name="@Sprite2D@77" type="Sprite2D" parent="YSortLayer" unique_id=1065628394]
+[node name="@Sprite2D@77" type="Sprite2D" parent="YSortLayer" unique_id=2103090847]
 position = Vector2(752, 600)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-12, -27)
 region_enabled = true
 region_rect = Rect2(292, 770, 24, 30)
 
-[node name="@Sprite2D@78" type="Sprite2D" parent="YSortLayer" unique_id=1639672811]
+[node name="@Sprite2D@78" type="Sprite2D" parent="YSortLayer" unique_id=2097052100]
 position = Vector2(329, 333)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(196, 768, 26, 32)
 
-[node name="@Sprite2D@79" type="Sprite2D" parent="YSortLayer" unique_id=2059898395]
+[node name="@Sprite2D@79" type="Sprite2D" parent="YSortLayer" unique_id=1292742180]
 position = Vector2(24, 364)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -37)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(614, 848, 52, 42)
 
-[node name="@Sprite2D@81" type="Sprite2D" parent="YSortLayer" unique_id=1625530765]
+[node name="@Sprite2D@81" type="Sprite2D" parent="YSortLayer" unique_id=1474446162]
 position = Vector2(312, 366)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -29)
 region_enabled = true
 region_rect = Rect2(196, 768, 26, 32)
 
-[node name="@Sprite2D@84" type="Sprite2D" parent="YSortLayer" unique_id=843590210]
+[node name="@Sprite2D@84" type="Sprite2D" parent="YSortLayer" unique_id=1920368376]
 position = Vector2(20, 394)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(484, 736, 28, 32)
 
-[node name="@Sprite2D@85" type="Sprite2D" parent="YSortLayer" unique_id=346138085]
+[node name="@Sprite2D@85" type="Sprite2D" parent="YSortLayer" unique_id=558804903]
 position = Vector2(715, 408)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 region_enabled = true
 region_rect = Rect2(2, 672, 28, 30)
 
-[node name="@Sprite2D@90" type="Sprite2D" parent="YSortLayer" unique_id=1417960115]
+[node name="@Sprite2D@90" type="Sprite2D" parent="YSortLayer" unique_id=491407501]
 position = Vector2(237, 435)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -45)
 region_enabled = true
 region_rect = Rect2(198, 650, 20, 48)
 
-[node name="@Sprite2D@91" type="Sprite2D" parent="YSortLayer" unique_id=442140917]
+[node name="@Sprite2D@91" type="Sprite2D" parent="YSortLayer" unique_id=839066562]
 position = Vector2(716, 434)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -34)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(422, 714, 50, 40)
 
-[node name="@Sprite2D@92" type="Sprite2D" parent="YSortLayer" unique_id=1912585637]
+[node name="@Sprite2D@92" type="Sprite2D" parent="YSortLayer" unique_id=2051198544]
 position = Vector2(883, 440)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -24)
 region_enabled = true
 region_rect = Rect2(516, 740, 26, 28)
 
-[node name="@Sprite2D@93" type="Sprite2D" parent="YSortLayer" unique_id=2100157495]
+[node name="@Sprite2D@93" type="Sprite2D" parent="YSortLayer" unique_id=859950076]
 position = Vector2(885, 469)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -46)
 region_enabled = true
 region_rect = Rect2(680, 844, 52, 52)
 
-[node name="@Sprite2D@94" type="Sprite2D" parent="YSortLayer" unique_id=1091167733]
+[node name="@Sprite2D@94" type="Sprite2D" parent="YSortLayer" unique_id=1782391216]
 position = Vector2(39, 498)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-30, -42)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(40, 516, 60, 52)
 
-[node name="@Sprite2D@95" type="Sprite2D" parent="YSortLayer" unique_id=739884942]
+[node name="@Sprite2D@95" type="Sprite2D" parent="YSortLayer" unique_id=1276497476]
 position = Vector2(108, 493)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-20, -24)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(366, 706, 40, 28)
 
-[node name="@Sprite2D@96" type="Sprite2D" parent="YSortLayer" unique_id=836960258]
+[node name="@Sprite2D@96" type="Sprite2D" parent="YSortLayer" unique_id=1845262308]
 position = Vector2(626, 494)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -20)
 region_enabled = true
 region_rect = Rect2(38, 644, 20, 22)
 
-[node name="@Sprite2D@97" type="Sprite2D" parent="YSortLayer" unique_id=855198197]
+[node name="@Sprite2D@97" type="Sprite2D" parent="YSortLayer" unique_id=836836222]
 position = Vector2(851, 500)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(484, 736, 28, 32)
 
-[node name="@Sprite2D@98" type="Sprite2D" parent="YSortLayer" unique_id=1330507561]
+[node name="@Sprite2D@98" type="Sprite2D" parent="YSortLayer" unique_id=1372611008]
 position = Vector2(86, 529)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -34)
 region_enabled = true
 region_rect = Rect2(294, 714, 50, 40)
 
-[node name="@Sprite2D@99" type="Sprite2D" parent="YSortLayer" unique_id=898832419]
+[node name="@Sprite2D@99" type="Sprite2D" parent="YSortLayer" unique_id=342919829]
 position = Vector2(265, 528)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(34, 672, 28, 30)
 
-[node name="@Sprite2D@100" type="Sprite2D" parent="YSortLayer" unique_id=2094916584]
+[node name="@Sprite2D@100" type="Sprite2D" parent="YSortLayer" unique_id=1471332712]
 position = Vector2(528, 529)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-11, -27)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(228, 770, 22, 30)
 
-[node name="@Sprite2D@101" type="Sprite2D" parent="YSortLayer" unique_id=256415002]
+[node name="@Sprite2D@101" type="Sprite2D" parent="YSortLayer" unique_id=263458197]
 position = Vector2(596, 537)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -27)
 region_enabled = true
 region_rect = Rect2(2, 672, 28, 30)
 
-[node name="@Sprite2D@103" type="Sprite2D" parent="YSortLayer" unique_id=2046176679]
+[node name="@Sprite2D@103" type="Sprite2D" parent="YSortLayer" unique_id=1429406455]
 position = Vector2(18, 561)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -46)
 region_enabled = true
 region_rect = Rect2(680, 844, 52, 52)
 
-[node name="@Sprite2D@104" type="Sprite2D" parent="YSortLayer" unique_id=1656260855]
+[node name="@Sprite2D@104" type="Sprite2D" parent="YSortLayer" unique_id=648158921]
 position = Vector2(47, 556)
-texture = ExtResource("16_wtav4")
+texture = ExtResource("16_l1pme")
 centered = false
 offset = Vector2(-26, -46)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(680, 844, 52, 52)
 
-[node name="@Sprite2D@105" type="Sprite2D" parent="YSortLayer" unique_id=135880014]
+[node name="@Sprite2D@105" type="Sprite2D" parent="YSortLayer" unique_id=1984939255]
 position = Vector2(89, 563)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(484, 736, 28, 32)
 
-[node name="@Sprite2D@107" type="Sprite2D" parent="YSortLayer" unique_id=49342528]
+[node name="@Sprite2D@107" type="Sprite2D" parent="YSortLayer" unique_id=299656693]
 position = Vector2(873, 554)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -24)
 region_enabled = true
 region_rect = Rect2(388, 740, 26, 28)
 
-[node name="@Sprite2D@108" type="Sprite2D" parent="YSortLayer" unique_id=16563896]
+[node name="@Sprite2D@108" type="Sprite2D" parent="YSortLayer" unique_id=2142652754]
 position = Vector2(18, 600)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-20, -24)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(494, 706, 40, 28)
 
-[node name="@Sprite2D@109" type="Sprite2D" parent="YSortLayer" unique_id=774007729]
+[node name="@Sprite2D@109" type="Sprite2D" parent="YSortLayer" unique_id=1245925802]
 position = Vector2(49, 596)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-20, -24)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(366, 706, 40, 28)
 
-[node name="@Sprite2D@111" type="Sprite2D" parent="YSortLayer" unique_id=886006351]
+[node name="@Sprite2D@111" type="Sprite2D" parent="YSortLayer" unique_id=736406995]
 position = Vector2(266, 591)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -24)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(516, 740, 26, 28)
 
-[node name="@Sprite2D@112" type="Sprite2D" parent="YSortLayer" unique_id=221714393]
+[node name="@Sprite2D@112" type="Sprite2D" parent="YSortLayer" unique_id=1555464510]
 position = Vector2(304, 600)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -34)
 region_enabled = true
 region_rect = Rect2(294, 714, 50, 40)
 
-[node name="@Sprite2D@114" type="Sprite2D" parent="YSortLayer" unique_id=1344082015]
+[node name="@Sprite2D@114" type="Sprite2D" parent="YSortLayer" unique_id=833893889]
 position = Vector2(87, 633)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-30, -42)
 region_enabled = true
 region_rect = Rect2(40, 516, 60, 52)
 
-[node name="@Sprite2D@115" type="Sprite2D" parent="YSortLayer" unique_id=416959974]
+[node name="@Sprite2D@115" type="Sprite2D" parent="YSortLayer" unique_id=660343322]
 position = Vector2(173, 630)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(356, 736, 28, 32)
 
-[node name="@Sprite2D@116" type="Sprite2D" parent="YSortLayer" unique_id=735097880]
+[node name="@Sprite2D@116" type="Sprite2D" parent="YSortLayer" unique_id=722194459]
 position = Vector2(313, 619)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(484, 736, 28, 32)
 
-[node name="@Sprite2D@119" type="Sprite2D" parent="YSortLayer" unique_id=489032955]
+[node name="@Sprite2D@119" type="Sprite2D" parent="YSortLayer" unique_id=1964402824]
 position = Vector2(557, 628)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -34)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(422, 714, 50, 40)
 
-[node name="@Sprite2D@120" type="Sprite2D" parent="YSortLayer" unique_id=1827189796]
+[node name="@Sprite2D@120" type="Sprite2D" parent="YSortLayer" unique_id=1632774799]
 position = Vector2(790, 627)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -28)
 region_enabled = true
 region_rect = Rect2(356, 736, 28, 32)
 
-[node name="@Sprite2D@121" type="Sprite2D" parent="YSortLayer" unique_id=2034969266]
+[node name="@Sprite2D@121" type="Sprite2D" parent="YSortLayer" unique_id=52485684]
 position = Vector2(952, 240)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-65, -230)
 region_enabled = true
 region_rect = Rect2(2, 8, 130, 244)
 
-[node name="@Sprite2D@122" type="Sprite2D" parent="YSortLayer" unique_id=995421291]
+[node name="@Sprite2D@122" type="Sprite2D" parent="YSortLayer" unique_id=1321921318]
 position = Vector2(-49, 369)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 region_enabled = true
 region_rect = Rect2(682, 32, 80, 156)
 
-[node name="@Sprite2D@123" type="Sprite2D" parent="YSortLayer" unique_id=636294945]
+[node name="@Sprite2D@123" type="Sprite2D" parent="YSortLayer" unique_id=715985273]
 position = Vector2(57, 336)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-21, -44)
 region_enabled = true
 region_rect = Rect2(716, 448, 42, 50)
 
-[node name="@Sprite2D@124" type="Sprite2D" parent="YSortLayer" unique_id=820757340]
+[node name="@Sprite2D@124" type="Sprite2D" parent="YSortLayer" unique_id=2001523004]
 position = Vector2(871, 338)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@125" type="Sprite2D" parent="YSortLayer" unique_id=1757028376]
+[node name="@Sprite2D@125" type="Sprite2D" parent="YSortLayer" unique_id=462832093]
 position = Vector2(951, 371)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-31, -134)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(480, 76, 62, 144)
 
-[node name="@Sprite2D@126" type="Sprite2D" parent="YSortLayer" unique_id=779668295]
+[node name="@Sprite2D@126" type="Sprite2D" parent="YSortLayer" unique_id=1272042540]
 position = Vector2(-56, 431)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-47, -160)
 region_enabled = true
 region_rect = Rect2(176, 336, 94, 172)
 
-[node name="@Sprite2D@127" type="Sprite2D" parent="YSortLayer" unique_id=732001045]
+[node name="@Sprite2D@127" type="Sprite2D" parent="YSortLayer" unique_id=437172536]
 position = Vector2(15, 420)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(682, 32, 80, 156)
 
-[node name="@Sprite2D@128" type="Sprite2D" parent="YSortLayer" unique_id=1280283534]
+[node name="@Sprite2D@128" type="Sprite2D" parent="YSortLayer" unique_id=1226749311]
 position = Vector2(873, 430)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-47, -160)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(176, 336, 94, 172)
 
-[node name="@Sprite2D@129" type="Sprite2D" parent="YSortLayer" unique_id=1032851456]
+[node name="@Sprite2D@129" type="Sprite2D" parent="YSortLayer" unique_id=1194204102]
 position = Vector2(905, 423)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(682, 224, 80, 156)
 
-[node name="@Sprite2D@130" type="Sprite2D" parent="YSortLayer" unique_id=774524538]
+[node name="@Sprite2D@130" type="Sprite2D" parent="YSortLayer" unique_id=1636326990]
 position = Vector2(-51, 464)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -84)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(778, 96, 44, 92)
 
-[node name="@Sprite2D@131" type="Sprite2D" parent="YSortLayer" unique_id=954851180]
+[node name="@Sprite2D@131" type="Sprite2D" parent="YSortLayer" unique_id=1574800427]
 position = Vector2(19, 468)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@132" type="Sprite2D" parent="YSortLayer" unique_id=867492074]
+[node name="@Sprite2D@132" type="Sprite2D" parent="YSortLayer" unique_id=1970953692]
 position = Vector2(91, 493)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -52)
 region_enabled = true
 region_rect = Rect2(516, 548, 26, 56)
 
-[node name="@Sprite2D@133" type="Sprite2D" parent="YSortLayer" unique_id=1922819465]
+[node name="@Sprite2D@133" type="Sprite2D" parent="YSortLayer" unique_id=1679706025]
 position = Vector2(865, 490)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 region_enabled = true
 region_rect = Rect2(682, 32, 80, 156)
 
-[node name="@Sprite2D@134" type="Sprite2D" parent="YSortLayer" unique_id=1291445148]
+[node name="@Sprite2D@134" type="Sprite2D" parent="YSortLayer" unique_id=1473930570]
 position = Vector2(907, 474)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-43, -182)
 region_enabled = true
 region_rect = Rect2(386, 26, 86, 194)
 
-[node name="@Sprite2D@135" type="Sprite2D" parent="YSortLayer" unique_id=179209258]
+[node name="@Sprite2D@135" type="Sprite2D" parent="YSortLayer" unique_id=1510068313]
 position = Vector2(-14, 529)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-22, -84)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(778, 96, 44, 92)
 
-[node name="@Sprite2D@136" type="Sprite2D" parent="YSortLayer" unique_id=1715907034]
+[node name="@Sprite2D@136" type="Sprite2D" parent="YSortLayer" unique_id=1108130344]
 position = Vector2(29, 552)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-65, -230)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(2, 8, 130, 244)
 
-[node name="@Sprite2D@137" type="Sprite2D" parent="YSortLayer" unique_id=1670204137]
+[node name="@Sprite2D@137" type="Sprite2D" parent="YSortLayer" unique_id=1703839072]
 position = Vector2(877, 536)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-31, -134)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(480, 300, 62, 144)
 
-[node name="@Sprite2D@138" type="Sprite2D" parent="YSortLayer" unique_id=849543788]
+[node name="@Sprite2D@138" type="Sprite2D" parent="YSortLayer" unique_id=1780999797]
 position = Vector2(927, 557)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-47, -160)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(176, 80, 94, 172)
 
-[node name="@Sprite2D@139" type="Sprite2D" parent="YSortLayer" unique_id=500117424]
+[node name="@Sprite2D@139" type="Sprite2D" parent="YSortLayer" unique_id=630129468]
 position = Vector2(-30, 604)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 region_enabled = true
 region_rect = Rect2(682, 224, 80, 156)
 
-[node name="@Sprite2D@140" type="Sprite2D" parent="YSortLayer" unique_id=1268991214]
+[node name="@Sprite2D@140" type="Sprite2D" parent="YSortLayer" unique_id=855088930]
 position = Vector2(35, 595)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@141" type="Sprite2D" parent="YSortLayer" unique_id=2044430167]
+[node name="@Sprite2D@141" type="Sprite2D" parent="YSortLayer" unique_id=1075206836]
 position = Vector2(106, 618)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-16, -56)
 region_enabled = true
 region_rect = Rect2(768, 450, 32, 62)
 
-[node name="@Sprite2D@142" type="Sprite2D" parent="YSortLayer" unique_id=643375575]
+[node name="@Sprite2D@142" type="Sprite2D" parent="YSortLayer" unique_id=959052732]
 position = Vector2(296, 611)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-16, -56)
 region_enabled = true
 region_rect = Rect2(768, 450, 32, 62)
 
-[node name="@Sprite2D@143" type="Sprite2D" parent="YSortLayer" unique_id=1156419454]
+[node name="@Sprite2D@143" type="Sprite2D" parent="YSortLayer" unique_id=570638503]
 position = Vector2(527, 622)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -76)
 region_enabled = true
 region_rect = Rect2(482, 524, 28, 80)
 
-[node name="@Sprite2D@144" type="Sprite2D" parent="YSortLayer" unique_id=1273244840]
+[node name="@Sprite2D@144" type="Sprite2D" parent="YSortLayer" unique_id=1725631322]
 position = Vector2(648, 610)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -76)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(482, 524, 28, 80)
 
-[node name="@Sprite2D@145" type="Sprite2D" parent="YSortLayer" unique_id=86336467]
+[node name="@Sprite2D@145" type="Sprite2D" parent="YSortLayer" unique_id=1791473682]
 position = Vector2(816, 623)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -52)
 region_enabled = true
 region_rect = Rect2(516, 548, 26, 56)
 
-[node name="@Sprite2D@146" type="Sprite2D" parent="YSortLayer" unique_id=1683477643]
+[node name="@Sprite2D@146" type="Sprite2D" parent="YSortLayer" unique_id=929435441]
 position = Vector2(889, 623)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-65, -230)
 region_enabled = true
 region_rect = Rect2(2, 8, 130, 244)
 
-[node name="@Sprite2D@147" type="Sprite2D" parent="YSortLayer" unique_id=193881799]
+[node name="@Sprite2D@147" type="Sprite2D" parent="YSortLayer" unique_id=1604766965]
 position = Vector2(904, 608)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@148" type="Sprite2D" parent="YSortLayer" unique_id=1159379927]
+[node name="@Sprite2D@148" type="Sprite2D" parent="YSortLayer" unique_id=1373617274]
 position = Vector2(-33, 658)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@149" type="Sprite2D" parent="YSortLayer" unique_id=112822419]
+[node name="@Sprite2D@149" type="Sprite2D" parent="YSortLayer" unique_id=1623085758]
 position = Vector2(46, 685)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-65, -230)
 region_enabled = true
 region_rect = Rect2(2, 264, 130, 244)
 
-[node name="@Sprite2D@150" type="Sprite2D" parent="YSortLayer" unique_id=1453202186]
+[node name="@Sprite2D@150" type="Sprite2D" parent="YSortLayer" unique_id=1971706486]
 position = Vector2(110, 679)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-47, -160)
 region_enabled = true
 region_rect = Rect2(176, 336, 94, 172)
 
-[node name="@Sprite2D@151" type="Sprite2D" parent="YSortLayer" unique_id=624223589]
+[node name="@Sprite2D@151" type="Sprite2D" parent="YSortLayer" unique_id=1173204930]
 position = Vector2(164, 672)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 region_enabled = true
 region_rect = Rect2(312, 422, 50, 86)
 
-[node name="@Sprite2D@152" type="Sprite2D" parent="YSortLayer" unique_id=158763827]
+[node name="@Sprite2D@152" type="Sprite2D" parent="YSortLayer" unique_id=2088559170]
 position = Vector2(240, 682)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-16, -56)
 region_enabled = true
 region_rect = Rect2(768, 450, 32, 62)
 
-[node name="@Sprite2D@153" type="Sprite2D" parent="YSortLayer" unique_id=728256655]
+[node name="@Sprite2D@153" type="Sprite2D" parent="YSortLayer" unique_id=754571892]
 position = Vector2(313, 660)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@154" type="Sprite2D" parent="YSortLayer" unique_id=1962997500]
+[node name="@Sprite2D@154" type="Sprite2D" parent="YSortLayer" unique_id=1242005916]
 position = Vector2(340, 661)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@155" type="Sprite2D" parent="YSortLayer" unique_id=1195704517]
+[node name="@Sprite2D@155" type="Sprite2D" parent="YSortLayer" unique_id=942631566]
 position = Vector2(435, 668)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-14, -76)
 region_enabled = true
 region_rect = Rect2(482, 524, 28, 80)
 
-[node name="@Sprite2D@156" type="Sprite2D" parent="YSortLayer" unique_id=31582590]
+[node name="@Sprite2D@156" type="Sprite2D" parent="YSortLayer" unique_id=488917073]
 position = Vector2(502, 668)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(584, 554, 48, 72)
 
-[node name="@Sprite2D@157" type="Sprite2D" parent="YSortLayer" unique_id=1112541461]
+[node name="@Sprite2D@157" type="Sprite2D" parent="YSortLayer" unique_id=1743948078]
 position = Vector2(568, 677)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@158" type="Sprite2D" parent="YSortLayer" unique_id=365579034]
+[node name="@Sprite2D@158" type="Sprite2D" parent="YSortLayer" unique_id=1645886657]
 position = Vector2(585, 663)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@159" type="Sprite2D" parent="YSortLayer" unique_id=1669001742]
+[node name="@Sprite2D@159" type="Sprite2D" parent="YSortLayer" unique_id=41907410]
 position = Vector2(680, 665)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(312, 422, 50, 86)
 
-[node name="@Sprite2D@160" type="Sprite2D" parent="YSortLayer" unique_id=2074722870]
+[node name="@Sprite2D@160" type="Sprite2D" parent="YSortLayer" unique_id=227750319]
 position = Vector2(757, 678)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-15, -66)
 region_enabled = true
 region_rect = Rect2(546, 148, 30, 72)
 
-[node name="@Sprite2D@161" type="Sprite2D" parent="YSortLayer" unique_id=1470172535]
+[node name="@Sprite2D@161" type="Sprite2D" parent="YSortLayer" unique_id=1021727189]
 position = Vector2(821, 685)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@162" type="Sprite2D" parent="YSortLayer" unique_id=66261580]
+[node name="@Sprite2D@162" type="Sprite2D" parent="YSortLayer" unique_id=479769308]
 position = Vector2(885, 679)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(682, 32, 80, 156)
 
-[node name="@Sprite2D@163" type="Sprite2D" parent="YSortLayer" unique_id=197277506]
+[node name="@Sprite2D@163" type="Sprite2D" parent="YSortLayer" unique_id=305060303]
 position = Vector2(950, 666)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-40, -146)
 region_enabled = true
 region_rect = Rect2(682, 224, 80, 156)
 
-[node name="@Sprite2D@164" type="Sprite2D" parent="YSortLayer" unique_id=654461631]
+[node name="@Sprite2D@164" type="Sprite2D" parent="YSortLayer" unique_id=732698923]
 position = Vector2(9, 374)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-25, -78)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(312, 166, 50, 86)
 
-[node name="@Sprite2D@165" type="Sprite2D" parent="YSortLayer" unique_id=1606360717]
+[node name="@Sprite2D@165" type="Sprite2D" parent="YSortLayer" unique_id=274846255]
 position = Vector2(846, 378)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-21, -44)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(716, 448, 42, 50)
 
-[node name="@Sprite2D@166" type="Sprite2D" parent="YSortLayer" unique_id=798992022]
+[node name="@Sprite2D@166" type="Sprite2D" parent="YSortLayer" unique_id=1585716939]
 position = Vector2(811, 430)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@167" type="Sprite2D" parent="YSortLayer" unique_id=1250546023]
+[node name="@Sprite2D@167" type="Sprite2D" parent="YSortLayer" unique_id=2017725221]
 position = Vector2(45, 508)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-65, -230)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(2, 8, 130, 244)
 
-[node name="@Sprite2D@168" type="Sprite2D" parent="YSortLayer" unique_id=1553998454]
+[node name="@Sprite2D@168" type="Sprite2D" parent="YSortLayer" unique_id=1968014983]
 position = Vector2(821, 564)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-10, -56)
 region_enabled = true
 region_rect = Rect2(452, 544, 20, 60)
 
-[node name="@Sprite2D@169" type="Sprite2D" parent="YSortLayer" unique_id=1275839811]
+[node name="@Sprite2D@169" type="Sprite2D" parent="YSortLayer" unique_id=466562386]
 position = Vector2(176, 625)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(584, 554, 48, 72)
 
-[node name="@Sprite2D@170" type="Sprite2D" parent="YSortLayer" unique_id=1027110337]
+[node name="@Sprite2D@170" type="Sprite2D" parent="YSortLayer" unique_id=176030080]
 position = Vector2(231, 632)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-21, -44)
 region_enabled = true
 region_rect = Rect2(716, 448, 42, 50)
 
-[node name="@Sprite2D@171" type="Sprite2D" parent="YSortLayer" unique_id=14309326]
+[node name="@Sprite2D@171" type="Sprite2D" parent="YSortLayer" unique_id=2008851950]
 position = Vector2(404, 619)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="@Sprite2D@172" type="Sprite2D" parent="YSortLayer" unique_id=2075301339]
+[node name="@Sprite2D@172" type="Sprite2D" parent="YSortLayer" unique_id=1346059567]
 position = Vector2(758, 631)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-13, -52)
 region_enabled = true
 region_rect = Rect2(516, 548, 26, 56)
 
-[node name="@Sprite2D@173" type="Sprite2D" parent="YSortLayer" unique_id=1117358771]
+[node name="@Sprite2D@173" type="Sprite2D" parent="YSortLayer" unique_id=1651904389]
 position = Vector2(630, 684)
-texture = ExtResource("15_ti3wg")
+texture = ExtResource("15_wtav4")
 centered = false
 offset = Vector2(-24, -66)
 region_enabled = true
 region_rect = Rect2(584, 458, 48, 72)
 
-[node name="Sceau" type="Node2D" parent="YSortLayer" unique_id=999965089]
+[node name="Sceau" type="Node2D" parent="YSortLayer" unique_id=216313303]
 position = Vector2(448, 322)
-script = ExtResource("18_sw6q7")
+script = ExtResource("18_pf3d0")
 
-[node name="FragmentEpee" type="Node2D" parent="YSortLayer" unique_id=727783796]
+[node name="FragmentEpee" type="Node2D" parent="YSortLayer" unique_id=1185140976]
 position = Vector2(211, 422)
-script = ExtResource("19_pf3d0")
+script = ExtResource("19_m03a2")
 symbol = "epee"
 
-[node name="FragmentFlamme" type="Node2D" parent="YSortLayer" unique_id=1804142659]
+[node name="FragmentFlamme" type="Node2D" parent="YSortLayer" unique_id=1568511288]
 position = Vector2(723, 397)
-script = ExtResource("19_pf3d0")
+script = ExtResource("19_m03a2")
 symbol = "flamme"
 
-[node name="SpawnFromMontee" type="Marker2D" parent="." unique_id=1692820043]
+[node name="CoffreParvis" type="Node2D" parent="YSortLayer" unique_id=3347916]
+position = Vector2(560, 411.2)
+script = ExtResource("20_s6aah")
+contenu = "talisman_cendres"
+
+[node name="SpawnFromMontee" type="Marker2D" parent="." unique_id=156216088]
 position = Vector2(448, 595.2)
 
-[node name="ExitToMontee" type="Area2D" parent="." unique_id=1548386073]
+[node name="ExitToMontee" type="Area2D" parent="." unique_id=1211664239]
 position = Vector2(464, 656)
-script = ExtResource("20_m03a2")
+script = ExtResource("21_nwk4o")
 target_scene = "res://scenes/maps/RuinesMonteeMap.tscn"
 spawn_point = "SpawnFromParvis"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToMontee" unique_id=959802515]
-shape = SubResource("RectangleShape2D_ax2y8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToMontee" unique_id=1120370323]
+shape = SubResource("RectangleShape2D_myksi")
 
-[node name="ZoneDalles" type="Area2D" parent="." unique_id=692166728]
+[node name="ZoneDalles" type="Area2D" parent="." unique_id=826152502]
 position = Vector2(448, 336)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDalles" unique_id=471320635]
-shape = SubResource("RectangleShape2D_f7a60")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneDalles" unique_id=147965902]
+shape = SubResource("RectangleShape2D_mojb0")
 
-[node name="ArretPorte" type="Marker2D" parent="." unique_id=489799572]
+[node name="ArretPorte" type="Marker2D" parent="." unique_id=1266247872]
 position = Vector2(448, 412.8)
 
-[node name="Enigme" type="Node" parent="." unique_id=777378943]
-script = ExtResource("21_s6aah")
+[node name="Enigme" type="Node" parent="." unique_id=912733490]
+script = ExtResource("22_20jl3")
 stop_path = NodePath("../ArretPorte")
 sceau_path = NodePath("../YSortLayer/Sceau")
 plates_zone_path = NodePath("../ZoneDalles")
 first_slot = Vector2(400, 336)
-discovery = ExtResource("22_nwk4o")
-discovery_hint = ExtResource("23_20jl3")
-discovery_no_hint = ExtResource("24_jnjfk")
-wrong_order = ExtResource("25_kf0ur")
-wrong_hint = ExtResource("26_kji8e")
-wrong_no_hint = ExtResource("27_w37ga")
-opening = ExtResource("28_bh66x")
-opened = ExtResource("29_4hqs1")
+discovery = ExtResource("23_jnjfk")
+discovery_hint = ExtResource("24_kf0ur")
+discovery_no_hint = ExtResource("25_kji8e")
+wrong_order = ExtResource("26_w37ga")
+wrong_hint = ExtResource("27_bh66x")
+wrong_no_hint = ExtResource("28_4hqs1")
+opening = ExtResource("29_igspb")
+opened = ExtResource("30_wqruc")
 
-[node name="Ambiance" type="ColorRect" parent="." unique_id=1688507867]
-material = SubResource("ShaderMaterial_hu5ye")
+[node name="Ambiance" type="ColorRect" parent="." unique_id=1092298676]
+material = SubResource("ShaderMaterial_hqtg5")
 offset_top = 64.0
 offset_right = 896.0
 offset_bottom = 640.0
 mouse_filter = 2
 
-[node name="Bords" type="StaticBody2D" parent="." unique_id=2120793076]
+[node name="Bords" type="StaticBody2D" parent="." unique_id=1135994031]
 
-[node name="R0" type="CollisionShape2D" parent="Bords" unique_id=1314756998]
+[node name="R0" type="CollisionShape2D" parent="Bords" unique_id=431697393]
 position = Vector2(448, -16)
-shape = SubResource("RectangleShape2D_ynpn0")
-
-[node name="R1" type="CollisionShape2D" parent="Bords" unique_id=1337480631]
-position = Vector2(448, 16)
-shape = SubResource("RectangleShape2D_hqtg5")
-
-[node name="R2" type="CollisionShape2D" parent="Bords" unique_id=1502874759]
-position = Vector2(448, 48)
 shape = SubResource("RectangleShape2D_jkb0n")
 
-[node name="R3" type="CollisionShape2D" parent="Bords" unique_id=1880620330]
-position = Vector2(448, 80)
+[node name="R1" type="CollisionShape2D" parent="Bords" unique_id=952340975]
+position = Vector2(448, 16)
 shape = SubResource("RectangleShape2D_ax56i")
 
-[node name="R4" type="CollisionShape2D" parent="Bords" unique_id=313252700]
-position = Vector2(448, 112)
+[node name="R2" type="CollisionShape2D" parent="Bords" unique_id=415750952]
+position = Vector2(448, 48)
 shape = SubResource("RectangleShape2D_mva5h")
 
-[node name="R5" type="CollisionShape2D" parent="Bords" unique_id=1954443508]
-position = Vector2(448, 144)
+[node name="R3" type="CollisionShape2D" parent="Bords" unique_id=197994249]
+position = Vector2(448, 80)
 shape = SubResource("RectangleShape2D_an21t")
 
-[node name="R6" type="CollisionShape2D" parent="Bords" unique_id=554790440]
-position = Vector2(448, 176)
+[node name="R4" type="CollisionShape2D" parent="Bords" unique_id=774332316]
+position = Vector2(448, 112)
 shape = SubResource("RectangleShape2D_q5eap")
 
-[node name="R7" type="CollisionShape2D" parent="Bords" unique_id=12289358]
-position = Vector2(448, 208)
+[node name="R5" type="CollisionShape2D" parent="Bords" unique_id=195946266]
+position = Vector2(448, 144)
 shape = SubResource("RectangleShape2D_ml16u")
 
-[node name="R8" type="CollisionShape2D" parent="Bords" unique_id=1581671490]
-position = Vector2(448, 240)
+[node name="R6" type="CollisionShape2D" parent="Bords" unique_id=66443750]
+position = Vector2(448, 176)
 shape = SubResource("RectangleShape2D_hbgys")
 
-[node name="R9" type="CollisionShape2D" parent="Bords" unique_id=1080010272]
-position = Vector2(448, 272)
+[node name="R7" type="CollisionShape2D" parent="Bords" unique_id=1845552713]
+position = Vector2(448, 208)
 shape = SubResource("RectangleShape2D_387l7")
 
-[node name="R10" type="CollisionShape2D" parent="Bords" unique_id=1625206278]
-position = Vector2(448, 304)
+[node name="R8" type="CollisionShape2D" parent="Bords" unique_id=1128848250]
+position = Vector2(448, 240)
 shape = SubResource("RectangleShape2D_vvsnu")
 
-[node name="R11" type="CollisionShape2D" parent="Bords" unique_id=1369235266]
-position = Vector2(16, 336)
+[node name="R9" type="CollisionShape2D" parent="Bords" unique_id=1056998249]
+position = Vector2(448, 272)
 shape = SubResource("RectangleShape2D_bg1wm")
 
-[node name="R12" type="CollisionShape2D" parent="Bords" unique_id=25011942]
-position = Vector2(192, 336)
+[node name="R10" type="CollisionShape2D" parent="Bords" unique_id=1755165046]
+position = Vector2(448, 304)
 shape = SubResource("RectangleShape2D_trywd")
 
-[node name="R13" type="CollisionShape2D" parent="Bords" unique_id=1216746591]
-position = Vector2(656, 336)
+[node name="R11" type="CollisionShape2D" parent="Bords" unique_id=517246143]
+position = Vector2(16, 336)
 shape = SubResource("RectangleShape2D_tgsag")
 
-[node name="R14" type="CollisionShape2D" parent="Bords" unique_id=172324872]
-position = Vector2(768, 336)
+[node name="R12" type="CollisionShape2D" parent="Bords" unique_id=1083563142]
+position = Vector2(192, 336)
 shape = SubResource("RectangleShape2D_13plm")
 
-[node name="R15" type="CollisionShape2D" parent="Bords" unique_id=332732407]
-position = Vector2(880, 336)
+[node name="R13" type="CollisionShape2D" parent="Bords" unique_id=376022461]
+position = Vector2(656, 336)
 shape = SubResource("RectangleShape2D_5somu")
 
-[node name="R16" type="CollisionShape2D" parent="Bords" unique_id=106142817]
-position = Vector2(16, 368)
+[node name="R14" type="CollisionShape2D" parent="Bords" unique_id=1754420115]
+position = Vector2(768, 336)
 shape = SubResource("RectangleShape2D_3j0rv")
 
-[node name="R17" type="CollisionShape2D" parent="Bords" unique_id=2026657259]
-position = Vector2(144, 368)
+[node name="R15" type="CollisionShape2D" parent="Bords" unique_id=969427723]
+position = Vector2(880, 336)
 shape = SubResource("RectangleShape2D_lv5bi")
 
-[node name="R18" type="CollisionShape2D" parent="Bords" unique_id=1930778284]
-position = Vector2(768, 368)
+[node name="R16" type="CollisionShape2D" parent="Bords" unique_id=210436782]
+position = Vector2(16, 368)
 shape = SubResource("RectangleShape2D_a4jtv")
 
-[node name="R19" type="CollisionShape2D" parent="Bords" unique_id=1302036357]
-position = Vector2(880, 368)
+[node name="R17" type="CollisionShape2D" parent="Bords" unique_id=923618222]
+position = Vector2(144, 368)
 shape = SubResource("RectangleShape2D_867q0")
 
-[node name="R20" type="CollisionShape2D" parent="Bords" unique_id=1431051234]
-position = Vector2(16, 400)
+[node name="R18" type="CollisionShape2D" parent="Bords" unique_id=1512758698]
+position = Vector2(768, 368)
 shape = SubResource("RectangleShape2D_5feuk")
 
-[node name="R21" type="CollisionShape2D" parent="Bords" unique_id=1616729339]
-position = Vector2(880, 400)
+[node name="R19" type="CollisionShape2D" parent="Bords" unique_id=1593433481]
+position = Vector2(880, 368)
 shape = SubResource("RectangleShape2D_5rnkx")
 
-[node name="R22" type="CollisionShape2D" parent="Bords" unique_id=1729387010]
-position = Vector2(16, 432)
+[node name="R20" type="CollisionShape2D" parent="Bords" unique_id=825613089]
+position = Vector2(16, 400)
 shape = SubResource("RectangleShape2D_jj7jl")
 
-[node name="R23" type="CollisionShape2D" parent="Bords" unique_id=381872559]
-position = Vector2(864, 432)
+[node name="R21" type="CollisionShape2D" parent="Bords" unique_id=466464711]
+position = Vector2(560, 400)
 shape = SubResource("RectangleShape2D_77knd")
 
-[node name="R24" type="CollisionShape2D" parent="Bords" unique_id=1623718759]
-position = Vector2(16, 464)
+[node name="R22" type="CollisionShape2D" parent="Bords" unique_id=2130077605]
+position = Vector2(880, 400)
 shape = SubResource("RectangleShape2D_bgh1l")
 
-[node name="R25" type="CollisionShape2D" parent="Bords" unique_id=934009361]
-position = Vector2(304, 464)
+[node name="R23" type="CollisionShape2D" parent="Bords" unique_id=1198433251]
+position = Vector2(16, 432)
 shape = SubResource("RectangleShape2D_bh3sh")
 
-[node name="R26" type="CollisionShape2D" parent="Bords" unique_id=784507097]
-position = Vector2(624, 464)
+[node name="R24" type="CollisionShape2D" parent="Bords" unique_id=584434074]
+position = Vector2(864, 432)
 shape = SubResource("RectangleShape2D_tado7")
 
-[node name="R27" type="CollisionShape2D" parent="Bords" unique_id=1743284300]
-position = Vector2(864, 464)
+[node name="R25" type="CollisionShape2D" parent="Bords" unique_id=1653653944]
+position = Vector2(16, 464)
 shape = SubResource("RectangleShape2D_5oxpk")
 
-[node name="R28" type="CollisionShape2D" parent="Bords" unique_id=83051191]
-position = Vector2(48, 496)
+[node name="R26" type="CollisionShape2D" parent="Bords" unique_id=424378588]
+position = Vector2(304, 464)
 shape = SubResource("RectangleShape2D_6vwgp")
 
-[node name="R29" type="CollisionShape2D" parent="Bords" unique_id=548614733]
-position = Vector2(800, 496)
+[node name="R27" type="CollisionShape2D" parent="Bords" unique_id=770603691]
+position = Vector2(624, 464)
 shape = SubResource("RectangleShape2D_6b8hr")
 
-[node name="R30" type="CollisionShape2D" parent="Bords" unique_id=246645181]
-position = Vector2(112, 528)
+[node name="R28" type="CollisionShape2D" parent="Bords" unique_id=1628235242]
+position = Vector2(864, 464)
 shape = SubResource("RectangleShape2D_x026b")
 
-[node name="R31" type="CollisionShape2D" parent="Bords" unique_id=1047137477]
-position = Vector2(800, 528)
+[node name="R29" type="CollisionShape2D" parent="Bords" unique_id=1910257128]
+position = Vector2(48, 496)
 shape = SubResource("RectangleShape2D_swi2r")
 
-[node name="R32" type="CollisionShape2D" parent="Bords" unique_id=604565074]
-position = Vector2(112, 560)
+[node name="R30" type="CollisionShape2D" parent="Bords" unique_id=1488757483]
+position = Vector2(800, 496)
 shape = SubResource("RectangleShape2D_rrn2f")
 
-[node name="R33" type="CollisionShape2D" parent="Bords" unique_id=1229847558]
-position = Vector2(304, 560)
+[node name="R31" type="CollisionShape2D" parent="Bords" unique_id=2070504750]
+position = Vector2(112, 528)
 shape = SubResource("RectangleShape2D_6ln8f")
 
-[node name="R34" type="CollisionShape2D" parent="Bords" unique_id=512842847]
-position = Vector2(608, 560)
+[node name="R32" type="CollisionShape2D" parent="Bords" unique_id=1752355224]
+position = Vector2(800, 528)
 shape = SubResource("RectangleShape2D_u2ydb")
 
-[node name="R35" type="CollisionShape2D" parent="Bords" unique_id=547776997]
-position = Vector2(864, 560)
+[node name="R33" type="CollisionShape2D" parent="Bords" unique_id=1983487226]
+position = Vector2(112, 560)
 shape = SubResource("RectangleShape2D_lpdeo")
 
-[node name="R36" type="CollisionShape2D" parent="Bords" unique_id=1888249650]
-position = Vector2(48, 592)
+[node name="R34" type="CollisionShape2D" parent="Bords" unique_id=1170937083]
+position = Vector2(304, 560)
 shape = SubResource("RectangleShape2D_mow1g")
 
-[node name="R37" type="CollisionShape2D" parent="Bords" unique_id=1650325815]
-position = Vector2(880, 592)
+[node name="R35" type="CollisionShape2D" parent="Bords" unique_id=2018486705]
+position = Vector2(608, 560)
 shape = SubResource("RectangleShape2D_8c4k7")
 
-[node name="R38" type="CollisionShape2D" parent="Bords" unique_id=727819093]
-position = Vector2(192, 624)
+[node name="R36" type="CollisionShape2D" parent="Bords" unique_id=174944040]
+position = Vector2(864, 560)
 shape = SubResource("RectangleShape2D_op8v5")
 
-[node name="R39" type="CollisionShape2D" parent="Bords" unique_id=659415928]
-position = Vector2(608, 624)
+[node name="R37" type="CollisionShape2D" parent="Bords" unique_id=1291603418]
+position = Vector2(48, 592)
 shape = SubResource("RectangleShape2D_qyhht")
 
-[node name="R40" type="CollisionShape2D" parent="Bords" unique_id=83921342]
-position = Vector2(832, 624)
+[node name="R38" type="CollisionShape2D" parent="Bords" unique_id=43898182]
+position = Vector2(880, 592)
 shape = SubResource("RectangleShape2D_oyhgv")
 
-[node name="R41" type="CollisionShape2D" parent="Bords" unique_id=1557118567]
-position = Vector2(176, 656)
+[node name="R39" type="CollisionShape2D" parent="Bords" unique_id=1426143387]
+position = Vector2(192, 624)
 shape = SubResource("RectangleShape2D_f1127")
 
-[node name="R42" type="CollisionShape2D" parent="Bords" unique_id=723803120]
-position = Vector2(736, 656)
+[node name="R40" type="CollisionShape2D" parent="Bords" unique_id=1359428227]
+position = Vector2(608, 624)
 shape = SubResource("RectangleShape2D_tpkg5")
 
-[node name="EncounterZone" type="Area2D" parent="." unique_id=960877307]
-script = ExtResource("31_wqruc")
-monsters = Array[ExtResource("32_7v6vp")]([ExtResource("33_m7ctx"), ExtResource("34_mbg0q"), ExtResource("35_roq4k")])
-battle_background = ExtResource("36_ggmnl")
-
-[node name="R0" type="CollisionShape2D" parent="EncounterZone" unique_id=1837601776]
-position = Vector2(80, 336)
+[node name="R41" type="CollisionShape2D" parent="Bords" unique_id=1460855769]
+position = Vector2(832, 624)
 shape = SubResource("RectangleShape2D_8eu5b")
 
-[node name="R1" type="CollisionShape2D" parent="EncounterZone" unique_id=1956336929]
-position = Vector2(448, 336)
+[node name="R42" type="CollisionShape2D" parent="Bords" unique_id=1098406038]
+position = Vector2(176, 656)
 shape = SubResource("RectangleShape2D_yg0oj")
 
-[node name="R2" type="CollisionShape2D" parent="EncounterZone" unique_id=1457658724]
-position = Vector2(720, 336)
+[node name="R43" type="CollisionShape2D" parent="Bords" unique_id=1150553109]
+position = Vector2(736, 656)
 shape = SubResource("RectangleShape2D_th2pn")
 
-[node name="R3" type="CollisionShape2D" parent="EncounterZone" unique_id=671385742]
-position = Vector2(816, 336)
+[node name="EncounterZone" type="Area2D" parent="." unique_id=489120852]
+script = ExtResource("32_m7ctx")
+monsters = Array[ExtResource("33_mbg0q")]([ExtResource("34_roq4k"), ExtResource("35_ggmnl"), ExtResource("36_ax2y8")])
+battle_background = ExtResource("37_f7a60")
+
+[node name="R0" type="CollisionShape2D" parent="EncounterZone" unique_id=2141844132]
+position = Vector2(80, 336)
 shape = SubResource("RectangleShape2D_uj0ec")
 
-[node name="R4" type="CollisionShape2D" parent="EncounterZone" unique_id=802778253]
-position = Vector2(80, 368)
+[node name="R1" type="CollisionShape2D" parent="EncounterZone" unique_id=1148616115]
+position = Vector2(448, 336)
 shape = SubResource("RectangleShape2D_kx7hw")
 
-[node name="R5" type="CollisionShape2D" parent="EncounterZone" unique_id=115051904]
-position = Vector2(464, 368)
+[node name="R2" type="CollisionShape2D" parent="EncounterZone" unique_id=1601694665]
+position = Vector2(720, 336)
 shape = SubResource("RectangleShape2D_j5b1g")
 
-[node name="R6" type="CollisionShape2D" parent="EncounterZone" unique_id=1499143573]
-position = Vector2(816, 368)
+[node name="R3" type="CollisionShape2D" parent="EncounterZone" unique_id=774544719]
+position = Vector2(816, 336)
 shape = SubResource("RectangleShape2D_ox22i")
 
-[node name="R7" type="CollisionShape2D" parent="EncounterZone" unique_id=2144369737]
-position = Vector2(448, 400)
+[node name="R4" type="CollisionShape2D" parent="EncounterZone" unique_id=1480030527]
+position = Vector2(80, 368)
 shape = SubResource("RectangleShape2D_5pyh3")
 
-[node name="R8" type="CollisionShape2D" parent="EncounterZone" unique_id=1417535698]
-position = Vector2(432, 432)
+[node name="R5" type="CollisionShape2D" parent="EncounterZone" unique_id=1970113702]
+position = Vector2(464, 368)
 shape = SubResource("RectangleShape2D_0ffgq")
 
-[node name="R9" type="CollisionShape2D" parent="EncounterZone" unique_id=1992025128]
-position = Vector2(176, 464)
+[node name="R6" type="CollisionShape2D" parent="EncounterZone" unique_id=1557469065]
+position = Vector2(816, 368)
 shape = SubResource("RectangleShape2D_1q4gn")
 
-[node name="R10" type="CollisionShape2D" parent="EncounterZone" unique_id=1695515097]
-position = Vector2(464, 464)
+[node name="R7" type="CollisionShape2D" parent="EncounterZone" unique_id=1570381032]
+position = Vector2(304, 400)
 shape = SubResource("RectangleShape2D_yt8oy")
 
-[node name="R11" type="CollisionShape2D" parent="EncounterZone" unique_id=2073075757]
-position = Vector2(720, 464)
+[node name="R8" type="CollisionShape2D" parent="EncounterZone" unique_id=11070246]
+position = Vector2(704, 400)
 shape = SubResource("RectangleShape2D_loe2m")
 
-[node name="R12" type="CollisionShape2D" parent="EncounterZone" unique_id=1690612407]
-position = Vector2(400, 496)
+[node name="R9" type="CollisionShape2D" parent="EncounterZone" unique_id=1417456880]
+position = Vector2(432, 432)
 shape = SubResource("RectangleShape2D_5dn8f")
 
-[node name="R13" type="CollisionShape2D" parent="EncounterZone" unique_id=2053173972]
-position = Vector2(464, 528)
+[node name="R10" type="CollisionShape2D" parent="EncounterZone" unique_id=227809738]
+position = Vector2(176, 464)
 shape = SubResource("RectangleShape2D_5tuov")
+
+[node name="R11" type="CollisionShape2D" parent="EncounterZone" unique_id=88548287]
+position = Vector2(464, 464)
+shape = SubResource("RectangleShape2D_gkbt0")
+
+[node name="R12" type="CollisionShape2D" parent="EncounterZone" unique_id=2031871368]
+position = Vector2(720, 464)
+shape = SubResource("RectangleShape2D_83dtk")
+
+[node name="R13" type="CollisionShape2D" parent="EncounterZone" unique_id=813281846]
+position = Vector2(400, 496)
+shape = SubResource("RectangleShape2D_farbt")
+
+[node name="R14" type="CollisionShape2D" parent="EncounterZone" unique_id=469567432]
+position = Vector2(464, 528)
+shape = SubResource("RectangleShape2D_daaye")

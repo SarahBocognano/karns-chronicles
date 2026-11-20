@@ -41,6 +41,12 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 ### Le village
 Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 
+- Des **enseignes** distinguent les bâtiments : une chope pour l'auberge, une enclume pour la forge.
+- **Le village du jeu est recentré** (`scenes/maps/VillageV2Map.tscn`, généré par `tools/make_village_v2.gd`) : l'auberge donne sur la place du puits, face à la route qui arrive de la forêt, la forge est dans la rue de l'ouest. Le village d'origine, dessiné à la main (`scenes/maps/VillageMap.tscn`), reste dans le dépôt comme référence.
+
+### Les coffres
+Six coffres sont cachés dans le village, la forêt et les ruines (coffre en bois cerclé de fer pour les objets, coffre précieux doré pour l'équipement). On les ouvre avec Entrée : potions, fioles, et de l'équipement (Carquois tressé, Cotte de mailles, Talisman des Cendres). Un coffre ouvert le reste, même après une sauvegarde.
+
 ### L'auberge
 Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 
@@ -111,8 +117,10 @@ scripts/
   - forêt (*Place_Fantasy_Desert_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
   - ruines (*Sunrise Over the Ruins*) : *Emotional And Cinematic Music Pack for RPGs* par **lullemusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/emotional-and-cinematic-music-pack-for-rpgs) ;
   - combats : *JRPG/RPG Combat Exploration Theme* (version en boucle) par **lardven** — licence GameDev Market (https://www.gamedevmarket.net/asset/jrpgrpg-combat-exploration-theme).
+- Coffres : générés avec Copilot dans le style de Szadi art, puis découpés.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
+- Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
   - remplissages des barres : Pixel UI Fantasy Free by heyheythere - https://heyheythere.itch.io/pixel-ui-fantasy-free - CC BY 4.0 ;

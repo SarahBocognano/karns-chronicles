@@ -1,0 +1,2 @@
+coffre_bois.png, coffre_precieux.png : 4 images (fermé -> grand ouvert), cases de 48 × 48.
+Générés avec Copilot dans le style de Szadi art (nos tuiles), puis découpés.

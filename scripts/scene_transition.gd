@@ -9,7 +9,7 @@ signal battle_finished(result: String)
 const BATTLE_SCENE := "res://scenes/battle/Battle.tscn"
 const SWIRL_SHADER := preload("res://resources/shaders/battle_swirl.gdshader")
 ## Où Zylrak se réveille après une défaite (soigné).
-const DEFEAT_SCENE := "res://scenes/maps/VillageMap.tscn"
+const DEFEAT_SCENE := "res://scenes/maps/VillageV2Map.tscn"
 const DEFEAT_SPAWN := "SpawnFromForest"
 ## Musique des combats (« RPG/JRPG Combat Exploration Themes », version en boucle).
 const BATTLE_MUSIC := preload("res://assets/audio/musique/combat.mp3")
