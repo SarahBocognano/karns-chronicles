@@ -33,7 +33,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 | Flèches | Déplacer Zylrak |
 | Entrée | Parler, lire la réplique suivante |
 | M | Afficher / masquer la mini-carte |
-| Échap | Ouvrir le menu (Objets, Statut, Sauvegarder, Charger, Écran titre) ; dans un menu : revenir en arrière |
+| Échap | Ouvrir le grimoire (Équipe, Équipement, Objets, Précieux, Journal, Système) ; dans un menu : revenir en arrière |
 | Clic sur le haut-parleur (en haut à droite) | Couper / remettre la musique |
 
 ## Contenu actuel
@@ -55,11 +55,14 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 ### Les menus
 - **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
 - **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak entre dans l'auberge, où Oswin lui tombe dessus.
-- **Menu** (Échap, sur les cartes, hors combat et hors dialogue ; le jeu est en pause) :
-  - l'équipe, avec portraits, niveau, PV et PM ; le lieu et le temps de jeu ;
-  - **Objets** : potions et fioles à donner à Zylrak ou Ysolde ; les objets précieux (fragments gravés) ;
-  - **Statut** : caractéristiques, Signes de Zylrak, talents d'Ysolde, expérience ;
-  - **Sauvegarder** n'importe où, dans l'un des **3 emplacements** (lieu, niveau, temps de jeu, date) ; **Charger** une partie ; revenir à l'**écran titre**.
+- **Le grimoire** (Échap, sur les cartes, hors combat et hors dialogue ; le jeu est en pause), aux couleurs du pack *Dark Ages UI* : cadre orné, onglets, parchemins, cases d'inventaire.
+  - ← → pour changer d'onglet, Entrée pour entrer dans l'onglet, Échap pour revenir puis fermer.
+  - **Équipe** : une fiche par héros (portrait, niveau, barres PV / PM / XP, caractéristiques, Signes ou talents).
+  - **Équipement** : arme, armure et accessoire pour Zylrak et Ysolde ; on voit l'effet sur les caractéristiques avant d'équiper. Zylrak trouve l'*Anneau du marchand* sous les caisses du chariot.
+  - **Objets** : grille d'inventaire avec icônes, description, et à qui donner potions et fioles.
+  - **Précieux** : les fragments gravés des Yrenn.
+  - **Journal** : les quêtes en cours et leurs étapes.
+  - **Système** : sauvegarder n'importe où dans l'un des **3 emplacements** (lieu, niveau, temps de jeu, date), charger, revenir à l'écran titre.
 
 ### Les combats
 - Au tour par tour, déclenchés au hasard dans les zones dangereuses.
@@ -110,9 +113,10 @@ scripts/
   - combats : *JRPG/RPG Combat Exploration Theme* (version en boucle) par **lardven** — licence GameDev Market (https://www.gamedevmarket.net/asset/jrpgrpg-combat-exploration-theme).
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
-- Interface de combat :
+- Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
   - remplissages des barres : Pixel UI Fantasy Free by heyheythere - https://heyheythere.itch.io/pixel-ui-fantasy-free - CC BY 4.0 ;
+  - grimoire (cadre orné, parchemins, onglets, cases, barres) : *Dark Ages UI* par **Hypnobius** — usage commercial autorisé (https://hypnobius.itch.io/dark-ages-ui) ;
   - main du menu : *Hand cursor* par **andreyin** — CC0 (https://opengameart.org/node/89568).
 
 ## À venir

@@ -99,6 +99,61 @@ func known_signs() -> Array[Dictionary]:
 		if s.get("niveau", 1) <= level:
 			out.append(s)
 	return out
+# --- Équipement (voir BattleCatalog.EQUIPEMENTS) ---
+## Ce que porte chaque héros, par emplacement ("" : rien).
+var equipment := {
+	"zylrak": {"arme": "epee_ordre", "armure": "cuir_ashwarden", "accessoire": ""},
+	"ysolde": {"arme": "arc_frene", "armure": "brigandine", "accessoire": ""},
+}
+## Pièces d'équipement possédées mais portées par personne.
+var gear_bag: Array[String] = []
+## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
+const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand"}
+
+## Caractéristique d'un héros, équipement compris. hero : "zylrak" ou "ysolde" ;
+## stat : "attaque", "defense", "magie" ou "vitesse".
+func stat(hero: String, s: String) -> int:
+	return base_stat(hero, s) + gear_bonus(hero, s)
+
+func base_stat(hero: String, s: String) -> int:
+	if hero == "ysolde":
+		match s:
+			"attaque": return ysolde_attack()
+			"defense": return ysolde_defense()
+			"vitesse": return ysolde_speed()
+		return 0
+	match s:
+		"attaque": return attack
+		"defense": return defense
+		"magie": return magic
+		"vitesse": return speed
+	return 0
+
+func gear_bonus(hero: String, s: String) -> int:
+	var total := 0
+	for slot in equipment.get(hero, {}):
+		var id: String = equipment[hero][slot]
+		if id != "" and BattleCatalog.EQUIPEMENTS.has(id):
+			total += int(BattleCatalog.EQUIPEMENTS[id].bonus.get(s, 0))
+	return total
+
+## Équipe `id` (pris dans le sac) sur le héros ; ce qu'il portait retourne dans le sac. id "" : retirer.
+func equip(hero: String, slot: String, id: String) -> void:
+	var old: String = equipment[hero][slot]
+	if id != "":
+		gear_bag.erase(id)
+	if old != "":
+		gear_bag.append(old)
+	equipment[hero][slot] = id
+
+func owns_gear(id: String) -> bool:
+	if gear_bag.has(id):
+		return true
+	for hero in equipment:
+		if equipment[hero].values().has(id):
+			return true
+	return false
+
 ## Objets, un identifiant par exemplaire (voir BattleCatalog.OBJETS).
 var inventory: Array[String] = ["potion", "potion", "potion"]
 
@@ -160,6 +215,8 @@ func to_dict() -> Dictionary:
 	for f in SAVED_FIELDS:
 		d[f] = get(f)
 	d["inventory"] = inventory.duplicate()
+	d["equipement"] = equipment.duplicate(true)
+	d["sac_equipement"] = gear_bag.duplicate()
 	d["quest_flags"] = quest_flags.duplicate()
 	return d
 
@@ -170,6 +227,13 @@ func from_dict(d: Dictionary) -> void:
 			var v = d[f]
 			set(f, int(v) if typeof(get(f)) == TYPE_INT else v)
 	inventory.assign(d.get("inventory", []))
+	if d.has("equipement"):
+		for hero in d.equipement:
+			if equipment.has(hero):
+				for slot in d.equipement[hero]:
+					equipment[hero][slot] = str(d.equipement[hero][slot])
+	if d.has("sac_equipement"):
+		gear_bag.assign(d.sac_equipement)
 	quest_flags.clear()
 	for k in d.get("quest_flags", {}):
 		quest_flags[k] = bool(d.quest_flags[k])
@@ -181,6 +245,8 @@ func from_dict(d: Dictionary) -> void:
 
 func set_flag(flag_name: String, value: bool) -> void:
 	quest_flags[flag_name] = value
+	if value and FLAG_REWARDS.has(flag_name) and not owns_gear(FLAG_REWARDS[flag_name]):
+		gear_bag.append(FLAG_REWARDS[flag_name])
 	flag_changed.emit(flag_name, value)
 
 func get_flag(flag_name: String) -> bool:

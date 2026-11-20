@@ -30,9 +30,15 @@ speaker_name = "Zylrak"
 portrait = ExtResource("4_uaeie")
 text = "Vers les ruines. Torvald avait raison. Avec un peu de chance, il est encore en vie."
 
+[sub_resource type="Resource" id="Resource_anneau"]
+script = ExtResource("1_mew6d")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_3lhxo")
+text = "Tiens... Un anneau d'argent, coincé sous une caisse. Le sceau d'une guilde marchande. Je le garde en lieu sûr, le marchand me remerciera."
+
 [resource]
 script = ExtResource("5_4nn6v")
-lines = Array[ExtResource("1_mew6d")]([SubResource("Resource_tlcaw"), SubResource("Resource_43dlm"), SubResource("Resource_3dwfx"), SubResource("Resource_32hv2")])
+lines = Array[ExtResource("1_mew6d")]([SubResource("Resource_tlcaw"), SubResource("Resource_43dlm"), SubResource("Resource_3dwfx"), SubResource("Resource_32hv2"), SubResource("Resource_anneau")])
 required_flags = Array[String](["has_accepted_zylrak_quest"])
 forbidden_flags = Array[String](["found_merchant_cart"])
 flags_on_finish = Array[String](["found_merchant_cart"])
