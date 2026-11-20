@@ -37,12 +37,15 @@ func _ready() -> void:
 func _add_overlay(layer: CanvasLayer) -> void:
 	get_tree().root.add_child(layer)
 
-func change_scene(scene_path: String, spawn_point: String) -> void:
+## `hold` : temps passé sur l'écran noir entre les deux cartes (une petite coupure, en secondes).
+func change_scene(scene_path: String, spawn_point: String, hold: float = 0.0) -> void:
 	PlayerData.next_spawn_point = spawn_point
 
 	var tween := create_tween()
 	tween.tween_property(_fade_rect, "modulate:a", 1.0, fade_duration)
 	await tween.finished
+	if hold > 0.0:
+		await get_tree().create_timer(hold).timeout
 
 	get_tree().change_scene_to_file(scene_path)
 	await get_tree().process_frame  # laisse la nouvelle scène s'initialiser

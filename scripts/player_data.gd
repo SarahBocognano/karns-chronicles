@@ -203,6 +203,9 @@ var load_position: Vector2 = Vector2.INF
 var play_time: float = 0.0
 ## Direction dans laquelle Zylrak regarde ("up", "down", "left", "right"), gardée d'une carte à l'autre.
 var facing: String = "down"
+## Nouvelle partie : Zylrak arrive au village et marche seul jusqu'à l'auberge (scenes/maps/arrivee_village.gd).
+## Pas sauvegardé.
+var arrival_pending := false
 
 # --- Sauvegarde ---
 

@@ -10,10 +10,11 @@ const SLOTS := 3
 const DIR := "user://sauvegardes/"
 const VERSION := 1
 const TITLE_SCENE := "res://scenes/EcranTitre.tscn"
-## Nouvelle partie : l'intro, puis Zylrak entre dans l'auberge, où Oswin lui tombe dessus.
+## Nouvelle partie : l'intro, puis Zylrak arrive au village par la route de la forêt et marche
+## jusqu'à l'auberge (scenes/maps/arrivee_village.gd), où Oswin lui tombe dessus.
 const INTRO_SCENE := "res://scenes/Intro.tscn"
-const NEW_GAME_SCENE := "res://scenes/maps/AubergeMap.tscn"
-const NEW_GAME_SPAWN := "SpawnFromVillage"
+const NEW_GAME_SCENE := "res://scenes/maps/VillageV2Map.tscn"
+const NEW_GAME_SPAWN := "SpawnFromForest"
 
 ## Nom des lieux, affiché dans le menu et sur les emplacements de sauvegarde.
 const PLACES := {
@@ -135,10 +136,11 @@ func new_game() -> void:
 	PlayerData.from_dict(_defaults)
 	SceneTransition.change_scene(INTRO_SCENE, "")
 
-## Fin de l'intro (ou intro passée) : la partie commence à la porte de l'auberge.
+## Fin de l'intro (ou intro passée) : la partie commence à l'entrée du village.
 func begin_adventure() -> void:
 	_reset_world()
 	PlayerData.facing = "up"
+	PlayerData.arrival_pending = true
 	SceneTransition.change_scene(NEW_GAME_SCENE, NEW_GAME_SPAWN)
 
 func to_title() -> void:
@@ -148,4 +150,5 @@ func to_title() -> void:
 func _reset_world() -> void:
 	get_tree().paused = false
 	PlayerData.controls_locked = false
+	PlayerData.arrival_pending = false
 	SceneTransition.in_battle = false

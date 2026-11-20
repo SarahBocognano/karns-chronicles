@@ -42,7 +42,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 
 - Des **enseignes** distinguent les bâtiments : une chope pour l'auberge, une enclume pour la forge.
-- **Le village du jeu est recentré** (`scenes/maps/VillageV2Map.tscn`, généré par `tools/make_village_v2.gd`) : l'auberge donne sur la place du puits, face à la route qui arrive de la forêt, la forge est dans la rue de l'ouest. Le village d'origine, dessiné à la main (`scenes/maps/VillageMap.tscn`), reste dans le dépôt comme référence.
+- **Le village du jeu est recentré** (`scenes/maps/VillageV2Map.tscn`, généré par `tools/make_village_v2.gd`) : l'auberge donne sur la place du puits, face à la route qui arrive de la forêt, la forge est dans la rue de l'ouest. Le village d'origine, dessiné à la main (`scenes/maps/VillageMap.tscn`), reste dans le dépôt comme référence. Le générateur corrige aussi deux défauts de la carte d'origine : les marches de la forge ne passent plus sur la tête de Zylrak, et les sapins retrouvent leur pointe (elle était coupée à plat).
 
 ### Les coffres
 Six coffres sont cachés dans le village, la forêt et les ruines (coffre en bois cerclé de fer pour les objets, coffre précieux doré pour l'équipement). On les ouvre avec Entrée : potions, fioles, et de l'équipement (Carquois tressé, Cotte de mailles, Talisman des Cendres). Un coffre ouvert le reste, même après une sauvegarde.
@@ -60,7 +60,7 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 
 ### Les menus
 - **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
-- **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak entre dans l'auberge, où Oswin lui tombe dessus.
+- **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak arrive au village par la route de la forêt et marche seul jusqu'à l'auberge ; coupure au noir, et Oswin lui tombe dessus.
 - **Le grimoire** (Échap, sur les cartes, hors combat et hors dialogue ; le jeu est en pause), aux couleurs du pack *Dark Ages UI* : cadre orné, onglets, parchemins, cases d'inventaire.
   - ← → pour changer d'onglet, Entrée pour entrer dans l'onglet, Échap pour revenir puis fermer.
   - **Équipe** : une fiche par héros (portrait, niveau, barres PV / PM / XP, caractéristiques, Signes ou talents).

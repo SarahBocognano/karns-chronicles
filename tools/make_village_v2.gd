@@ -45,6 +45,8 @@ func _initialize() -> void:
 			old.get_parent().remove_child(old)
 			old.free()
 	_move_buildings(root)
+	_steps_to_ground(root)
+	_complete_pines(root)
 	_shift(root, "EnterAuberge", INN_OFFSET, true)
 	_shift(root, "SpawnFromAuberge", INN_OFFSET, false)
 	_shift(root, "EnterWeaponsShop", FORGE_OFFSET, true)
@@ -55,6 +57,7 @@ func _initialize() -> void:
 	add_sign(root, "EnseigneAuberge", 0, auberge_door + Vector2(1.6, 1.0))
 	add_sign(root, "EnseigneForge", 1, forge_door + Vector2(1.6, 1.0))
 	add_chest(root, "CoffreVillage", "fiole", 2, Vector2(14.6, 10.7))
+	add_arrival(root)
 	var out := PackedScene.new()
 	print("pack ", out.pack(root))
 	print("save ", ResourceSaver.save(out, OUT))
@@ -98,6 +101,87 @@ func _move_buildings(root: Node) -> void:
 				cleared += 1
 	print("tuiles déplacées : ", moves.size(), ", cailloux retirés : ", cleared)
 
+## Les marches devant certaines portes débordent d'une case sous le mur ; dans le calque des
+## bâtiments (toujours dessiné au-dessus des personnages), elles passaient sur la tête de Zylrak.
+## On les met dans un calque « Marches » au niveau du sol, sous les personnages.
+func _steps_to_ground(root: Node) -> void:
+	var sup: TileMapLayer = root.get_node("YSortLayer/Building/Superposition1")
+	var building: TileMapLayer = root.get_node("YSortLayer/Building")
+	var steps := TileMapLayer.new()
+	steps.name = "Marches"
+	steps.tile_set = sup.tile_set
+	steps.z_index = -1   # ces tuiles ont un z de 1 dans le tileset : on revient au niveau du sol
+	root.add_child(steps)
+	root.move_child(steps, root.get_node("YSortLayer").get_index())
+	steps.owner = root
+	var moved := 0
+	for c in sup.get_used_cells():
+		var ac := sup.get_cell_atlas_coords(c)
+		# rangée 20 de houses_outside : marches sous une porte ouverte, sans mur derrière
+		if ac.y == 20 and ac.x <= 3 and building.get_cell_source_id(c) == -1:
+			steps.set_cell(c, sup.get_cell_source_id(c), ac, sup.get_cell_alternative_tile(c))
+			sup.erase_cell(c)
+			moved += 1
+	print("marches mises au sol : ", moved)
+
+## Sapins (tuiles 18-20 × 7-11 du tileset de végétation, pied en (19, 11)) : leur pointe est dans
+## la tuile (19, 6), jamais posée dans la carte d'origine, d'où des cimes coupées à plat ; et deux
+## sapins voisins se partageaient une colonne de cases, l'un écrasant l'autre. On repose chaque
+## sapin en entier, pointe comprise, dans le calque Trees ou, s'il chevauche un sapin déjà posé,
+## dans un calque suivant (le sapin le plus bas passe devant).
+const PINE_FOOT := Vector2i(19, 11)
+
+func _complete_pines(root: Node) -> void:
+	var trees: TileMapLayer = root.get_node("YSortLayer/Trees")
+	var stamp := {Vector2i(0, -5): Vector2i(19, 6)}   # décalage depuis le pied -> tuile
+	for dy in range(-4, 1):
+		for dx in range(-1, 2):
+			stamp[Vector2i(dx, dy)] = PINE_FOOT + Vector2i(dx, dy)
+	var feet: Array[Vector2i] = []
+	for c in trees.get_used_cells():
+		if trees.get_cell_atlas_coords(c) == PINE_FOOT:
+			feet.append(c)
+	if feet.is_empty():
+		return
+	feet.sort_custom(func(a: Vector2i, b: Vector2i) -> bool: return a.y < b.y or (a.y == b.y and a.x < b.x))
+	var sid := trees.get_cell_source_id(feet[0])
+	# on retire les sapins (et eux seuls) avant de les reposer
+	for f in feet:
+		for o in stamp:
+			var ac := trees.get_cell_atlas_coords(f + o)
+			if trees.get_cell_source_id(f + o) == sid and ac.x >= 18 and ac.x <= 20 and ac.y >= 6 and ac.y <= 11:
+				trees.erase_cell(f + o)
+	var layers: Array[TileMapLayer] = [trees]
+	var placed := []   # [pied, indice du calque]
+	for f in feet:
+		var min_layer := 0
+		for p in placed:
+			if absi(p[0].x - f.x) <= 2 and absi(p[0].y - f.y) <= 5:
+				min_layer = maxi(min_layer, p[1] + 1)
+		var li := min_layer
+		while true:
+			if li == layers.size():
+				var extra := TileMapLayer.new()
+				extra.name = "Sapins%d" % (li + 1)
+				extra.tile_set = trees.tile_set
+				extra.z_index = trees.z_index
+				extra.y_sort_enabled = true
+				trees.get_parent().add_child(extra)
+				trees.get_parent().move_child(extra, layers[-1].get_index() + 1)
+				extra.owner = root
+				layers.append(extra)
+			var free := true
+			for o in stamp:
+				if layers[li].get_cell_source_id(f + o) != -1:
+					free = false
+			if free:
+				break
+			li += 1
+		for o in stamp:
+			layers[li].set_cell(f + o, sid, stamp[o])
+		placed.append([f, li])
+	print("sapins reposés : ", feet.size(), " sur ", layers.size(), " calque(s)")
+
 func _shift(root: Node, n: String, offset: Vector2i, area: bool) -> void:
 	var node: Node2D = root.get_node(n)
 	if area:
@@ -107,6 +191,24 @@ func _shift(root: Node, n: String, offset: Vector2i, area: bool) -> void:
 				c.position += Vector2(offset) * T
 	else:
 		node.position += Vector2(offset) * T
+
+## Arrivée de Zylrak en début de partie (scenes/maps/arrivee_village.gd) : depuis la route de la
+## forêt, il passe à droite du puits, s'arrête devant l'auberge, puis va à la porte.
+const ARRIVAL_ROUTE := [["Route1", Vector2(30.5, 23.0)], ["Route2", Vector2(32.6, 21.2)],
+	["Route3", Vector2(32.6, 17.0)], ["HalteAuberge", Vector2(28.4, 14.6)], ["Porte", Vector2(27.05, 12.6)]]
+
+static func add_arrival(root: Node) -> void:
+	var a := Node2D.new()
+	a.name = "ArriveeVillage"
+	a.set_script(load("res://scenes/maps/arrivee_village.gd"))
+	root.add_child(a)
+	a.owner = root
+	for step in ARRIVAL_ROUTE:
+		var m := Marker2D.new()
+		m.name = step[0]
+		m.position = cell_to_world(step[1])
+		a.add_child(m)
+		m.owner = root
 
 ## Enseigne (0 : auberge, 1 : forge) au pied du mur `cell` (case de la carte).
 static func add_sign(root: Node, n: String, frame: int, cell: Vector2) -> void:
