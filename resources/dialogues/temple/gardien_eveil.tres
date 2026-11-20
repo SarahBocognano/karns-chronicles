@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://b5oojmwl7aw2p"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_6d7dr"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_pdq61"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="3_3uedy"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="4_rfena"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_0206h"]
+
+[sub_resource type="Resource" id="Resource_cwghv"]
+script = ExtResource("1_6d7dr")
+text = "L'armure bouge. Une lueur bleue s'allume au fond du heaume."
+
+[sub_resource type="Resource" id="Resource_5uwji"]
+script = ExtResource("1_6d7dr")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_pdq61")
+text = "Elle est vivante ?!"
+
+[sub_resource type="Resource" id="Resource_hbfy5"]
+script = ExtResource("1_6d7dr")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_3uedy")
+text = "Un gardien. Lié au sceau, comme les Yrenn de la fresque."
+
+[sub_resource type="Resource" id="Resource_ordgl"]
+script = ExtResource("1_6d7dr")
+speaker_name = "Gardien des Yrenn"
+text = "... Nul ne descend vers la Bête."
+
+[sub_resource type="Resource" id="Resource_57v71"]
+script = ExtResource("1_6d7dr")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_rfena")
+text = "On ne vient pas la réveiller. On vient chercher un marchand."
+
+[resource]
+script = ExtResource("5_0206h")
+lines = Array[ExtResource("1_6d7dr")]([SubResource("Resource_cwghv"), SubResource("Resource_5uwji"), SubResource("Resource_hbfy5"), SubResource("Resource_ordgl"), SubResource("Resource_57v71")])

@@ -82,6 +82,12 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - **Le parvis du temple** : une façade taillée au pied d'une crête, sa porte scellée à la pierre bleue, et le ciel d'aube au-dessus des sommets.
 - **L'énigme de la porte** : en arrivant au parvis, Zylrak suit les traces de sang jusqu'à la porte, scellée par un voile de lumière magique. Quatre encoches attendent des pierres gravées : il faut retrouver les **quatre fragments** qui brillent dans les ruines (deux sur la montée, deux sur le parvis), puis les poser dans le bon ordre. Théobald, à l'auberge, en donne l'indice.
 
+### Le temple des Yrenn (derrière la porte scellée)
+Trois salles, de plus en plus profondes (générées par `tools/make_temple.gd`) :
+- **Le vestibule** : quatre fresques murales racontent la Bête (on les lit avec Entrée, au pied du mur). Au milieu, un cercle tracé à la cendre : la flamme de l'Ordre des Cendres, renversée, peinte avec le sang du marchand.
+- **La galerie** : un long couloir hanté par des goules, des zombies et des squelettes, avec une alcôve de chaque côté (l'Amulette des Yrenn, des potions).
+- **La salle du gardien** : le grand cercle rituel, les quatre sceaux au sol, des torches et des braseros. Au fond, l'escalier est fermé par un voile turquoise, et une armure des Yrenn le garde : elle s'éveille quand Zylrak approche, et on ne peut pas fuir ce combat. Une fois le gardien tombé, le voile se dissipe ; l'escalier descend dans le noir (il faudra une torche).
+
 ## Organisation du projet
 
 ```
@@ -120,6 +126,7 @@ scripts/
 - Coffres : générés avec Copilot dans le style de Szadi art, puis découpés.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
+- Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel et pierres gravées des fragments, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
@@ -129,6 +136,6 @@ scripts/
 
 ## À venir
 
-- L'énigme de la porte scellée du temple (quatre fragments à retrouver et à remettre dans l'ordre).
 - Mini quête de Pépin : il vole la bourse de Zylrak et tombe dans une embuscade de monstres.
-- Nouvelles cartes : le lac, l'intérieur du temple, l'intérieur de la grotte.
+- Nouvelles cartes : le lac, l'escalier sous le temple (avec une torche), l'intérieur de la grotte.
+- Temple : statues de mages Yrenn, ossements, racines et mousse sur les murs (à la place des gravats).

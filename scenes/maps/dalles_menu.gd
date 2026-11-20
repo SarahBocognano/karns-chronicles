@@ -104,7 +104,7 @@ func _build() -> void:
 
 func _refresh() -> void:
 	for i in 4:
-		_slot_icons[i].texture = FragmentYrenn.texture_for(order[i]) if i < order.size() else null
+		_slot_icons[i].texture = FragmentYrenn.icon_for(order[i]) if i < order.size() else null
 		var st := _slots[i].get_theme_stylebox("panel") as StyleBoxFlat
 		st.border_color = GOLD if i == order.size() else GOLD.darkened(0.35)
 	for c in _hand_box.get_children():
@@ -114,7 +114,7 @@ func _refresh() -> void:
 		var slot := Control.new()
 		slot.custom_minimum_size = Vector2(ICON + 12, ICON + 12)
 		var icon := TextureRect.new()
-		icon.texture = FragmentYrenn.texture_for(_hand[i])
+		icon.texture = FragmentYrenn.icon_for(_hand[i])
 		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.size = Vector2(ICON, ICON)

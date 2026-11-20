@@ -1,0 +1,49 @@
+[gd_resource type="TileSet" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Temple/castle_interriors.png" id="1_xlm1i"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Temple/antichambre_coins.png" id="2_xmha4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nt8ys"]
+texture = ExtResource("1_xlm1i")
+texture_region_size = Vector2i(32, 32)
+2:2/0 = 0
+2:0/0 = 0
+0:2/0 = 0
+4:2/0 = 0
+0:0/0 = 0
+4:0/0 = 0
+14:37/0 = 0
+15:37/0 = 0
+14:38/0 = 0
+15:38/0 = 0
+14:39/0 = 0
+15:39/0 = 0
+14:35/0 = 0
+15:35/0 = 0
+14:36/0 = 0
+15:36/0 = 0
+17:0/0 = 0
+17:1/0 = 0
+17:2/0 = 0
+17:3/0 = 0
+17:4/0 = 0
+17:5/0 = 0
+22:0/0 = 0
+22:1/0 = 0
+22:2/0 = 0
+22:3/0 = 0
+22:4/0 = 0
+22:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ecr8"]
+texture = ExtResource("2_xmha4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_nt8ys")
+sources/1 = SubResource("TileSetAtlasSource_7ecr8")

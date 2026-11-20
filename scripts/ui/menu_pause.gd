@@ -617,7 +617,7 @@ func _page_key_items(index: int) -> GrilleObjets:
 	if not PlayerData.get_flag("temple_ouvert"):
 		for s in FragmentYrenn.SYMBOLS:
 			if PlayerData.get_flag(FragmentYrenn.flag_for(s)):
-				entries.append({"id": s, "icon": FragmentYrenn.texture_for(s), "count": 1})
+				entries.append({"id": s, "icon": FragmentYrenn.icon_for(s), "count": 1})
 	_place(_view, UiKit.label("Objets précieux", 30, UiKit.GOLD), Vector2(20, 0))
 	var card := _parchment(Vector2(640, 0), Vector2(900, 640))
 	var grid := GrilleObjets.new()

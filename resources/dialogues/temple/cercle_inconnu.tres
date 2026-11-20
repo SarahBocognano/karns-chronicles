@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://dx0dertne6cce"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lnwbi"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_sjasv"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_rjh2r"]
+
+[sub_resource type="Resource" id="Resource_exegi"]
+script = ExtResource("1_lnwbi")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_sjasv")
+text = "« Les cendres se souviennent toujours du feu »... L'inconnu de l'auberge. Il savait quelque chose."
+
+[resource]
+script = ExtResource("3_rjh2r")
+lines = Array[ExtResource("1_lnwbi")]([SubResource("Resource_exegi")])

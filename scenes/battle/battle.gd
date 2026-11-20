@@ -37,6 +37,8 @@ const GREY := Color(0.55, 0.53, 0.50)
 
 var background: Texture2D
 var monster_list: Array = []  # MonsterData
+## false : combat de gardien, on ne peut pas fuir.
+var can_flee := true
 
 ## État lisible par les tests : "intro", "menu", "cible", "message", "anim", "fin".
 var state := "intro"
@@ -435,6 +437,9 @@ func _use_item(user: Dictionary, item_id: String, ally: Dictionary) -> void:
 	_hide_message()
 
 func _hero_flee() -> void:
+	if not can_flee:
+		await _say("Impossible de fuir : le gardien barre le passage !", 1.2)
+		return
 	var foe_speed := 0.0
 	var alive := _alive_foes()
 	for f in alive:

@@ -277,7 +277,7 @@ func _symbols() -> void:
 	var icons: Array[TextureRect] = []
 	for s in ["epee", "lune", "flamme", "loup"]:   # pas dans l'ordre de l'énigme
 		var icon := TextureRect.new()
-		icon.texture = FragmentYrenn.texture_for(s)
+		icon.texture = FragmentYrenn.icon_for(s)
 		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.custom_minimum_size = Vector2(144, 144)

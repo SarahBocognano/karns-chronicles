@@ -9,6 +9,9 @@ uniform vec2 size = vec2(30.0, 44.0);
 // 1 : sceau intact, 0 : dissipé. `flash` éclaire tout le voile (au moment où il se brise).
 uniform float strength : hint_range(0.0, 1.0) = 1.0;
 uniform float flash : hint_range(0.0, 1.0) = 0.0;
+// Teintes du voile (sombre, claire) : bleu à la porte du parvis, turquoise dans le temple.
+uniform vec3 deep : source_color = vec3(0.22, 0.50, 0.92);
+uniform vec3 bright : source_color = vec3(0.72, 0.93, 1.0);
 
 float hash(vec2 p) {
 	return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
@@ -25,7 +28,7 @@ void fragment() {
 	// bord du voile un peu plus vif
 	float d_side = min(p.x, size.x - 1.0 - p.x);
 	float edge = 1.0 - smoothstep(0.0, 3.0, d_side);
-	vec3 col = mix(vec3(0.22, 0.50, 0.92), vec3(0.72, 0.93, 1.0), clamp(wave * 0.55 + rune * 0.9 + edge * 0.4, 0.0, 1.0));
+	vec3 col = mix(deep, bright, clamp(wave * 0.55 + rune * 0.9 + edge * 0.4, 0.0, 1.0));
 	col = mix(col, vec3(1.0), flash);
 	float a = (0.38 + 0.22 * wave + rune * 0.4 + edge * 0.2) * strength;
 	COLOR = vec4(col, clamp(a + flash * strength, 0.0, 1.0));

@@ -192,6 +192,10 @@ var quest_flags: Dictionary = {
 	"fragment_epee": false,
 	"fragment_flamme": false,
 	"temple_ouvert": false,              # les fragments posés dans l'ordre (lune, loup, épée, flamme) : le sceau est brisé
+	"temple_vestibule_vu": false,        # Zylrak et Ysolde sont entrés dans le temple (le vestibule)
+	"indice_ordre_vu": false,            # le cercle de cendres du vestibule : la flamme de l'Ordre, renversée, tracée avec du sang
+	"salle_gardien_vue": false,          # arrivée dans la salle du gardien, au bout de la galerie
+	"gardien_temple_vaincu": false,      # l'armure gardienne des Yrenn est tombée : le voile de l'escalier s'est dissipé
 }
 
 # --- Système de spawn entre scènes ---

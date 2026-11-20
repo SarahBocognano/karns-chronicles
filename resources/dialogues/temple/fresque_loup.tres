@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://c07gkiyto8lqn"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_k8lro"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_s1g7q"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_vwba1"]
+
+[sub_resource type="Resource" id="Resource_jhdrg"]
+script = ExtResource("1_k8lro")
+text = "La silhouette a une tête de loup. Des guerriers yrenn l'encerclent ; leurs lances brillent du même bleu que ces pierres."
+
+[sub_resource type="Resource" id="Resource_uikqv"]
+script = ExtResource("1_k8lro")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_s1g7q")
+text = "Ni homme ni loup... C'est elle, la Bête des vieilles histoires."
+
+[resource]
+script = ExtResource("3_vwba1")
+lines = Array[ExtResource("1_k8lro")]([SubResource("Resource_jhdrg"), SubResource("Resource_uikqv")])

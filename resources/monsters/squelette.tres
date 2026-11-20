@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MonsterData" format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/monster_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/monsters/morts_vivants/skeleton.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Squelette"
+texture = ExtResource("2")
+sprite_scale = 1.0
+flip_h = true
+shadow = false
+max_hp = 13
+attack = 4
+defense = 2
+speed = 5
+xp = 8
+attack_names = PackedStringArray("Coup d'os", "Lame rouillée")

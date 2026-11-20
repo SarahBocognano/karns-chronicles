@@ -28,6 +28,9 @@ const PLACES := {
 	"ForestChariotMap": "La forêt · le chariot",
 	"RuinesMonteeMap": "Ruines des Yrenn · la montée",
 	"RuinesParvisMap": "Ruines des Yrenn · le parvis",
+	"TempleVestibuleMap": "Temple des Yrenn · le vestibule",
+	"TempleGalerieMap": "Temple des Yrenn · la galerie",
+	"TempleGardienMap": "Temple des Yrenn · la salle du gardien",
 }
 
 ## Dossier des sauvegardes (les tests en utilisent un autre).

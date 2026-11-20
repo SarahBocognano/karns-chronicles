@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://dpaxmeohgbwu1"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_tdqol"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="2_se267"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_7dgwd"]
+
+[sub_resource type="Resource" id="Resource_oh3ny"]
+script = ExtResource("1_tdqol")
+text = "Une lune noire au-dessus des montagnes. Dessous, une silhouette immense se dresse sur deux pattes, et les morts sortent de terre tout autour d'elle."
+
+[sub_resource type="Resource" id="Resource_wxiba"]
+script = ExtResource("1_tdqol")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_se267")
+text = "Une lune noire... Comme celle qui se lève en ce moment au-dessus de la forêt."
+
+[resource]
+script = ExtResource("3_7dgwd")
+lines = Array[ExtResource("1_tdqol")]([SubResource("Resource_oh3ny"), SubResource("Resource_wxiba")])

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://hs5icfrlkhh5"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_mmopb"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_i3pn1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="3_7p1tp"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="4_3iflv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="5_323j5"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_44gb3"]
+
+[sub_resource type="Resource" id="Resource_77ifn"]
+script = ExtResource("1_mmopb")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_i3pn1")
+text = "Il fait froid, ici. Et pourtant, les pierres brillent..."
+
+[sub_resource type="Resource" id="Resource_jje6s"]
+script = ExtResource("1_mmopb")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_7p1tp")
+text = "Des runes. Elles sont encore allumées, après mille ans."
+
+[sub_resource type="Resource" id="Resource_dobqn"]
+script = ExtResource("1_mmopb")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_3iflv")
+text = "Le sang continue tout droit. Reste près de moi."
+
+[sub_resource type="Resource" id="Resource_pjq3n"]
+script = ExtResource("1_mmopb")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_323j5")
+text = "Regarde les murs, l'Ashwarden. Les Yrenn y ont gravé des fresques."
+
+[resource]
+script = ExtResource("6_44gb3")
+lines = Array[ExtResource("1_mmopb")]([SubResource("Resource_77ifn"), SubResource("Resource_jje6s"), SubResource("Resource_dobqn"), SubResource("Resource_pjq3n")])
