@@ -34,6 +34,12 @@ const EQUIPEMENTS: Dictionary = {
 		"desc": "Une veste de toile doublée de petites plaques d'acier : elle ne gêne pas le tir."},
 	"anneau_marchand": {"nom": "Anneau du marchand", "type": "accessoire", "pour": "tous", "bonus": {"vitesse": 2},
 		"desc": "Un anneau d'argent trouvé sous les caisses du chariot. Il porte le sceau d'une guilde marchande."},
+	"talisman_cendres": {"nom": "Talisman des Cendres", "type": "accessoire", "pour": "zylrak", "bonus": {"magie": 2},
+		"desc": "Un médaillon noirci, frappé de la flamme de l'Ordre. Il chauffe au contact de la peau."},
+	"carquois_tresse": {"nom": "Carquois tressé", "type": "accessoire", "pour": "ysolde", "bonus": {"attaque": 1, "vitesse": 1},
+		"desc": "Un carquois de cuir tressé, léger : les flèches viennent toutes seules sous les doigts."},
+	"cotte_mailles": {"nom": "Cotte de mailles", "type": "armure", "pour": "zylrak", "bonus": {"defense": 2},
+		"desc": "Une cotte de mailles un peu rouillée, oubliée dans les ruines. Lourde, mais elle tient."},
 }
 const SLOTS := ["arme", "armure", "accessoire"]
 const SLOT_NAMES := {"arme": "Arme", "armure": "Armure", "accessoire": "Accessoire"}

@@ -11,6 +11,6 @@ func _enable_monitoring() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		SceneTransition.change_scene(
-			"res://scenes/maps/VillageMap.tscn",
+			"res://scenes/maps/VillageV2Map.tscn",
 			"SpawnFromWeaponShop"
 		)

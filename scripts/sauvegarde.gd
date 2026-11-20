@@ -18,6 +18,7 @@ const NEW_GAME_SPAWN := "SpawnFromVillage"
 ## Nom des lieux, affiché dans le menu et sur les emplacements de sauvegarde.
 const PLACES := {
 	"VillageMap": "Le village",
+	"VillageV2Map": "Le village",
 	"AubergeMap": "L'auberge",
 	"AubergeEtageMap": "L'auberge · l'étage",
 	"WeaponsShopMap": "La forge",

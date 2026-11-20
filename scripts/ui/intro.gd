@@ -16,7 +16,7 @@ const MAPS := {
 	"parvis": "res://scenes/maps/RuinesParvisMap.tscn",
 	"lisiere": "res://scenes/maps/ForestMap.tscn",
 	"chariot": "res://scenes/maps/ForestChariotMap.tscn",
-	"village": "res://scenes/maps/VillageMap.tscn",
+	"village": "res://scenes/maps/VillageV2Map.tscn",
 }
 ## Scripts de logique retirés des cartes (le reste du décor est gardé tel quel).
 const STRIPPED_SCRIPTS := ["map_camera_zoom.gd", "npc_dialogue.gd", "pnj_child_blond_hair.gd", "fragment_yrenn.gd"]

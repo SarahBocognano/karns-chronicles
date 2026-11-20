@@ -12,6 +12,7 @@ extends Node
 
 const MAPS := [
 	"res://scenes/maps/VillageMap.tscn",
+	"res://scenes/maps/VillageV2Map.tscn",
 	"res://scenes/maps/ForestMap.tscn",
 	"res://scenes/maps/ForestCascadeMap.tscn",
 	"res://scenes/maps/ForestChariotMap.tscn",
