@@ -13,6 +13,9 @@ var active := false
 var cancelable := true
 var font_size := 32
 var spacing := 12
+## Couleur du texte (encre sombre sur le parchemin, crème sur les fonds sombres).
+var text_color := UiKit.TEXT
+var disabled_color := UiKit.GREY
 
 var _box: VBoxContainer
 var _hand: TextureRect
@@ -41,7 +44,10 @@ func set_entries(entries: Array, enabled: Array = []) -> void:
 	for k in entries.size():
 		var on: bool = enabled[k] if k < enabled.size() else true
 		_enabled.append(on)
-		_box.add_child(UiKit.label(str(entries[k]), font_size, UiKit.TEXT if on else UiKit.GREY))
+		var l := UiKit.label(str(entries[k]), font_size, text_color if on else disabled_color)
+		if text_color.get_luminance() < 0.4:
+			l.add_theme_constant_override("outline_size", 0)   # encre sur parchemin : pas de contour
+		_box.add_child(l)
 	index = clampi(index, 0, maxi(0, entries.size() - 1))
 	if not _enabled.is_empty() and not _enabled[index]:
 		index = maxi(0, _enabled.find(true))

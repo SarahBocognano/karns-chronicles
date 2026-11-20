@@ -155,9 +155,9 @@ func _run() -> void:
 	finished.emit(result)
 
 func _turn_order() -> Array:
-	var order: Array = [["zylrak", PlayerData.speed + rng.randf_range(0, 3)]]
+	var order: Array = [["zylrak", PlayerData.stat("zylrak", "vitesse") + rng.randf_range(0, 3)]]
 	if not _member("ysolde").is_empty():
-		order.append(["ysolde", PlayerData.ysolde_speed() + rng.randf_range(0, 3)])
+		order.append(["ysolde", PlayerData.stat("ysolde", "vitesse") + rng.randf_range(0, 3)])
 	for f in foes:
 		if f.alive:
 			order.append([f, f.data.speed + rng.randf_range(0, 3)])
@@ -374,7 +374,7 @@ func _hero_attack(foe: Dictionary) -> void:
 	await _hero_step(-34)
 	_hero.play("coup")
 	await get_tree().create_timer(0.22).timeout
-	var dmg := _damage(PlayerData.attack, foe.data.defense)
+	var dmg := _damage(PlayerData.stat("zylrak", "attaque"), foe.data.defense)
 	var crit := rng.randf() < 0.1
 	if crit:
 		dmg = int(dmg * 1.5)
@@ -394,7 +394,7 @@ func _hero_sign(signe: Dictionary, target: Dictionary) -> void:
 	match signe.type:
 		"degats":
 			_embers(target.sprite.position + Vector2(0, -24), Color(1.0, 0.55, 0.15))
-			var dmg := int(PlayerData.magic * signe.puissance * rng.randf_range(0.9, 1.1)) - int(target.data.defense * 0.25)
+			var dmg := int(PlayerData.stat("zylrak", "magie") * signe.puissance * rng.randf_range(0.9, 1.1)) - int(target.data.defense * 0.25)
 			await _hit_foe(target, max(1, dmg), Color(1.0, 0.7, 0.35), "")
 		"protection":
 			_rempart_turns = signe.tours
@@ -440,7 +440,7 @@ func _hero_flee() -> void:
 	for f in alive:
 		foe_speed += f.data.speed
 	foe_speed /= max(1, alive.size())
-	var chance: float = clamp(0.5 + 0.08 * (PlayerData.speed - foe_speed), 0.2, 0.9)
+	var chance: float = clamp(0.5 + 0.08 * (PlayerData.stat("zylrak", "vitesse") - foe_speed), 0.2, 0.9)
 	if rng.randf() < chance:
 		_show_message("Zylrak prend la fuite !" if party.size() == 1 else "L'équipe prend la fuite !")
 		var tw := create_tween().set_parallel()
@@ -576,7 +576,7 @@ func _ysolde_shoot(foe: Dictionary) -> void:
 	_show_message("Ysolde attaque !")
 	await _bow_draw()
 	await _arrow(foe)
-	var dmg := _damage(PlayerData.ysolde_attack(), foe.data.defense)
+	var dmg := _damage(PlayerData.stat("ysolde", "attaque"), foe.data.defense)
 	var crit := rng.randf() < 0.15
 	if crit:
 		dmg = int(dmg * 1.5)
@@ -593,7 +593,7 @@ func _ysolde_talent(talent: Dictionary, target: Dictionary) -> void:
 		"percant":
 			# la flèche traverse l'armure : la défense du monstre ne compte pas
 			await _arrow(target, Color(0.75, 0.9, 1.0))
-			var dmg: int = max(1, int(round(PlayerData.ysolde_attack() * talent.puissance * rng.randf_range(0.9, 1.1))))
+			var dmg: int = max(1, int(round(PlayerData.stat("ysolde", "attaque") * talent.puissance * rng.randf_range(0.9, 1.1))))
 			await _hit_foe(target, dmg, Color(0.75, 0.9, 1.0), "")
 		"pluie":
 			var alive := _alive_foes()
@@ -602,7 +602,7 @@ func _ysolde_talent(talent: Dictionary, target: Dictionary) -> void:
 				await get_tree().create_timer(0.08).timeout
 			await get_tree().create_timer(0.22).timeout
 			for f in alive:
-				var dmg := _damage(int(round(PlayerData.ysolde_attack() * talent.puissance)), f.data.defense)
+				var dmg := _damage(int(round(PlayerData.stat("ysolde", "attaque") * talent.puissance)), f.data.defense)
 				_hit_foe(f, dmg, Color(1.0, 0.95, 0.8), "")
 			await get_tree().create_timer(0.9).timeout
 	_ysolde.play("garde")
@@ -622,7 +622,7 @@ func _ysolde_pillage(foe: Dictionary) -> void:
 	if foe.get("pille", false):
 		text = "Il n'y a plus rien à prendre."
 	else:
-		var chance: float = clamp(0.65 + 0.05 * (PlayerData.ysolde_speed() - foe.data.speed), 0.3, 0.95)
+		var chance: float = clamp(0.65 + 0.05 * (PlayerData.stat("ysolde", "vitesse") - foe.data.speed), 0.3, 0.95)
 		if rng.randf() < chance:
 			foe["pille"] = true
 			var item_id := _loot()
@@ -733,7 +733,7 @@ func _max_mp(m: Dictionary) -> int:
 	return PlayerData.max_energy if m.id == "zylrak" else PlayerData.ysolde_max_energy()
 
 func _defense_of(m: Dictionary) -> int:
-	return PlayerData.defense if m.id == "zylrak" else PlayerData.ysolde_defense()
+	return PlayerData.stat("zylrak" if m.id == "zylrak" else "ysolde", "defense")
 
 # =============================================================== fin du combat
 func _ending() -> void:

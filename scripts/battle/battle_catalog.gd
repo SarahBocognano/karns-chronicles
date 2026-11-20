@@ -21,5 +21,23 @@ const OBJETS: Dictionary = {
 	"fiole": {"nom": "Fiole de mana", "mana": 8},
 }
 
+## Équipement : type ("arme", "armure", "accessoire"), qui peut le porter ("zylrak", "ysolde" ou
+## "tous"), bonus ajoutés aux caractéristiques (attaque, defense, magie, vitesse).
+const EQUIPEMENTS: Dictionary = {
+	"epee_ordre": {"nom": "Épée de l'Ordre", "type": "arme", "pour": "zylrak", "bonus": {"attaque": 1},
+		"desc": "L'épée des Ashwardens, trempée dans la flamme de l'Ordre."},
+	"cuir_ashwarden": {"nom": "Cuir d'Ashwarden", "type": "armure", "pour": "zylrak", "bonus": {"defense": 1},
+		"desc": "Cuir renforcé de plaques de métal, usé par les routes."},
+	"arc_frene": {"nom": "Arc de frêne", "type": "arme", "pour": "ysolde", "bonus": {"attaque": 1},
+		"desc": "Léger et précis. Ysolde l'a taillé elle-même."},
+	"brigandine": {"nom": "Brigandine légère", "type": "armure", "pour": "ysolde", "bonus": {"defense": 1},
+		"desc": "Une veste de toile doublée de petites plaques d'acier : elle ne gêne pas le tir."},
+	"anneau_marchand": {"nom": "Anneau du marchand", "type": "accessoire", "pour": "tous", "bonus": {"vitesse": 2},
+		"desc": "Un anneau d'argent trouvé sous les caisses du chariot. Il porte le sceau d'une guilde marchande."},
+}
+const SLOTS := ["arme", "armure", "accessoire"]
+const SLOT_NAMES := {"arme": "Arme", "armure": "Armure", "accessoire": "Accessoire"}
+const STAT_NAMES := {"attaque": "Attaque", "defense": "Défense", "magie": "Magie", "vitesse": "Vitesse"}
+
 ## Ce qu'Ysolde peut dérober aux monstres (Pillage) : [objet, poids].
 const BUTIN := [["potion", 3], ["fiole", 2]]
