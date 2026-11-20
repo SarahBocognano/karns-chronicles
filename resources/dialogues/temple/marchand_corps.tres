@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://coq3x3efouk6u"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_6yvlk"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="2_eq3xn"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_it2yn"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="4_wtkmy"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_7f8yu"]
+
+[sub_resource type="Resource" id="Resource_0lye3"]
+script = ExtResource("1_6yvlk")
+text = "Le marchand. Il est mort depuis un jour ou deux, les mains liées, une entaille en travers de la gorge."
+
+[sub_resource type="Resource" id="Resource_2ghmf"]
+script = ExtResource("1_6yvlk")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_eq3xn")
+text = "Ils l'ont saigné pour briser le sceau. Le cercle de cendres, dans le vestibule... C'était pour ça."
+
+[sub_resource type="Resource" id="Resource_lcw8o"]
+script = ExtResource("1_6yvlk")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_it2yn")
+text = "Ce ne sont pas des goules qui font des nœuds pareils."
+
+[sub_resource type="Resource" id="Resource_l2sb6"]
+script = ExtResource("1_6yvlk")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_wtkmy")
+text = "Oswin attendait ses vivres. Il faudra lui dire."
+
+[resource]
+script = ExtResource("5_7f8yu")
+lines = Array[ExtResource("1_6yvlk")]([SubResource("Resource_0lye3"), SubResource("Resource_2ghmf"), SubResource("Resource_lcw8o"), SubResource("Resource_l2sb6")])

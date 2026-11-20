@@ -109,6 +109,8 @@ var equipment := {
 var gear_bag: Array[String] = []
 ## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
 const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand"}
+## Objets donnés quand un flag passe à true (récompense de quête).
+const FLAG_ITEMS := {"quete_marchand_terminee": ["potion", "potion", "potion", "fiole", "fiole"]}
 
 ## Caractéristique d'un héros, équipement compris. hero : "zylrak" ou "ysolde" ;
 ## stat : "attaque", "defense", "magie" ou "vitesse".
@@ -195,7 +197,11 @@ var quest_flags: Dictionary = {
 	"temple_vestibule_vu": false,        # Zylrak et Ysolde sont entrés dans le temple (le vestibule)
 	"indice_ordre_vu": false,            # le cercle de cendres du vestibule : la flamme de l'Ordre, renversée, tracée avec du sang
 	"salle_gardien_vue": false,          # arrivée dans la salle du gardien, au bout de la galerie
-	"gardien_temple_vaincu": false,      # l'armure gardienne des Yrenn est tombée : le voile de l'escalier s'est dissipé
+	"gardien_temple_vaincu": false,      # le gardien corrompu est tombé
+	"fragment_ame_lune": false,          # Zylrak a enfermé dans la cendre le fragment d'âme de la Bête (premier temple)
+	"marchand_retrouve": false,          # le corps du marchand, au fond du temple
+	"parchemin_yrenn": false,            # le parchemin de l'autel : les quatre éclats, le temple du Loup sous le lac
+	"quete_marchand_terminee": false,    # Zylrak a annoncé la mort du marchand à Oswin (récompense : FLAG_ITEMS)
 }
 
 # --- Système de spawn entre scènes ---
@@ -254,6 +260,10 @@ func set_flag(flag_name: String, value: bool) -> void:
 	quest_flags[flag_name] = value
 	if value and FLAG_REWARDS.has(flag_name) and not owns_gear(FLAG_REWARDS[flag_name]):
 		gear_bag.append(FLAG_REWARDS[flag_name])
+	if value and FLAG_ITEMS.has(flag_name) and not quest_flags.get(flag_name + "_recompense", false):
+		quest_flags[flag_name + "_recompense"] = true
+		for item in FLAG_ITEMS[flag_name]:
+			inventory.append(item)
 	flag_changed.emit(flag_name, value)
 
 func get_flag(flag_name: String) -> bool:

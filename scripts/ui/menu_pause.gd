@@ -610,14 +610,33 @@ const KEY_ITEM_TEXT := {
 	"epee": "Un éclat gravé d'une épée. « L'épée des Yrenn la fit plier... »",
 	"flamme": "Un éclat gravé d'une flamme. « ...et la flamme la scella. »",
 }
+const SOUL_FRAGMENT_TEXT := "Un morceau de l'âme de la Bête, arraché au gardien du premier temple et enfermé dans la cendre par Zylrak. Il est froid, et il bat doucement, comme un cœur.\n\nIl faut réunir les quatre, et les rendre ensemble à la flamme."
+const SCROLL_TEXT := "Le rouleau de l'autel, scellé à la cire bleue. « Quatre éclats, quatre temples. Que les porteurs de cendre rassemblent les éclats et les rendent ensemble à la flamme : alors la Bête dormira mille ans encore. »\n\nLa carte montre un loup sous l'eau : le lac, au sud de la forêt."
+
+## Objets précieux : les fragments gravés (jusqu'à l'ouverture du temple), le fragment d'âme, le parchemin.
+func _key_items() -> Array[Dictionary]:
+	var entries: Array[Dictionary] = []
+	if not PlayerData.get_flag("temple_ouvert"):
+		var n := 0
+		for s in FragmentYrenn.SYMBOLS:
+			if PlayerData.get_flag(FragmentYrenn.flag_for(s)):
+				n += 1
+		for s in FragmentYrenn.SYMBOLS:
+			if PlayerData.get_flag(FragmentYrenn.flag_for(s)):
+				entries.append({"id": s, "icon": FragmentYrenn.icon_for(s), "count": 1, "titre": "Fragment gravé des Yrenn",
+					"sous_titre": "%d sur 4" % n,
+					"texte": KEY_ITEM_TEXT[s] + "\n\nLes quatre fragments vont dans les encoches de la porte du temple."})
+	if PlayerData.get_flag("fragment_ame_lune"):
+		entries.append({"id": "fragment_ame", "icon": UiKit.icon("fragment_ame"), "count": 1, "titre": "Fragment d'âme",
+			"sous_titre": "1 sur 4", "texte": SOUL_FRAGMENT_TEXT})
+	if PlayerData.get_flag("parchemin_yrenn"):
+		entries.append({"id": "parchemin_yrenn", "icon": UiKit.icon("parchemin_yrenn"), "count": 1, "titre": "Parchemin des Yrenn",
+			"sous_titre": "Trouvé sur l'autel du gardien", "texte": SCROLL_TEXT})
+	return entries
 
 func _page_key_items(index: int) -> GrilleObjets:
 	_clear()
-	var entries: Array[Dictionary] = []
-	if not PlayerData.get_flag("temple_ouvert"):
-		for s in FragmentYrenn.SYMBOLS:
-			if PlayerData.get_flag(FragmentYrenn.flag_for(s)):
-				entries.append({"id": s, "icon": FragmentYrenn.icon_for(s), "count": 1})
+	var entries := _key_items()
 	_place(_view, UiKit.label("Objets précieux", 30, UiKit.GOLD), Vector2(20, 0))
 	var card := _parchment(Vector2(640, 0), Vector2(900, 640))
 	var grid := GrilleObjets.new()
@@ -631,11 +650,11 @@ func _page_key_items(index: int) -> GrilleObjets:
 			_place(card, _ink("Aucun objet précieux pour l'instant.", 28, UiKit.INK_SOFT), Vector2(60, 60))
 			return
 		_place(card, _big_icon(entries[k].icon, 144), Vector2(50, 40))
-		_place(card, _ink("Fragment gravé des Yrenn", 34, UiKit.INK_GOLD), Vector2(220, 60))
-		_place(card, _ink("%d sur 4" % entries.size(), 24, UiKit.INK_SOFT), Vector2(222, 112))
-		var d := _ink(KEY_ITEM_TEXT[entries[k].id] + "\n\nLes quatre fragments vont dans les encoches de la porte du temple.", 26)
+		_place(card, _ink(entries[k].titre, 34, UiKit.INK_GOLD), Vector2(220, 60))
+		_place(card, _ink(entries[k].sous_titre, 24, UiKit.INK_SOFT), Vector2(222, 112))
+		var d := _ink(entries[k].texte, 26)
 		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		d.size = Vector2(780, 260)
+		d.size = Vector2(780, 360)
 		_place(card, d, Vector2(56, 230))
 	grid.moved.connect(show)
 	show.call(clampi(index, 0, maxi(0, entries.size() - 1)))
@@ -665,8 +684,13 @@ func _quests() -> Array[Dictionary]:
 				door += "  (fragments : %d sur 4)" % FragmentYrenn.found_count()
 			steps.append([door, f.call("temple_ouvert")])
 		if f.call("temple_ouvert"):
-			steps.append(["Explorer le temple et retrouver le marchand.", false])
+			steps.append(["Explorer le temple et retrouver le marchand.", f.call("marchand_retrouve")])
+		if f.call("marchand_retrouve"):
+			steps.append(["Rentrer à l'auberge annoncer la nouvelle à Oswin.", f.call("quete_marchand_terminee")])
 		out.append({"titre": "Le marchand disparu", "texte": "Oswin, l'aubergiste, demande de retrouver le marchand qui devait ravitailler le village et n'est jamais arrivé.", "etapes": steps})
+	if f.call("parchemin_yrenn"):
+		out.append({"titre": "Les fragments d'âme", "texte": "Le gardien du temple était un fragment de l'âme de la Bête. Le parchemin de l'autel dit qu'il faut réunir les quatre fragments et les rendre ensemble à la flamme pour la resceller.",
+			"etapes": [["Enfermer le fragment du premier temple dans la cendre.", f.call("fragment_ame_lune")], ["Trouver le temple du Loup, sous le lac.", false]]})
 	if f.call("aldric_quest_started"):
 		out.append({"titre": "Le frère de Brenna", "texte": "Brenna demande de retrouver son frère Aldric, parti couper du bois près du lac et jamais revenu.",
 			"etapes": [["Chercher Aldric du côté du lac, au-delà de la cascade.", false]]})

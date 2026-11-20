@@ -86,7 +86,9 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 Trois salles, de plus en plus profondes (générées par `tools/make_temple.gd`) :
 - **Le vestibule** : quatre fresques murales racontent la Bête (on les lit avec Entrée, au pied du mur). Au milieu, un cercle tracé à la cendre : la flamme de l'Ordre des Cendres, renversée, peinte avec le sang du marchand.
 - **La galerie** : un long couloir hanté par des goules, des zombies et des squelettes, avec une alcôve de chaque côté (l'Amulette des Yrenn, des potions).
-- **La salle du gardien** : le grand cercle rituel, les quatre sceaux au sol, des torches et des braseros. Au fond, l'escalier est fermé par un voile turquoise, et une armure des Yrenn le garde : elle s'éveille quand Zylrak approche, et on ne peut pas fuir ce combat. Une fois le gardien tombé, le voile se dissipe ; l'escalier descend dans le noir (il faudra une torche).
+- **La salle du gardien** : le grand cercle rituel, les sceaux au sol, des statues de mages yrenn, des torches et des braseros. Au fond, devant l'autel, se dresse le gardien, et le corps du marchand gît à côté.
+
+**Les gardiens et les fragments d'âme.** Les Yrenn ont brisé l'âme de la Bête en quatre éclats, un par temple, et lié leurs propres âmes aux sceaux pour les garder. Sous la lune noire, l'éclat a dévoré le Yrenn qui le gardait et pris son armure ; le culte (des membres renégats de l'Ordre des Cendres) a brisé le sceau avec le sang du marchand. Zylrak doit donc vaincre le gardien corrompu (on ne peut pas fuir ce combat), puis enfermer dans la cendre la braise noire qui s'en échappe : c'était le rôle des Ashwardens, héritiers des Yrenn. Il obtient le **fragment d'âme** ; sur l'autel, le **parchemin des Yrenn** explique qu'il faut réunir les quatre et les rendre ensemble à la flamme pour resceller la Bête, et indique le prochain temple (le Loup, sous le lac). Zylrak examine le corps du marchand, puis rentre l'annoncer à Oswin, qui le récompense : la quête du marchand s'arrête là.
 
 ## Organisation du projet
 
@@ -126,7 +128,7 @@ scripts/
 - Coffres : générés avec Copilot dans le style de Szadi art, puis découpés.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
-- Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel et pierres gravées des fragments, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
+- Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel, pierres gravées des fragments, statues de mages, ossements, racines et mousse, fond de combat de la salle, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
@@ -137,5 +139,4 @@ scripts/
 ## À venir
 
 - Mini quête de Pépin : il vole la bourse de Zylrak et tombe dans une embuscade de monstres.
-- Nouvelles cartes : le lac, l'escalier sous le temple (avec une torche), l'intérieur de la grotte.
-- Temple : statues de mages Yrenn, ossements, racines et mousse sur les murs (à la place des gravats).
+- Nouvelles cartes : le lac et le temple du Loup, l'intérieur de la grotte.

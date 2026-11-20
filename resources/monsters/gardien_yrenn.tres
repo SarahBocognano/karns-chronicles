@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1")
-display_name = "Gardien des Yrenn"
+display_name = "Gardien corrompu"
 texture = ExtResource("2")
 sprite_scale = 1.5
 flip_h = true

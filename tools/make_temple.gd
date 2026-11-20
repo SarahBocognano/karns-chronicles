@@ -26,7 +26,7 @@ const TRACES := "res://assets/sprites/tilesets/traces/"
 const DIALOGUES := "res://resources/dialogues/temple/"
 const TILESET_OUT := "res://resources/tilesets/temple.tres"
 const MUSIC := "res://assets/audio/musique/ruines.wav"
-const BATTLE_BG := "res://assets/battle_backgrounds/battle_temple.png"
+const BATTLE_BG_INSIDE := "res://assets/battle_backgrounds/battle_temple_interieur.png"
 
 # --- tuiles (source 0 : castle_interriors ; source 1 : coins rentrants) ---
 const FILL := Vector2i(2, 2)
@@ -95,16 +95,16 @@ func _initialize() -> void:
 # Les salles
 # =====================================================================================
 
-## Le vestibule : 24 × 18 cases. On entre par le bas (depuis le parvis), on sort par l'arche du fond.
+## Le vestibule : 20 × 18 cases. On entre par le bas (depuis le parvis), on sort par l'arche du fond.
 func _room_vestibule() -> void:
-	_begin("TempleVestibuleMap", 24, 18, [Rect2i(2, 6, 20, 10), Rect2i(11, 16, 2, 2)], [2, 5, 9, 14, 18, 21], 11, 11,
+	_begin("TempleVestibuleMap", 20, 18, [Rect2i(2, 6, 16, 10), Rect2i(9, 16, 2, 2)], [2, 5, 8, 11, 14, 17], 9, 11,
 		Color(0.5, 0.52, 0.66))
-	var cx := 12.0 * T
+	var cx := 10.0 * T
 	_sprite(decor, "Arche", INTERIORS, DOORWAY, Vector2(cx, main_top * T))
 	_opening(Vector2(cx, main_top * T))
 	# les quatre fresques murales, deux de chaque côté de l'arche
 	var i := 0
-	for x in [128.0, 256.0, 512.0, 640.0]:
+	for x in [128.0, 224.0, 416.0, 512.0]:
 		var f := Node2D.new()
 		f.set_script(load("res://scenes/maps/fresque_yrenn.gd"))
 		f.set("style", "murale")
@@ -115,18 +115,18 @@ func _room_vestibule() -> void:
 		_own(f, "Fresque" + (SYMBOLS[i] as String).capitalize(), decor)
 		_light("Fresque%d" % i, Vector2(x, 140), TURQUOISE, 0.55, 0.55)
 		i += 1
-	# torches sur les pilastres qui encadrent l'arche et les fresques
-	for x in [5, 9, 14, 18]:
+	# torches sur les pilastres entre les fresques
+	for x in [5, 8, 11, 14]:
 		_wall_torch(Vector2(x * T + 16, main_top * T - 34))
 	_sprite(sol, "CercleCendres", OBJ + "cercle_cendres.png", Rect2(0, 0, 104, 60), Vector2(cx, 352 + 30))
 	_trail([[540.0, 400.0], [322.0, 200.0]], cx)
-	for p in [Vector2(6.5, 13.6), Vector2(17.5, 13.6)]:
-		_pillar(p * T, PILLAR_A if p.x < 12 else PILLAR_B)
+	for p in [Vector2(5.5, 13.6), Vector2(14.5, 13.6)]:
+		_pillar(p * T, PILLAR_A if p.x < 10 else PILLAR_B)
 		_bowl(p * T + Vector2(0, 26))
-	_crystals([Vector2(2.6, 7.2), Vector2(21.3, 7.4), Vector2(3.0, 15.4), Vector2(21.0, 15.2)])
-	_jars([Vector2(2.8, 9.6), Vector2(21.2, 10.2), Vector2(20.6, 14.4)], [Vector2(3.4, 12.2), Vector2(19.8, 8.4)])
-	_chains([Vector2(2.5 * T, 72), Vector2(21.5 * T, 72)])
-	_cracks(18)
+	_crystals([Vector2(2.6, 7.2), Vector2(17.4, 7.4), Vector2(3.0, 15.4), Vector2(17.0, 15.2)])
+	_jars([Vector2(2.8, 9.6), Vector2(17.2, 10.2)], [Vector2(3.4, 12.2), Vector2(16.4, 8.4)])
+	_bones([[Vector2(4.2, 11.0), 2], [Vector2(15.6, 12.2), 0], [Vector2(16.8, 14.6), 5]])
+	_cracks(14)
 	# passages
 	_spawn("SpawnFromParvis", Vector2(cx, 15.3 * T))
 	_exit("ExitToParvis", Vector2(cx, H * T - 14), Vector2(64, 24), "res://scenes/maps/RuinesParvisMap.tscn", "SpawnFromTemple")
@@ -166,6 +166,10 @@ func _room_galerie() -> void:
 	_crystals([Vector2(3.4, 12.4), Vector2(16.6, 19.4), Vector2(5.5, 7.0), Vector2(14.4, 26.8), Vector2(5.6, 22.6)])
 	_jars([Vector2(14.3, 8.4), Vector2(5.6, 16.2), Vector2(14.4, 14.6)], [Vector2(5.8, 26.4), Vector2(13.9, 23.6), Vector2(6.0, 19.8)])
 	_chains([Vector2(3.5 * T, 8 * T + 6), Vector2(16.5 * T, 15 * T + 6), Vector2(5.5 * T, 70)])
+	_bones([[Vector2(6.0, 11.6), 0], [Vector2(13.6, 12.4), 1], [Vector2(7.2, 20.6), 4], [Vector2(12.8, 26.2), 2],
+		[Vector2(4.4, 14.4), 3], [Vector2(15.6, 21.4), 5]])
+	_wall_overlays([[3, 12, 0], [4, 12, 1], [15, 19, 2], [16, 19, 0]])
+	_wall_overlays([[6, main_top, 1], [13, main_top, 2]])
 	_cracks(26)
 	_trail([[880.0, 200.0]], cx)
 	# combats
@@ -174,7 +178,7 @@ func _room_galerie() -> void:
 	var monsters: Array[MonsterData] = [load("res://resources/monsters/goule.tres"), load("res://resources/monsters/zombie.tres"),
 		load("res://resources/monsters/squelette.tres")]
 	enc.set("monsters", monsters)
-	enc.set("battle_background", load(BATTLE_BG))
+	enc.set("battle_background", load(BATTLE_BG_INSIDE))
 	enc.set("encounter_rate", 0.04)
 	_own(enc, "EncounterZone", map_root)
 	_shape(enc, "Forme", Vector2(cx, 17 * T), Vector2(10 * T, 18 * T))
@@ -185,24 +189,15 @@ func _room_galerie() -> void:
 	_player(Vector2(cx, 26.6 * T))
 	_save("res://scenes/maps/TempleGalerieMap.tscn")
 
-## La salle du gardien : 34 × 22 cases, le combat final de l'étage.
+## La salle du gardien : 34 × 22 cases, le combat final de l'étage. Au fond, l'autel où reposait le
+## fragment d'âme, gardé par l'armure corrompue ; le corps du marchand gît à côté.
 func _room_gardien() -> void:
 	_begin("TempleGardienMap", 34, 22, [Rect2i(3, 6, 28, 14), Rect2i(1, 11, 2, 3), Rect2i(31, 11, 2, 3), Rect2i(16, 20, 2, 2)],
 		[4, 9, 14, 19, 24, 29], 16, 16, Color(0.45, 0.47, 0.6))
 	var cx := 17.0 * T
 	var wall_foot := main_top * T
-	_sprite(decor, "Arche", INTERIORS, ARCH, Vector2(cx, wall_foot))
-	_opening(Vector2(cx, wall_foot - 28))   # le noir au-dessus des marches
-	# le voile turquoise de l'escalier, et sa lueur qui pulse
-	var veil := Node2D.new()
-	veil.set_script(load("res://scenes/maps/sceau_yrenn.gd"))
-	veil.set("doorway", Rect2(-16, -78, 32, 76))
-	veil.set("flag_name", "gardien_temple_vaincu")
-	veil.set("deep", Color(0.08, 0.55, 0.5))
-	veil.set("light", Color(0.55, 1.0, 0.92))
-	veil.set("glow_energy", 1.0)
-	veil.position = Vector2(cx, wall_foot)
-	_own(veil, "VoileEscalier", decor)
+	# une niche en arc derrière l'autel
+	_sprite(decor, "Niche", INTERIORS, DOORWAY, Vector2(cx, wall_foot))
 	# médaillons (non lus) entre les pilastres, une torche de chaque côté
 	var i := 0
 	for x in [224.0, 384.0, 704.0, 864.0]:
@@ -216,25 +211,43 @@ func _room_gardien() -> void:
 		_wall_torch(Vector2(x - 48, wall_foot - 34))
 		_wall_torch(Vector2(x + 48, wall_foot - 34))
 		i += 1
-	# braseros de chaque côté de l'escalier
+	_wall_overlays([[5, main_top, 0], [13, main_top, 1], [20, main_top, 2], [28, main_top, 0], [1, 11, 1], [32, 11, 2]])
+	_chains([Vector2(cx - 112, 76), Vector2(cx + 112, 76)])
+	# l'autel, le parchemin dessus ; un brasero de chaque côté
+	var altar := _sprite(ysort, "Autel", DECO, RUBBLE[4], Vector2(cx, wall_foot + 40), 4.0)
+	_box(altar, "Corps", Vector2(0, -8), Vector2(58, 16))
+	var scroll := _sprite(altar, "Parchemin", OBJ + "parchemin.png", Rect2(0, 0, 20, 12), Vector2(0, -40))
+	_light("Autel", Vector2(cx, wall_foot + 4), Color(0.55, 0.75, 1.0), 0.6, 0.4)
+	var read := _inspect("LireParchemin", Vector2(cx, wall_foot + 52), "parchemin.tres", "", "parchemin_yrenn", Vector2(0, -52))
+	read.set("reach", 46.0)
+	read.set("hide_after", read.get_path_to(scroll))
 	_stand(Vector2(cx - 76, wall_foot + 34))
 	_stand(Vector2(cx + 76, wall_foot + 34))
-	_chains([Vector2(cx - 112, 76), Vector2(cx + 112, 76)])
-	# le grand cercle rituel, et les quatre sceaux au sol devant l'escalier
-	_sprite(sol, "CercleRituel", OBJ + "cercle_rituel.png", Rect2(0, 0, 160, 160), Vector2(cx, 13 * T + 80))
-	_light("Cercle", Vector2(cx, 13 * T), TURQUOISE, 0.5, 1.0)
-	var sx := [cx - 160, cx - 96, cx + 96, cx + 160]
+	# le corps du marchand, là où le sang s'arrête
+	var body_at := Vector2(cx - 84, wall_foot + 112)
+	var puddle := _sprite(sol, "FlaqueMarchand", TRACES + "sang_flaque.png", Rect2(0, 0, 32, 19), body_at + Vector2(6, 4))
+	puddle.scale = Vector2(1.6, 1.4)
+	var corpse := _sprite(sol, "CorpsMarchand", "res://assets/sprites/characters/random_pnj_brown.png", Rect2(320, 1280, 64, 64), body_at, 14.0)
+	corpse.modulate = Color(0.82, 0.78, 0.78)
+	_inspect("ExaminerMarchand", body_at + Vector2(0, -8), "marchand_corps.tres", "marchand_corps_apres.tres", "marchand_retrouve", Vector2(0, -30))
+	# le grand cercle rituel, et les quatre sceaux au sol, deux de chaque côté de l'allée
+	_sprite(sol, "CercleRituel", OBJ + "cercle_rituel.png", Rect2(0, 0, 160, 160), Vector2(cx, 420 + 80))
+	_light("Cercle", Vector2(cx, 420), TURQUOISE, 0.5, 1.0)
+	var sx := [cx - 164, cx - 100, cx + 100, cx + 164]
 	for k in 4:
-		_sprite(sol, "Sceau" + (SYMBOLS[k] as String).capitalize(), OBJ + "sceaux_sol.png", Rect2(k * 64, 0, 64, 64), Vector2(sx[k], 9.6 * T + 32))
-		_light("Sceau%d" % k, Vector2(sx[k], 9.6 * T), TURQUOISE, 0.35, 0.35)
-	_trail([[640.0, 500.0], [334.0, 262.0], [236.0, 196.0]], cx)
-	# piliers ; à leur pied, des gravats (bientôt des statues de mages)
+		_sprite(sol, "Sceau" + (SYMBOLS[k] as String).capitalize(), OBJ + "sceaux_sol.png", Rect2(k * 64, 0, 64, 64), Vector2(sx[k], 572))
+		_light("Sceau%d" % k, Vector2(sx[k], 540), TURQUOISE, 0.35, 0.35)
+	_trail([[640.0, 504.0], [336.0, 318.0]], cx)
+	_trail_to(Vector2(cx, 318), body_at + Vector2(10, -6))
+	# piliers ; à leur pied, côté mur, une statue de mage yrenn
 	var px := [10.5, 23.5]
+	var k2 := 0
 	for y in [11.2, 16.6]:
 		_pillar(Vector2(px[0], y) * T, PILLAR_A)
 		_pillar(Vector2(px[1], y) * T, PILLAR_B)
-		_rubble(Vector2(px[0] - 1.1, y + 0.3) * T, 6)
-		_rubble(Vector2(px[1] + 1.1, y + 0.3) * T, 7)
+		_statue(Vector2(px[0] - 1.15, y + 0.2) * T, k2 % 2)
+		_statue(Vector2(px[1] + 1.15, y + 0.2) * T, (k2 + 1) % 2)
+		k2 += 1
 	_bowl(Vector2(14.5, 19.0) * T)
 	_bowl(Vector2(19.5, 19.0) * T)
 	# alcôves : un coffre à gauche, une inscription à droite
@@ -250,11 +263,13 @@ func _room_gardien() -> void:
 	_own(ins, "Inscription", decor)
 	_light("AlcoveEst", Vector2(32, 12.4) * T, BLUE, 0.7, 0.45)
 	_crystals([Vector2(3.6, 7.2), Vector2(30.4, 7.0), Vector2(3.4, 19.2), Vector2(30.6, 19.4), Vector2(1.4, 11.4), Vector2(32.6, 13.6)])
-	_jars([Vector2(5.0, 18.8), Vector2(29.0, 9.0)], [Vector2(6.2, 7.6), Vector2(27.6, 18.6), Vector2(12.4, 7.4)])
-	_cracks(34)
-	# le gardien
+	_jars([Vector2(5.0, 18.8), Vector2(29.0, 9.0)], [Vector2(6.2, 7.6), Vector2(27.6, 18.6)])
+	_bones([[Vector2(5.6, 9.4), 4], [Vector2(28.2, 12.6), 0], [Vector2(7.4, 15.0), 2], [Vector2(26.8, 17.2), 5], [Vector2(12.0, 7.6), 3],
+		[Vector2(21.6, 8.0), 1]])
+	_cracks(30)
+	# le gardien, devant l'autel
 	var g := Node2D.new()
-	g.position = Vector2(cx, wall_foot + 56)
+	g.position = Vector2(cx, wall_foot + 96)
 	_own(g, "Gardien", ysort)
 	var armor := Sprite2D.new()
 	armor.texture = load("res://assets/sprites/monsters/morts_vivants/cursed_armor.png")
@@ -268,16 +283,13 @@ func _room_gardien() -> void:
 	scenario.set("arrival", load(DIALOGUES + "salle_gardien.tres"))
 	scenario.set("arrival_flag", "salle_gardien_vue")
 	scenario.set("monster", load("res://resources/monsters/gardien_yrenn.tres"))
-	scenario.set("battle_background", load(BATTLE_BG))
+	scenario.set("battle_background", load(BATTLE_BG_INSIDE))
 	scenario.set("guardian_wake", load(DIALOGUES + "gardien_eveil.tres"))
 	scenario.set("guardian_defeated", load(DIALOGUES + "gardien_vaincu.tres"))
-	scenario.set("stairs", load(DIALOGUES + "escalier.tres"))
-	_area("ZoneGardien", g.position + Vector2(0, 40), Vector2(170, 136))
-	_area("ZoneEscalier", Vector2(cx, wall_foot + 6), Vector2(28, 14))
+	scenario.set("fragment_caught", load(DIALOGUES + "fragment_capture.tres"))
+	_area("ZoneGardien", g.position + Vector2(0, 40), Vector2(190, 136))
 	scenario.set("guardian_path", NodePath("../YSortLayer/Gardien"))
 	scenario.set("guardian_zone_path", NodePath("../ZoneGardien"))
-	scenario.set("stairs_zone_path", NodePath("../ZoneEscalier"))
-	scenario.set("veil_path", NodePath("../Decor/VoileEscalier"))
 	_player(Vector2(cx, 19.3 * T))
 	_save("res://scenes/maps/TempleGardienMap.tscn")
 
@@ -608,6 +620,61 @@ func _trail(segments: Array, x: float) -> void:
 			traces.add_child(s)
 			s.owner = map_root
 			y -= rng.randf_range(14, 30)
+
+## Point à examiner (point_inspection.gd), disponible une fois le gardien vaincu.
+func _inspect(nm: String, pos: Vector2, conv: String, conv_after: String, flag: String, sparkle: Vector2) -> Node2D:
+	var n := Node2D.new()
+	n.set_script(load("res://scenes/maps/point_inspection.gd"))
+	n.set("conversation", load(DIALOGUES + conv))
+	if conv_after != "":
+		n.set("conversation_after", load(DIALOGUES + conv_after))
+	n.set("required_flag", "gardien_temple_vaincu")
+	n.set("flag_on_read", flag)
+	n.set("sparkle_at", sparkle)
+	n.position = pos
+	return _own(n, nm, ysort)
+
+## Statue de mage yrenn (0 : au bâton, 1 : en prière), sur son socle.
+func _statue(foot: Vector2, kind: int) -> void:
+	var s := _sprite(ysort, _uid("Statue", ysort), OBJ + "statues_yrenn.png", Rect2(kind * 32, 0, 32, 64), foot, 2.0)
+	_box(s, "Corps", Vector2(0, -6), Vector2(24, 12))
+	_light("Statue", foot + Vector2(0, -36), TURQUOISE, 0.3, 0.35)
+
+## Ossements au sol : [case, n° (0 crâne, 1 cage thoracique, 2 os épars, 3 crâne casqué, 4 tas, 5 fémur et mâchoire)].
+func _bones(list: Array) -> void:
+	for b in list:
+		var k: int = b[1]
+		var s := _sprite(sol, _uid("Os", sol), OBJ + "ossements.png", Rect2((k % 3) * 32, (k / 3) * 32, 32, 32), (b[0] as Vector2) * T, 4.0)
+		s.flip_h = rng.randf() < 0.5
+
+## Racines et mousse sur un mur : [colonne, rangée du sol au pied de ce mur, n° (0 racines, 1 mousse, 2 fissure moussue)].
+func _wall_overlays(list: Array) -> void:
+	for o in list:
+		var top := Vector2((o[0] as int) * T + 16, ((o[1] as int) - 4) * T)
+		var s := Sprite2D.new()
+		s.texture = load(OBJ + "murs_racines_mousse.png")
+		s.region_enabled = true
+		s.region_rect = Rect2((o[2] as int) * 32, 0, 32, 96)
+		s.centered = false
+		s.offset = Vector2(-16, 0)
+		s.position = top
+		_own(s, _uid("Vegetation", decor), decor)
+
+## Traînée de sang en ligne droite (d'un point à un autre), vers le corps du marchand.
+func _trail_to(from: Vector2, to: Vector2) -> void:
+	var traces := sol.get_node("TracesMarchand")
+	var d := from.distance_to(to)
+	var step := 0.0
+	while step < d:
+		var s := Sprite2D.new()
+		s.texture = load(TRACES + ["sang_trace.png", "sang_trace_2.png", "sillons.png"][rng.randi() % 3])
+		s.scale = Vector2(1.1, 1.1)
+		s.position = from.lerp(to, step / d) + Vector2(rng.randf_range(-4, 4), rng.randf_range(-4, 4))
+		s.rotation = (to - from).angle() + PI + rng.randf_range(-0.4, 0.4)
+		s.modulate = Color(0.85, 0.8, 0.8, rng.randf_range(0.5, 0.8))
+		traces.add_child(s)
+		s.owner = map_root
+		step += rng.randf_range(14, 26)
 
 ## Le passage sous l'arche : une ouverture noire, arrondie en haut.
 func _opening(foot: Vector2) -> void:

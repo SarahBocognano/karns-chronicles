@@ -21,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://ukr7totgebid" path="res://resources/dialogues/inconnu/inconnu_rappel.tres" id="dlg_inconnu_rappel"]
 [ext_resource type="Resource" uid="uid://dfbrs5kp54oun" path="res://resources/dialogues/oswin/oswin_appel.tres" id="dlg_oswin_appel"]
 [ext_resource type="Resource" uid="uid://cotheo2ay7byk" path="res://resources/dialogues/oswin/oswin_rappel.tres" id="dlg_oswin_rappel"]
+[ext_resource type="Resource" uid="uid://bs8gv6vwvyjsw" path="res://resources/dialogues/oswin/oswin_retour.tres" id="dlg_oswin_retour"]
+[ext_resource type="Resource" uid="uid://bti6wf3io53e1" path="res://resources/dialogues/oswin/oswin_apres.tres" id="dlg_oswin_apres"]
 [ext_resource type="Resource" uid="uid://ddbhecuw5mcyt" path="res://resources/dialogues/barnabe/barnabe_concours.tres" id="dlg_barnabe_concours"]
 [ext_resource type="Resource" uid="uid://cf7jjnc1paypt" path="res://resources/dialogues/barnabe/barnabe_revanche.tres" id="dlg_barnabe_revanche"]
 [ext_resource type="Resource" uid="uid://bd5wybihrjyek" path="res://resources/dialogues/torvald/torvald_rencontre.tres" id="dlg_torvald_rencontre"]
@@ -5312,7 +5314,7 @@ shape = SubResource("RectangleShape2D_063pl")
 
 [node name="PNJ5" type="Node2D" parent="." unique_id=1694069418]
 script = ExtResource("npc_dialogue_script")
-conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_oswin_appel"), ExtResource("dlg_oswin_rappel")])
+conversations = Array[ExtResource("dialogue_conversation_script")]([ExtResource("dlg_oswin_appel"), ExtResource("dlg_oswin_retour"), ExtResource("dlg_oswin_apres"), ExtResource("dlg_oswin_rappel")])
 position = Vector2(-46, 17)
 scale = Vector2(0.7, 0.7)
 

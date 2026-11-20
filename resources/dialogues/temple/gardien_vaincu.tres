@@ -1,36 +1,26 @@
-[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://ddxhax3fibh0h"]
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_rgpxk"]
-[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="2_uatmu"]
-[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_27i33"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_uatmu"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="3_27i33"]
 [ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="4_monyo"]
 
 [sub_resource type="Resource" id="Resource_we0tt"]
 script = ExtResource("1_rgpxk")
-text = "L'armure s'effondre. La lueur bleue s'éteint lentement."
+text = "L'armure s'effondre. Une braise noire s'en échappe et tourne au-dessus des cendres, comme si elle cherchait une issue."
 
 [sub_resource type="Resource" id="Resource_t7gx7"]
 script = ExtResource("1_rgpxk")
 speaker_name = "Ysolde"
 portrait = ExtResource("2_uatmu")
-text = "Il ne nous attaquait pas par méchanceté. Il gardait ce passage depuis mille ans."
+text = "Zylrak, cette chose... Elle va s'enfuir !"
 
 [sub_resource type="Resource" id="Resource_t5ej3"]
 script = ExtResource("1_rgpxk")
 speaker_name = "Zylrak"
 portrait = ExtResource("3_27i33")
-text = "Alors quelqu'un est passé avant nous sans le réveiller. Avec le marchand."
-
-[sub_resource type="Resource" id="Resource_sg0f2"]
-script = ExtResource("1_rgpxk")
-text = "Le voile de l'escalier se déchire et s'éteint."
-
-[sub_resource type="Resource" id="Resource_r5qnh"]
-script = ExtResource("1_rgpxk")
-speaker_name = "Ysolde"
-portrait = ExtResource("2_uatmu")
-text = "Le voile est tombé avec lui. Et le sang descend l'escalier."
+text = "Pas si je la prends d'abord."
 
 [resource]
 script = ExtResource("4_monyo")
-lines = Array[ExtResource("1_rgpxk")]([SubResource("Resource_we0tt"), SubResource("Resource_t7gx7"), SubResource("Resource_t5ej3"), SubResource("Resource_sg0f2"), SubResource("Resource_r5qnh")])
+lines = Array[ExtResource("1_rgpxk")]([SubResource("Resource_we0tt"), SubResource("Resource_t7gx7"), SubResource("Resource_t5ej3")])

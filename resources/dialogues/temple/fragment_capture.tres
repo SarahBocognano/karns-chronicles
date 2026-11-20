@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://clumub5k4yrbp"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_xyhd0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_eewxa"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="3_drs3v"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="4_qb12a"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_a121t"]
+
+[sub_resource type="Resource" id="Resource_o6umn"]
+script = ExtResource("1_xyhd0")
+text = "La braise s'éteint dans la main de Zylrak, prise dans la cendre de son gant. Zylrak obtient : Fragment d'âme."
+
+[sub_resource type="Resource" id="Resource_3m0m4"]
+script = ExtResource("1_xyhd0")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_eewxa")
+text = "Un morceau de l'âme de la Bête. Le gardien yrenn n'était plus qu'une coquille : le fragment l'avait dévoré."
+
+[sub_resource type="Resource" id="Resource_ef4qf"]
+script = ExtResource("1_xyhd0")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_drs3v")
+text = "Et maintenant ? Le sceau est brisé, on ne peut pas le remettre en place."
+
+[sub_resource type="Resource" id="Resource_g5plt"]
+script = ExtResource("1_xyhd0")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_qb12a")
+text = "Les Ashwardens savaient enfermer ce genre de chose dans la cendre. C'est pour ça que l'Ordre existe. Enfin... existait."
+
+[sub_resource type="Resource" id="Resource_jbb8n"]
+script = ExtResource("1_xyhd0")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_drs3v")
+text = "Le marchand... Allons le voir."
+
+[resource]
+script = ExtResource("5_a121t")
+lines = Array[ExtResource("1_xyhd0")]([SubResource("Resource_o6umn"), SubResource("Resource_3m0m4"), SubResource("Resource_ef4qf"), SubResource("Resource_g5plt"), SubResource("Resource_jbb8n")])
