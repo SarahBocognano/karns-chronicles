@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p0"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+text = "Zylrak allume la torche du forgeron. La flamme repousse le noir de quelques pas, pas plus."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Ça sent l'humidité et... autre chose. Quelque chose qui n'aime pas la lumière."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1")])

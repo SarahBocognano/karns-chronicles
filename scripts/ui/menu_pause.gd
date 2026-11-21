@@ -541,6 +541,8 @@ static func _describe(id: String, gear: bool) -> String:
 		return "Rend %d PV à un allié." % o.soin
 	if o.has("mana"):
 		return "Rend %d PM à un allié." % o.mana
+	if o.has("antidote"):
+		return "Soigne le venin d'un allié. Le venin des araignées ne dure que le temps d'un combat : l'antidote se boit en combat."
 	return ""
 
 func _items_loop() -> void:
@@ -600,6 +602,8 @@ func _use(id: String, h: String) -> String:
 			PlayerData.ysolde_energy += gain
 		PlayerData.use_item(id)
 		return "%s récupère %d PM." % [who, gain]
+	if o.has("antidote"):
+		return "Personne n'est empoisonné. L'antidote se garde pour les combats."
 	return ""
 
 # --- Objets précieux ---
@@ -612,6 +616,9 @@ const KEY_ITEM_TEXT := {
 }
 const SOUL_FRAGMENT_TEXT := "Un morceau de l'âme de la Bête, arraché au gardien du premier temple et enfermé dans la cendre par Zylrak. Il est froid, et il bat doucement, comme un cœur.\n\nIl faut réunir les quatre, et les rendre ensemble à la flamme."
 const SCROLL_TEXT := "Le rouleau de l'autel, scellé à la cire bleue. « Quatre éclats, quatre temples. Que les porteurs de cendre rassemblent les éclats et les rendent ensemble à la flamme : alors la Bête dormira mille ans encore. »\n\nLa carte montre un loup sous l'eau : le lac, au sud de la forêt."
+
+const TORCH_TEXT := "Une torche de résine et de chiffon goudronné, faite à la forge. Elle brûle longtemps et ne craint pas les courants d'air.\n\nDans le noir, elle éclaire autour de Zylrak."
+const EMBER_TEXT := "Un éclat de minerai rouge, tiède dans la main : au fond de la pierre, quelque chose rougeoie comme une braise.\n\nLe forgeron l'attend pour forger une lame."
 
 ## Objets précieux : les fragments gravés (jusqu'à l'ouverture du temple), le fragment d'âme, le parchemin.
 func _key_items() -> Array[Dictionary]:
@@ -629,6 +636,12 @@ func _key_items() -> Array[Dictionary]:
 	if PlayerData.get_flag("fragment_ame_lune"):
 		entries.append({"id": "fragment_ame", "icon": UiKit.icon("fragment_ame"), "count": 1, "titre": "Fragment d'âme",
 			"sous_titre": "1 sur 4", "texte": SOUL_FRAGMENT_TEXT})
+	if PlayerData.get_flag("torche_forgeron"):
+		entries.append({"id": "torche", "icon": UiKit.icon("torche"), "count": 1, "titre": "Torche du forgeron",
+			"sous_titre": "Pour la grotte", "texte": TORCH_TEXT})
+	if PlayerData.get_flag("pierre_de_braise") and not PlayerData.get_flag("contrat_grotte_termine"):
+		entries.append({"id": "pierre_braise", "icon": UiKit.icon("pierre_braise"), "count": 1, "titre": "Pierre-de-braise",
+			"sous_titre": "Pour le forgeron", "texte": EMBER_TEXT})
 	if PlayerData.get_flag("parchemin_yrenn"):
 		entries.append({"id": "parchemin_yrenn", "icon": UiKit.icon("parchemin_yrenn"), "count": 1, "titre": "Parchemin des Yrenn",
 			"sous_titre": "Trouvé sur l'autel du gardien", "texte": SCROLL_TEXT})
@@ -694,7 +707,7 @@ func _quests() -> Array[Dictionary]:
 	for c in Contrats.LIST:
 		if Contrats.accepted(c.id):
 			out.append({"titre": "Contrat : " + c.titre, "texte": "%s\nRécompense : %s." % [c.commanditaire, c.recompense],
-				"etapes": [[c.etape, false]]})
+				"etapes": Contrats.steps(c.id)})
 	if f.call("aldric_quest_started"):
 		out.append({"titre": "Le frère de Brenna", "texte": "Brenna demande de retrouver son frère Aldric, parti couper du bois près du lac et jamais revenu.",
 			"etapes": [["Chercher Aldric du côté du lac, au-delà de la cascade.", false]]})

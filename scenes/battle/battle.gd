@@ -34,6 +34,9 @@ const FOE_SLOTS := {
 const GOLD := Color(0.78, 0.63, 0.36)
 const TEXT := Color(0.93, 0.90, 0.84)
 const GREY := Color(0.55, 0.53, 0.50)
+## Venin : nom d'un héros empoisonné, teinte de son sprite, chiffres des PV perdus.
+const VENOM := Color(0.62, 0.9, 0.45)
+const VENOM_TINT := Color(0.8, 1.0, 0.72)
 
 var background: Texture2D
 var monster_list: Array = []  # MonsterData
@@ -140,6 +143,8 @@ func _run() -> void:
 				break
 			if actor is String:
 				if _alive(_member(actor)):
+					await _venom_tick(_member(actor))
+				if _alive(_member(actor)):
 					if actor == "zylrak":
 						await _hero_turn()
 					else:
@@ -214,8 +219,34 @@ func _foe_turn(foe: Dictionary) -> void:
 		sprite_t.play("blesse")
 		await get_tree().create_timer(0.3).timeout
 		_show_message("%s est à terre !" % target.name)
+	elif foe.data.venom_chance > 0.0 and not target.get("poison", false) and rng.randf() < foe.data.venom_chance:
+		target.poison = true
+		target.venom = maxi(target.get("venom", 0), foe.data.venom_damage)
+		await get_tree().create_timer(0.3).timeout
+		_show_message("%s est empoisonné !" % target.name)
+		_refresh_hero()
+		await _flash(sprite_t, Color(0.7, 1.6, 0.6), 0.25)
 	await get_tree().create_timer(0.55).timeout
 	_hide_message()
+
+## Le venin ronge un héros empoisonné au début de son tour (il peut le mettre à terre).
+func _venom_tick(m: Dictionary) -> void:
+	if not m.get("poison", false):
+		return
+	var dmg: int = maxi(1, m.get("venom", 2))
+	_set_hp(m, maxi(0, _hp(m) - dmg))
+	_show_message("Le venin ronge %s." % m.name)
+	_popup(str(dmg), m.home + Vector2(0, -48), VENOM)
+	await _flash(m.sprite, Color(0.7, 1.5, 0.6), 0.22)
+	_refresh_hero()
+	if _hp(m) <= 0:
+		(m.sprite as AnimatedSprite2D).play("blesse")
+		await get_tree().create_timer(0.3).timeout
+		_show_message("%s est à terre !" % m.name)
+	await get_tree().create_timer(0.6).timeout
+	_hide_message()
+	if _alive_party().is_empty():
+		result = "defaite"
 
 # =============================================================== choix de Zylrak
 func _choose_action() -> Dictionary:
@@ -433,6 +464,14 @@ func _use_item(user: Dictionary, item_id: String, ally: Dictionary) -> void:
 	if item.has("mana"):
 		_restore_mana(ally, item.mana)
 		await _flash(ally.sprite, Color(1.1, 1.2, 1.6), 0.3)
+	if item.has("antidote"):
+		if ally.get("poison", false):
+			ally.poison = false
+			_show_message("Le venin quitte le sang de %s." % ally.name)
+		else:
+			_show_message("%s n'était pas empoisonné." % ally.name)
+		_refresh_hero()
+		await _flash(ally.sprite, Color(1.1, 1.5, 1.1), 0.3)
 	await get_tree().create_timer(0.6).timeout
 	_hide_message()
 
@@ -835,7 +874,17 @@ func _build_world() -> void:
 		var s: Node2D
 		# Hauteur réellement dessinée (au-dessus des pieds), pour placer la flèche de cible et les dégâts.
 		var height := 48.0
-		if data.lpc_sheet:
+		if data.beast_sheet:
+			# Animal LPC (araignée) : animé, tourné vers la droite.
+			var b := AnimatedSprite2D.new()
+			b.sprite_frames = _beast_frames(data.beast_sheet)
+			b.offset = Vector2(0, -24)
+			b.flip_h = data.flip_h
+			b.play("repos")
+			var used_b := b.sprite_frames.get_frame_texture("repos", 0).get_image().get_used_rect()
+			height = (56 - used_b.position.y) * data.sprite_scale
+			s = b
+		elif data.lpc_sheet:
 			# Monstre du générateur LPC : animé, même format de planche que Zylrak.
 			var a := AnimatedSprite2D.new()
 			a.sprite_frames = _lpc_monster_frames(data.lpc_sheet)
@@ -857,6 +906,7 @@ func _build_world() -> void:
 				height = (data.texture.get_height() - used2.position.y) * data.sprite_scale
 			s = sp
 		s.scale = Vector2(data.sprite_scale, data.sprite_scale)
+		s.modulate = data.tint
 		s.position = home
 		_world.add_child(s)
 		var label := data.display_name
@@ -949,6 +999,22 @@ func _lpc_monster_frames(sheet: Texture2D) -> SpriteFrames:
 		_add_sheet_anim(f, sheet, "repos", 11, 1, 1.0, true)
 	_add_sheet_anim(f, sheet, "attaque", 15, 6, 14.0, false)
 	_add_sheet_anim(f, sheet, "mort", 20, 6, 10.0, false)
+	return f
+
+## Animations d'un animal LPC (les araignées) : rangée 3 tournée vers la droite (0-3 l'attaque,
+## 4-9 la marche, dont les deux premières images servent de repos), rangée 4 la mort.
+func _beast_frames(sheet: Texture2D) -> SpriteFrames:
+	var f := SpriteFrames.new()
+	f.remove_animation("default")
+	for spec in [["repos", 3, 4, 3, 4.0, true], ["attaque", 3, 0, 4, 12.0, false], ["mort", 4, 0, 4, 8.0, false]]:
+		f.add_animation(spec[0])
+		f.set_animation_loop(spec[0], spec[5])
+		f.set_animation_speed(spec[0], spec[4])
+		for i in spec[3]:
+			var at := AtlasTexture.new()
+			at.atlas = sheet
+			at.region = Rect2((spec[2] + i) * 64, spec[1] * 64, 64, 64)
+			f.add_frame(spec[0], at)
 	return f
 
 func _add_sheet_anim(f: SpriteFrames, sheet: Texture2D, name: String, row: int, count: int, fps: float, loop: bool) -> void:
@@ -1173,7 +1239,10 @@ func _refresh_hero() -> void:
 			color = GREY
 		elif m.id == _active_id or (_active_id == "" and party.size() == 1):
 			color = GOLD
+		elif m.get("poison", false):
+			color = VENOM
 		(m.ui.name as Label).add_theme_color_override("font_color", color)
+		(m.sprite as CanvasItem).modulate = VENOM_TINT if m.get("poison", false) and _hp(m) > 0 else Color.WHITE
 		_set_gauge(m.ui.hp, _hp(m), _max_hp(m))
 
 func _place_menu_cursor() -> void:

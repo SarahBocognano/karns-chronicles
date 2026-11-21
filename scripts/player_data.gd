@@ -108,7 +108,9 @@ var equipment := {
 ## Pièces d'équipement possédées mais portées par personne.
 var gear_bag: Array[String] = []
 ## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
-const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand"}
+const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand", "contrat_grotte_termine": "lame_braise"}
+## Écus gagnés quand un flag passe à true (contrats).
+const FLAG_ECUS := {"contrat_grotte_termine": 30}
 ## Objets donnés quand un flag passe à true (récompense de quête).
 const FLAG_ITEMS := {"quete_marchand_terminee": ["potion", "potion", "potion", "fiole", "fiole"]}
 
@@ -212,6 +214,10 @@ var quest_flags: Dictionary = {
 	"marchand_retrouve": false,          # le corps du marchand, au fond du temple
 	"parchemin_yrenn": false,            # le parchemin de l'autel : les quatre éclats, le temple du Loup sous le lac
 	"quete_marchand_terminee": false,    # Zylrak a annoncé la mort du marchand à Oswin (récompense : FLAG_ITEMS)
+	"torche_forgeron": false,            # contrat de la grotte : le forgeron a donné sa torche
+	"araignee_geante_vaincue": false,    # l'araignée géante, au fond de la grotte, est tombée
+	"pierre_de_braise": false,           # Zylrak a détaché la pierre-de-braise du filon
+	"contrat_grotte_termine": false,     # la pierre rapportée : Lame de braise et 30 écus (FLAG_REWARDS, FLAG_ECUS)
 }
 
 # --- Système de spawn entre scènes ---
@@ -270,6 +276,9 @@ func set_flag(flag_name: String, value: bool) -> void:
 	quest_flags[flag_name] = value
 	if value and FLAG_REWARDS.has(flag_name) and not owns_gear(FLAG_REWARDS[flag_name]):
 		gear_bag.append(FLAG_REWARDS[flag_name])
+	if value and FLAG_ECUS.has(flag_name) and not quest_flags.get(flag_name + "_ecus", false):
+		quest_flags[flag_name + "_ecus"] = true
+		ecus += FLAG_ECUS[flag_name]
 	if value and FLAG_ITEMS.has(flag_name) and not quest_flags.get(flag_name + "_recompense", false):
 		quest_flags[flag_name + "_recompense"] = true
 		for item in FLAG_ITEMS[flag_name]:

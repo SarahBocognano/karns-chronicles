@@ -15,10 +15,11 @@ const TALENTS: Array[Dictionary] = [
 	{"id": "pillage", "nom": "Pillage", "cout": 0, "type": "pillage"},
 ]
 
-## soin : PV rendus ; mana : mana rendu.
+## soin : PV rendus ; mana : mana rendu ; antidote : soigne le venin (en combat).
 const OBJETS: Dictionary = {
 	"potion": {"nom": "Potion", "soin": 15},
 	"fiole": {"nom": "Fiole de mana", "mana": 8},
+	"antidote": {"nom": "Antidote", "antidote": true},
 }
 
 ## Équipement : type ("arme", "armure", "accessoire"), qui peut le porter ("zylrak", "ysolde" ou
@@ -40,6 +41,8 @@ const EQUIPEMENTS: Dictionary = {
 		"desc": "Un carquois de cuir tressé, léger : les flèches viennent toutes seules sous les doigts."},
 	"cotte_mailles": {"nom": "Cotte de mailles", "type": "armure", "pour": "zylrak", "bonus": {"defense": 2},
 		"desc": "Une cotte de mailles un peu rouillée, oubliée dans les ruines. Lourde, mais elle tient."},
+	"lame_braise": {"nom": "Lame de braise", "type": "arme", "pour": "zylrak", "bonus": {"attaque": 3},
+		"desc": "Forgée par le forgeron d'Eclatvin dans la pierre-de-braise de la grotte. La lame garde une lueur rouge, comme un charbon sous la cendre."},
 	"amulette_yrenn": {"nom": "Amulette des Yrenn", "type": "accessoire", "pour": "tous", "bonus": {"magie": 1, "defense": 1},
 		"desc": "Une pierre turquoise sertie d'argent, gravée d'une lune. Elle luit faiblement dans le noir."},
 }

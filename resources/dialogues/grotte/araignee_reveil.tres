@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p0"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+text = "Devant le filon, une masse sombre se déplie. Huit pattes, huit yeux, et des crochets longs comme des dagues."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Elle est assise sur ma pierre. Évidemment."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1")])

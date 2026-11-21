@@ -9,7 +9,10 @@ class_name Objectifs
 const LINKS := {
 	"VillageV2Map": {"ExitToForest": "ForestMap", "EnterAuberge": "AubergeMap", "EnterWeaponsShop": "WeaponsShopMap", "EnterJumelles": "MaisonJumellesMap"},
 	"ForestMap": {"ExitToVillage": "VillageV2Map", "ExitToCascade": "ForestCascadeMap", "ExitToChariot": "ForestChariotMap"},
-	"ForestChariotMap": {"ExitToLisiere": "ForestMap", "CheminEst": "RuinesMonteeMap"},
+	"ForestChariotMap": {"ExitToLisiere": "ForestMap", "CheminEst": "RuinesMonteeMap", "Grotte": "GrotteEntreeMap"},
+	"GrotteEntreeMap": {"ExitToChariot": "ForestChariotMap", "ExitToToiles": "GrotteToilesMap"},
+	"GrotteToilesMap": {"ExitToEntree": "GrotteEntreeMap", "ExitToFilon": "GrotteFilonMap"},
+	"GrotteFilonMap": {"ExitToToiles": "GrotteToilesMap"},
 	"ForestCascadeMap": {"ExitToLisiere": "ForestMap", "CheminOuest": "LacMap"},
 	"LacMap": {"ExitToCascade": "ForestCascadeMap"},
 	"RuinesMonteeMap": {"ExitToForest": "ForestChariotMap", "ExitToParvis": "RuinesParvisMap"},
@@ -34,8 +37,11 @@ static func current() -> Array[Dictionary]:
 			out.append({"map": "TempleVestibuleMap", "node": ""})
 		else:
 			out.append({"map": "AubergeMap", "node": ""})
-	if Contrats.accepted("grotte"):
-		out.append({"map": "WeaponsShopMap", "node": "Forgeron"})
+	if Contrats.accepted("grotte") and not Contrats.done("grotte"):
+		if f.call("torche_forgeron") and not f.call("pierre_de_braise"):
+			out.append({"map": "GrotteFilonMap", "node": "YSortLayer/Filon"})
+		else:
+			out.append({"map": "WeaponsShopMap", "node": "Forgeron"})
 	if f.call("aldric_quest_started"):
 		out.append({"map": "LacMap", "node": ""})
 	return out

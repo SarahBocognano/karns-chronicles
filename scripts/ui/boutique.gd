@@ -5,10 +5,11 @@ class_name Boutique
 ## gauche, la fiche à droite ; Entrée achète un article, s'il y a assez d'écus.
 
 ## [objet (BattleCatalog.OBJETS), prix en écus]
-const STOCK := [["potion", 15], ["fiole", 20]]
+const STOCK := [["potion", 15], ["fiole", 20], ["antidote", 12]]
 const DESC := {
 	"potion": "Une potion rouge, épaisse et sucrée. Rend %d PV.",
 	"fiole": "Une fiole bleue qui sent la menthe et l'orage. Rend %d PM.",
+	"antidote": "Une décoction amère d'herbes des marais. Soigne le venin des araignées, en combat.%s",
 }
 
 var _note: Label
@@ -51,7 +52,7 @@ func _show(k: int, note: String) -> void:
 	icon(UiKit.icon(id), Vector2(50, 40), 128)
 	ink(item.nom, 34, Vector2(210, 56), UiKit.INK_GOLD)
 	ink("%d écus" % STOCK[k][1], 26, Vector2(212, 108), UiKit.INK_SOFT)
-	ink(DESC[id] % item.get("soin", item.get("mana", 0)), 26, Vector2(56, 210), UiKit.INK, 720)
+	ink(DESC[id] % item.get("soin", item.get("mana", "")), 26, Vector2(56, 210), UiKit.INK, 720)
 	ink("Dans ton sac : %d" % PlayerData.inventory.count(id), 24, Vector2(56, 330), UiKit.INK_SOFT)
 	if note != "":
 		ink(note, 26, Vector2(56, CARD_SIZE.y - 90), UiKit.INK_GOLD, 720)

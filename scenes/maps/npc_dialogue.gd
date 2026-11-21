@@ -107,7 +107,8 @@ func start_dialogue() -> void:
 	var conversation := _pick_conversation()
 	if conversation:
 		_start_lines(conversation.lines, conversation)
-	elif conversations.is_empty() and not dialogue_lines.is_empty():
+	elif not dialogue_lines.is_empty():
+		# aucune conversation disponible : les répliques de base (ex. le forgeron, hors contrat)
 		_start_lines(dialogue_lines, null)
 
 func _start_lines(lines: Array[DialogueLine], conversation: DialogueConversation) -> void:

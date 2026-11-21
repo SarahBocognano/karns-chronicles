@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/forgeron_serieux.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/forgeron_rire.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/forgeron_sourire.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_fier.tres" id="p4"]
+[ext_resource type="Texture2D" path="res://assets/portrait/forgeron_hautain.tres" id="p5"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Forgeron"
+portrait = ExtResource("p0")
+text = "Par l'enclume... Tu l'as. Et pas un petit éclat : regarde-moi cette couleur."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Il y avait une araignée de la taille d'une charrette assise dessus. Elle n'a pas voulu me la prêter."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Forgeron"
+portrait = ExtResource("p2")
+text = "Ha ! Alors c'est elle qui m'a mordu. Tu viens de venger ma jambe, gamin."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+text = "Le forgeron jette la pierre dans le foyer. Le feu vire au rouge sombre ; il martèle longtemps, sans un mot."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Forgeron"
+portrait = ExtResource("p3")
+text = "Voilà. La Lame de braise. Elle garde la chaleur de la pierre : regarde, elle rougeoie encore."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Forgeron"
+portrait = ExtResource("p0")
+text = "Et les trente écus promis. Un contrat est un contrat."
+
+[sub_resource type="Resource" id="Resource_l6"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit la Lame de braise et 30 écus."
+
+[sub_resource type="Resource" id="Resource_l7"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p4")
+text = "Les tavernes de Karn vont avoir une nouvelle chanson."
+
+[sub_resource type="Resource" id="Resource_l8"]
+script = ExtResource("1_lines")
+speaker_name = "Forgeron"
+portrait = ExtResource("p5")
+text = "Commence par l'équiper, ta lame. Les chansons, on verra après."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7"), SubResource("Resource_l8")])
+required_flags = Array[String](["pierre_de_braise"])
+forbidden_flags = Array[String](["contrat_grotte_termine"])
+flags_on_finish = Array[String](["contrat_grotte_termine"])
+show_quest_marker = true

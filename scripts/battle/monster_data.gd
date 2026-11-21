@@ -8,6 +8,11 @@ class_name MonsterData
 ## Si elle est renseignée, elle remplace `texture` et le monstre est animé :
 ## repos, marche quand il s'élance, coup d'épée/griffe quand il attaque, chute quand il meurt.
 @export var lpc_sheet: Texture2D
+## Planche LPC d'animal (les araignées : cases de 64 px, 10 colonnes ; rangée 3 tournée vers la
+## droite, colonnes 0-3 l'attaque, 4-9 la marche ; rangée 4 la mort). Remplace `texture`.
+@export var beast_sheet: Texture2D
+## Teinte appliquée au monstre (l'araignée géante est plus rouge).
+@export var tint: Color = Color.WHITE
 ## Agrandissement de l'image dans le combat (le décor fait 480×270 pixels).
 @export var sprite_scale: float = 1.0
 ## Cocher si l'image regarde vers la gauche : elle sera retournée pour faire face à Zylrak.
@@ -25,3 +30,9 @@ class_name MonsterData
 @export_group("Attaques")
 ## Noms affichés quand le monstre attaque (tirés au hasard).
 @export var attack_names: PackedStringArray = ["Griffes"]
+
+@export_group("Venin")
+## Chance d'empoisonner à chaque attaque (0 : jamais). Un héros empoisonné perd `venom_damage` PV
+## au début de chacun de ses tours, jusqu'à la fin du combat ou un antidote.
+@export_range(0.0, 1.0) var venom_chance: float = 0.0
+@export var venom_damage: int = 2
