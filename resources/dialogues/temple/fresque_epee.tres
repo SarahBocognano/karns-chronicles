@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bk5p7liuqmon0"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_pem3k"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_t4cep"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_6cotj"]
+
+[sub_resource type="Resource" id="Resource_w8vrh"]
+script = ExtResource("1_pem3k")
+text = "Une épée brise l'âme de la Bête en quatre éclats de lumière. Chacun s'envole vers un temple : la lune, le loup, l'épée, la flamme."
+
+[sub_resource type="Resource" id="Resource_fke15"]
+script = ExtResource("1_pem3k")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_t4cep")
+text = "Quatre temples, quatre morceaux d'âme... Et on est dans l'un d'eux."
+
+[resource]
+script = ExtResource("3_6cotj")
+lines = Array[ExtResource("1_pem3k")]([SubResource("Resource_w8vrh"), SubResource("Resource_fke15")])

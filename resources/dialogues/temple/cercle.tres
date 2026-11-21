@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://qv02y3lth3p1"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_yqocl"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_kkcte"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="3_aridg"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="4_75to5"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="5_5g6c7"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="6_aovia"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="7_6q7er"]
+
+[sub_resource type="Resource" id="Resource_2meye"]
+script = ExtResource("1_yqocl")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_kkcte")
+text = "Un cercle tracé à la cendre... Et du sang au milieu. Celui du marchand, sûrement."
+
+[sub_resource type="Resource" id="Resource_m4q11"]
+script = ExtResource("1_yqocl")
+speaker_name = "Ysolde"
+portrait = ExtResource("3_aridg")
+text = "Zylrak... Ce symbole. C'est le même que sur ta cape."
+
+[sub_resource type="Resource" id="Resource_c0u2g"]
+script = ExtResource("1_yqocl")
+speaker_name = "Zylrak"
+portrait = ExtResource("4_75to5")
+text = "La flamme de l'Ordre. Mais renversée."
+
+[sub_resource type="Resource" id="Resource_o8npu"]
+script = ExtResource("1_yqocl")
+speaker_name = "Ysolde"
+portrait = ExtResource("5_5g6c7")
+text = "D'autres Ashwardens sont passés par ici ?"
+
+[sub_resource type="Resource" id="Resource_h1snv"]
+script = ExtResource("1_yqocl")
+speaker_name = "Zylrak"
+portrait = ExtResource("6_aovia")
+text = "Aucun Ashwarden ne ferait ça. Ce cercle ne sert pas à chasser quelque chose. Il sert à l'appeler."
+
+[resource]
+script = ExtResource("7_6q7er")
+lines = Array[ExtResource("1_yqocl")]([SubResource("Resource_2meye"), SubResource("Resource_m4q11"), SubResource("Resource_c0u2g"), SubResource("Resource_o8npu"), SubResource("Resource_h1snv")])

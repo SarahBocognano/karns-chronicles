@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://djm42lynchm40"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_2osqk"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_sqv0l"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_s4lqa"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="4_5fiam"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="5_iyotc"]
+
+[sub_resource type="Resource" id="Resource_l5jbp"]
+script = ExtResource("1_2osqk")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_sqv0l")
+text = "Regarde le sol... Le même cercle que sur la porte, en grand."
+
+[sub_resource type="Resource" id="Resource_sfded"]
+script = ExtResource("1_2osqk")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_s4lqa")
+text = "Et au fond, une armure. Debout devant un escalier, derrière un voile comme celui de l'entrée."
+
+[sub_resource type="Resource" id="Resource_lhioe"]
+script = ExtResource("1_2osqk")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_5fiam")
+text = "Elle ne bouge pas. Pour l'instant."
+
+[resource]
+script = ExtResource("5_iyotc")
+lines = Array[ExtResource("1_2osqk")]([SubResource("Resource_l5jbp"), SubResource("Resource_sfded"), SubResource("Resource_lhioe")])

@@ -40,6 +40,8 @@ const EQUIPEMENTS: Dictionary = {
 		"desc": "Un carquois de cuir tressé, léger : les flèches viennent toutes seules sous les doigts."},
 	"cotte_mailles": {"nom": "Cotte de mailles", "type": "armure", "pour": "zylrak", "bonus": {"defense": 2},
 		"desc": "Une cotte de mailles un peu rouillée, oubliée dans les ruines. Lourde, mais elle tient."},
+	"amulette_yrenn": {"nom": "Amulette des Yrenn", "type": "accessoire", "pour": "tous", "bonus": {"magie": 1, "defense": 1},
+		"desc": "Une pierre turquoise sertie d'argent, gravée d'une lune. Elle luit faiblement dans le noir."},
 }
 const SLOTS := ["arme", "armure", "accessoire"]
 const SLOT_NAMES := {"arme": "Arme", "armure": "Armure", "accessoire": "Accessoire"}

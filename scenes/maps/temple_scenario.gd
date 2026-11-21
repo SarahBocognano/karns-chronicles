@@ -33,6 +33,8 @@ const SOLUTION: Array[String] = ["lune", "loup", "epee", "flamme"]
 var _stones: Node2D
 var _busy := false
 
+var _opened_told := false
+
 func _ready() -> void:
 	# Les pierres posées vont avec le décor au sol (sous les personnages).
 	_stones = Node2D.new()
@@ -89,7 +91,11 @@ func _on_plates_entered(body: Node2D) -> void:
 	if not PlayerData.get_flag("porte_temple_vue"):
 		return
 	if PlayerData.get_flag("temple_ouvert"):
-		_talk(opened.lines, body)
+		# la porte ouverte mène au temple (sortie ExitToTemple) : un mot avant d'entrer,
+		# une seule fois, et sans faire reculer Zylrak
+		if not _opened_told and not PlayerData.get_flag("temple_vestibule_vu"):
+			_opened_told = true
+			_talk(opened.lines, body, false)
 		return
 	var n := FragmentYrenn.found_count()
 	if n < SOLUTION.size():
@@ -101,7 +107,7 @@ func _on_plates_entered(body: Node2D) -> void:
 		return
 	_open_menu(body)
 
-func _talk(lines: Array[DialogueLine], player: Node2D) -> void:
+func _talk(lines: Array[DialogueLine], player: Node2D, step_back := true) -> void:
 	_busy = true
 	PlayerData.controls_locked = true
 	var cs := Cutscene.new()
@@ -110,7 +116,8 @@ func _talk(lines: Array[DialogueLine], player: Node2D) -> void:
 	if not is_inside_tree():
 		return
 	cs.queue_free()
-	player.global_position += push_back
+	if step_back:
+		player.global_position += push_back
 	PlayerData.controls_locked = false
 	_busy = false
 

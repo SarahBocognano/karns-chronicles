@@ -8,6 +8,9 @@ class_name FragmentYrenn
 
 const SHEET := preload("res://assets/sprites/objets/fragments_yrenn.png")
 const SIZE := 24
+## Les mêmes pierres en 48 × 48, pour les menus (inventaire, dalles, intro).
+const SHEET_BIG := preload("res://assets/sprites/objets/fragments_yrenn_grand.png")
+const SIZE_BIG := 48
 ## Les quatre symboles, dans l'ordre de la feuille (et dans l'ordre qui ouvre la porte).
 const SYMBOLS: Array[String] = ["lune", "loup", "epee", "flamme"]
 const ENGRAVED := {"lune": "une lune", "loup": "une tête de loup", "epee": "une épée", "flamme": "une flamme"}
@@ -30,11 +33,18 @@ static func found_count() -> int:
 			n += 1
 	return n
 
-## Image d'un fragment (pour les dalles et le menu de l'énigme).
+## Image d'un fragment, dans le décor (24 × 24).
 static func texture_for(s: String) -> AtlasTexture:
 	var a := AtlasTexture.new()
 	a.atlas = SHEET
 	a.region = Rect2(SYMBOLS.find(s) * SIZE, 0, SIZE, SIZE)
+	return a
+
+## Image d'un fragment pour les menus (48 × 48).
+static func icon_for(s: String) -> AtlasTexture:
+	var a := AtlasTexture.new()
+	a.atlas = SHEET_BIG
+	a.region = Rect2(SYMBOLS.find(s) * SIZE_BIG, 0, SIZE_BIG, SIZE_BIG)
 	return a
 
 func _ready() -> void:

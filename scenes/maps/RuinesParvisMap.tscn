@@ -38,6 +38,9 @@
 [ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="36_ax2y8"]
 [ext_resource type="Texture2D" uid="uid://y7awa42exgqy" path="res://assets/battle_backgrounds/battle_temple.png" id="37_f7a60"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_antich"]
+size = Vector2(28, 12)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myksi"]
 size = Vector2(160, 32)
 
@@ -1799,6 +1802,19 @@ shape = SubResource("RectangleShape2D_mojb0")
 
 [node name="ArretPorte" type="Marker2D" parent="." unique_id=1266247872]
 position = Vector2(448, 412.8)
+
+[node name="ExitToTemple" type="Area2D" parent="." unique_id=1730042211]
+position = Vector2(448, 326)
+script = ExtResource("21_nwk4o")
+target_scene = "res://scenes/maps/TempleVestibuleMap.tscn"
+spawn_point = "SpawnFromParvis"
+required_flags = Array[String](["temple_ouvert"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToTemple" unique_id=1730042212]
+shape = SubResource("RectangleShape2D_antich")
+
+[node name="SpawnFromTemple" type="Marker2D" parent="." unique_id=1730042213]
+position = Vector2(448, 372)
 
 [node name="Enigme" type="Node" parent="." unique_id=912733490]
 script = ExtResource("22_20jl3")

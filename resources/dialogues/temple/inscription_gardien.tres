@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://qkrmq3eotdwp"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_qbwp7"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_7vw20"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_3scs4"]
+
+[sub_resource type="Resource" id="Resource_ro5es"]
+script = ExtResource("1_qbwp7")
+text = "Une inscription, gravée sous le médaillon : « Le dernier d'entre nous gardera l'escalier, tant que brûlera la flamme. »"
+
+[sub_resource type="Resource" id="Resource_xfwsx"]
+script = ExtResource("1_qbwp7")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_7vw20")
+text = "Le dernier d'entre eux... Il parle de l'armure, au fond ?"
+
+[resource]
+script = ExtResource("3_3scs4")
+lines = Array[ExtResource("1_qbwp7")]([SubResource("Resource_ro5es"), SubResource("Resource_xfwsx")])
