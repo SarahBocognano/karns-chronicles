@@ -6,7 +6,7 @@ Le but est de construire, pas à pas, le début d'un RPG à l'ancienne : un vill
 
 ## L'histoire
 
-**Zylrak** est un Ashwarden, un membre de l'Ordre des Cendres. Il est un peu trop sûr de lui et répète son nom à qui veut l'entendre. En arrivant dans un petit village, il le découvre aux abois :
+**Zylrak** est un Ashwarden, un membre de l'Ordre des Cendres. Il est un peu trop sûr de lui et répète son nom à qui veut l'entendre. En arrivant au village d'Eclatvin, il le découvre aux abois :
 - depuis des semaines, des **goules** rôdent autour du village et les routes sont coupées ;
 - le **marchand** qui devait apporter vivres et remèdes n'est jamais arrivé.
 
