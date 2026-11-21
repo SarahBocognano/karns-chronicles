@@ -21,6 +21,7 @@ PlayerData="*uid://ddab6qmwc70wa"
 SceneTransition="*uid://dg5gv3rd34j3i"
 Musique="*res://scripts/musique.gd"
 MiniCarte="*res://scripts/minimap.gd"
+Vent="*res://scripts/vent.gd"
 Sauvegarde="*res://scripts/sauvegarde.gd"
 MenuPause="*res://scripts/ui/menu_pause.gd"
 

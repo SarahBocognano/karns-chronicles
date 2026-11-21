@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bgvaoscvcp3xm"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_busrh"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_2kguy"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_6tx3o"]
+
+[sub_resource type="Resource" id="Resource_g62se"]
+script = ExtResource("1_busrh")
+text = "« Lac aux Brumes. Pêche interdite après le couvre-feu. »"
+
+[sub_resource type="Resource" id="Resource_f24m5"]
+script = ExtResource("1_busrh")
+text = "Sous l'inscription, quelqu'un a gravé une tête de loup au couteau."
+
+[sub_resource type="Resource" id="Resource_hj8n6"]
+script = ExtResource("1_busrh")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_2kguy")
+text = "Drôle d'endroit pour graver un loup."
+
+[resource]
+script = ExtResource("3_6tx3o")
+lines = Array[ExtResource("1_busrh")]([SubResource("Resource_g62se"), SubResource("Resource_f24m5"), SubResource("Resource_hj8n6")])

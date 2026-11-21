@@ -5,5 +5,5 @@
 [resource]
 shader = ExtResource("1_vent")
 shader_parameter/amplitude = 6.0
-shader_parameter/speed = 2.0
+shader_parameter/speed = 1.35
 shader_parameter/gust = 0.6

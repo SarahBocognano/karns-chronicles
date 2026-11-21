@@ -3,7 +3,9 @@ extends CanvasLayer
 ## Mini-carte (autoload « MiniCarte »), en haut à gauche de l'écran, sur les cartes extérieures.
 ## Les données de chaque carte (assets/ui/minimap/<NomDeLaCarte>.png) sont préparées par
 ## tools/bake_minimaps.tscn ; ici on les peint en aplats de couleur, façon carte de JRPG,
-## et on y place Zylrak (flèche dorée), Ysolde (point bleu) et les quêtes en cours (losange doré).
+## et on y place Zylrak (flèche dorée), Ysolde (point bleu), les PNJ qui ont une quête à donner
+## (losange doré) et les objectifs des quêtes acceptées (point vert qui pulse, ou flèche verte sur
+## la sortie qui y mène quand l'objectif est sur une autre carte, voir scripts/objectifs.gd).
 ## Touche M : afficher / masquer. Masquée pendant les dialogues, les scènes et les combats.
 
 const DATA_DIR := "res://assets/ui/minimap/"
@@ -30,6 +32,7 @@ const EDGE := Color("#1d2a1a")
 const GOLD := Color("#f2c14e")
 const OUTLINE := Color("#1a1410")
 const ALLY := Color("#a8dcff")
+const GOAL := Color("#74e06a")
 
 var shown_by_player := true
 var _scene: Node
@@ -228,6 +231,7 @@ func _draw_marks() -> void:
 			var p := _to_map(marker.get_parent().global_position)
 			_marks.draw_colored_polygon(PackedVector2Array([p + Vector2(0, -5), p + Vector2(4, 0), p + Vector2(0, 5), p + Vector2(-4, 0)]), OUTLINE)
 			_marks.draw_colored_polygon(PackedVector2Array([p + Vector2(0, -3.5), p + Vector2(2.5, 0), p + Vector2(0, 3.5), p + Vector2(-2.5, 0)]), GOLD)
+	_draw_goals()
 	for ally in get_tree().get_nodes_in_group("Compagnon"):
 		if ally.is_inside_tree() and not ally.is_queued_for_deletion():
 			var p := _to_map(ally.global_position)
@@ -243,6 +247,41 @@ func _draw_marks() -> void:
 		var big := PackedVector2Array([p + dir * 8.5, p - dir * 5.5 + side * 7.0, p - dir * 5.5 - side * 7.0])
 		_marks.draw_colored_polygon(big, OUTLINE)
 		_marks.draw_colored_polygon(tri, GOLD)
+
+## Objectifs des quêtes acceptées : un point vert qui pulse sur l'objectif, ou une flèche verte
+## sur la sortie de la carte qui y mène.
+func _draw_goals() -> void:
+	var pulse := 0.5 + 0.5 * sin(Time.get_ticks_msec() / 1000.0 * TAU / 1.2)
+	var here := String(_scene.name)
+	var exits := {}
+	for o in Objectifs.current():
+		if o.map == here:
+			var n: Node = _scene.get_node_or_null(o.node) if o.node != "" else null
+			if n is Node2D:
+				var p := _to_map(n.global_position)
+				_marks.draw_circle(p, 5.0 + 3.0 * pulse, Color(GOAL, 0.45 * (1.0 - pulse)))
+				_marks.draw_circle(p, 4.0, OUTLINE)
+				_marks.draw_circle(p, 2.8, GOAL)
+		else:
+			var exit: String = Objectifs.exit_toward(here, o.map)
+			if exit != "" and not exits.has(exit):
+				exits[exit] = true
+				var e := _scene.get_node_or_null(exit) as Node2D
+				if e:
+					var shape := e.get_node_or_null("CollisionShape2D") as Node2D
+					_draw_exit_arrow(_to_map((shape if shape else e).global_position), pulse)
+
+func _draw_exit_arrow(p: Vector2, pulse: float) -> void:
+	var size := _marks.size
+	p = p.clamp(Vector2(7, 7), size - Vector2(7, 7))
+	# la flèche pointe vers le bord de la carte le plus proche (là où l'on sort)
+	var gaps := [p.x, size.x - p.x, p.y, size.y - p.y]
+	var dirs := [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+	var dir: Vector2 = dirs[gaps.find(gaps.min())]
+	p += dir * pulse * 1.5
+	var side := Vector2(-dir.y, dir.x)
+	_marks.draw_colored_polygon(PackedVector2Array([p + dir * 7.0, p - dir * 4.5 + side * 6.5, p - dir * 4.5 - side * 6.5]), OUTLINE)
+	_marks.draw_colored_polygon(PackedVector2Array([p + dir * 4.8, p - dir * 3.0 + side * 4.4, p - dir * 3.0 - side * 4.4]), GOAL)
 
 func _player() -> Node2D:
 	for n in get_tree().get_nodes_in_group("Player"):

@@ -18,6 +18,7 @@ const MAPS := [
 	"res://scenes/maps/ForestChariotMap.tscn",
 	"res://scenes/maps/RuinesMonteeMap.tscn",
 	"res://scenes/maps/RuinesParvisMap.tscn",
+	"res://scenes/maps/LacMap.tscn",
 ]
 const OUT_DIR := "res://assets/ui/minimap/"
 

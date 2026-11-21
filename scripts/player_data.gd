@@ -159,6 +159,16 @@ func owns_gear(id: String) -> bool:
 ## Objets, un identifiant par exemplaire (voir BattleCatalog.OBJETS).
 var inventory: Array[String] = ["potion", "potion", "potion"]
 
+# --- Écus (la monnaie) : gagnés en combat et grâce aux contrats, dépensés chez Myrtille ---
+var ecus: int = 30
+
+## Retire `amount` écus s'il y en a assez ; renvoie false sinon.
+func spend_ecus(amount: int) -> bool:
+	if amount > ecus:
+		return false
+	ecus -= amount
+	return true
+
 func count_item(item_id: String) -> int:
 	return inventory.count(item_id)
 
@@ -220,7 +230,7 @@ var arrival_pending := false
 # --- Sauvegarde ---
 
 const SAVED_FIELDS := ["current_hp", "max_hp", "current_energy", "max_energy", "attack", "defense", "magic",
-	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time"]
+	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time", "ecus"]
 
 ## Tout ce qu'une sauvegarde doit retenir de Zylrak, d'Ysolde et de la quête.
 func to_dict() -> Dictionary:

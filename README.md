@@ -42,10 +42,16 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 
 - Des **enseignes** distinguent les bâtiments : une chope pour l'auberge, une enclume pour la forge.
+- **Le poteau indicateur**, à l'entrée du village par la route de la forêt, se lit avec Entrée.
 - **Le village du jeu est recentré** (`scenes/maps/VillageV2Map.tscn`, généré par `tools/make_village_v2.gd`) : l'auberge donne sur la place du puits, face à la route qui arrive de la forêt, la forge est dans la rue de l'ouest. Le village d'origine, dessiné à la main (`scenes/maps/VillageMap.tscn`), reste dans le dépôt comme référence. Le générateur corrige aussi deux défauts de la carte d'origine : les marches de la forge ne passent plus sur la tête de Zylrak, et les sapins retrouvent leur pointe (elle était coupée à plat).
 
 ### Les coffres
 Six coffres sont cachés dans le village, la forêt et les ruines (coffre en bois cerclé de fer pour les objets, coffre précieux doré pour l'équipement). On les ouvre avec Entrée : potions, fioles, et de l'équipement (Carquois tressé, Cotte de mailles, Talisman des Cendres). Un coffre ouvert le reste, même après une sauvegarde.
+
+### Les contrats et la boutique
+- **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal. Les contrats eux-mêmes (« Le voleur d'Eclatvin », « Dans le noir de la grotte ») arrivent bientôt.
+- **Les écus** : Zylrak en a 30 au départ et en gagne à chaque victoire ; ils s'affichent en bas du grimoire.
+- **La maison des jumelles** (la porte de Mirabelle) : Myrtille, sa jumelle, y vend des potions (15 écus) et des fioles de mana (20 écus).
 
 ### L'auberge
 Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
@@ -53,14 +59,16 @@ Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 ### La forêt (au sud du village)
 Trois petites cartes, reliées par les chemins (la musique continue de l'une à l'autre) :
 - **La lisière** : le chemin qui descend du village, un carrefour et une prairie d'herbes hautes.
-- **La cascade** (à l'ouest) : un ruisseau qui tombe de la falaise, un étang et un pont de rondins ; le chemin du lac est encore fermé.
+- **La cascade** (à l'ouest) : un ruisseau qui tombe de la falaise, un étang et un pont de rondins (l'eau du lac : `eau_lac.gdshader`, et la chute `chute_lac.gdshader`, qui se raccordent par une lèvre d'écume) ; le chemin de l'ouest descend vers le lac, une fois que Brenna a demandé de retrouver Aldric.
+- **Le lac aux Brumes** (à l'ouest de la cascade, généré par `tools/make_lac.gd`) : un grand lac entouré de forêt, une île et son arbre mort, un ponton et sa barque, des roseaux, des nénuphars et de la brume qui dérive sur l'eau ; à l'ouest, la clairière où Aldric coupait du bois. Un panneau à l'entrée, et une tête de loup gravée dessous...
 - **Le chariot** (à l'est) : **le chariot du marchand**, renversé sur la route. Une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines. Un sentier monte de la route jusqu'à **une grotte**, creusée dans la paroi du nord ; on ne peut pas encore l'explorer (il faut une torche). À l'est, la route mène aux ruines (une fois le chariot trouvé).
-- Le vent fait doucement balancer les arbres, les buissons et les herbes (shader `vent.gdshader`).
+- Le vent fait doucement balancer les arbres, les buissons et les herbes, sur toutes les cartes extérieures (forêt, lac, ruines, village) : shader `vent.gdshader`, posé dans les cartes de la forêt et ajouté aux autres à l'arrivée par l'autoload `scripts/vent.gd` (les arbres du village, peints en tuiles, ont leur propre version : `vent_tuiles.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 
 ### Les menus
 - **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
 - **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak arrive au village par la route de la forêt et marche seul jusqu'à l'auberge ; coupure au noir, et Oswin lui tombe dessus.
+- **La mini-carte** (touche M) : Zylrak (flèche dorée), Ysolde (point bleu), les PNJ qui ont une quête à donner (losange doré), et l'objectif des quêtes acceptées : un point vert qui pulse quand il est sur la carte, sinon une flèche verte sur la sortie qui y mène (`scripts/objectifs.gd`).
 - **Le grimoire** (Échap, sur les cartes, hors combat et hors dialogue ; le jeu est en pause), aux couleurs du pack *Dark Ages UI* : cadre orné, onglets, parchemins, cases d'inventaire.
   - ← → pour changer d'onglet, Entrée pour entrer dans l'onglet, Échap pour revenir puis fermer.
   - **Équipe** : une fiche par héros (portrait, niveau, barres PV / PM / XP, caractéristiques, Signes ou talents).
@@ -78,7 +86,7 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - Montée de niveau : Ysolde progresse avec Zylrak.
 
 ### Les ruines des Yrenn (à l'est de la forêt)
-- **La montée** : une clairière semée de ruines, une paroi rocheuse et son escalier de pierre. Ysolde y attend Zylrak, puis le suit partout.
+- **La montée** : une clairière semée de ruines, une paroi rocheuse et son escalier de pierre (un panneau, à l'entrée, prévient des dangers). Ysolde y attend Zylrak, puis le suit partout.
 - **Le parvis du temple** : une façade taillée au pied d'une crête, sa porte scellée à la pierre bleue, et le ciel d'aube au-dessus des sommets.
 - **L'énigme de la porte** : en arrivant au parvis, Zylrak suit les traces de sang jusqu'à la porte, scellée par un voile de lumière magique. Quatre encoches attendent des pierres gravées : il faut retrouver les **quatre fragments** qui brillent dans les ruines (deux sur la montée, deux sur le parvis), puis les poser dans le bon ordre. Théobald, à l'auberge, en donne l'indice.
 
@@ -122,12 +130,13 @@ scripts/
 - Zombie : *[LPC] Zombie* par **Benjamin K. Smith (BenCreating)**, commandé par castelonia, d'après la base LPC de **Stephen Challener (Redshrike)** et les animations de **Johannes Sjölund (wulax)** — CC-BY-SA 3.0 (https://opengameart.org/content/lpc-zombie).
 - Musique :
   - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : *Exploration Fantasy Free Pack* par **EugeneDesMusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/exploration-fantasy-free-pack) ;
-  - forêt (*Place_Fantasy_Desert_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
+  - forêt (*Place_Fantasy_Desert_Loop*) et lac (*Place_Lake_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
   - ruines (*Sunrise Over the Ruins*) : *Emotional And Cinematic Music Pack for RPGs* par **lullemusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/emotional-and-cinematic-music-pack-for-rpgs) ;
   - combats : *JRPG/RPG Combat Exploration Theme* (version en boucle) par **lardven** — licence GameDev Market (https://www.gamedevmarket.net/asset/jrpgrpg-combat-exploration-theme).
 - Coffres : générés avec Copilot dans le style de Szadi art, puis découpés.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.
+- Lac : eau, rivages et décor (roseaux, nénuphars, ponton, barque, rochers, brume) générés avec Copilot ; l'herbe des rivages est rendue transparente (`tools/dev/draw_lac.gd`).
 - Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel, pierres gravées des fragments, statues de mages, ossements, racines et mousse, fond de combat de la salle, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Interface (combats et menus) :
@@ -138,5 +147,6 @@ scripts/
 
 ## À venir
 
-- Mini quête de Pépin : il vole la bourse de Zylrak et tombe dans une embuscade de monstres.
-- Nouvelles cartes : le lac et le temple du Loup, l'intérieur de la grotte.
+- Contrat du voleur d'Eclatvin : Pépin, la mère Margot, et Croûton, le chien errant.
+- Contrat de la grotte : la torche du forgeron, les araignées, la pierre-de-braise.
+- La quête d'Aldric, au lac ; le temple du Loup, sous le lac ; l'intérieur de la grotte.

@@ -746,8 +746,11 @@ func _ending() -> void:
 	match result:
 		"victoire":
 			var gained := 0
+			var coins := 0
 			for f in foes:
 				gained += f.data.xp
+				coins += maxi(1, f.data.xp / 2) + rng.randi_range(0, 2)
+			PlayerData.ecus += coins
 			# un héros à terre se relève avec 1 PV
 			for m in party:
 				if _hp(m) <= 0:
@@ -756,9 +759,9 @@ func _ending() -> void:
 			_refresh_hero()
 			await _victory_pose()
 			if party.size() == 1:
-				await _say("Victoire ! Zylrak gagne %d points d'expérience." % gained, 2.2, true)
+				await _say("Victoire ! Zylrak gagne %d points d'expérience et %d écus." % [gained, coins], 2.4, true)
 			else:
-				await _say("Victoire ! Zylrak et Ysolde gagnent %d points d'expérience." % gained, 2.2, true)
+				await _say("Victoire ! Zylrak et Ysolde gagnent %d points d'expérience et %d écus." % [gained, coins], 2.4, true)
 			for up in PlayerData.gain_xp(gained):
 				await _level_up(up)
 		"defaite":

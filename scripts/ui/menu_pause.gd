@@ -166,7 +166,7 @@ func _draw_tabs() -> void:
 			orn.position = Vector2((220 - UiKit.DA_TAB_ORNAMENT.size.x * UiKit.DA) / 2.0, -22)
 			t.add_child(orn)
 		_tabs_box.add_child(t)
-	_footer_left.text = "%s      ·      %s" % [Sauvegarde.place_name(), Sauvegarde.format_time(PlayerData.play_time)]
+	_footer_left.text = "%s      ·      %s      ·      %d écus" % [Sauvegarde.place_name(), Sauvegarde.format_time(PlayerData.play_time), PlayerData.ecus]
 
 ## Efface le dessin de la page (les listes posées par-dessus restent).
 func _clear() -> void:
@@ -691,6 +691,10 @@ func _quests() -> Array[Dictionary]:
 	if f.call("parchemin_yrenn"):
 		out.append({"titre": "Les fragments d'âme", "texte": "Le gardien du temple était un fragment de l'âme de la Bête. Le parchemin de l'autel dit qu'il faut réunir les quatre fragments et les rendre ensemble à la flamme pour la resceller.",
 			"etapes": [["Enfermer le fragment du premier temple dans la cendre.", f.call("fragment_ame_lune")], ["Trouver le temple du Loup, sous le lac.", false]]})
+	for c in Contrats.LIST:
+		if Contrats.accepted(c.id):
+			out.append({"titre": "Contrat : " + c.titre, "texte": "%s\nRécompense : %s." % [c.commanditaire, c.recompense],
+				"etapes": [[c.etape, false]]})
 	if f.call("aldric_quest_started"):
 		out.append({"titre": "Le frère de Brenna", "texte": "Brenna demande de retrouver son frère Aldric, parti couper du bois près du lac et jamais revenu.",
 			"etapes": [["Chercher Aldric du côté du lac, au-delà de la cascade.", false]]})

@@ -1,0 +1,46 @@
+class_name Contrats
+
+## Les contrats affichés sur le panneau du village, à côté de l'auberge (scenes/maps/panneau_contrats.gd).
+## Le panneau se remplit une fois la quête d'Oswin acceptée. Accepter un contrat passe le flag
+## "contrat_<id>_accepte" à vrai : le contrat apparaît alors dans le journal du grimoire.
+## Détails du design : page Notion « Contrats d'Eclatvin ».
+
+const LIST: Array[Dictionary] = [
+	{
+		"id": "voleur",
+		"titre": "Le voleur d'Eclatvin",
+		"commanditaire": "La mère Margot, fermière",
+		"lieu": "Eclatvin et ses environs",
+		"recompense": "40 écus",
+		"texte": "Depuis plusieurs nuits, quelqu'un se sert dans ma réserve : du pain, un jambon, et même la paille de ma grange ! Rien de précieux, mais je n'en dors plus. Je paierai qui m'attrapera ce chapardeur.\n\n— Margot, à la ferme au bout du chemin.",
+		"etape": "Aller voir la mère Margot, à sa ferme.",
+	},
+	{
+		"id": "grotte",
+		"titre": "Dans le noir de la grotte",
+		"commanditaire": "Le forgeron",
+		"lieu": "La grotte du sentier, au-dessus du chariot",
+		"recompense": "Une lame forgée sur mesure, 30 écus",
+		"texte": "Cherche gaillard pas trop froussard pour me rapporter de la pierre-de-braise, du fond de la grotte. Les araignées sont fournies, la torche aussi : passer à la forge.",
+		"etape": "Passer à la forge chercher la torche.",
+	},
+]
+
+static func flag_for(id: String) -> String:
+	return "contrat_%s_accepte" % id
+
+## Le panneau se remplit une fois la quête d'Oswin acceptée.
+static func board_open() -> bool:
+	return PlayerData.get_flag("has_accepted_zylrak_quest")
+
+static func accepted(id: String) -> bool:
+	return PlayerData.get_flag(flag_for(id))
+
+## Reste-t-il un contrat à accepter sur le panneau ?
+static func has_new() -> bool:
+	if not board_open():
+		return false
+	for c in LIST:
+		if not accepted(c.id):
+			return true
+	return false
