@@ -20,11 +20,13 @@ const NEW_GAME_SPAWN := "SpawnFromForest"
 const PLACES := {
 	"VillageMap": "Le village",
 	"VillageV2Map": "Le village",
+	"MaisonJumellesMap": "Eclatvin · la maison des jumelles",
 	"AubergeMap": "L'auberge",
 	"AubergeEtageMap": "L'auberge · l'étage",
 	"WeaponsShopMap": "La forge",
 	"ForestMap": "La forêt · la lisière",
 	"ForestCascadeMap": "La forêt · la cascade",
+	"LacMap": "La forêt · le lac aux Brumes",
 	"ForestChariotMap": "La forêt · le chariot",
 	"RuinesMonteeMap": "Ruines des Yrenn · la montée",
 	"RuinesParvisMap": "Ruines des Yrenn · le parvis",

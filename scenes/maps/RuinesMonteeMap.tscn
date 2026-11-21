@@ -31,6 +31,9 @@
 [ext_resource type="Resource" uid="uid://bot8cwiyxo0dg" path="res://resources/dialogues/ruines/ysolde_rencontre_accusation.tres" id="29_2l13g"]
 [ext_resource type="Resource" uid="uid://cycjpp31lps3b" path="res://resources/dialogues/ruines/ysolde_rencontre_equipe.tres" id="30_u411d"]
 
+[ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Lac/lac_props.png" id="panneau_tex"]
+[ext_resource type="Script" path="res://scenes/maps/point_inspection.gd" id="panneau_script"]
+[ext_resource type="Resource" path="res://resources/dialogues/panneaux/panneau_ruines.tres" id="panneau_texte"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66xnt"]
 size = Vector2(32, 160)
 
@@ -4096,3 +4099,18 @@ zylrak_stop_path = NodePath("../ArretZylrak")
 ysolde_route = Array[NodePath]([NodePath("../YsoldeEscalierBas")])
 accusation = ExtResource("29_2l13g")
 team_up = ExtResource("30_u411d")
+
+[node name="Panneau" type="Sprite2D" parent="YSortLayer" unique_id=1873360211]
+position = Vector2(190, 532)
+texture = ExtResource("panneau_tex")
+centered = false
+offset = Vector2(-16, -30)
+region_enabled = true
+region_rect = Rect2(288, 96, 32, 32)
+
+[node name="LirePanneau" type="Node2D" parent="YSortLayer" unique_id=1873360212]
+position = Vector2(190, 536)
+script = ExtResource("panneau_script")
+conversation = ExtResource("panneau_texte")
+conversation_after = ExtResource("panneau_texte")
+sparkle_at = Vector2(0, -36)

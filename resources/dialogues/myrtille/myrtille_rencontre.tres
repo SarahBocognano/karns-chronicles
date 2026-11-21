@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_xp8v5"]
+[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_rire.tres" id="2_txcyk"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_15jg1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_douce.tres" id="4_hsnyy"]
+[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_genee.tres" id="5_wu7os"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_q8wep"]
+
+[sub_resource type="Resource" id="Resource_wl20l"]
+script = ExtResource("1_xp8v5")
+speaker_name = "Myrtille"
+portrait = ExtResource("2_txcyk")
+text = "Un client ! Entre, entre, et essuie tes bottes : ma sœur vient de passer le balai."
+
+[sub_resource type="Resource" id="Resource_1sxie"]
+script = ExtResource("1_xp8v5")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_15jg1")
+text = "... Je viens de te voir arroser des fleurs dehors. Comment tu as fait pour arriver avant moi ?"
+
+[sub_resource type="Resource" id="Resource_xkgbw"]
+script = ExtResource("1_xp8v5")
+speaker_name = "Myrtille"
+portrait = ExtResource("4_hsnyy")
+text = "Ça, c'était Mirabelle. Moi, c'est Myrtille. Elle fait pousser, moi je distille."
+
+[sub_resource type="Resource" id="Resource_b1y7g"]
+script = ExtResource("1_xp8v5")
+speaker_name = "Myrtille"
+portrait = ExtResource("5_wu7os")
+text = "Et non, on ne s'échange pas pour faire des farces aux clients. Enfin... pas souvent."
+
+[sub_resource type="Resource" id="Resource_4nxcl"]
+script = ExtResource("1_xp8v5")
+speaker_name = "Myrtille"
+portrait = ExtResource("4_hsnyy")
+text = "Potions, fioles de mana : tout est fait maison, avec les herbes du jardin. Regarde donc."
+
+[resource]
+script = ExtResource("6_q8wep")
+lines = Array[ExtResource("1_xp8v5")]([SubResource("Resource_wl20l"), SubResource("Resource_1sxie"), SubResource("Resource_xkgbw"), SubResource("Resource_b1y7g"), SubResource("Resource_4nxcl")])
+forbidden_flags = Array[String](["talked_to_myrtille"])
+flags_on_finish = Array[String](["talked_to_myrtille"])

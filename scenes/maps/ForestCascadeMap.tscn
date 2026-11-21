@@ -27,6 +27,10 @@
 [ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="25_pgxq6"]
 [ext_resource type="Texture2D" uid="uid://d30rysgkt0aol" path="res://assets/battle_backgrounds/battle_foret.png" id="26_4gquy"]
 
+[ext_resource type="Shader" path="res://resources/shaders/eau_lac.gdshader" id="eau_lac_shader"]
+[ext_resource type="Shader" path="res://resources/shaders/chute_lac.gdshader" id="chute_lac_shader"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Lac/lac_tileset.png" id="eau_lac_tiles"]
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8q4tu"]
 seed = 3
 frequency = 0.02
@@ -49,41 +53,24 @@ height = 256
 noise = SubResource("FastNoiseLite_cmqyf")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wn4n0"]
-shader = ExtResource("5_qem5e")
-shader_parameter/deep_color = null
-shader_parameter/shallow_color = Color(0.33, 0.52, 0.52, 1)
-shader_parameter/highlight_color = Color(0.86, 0.95, 0.92, 1)
-shader_parameter/flow = Vector2(0, 110)
-shader_parameter/stretch = Vector2(0.7, 6)
-shader_parameter/sparkle = 0.9
-shader_parameter/pixel_size = null
-shader_parameter/noise_a = SubResource("NoiseTexture2D_ydqje")
-shader_parameter/noise_b = SubResource("NoiseTexture2D_t28el")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8kfp"]
-shader = ExtResource("5_qem5e")
-shader_parameter/deep_color = null
-shader_parameter/shallow_color = null
-shader_parameter/highlight_color = null
+shader = ExtResource("eau_lac_shader")
+shader_parameter/tiles = ExtResource("eau_lac_tiles")
 shader_parameter/flow = Vector2(0, 16)
-shader_parameter/stretch = Vector2(1, 1.6)
-shader_parameter/sparkle = 0.55
-shader_parameter/pixel_size = null
-shader_parameter/noise_a = SubResource("NoiseTexture2D_ydqje")
-shader_parameter/noise_b = SubResource("NoiseTexture2D_t28el")
+shader_parameter/cut_y = 208.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chute"]
+shader = ExtResource("chute_lac_shader")
+shader_parameter/tiles = ExtResource("eau_lac_tiles")
+shader_parameter/stream_flow = Vector2(0, 16)
+shader_parameter/top = 208.0
+shader_parameter/left = 289.92
+shader_parameter/right = 350.08
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lqhn1"]
-shader = ExtResource("5_qem5e")
-shader_parameter/deep_color = null
-shader_parameter/shallow_color = null
-shader_parameter/highlight_color = null
-shader_parameter/flow = Vector2(0, 14)
-shader_parameter/stretch = Vector2(1, 1.6)
-shader_parameter/sparkle = 0.55
-shader_parameter/pixel_size = null
-shader_parameter/noise_a = SubResource("NoiseTexture2D_ydqje")
-shader_parameter/noise_b = SubResource("NoiseTexture2D_t28el")
+shader = ExtResource("eau_lac_shader")
+shader_parameter/tiles = ExtResource("eau_lac_tiles")
+shader_parameter/flow = Vector2(0, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srok4"]
 shader = ExtResource("5_qem5e")
@@ -350,8 +337,8 @@ tile_map_data = PackedByteArray("AAAAABAAAAAFAAAAAAAAABIAAAAFAAMAAAAAABEAAAAIAAE
 tile_set = ExtResource("4_ds6s6")
 
 [node name="Cascade" type="Polygon2D" parent="." unique_id=1205233844]
-material = SubResource("ShaderMaterial_wn4n0")
-polygon = PackedVector2Array(289.92, 206.4, 350.08, 206.4, 350.08, 353.6, 289.92, 353.6)
+material = SubResource("ShaderMaterial_chute")
+polygon = PackedVector2Array(289.92, 196, 350.08, 196, 350.08, 353.6, 289.92, 353.6)
 
 [node name="Falaises" type="TileMapLayer" parent="." unique_id=1812971938]
 tile_map_data = PackedByteArray("AAAAAAYAAAAJAAEAAAAAAAcAAAAJAAIAAAAAAAgAAAAVAAgAAAAAAAkAAAAJAAQAAAAAAAoAAAAJAAUAAAABAAYAAAAJAAEAAAABAAcAAAAJAAIAAAABAAgAAAARAAYAAAABAAkAAAAJAAQAAAABAAoAAAAJAAUAAAACAAYAAAAJAAEAAAACAAcAAAAJAAIAAAACAAgAAAASAAgAAAACAAkAAAAJAAQAAAACAAoAAAAJAAUAAAADAAYAAAAJAAEAAAADAAcAAAAJAAIAAAADAAgAAAATAAYAAAADAAkAAAAJAAQAAAADAAoAAAAJAAUAAAAEAAYAAAAJAAEAAAAEAAcAAAAJAAIAAAAEAAgAAAAQAAYAAAAEAAkAAAAJAAQAAAAEAAoAAAAJAAUAAAAFAAYAAAAJAAEAAAAFAAcAAAAJAAIAAAAFAAgAAAAQAAgAAAAFAAkAAAAJAAQAAAAFAAoAAAAJAAUAAAAGAAYAAAAJAAEAAAAGAAcAAAAJAAIAAAAGAAgAAAARAAgAAAAGAAkAAAAJAAQAAAAGAAoAAAAJAAUAAAAHAAYAAAAJAAEAAAAHAAcAAAAJAAIAAAAHAAgAAAASAAYAAAAHAAkAAAAJAAQAAAAHAAoAAAAJAAUAAAAIAAYAAAAJAAEAAAAIAAcAAAAJAAIAAAAIAAgAAAATAAYAAAAIAAkAAAAJAAQAAAAIAAoAAAAJAAUAAAAJAAYAAAALAAEAAAAJAAcAAAALAAIAAAAJAAgAAAALAAMAAAAJAAkAAAALAAQAAAAJAAoAAAALAAUAAAAKAAYAAAAHAAEAAAAKAAcAAAAHAAIAAAAKAAgAAAAHAAMAAAAKAAkAAAAHAAQAAAAKAAoAAAAHAAUAAAALAAYAAAAJAAEAAAALAAcAAAAJAAIAAAALAAgAAAATAAYAAAALAAkAAAAJAAQAAAALAAoAAAAJAAUAAAAMAAYAAAAJAAEAAAAMAAcAAAAJAAIAAAAMAAgAAAAUAAcAAAAMAAkAAAAJAAQAAAAMAAoAAAAJAAUAAAANAAYAAAAJAAEAAAANAAcAAAAJAAIAAAANAAgAAAAQAAYAAAANAAkAAAAJAAQAAAANAAoAAAAJAAUAAAAOAAYAAAAJAAEAAAAOAAcAAAAJAAIAAAAOAAgAAAAVAAYAAAAOAAkAAAAJAAQAAAAOAAoAAAAJAAUAAAAPAAYAAAAJAAEAAAAPAAcAAAAJAAIAAAAPAAgAAAARAAgAAAAPAAkAAAAJAAQAAAAPAAoAAAAJAAUAAAAQAAYAAAAJAAEAAAAQAAcAAAAJAAIAAAAQAAgAAAASAAYAAAAQAAkAAAAJAAQAAAAQAAoAAAAJAAUAAAARAAYAAAAJAAEAAAARAAcAAAAJAAIAAAARAAgAAAAQAAgAAAARAAkAAAAJAAQAAAARAAoAAAAJAAUAAAASAAYAAAAJAAEAAAASAAcAAAAJAAIAAAASAAgAAAAUAAcAAAASAAkAAAAJAAQAAAASAAoAAAAJAAUAAAATAAYAAAAJAAEAAAATAAcAAAAJAAIAAAATAAgAAAAUAAcAAAATAAkAAAAJAAQAAAATAAoAAAAJAAUAAAAUAAYAAAAJAAEAAAAUAAcAAAAJAAIAAAAUAAgAAAAVAAgAAAAUAAkAAAAJAAQAAAAUAAoAAAAJAAUAAAAVAAYAAAAJAAEAAAAVAAcAAAAJAAIAAAAVAAgAAAAVAAcAAAAVAAkAAAAJAAQAAAAVAAoAAAAJAAUAAAAWAAYAAAAJAAEAAAAWAAcAAAAJAAIAAAAWAAgAAAARAAcAAAAWAAkAAAAJAAQAAAAWAAoAAAAJAAUAAAAXAAYAAAAJAAEAAAAXAAcAAAAJAAIAAAAXAAgAAAARAAcAAAAXAAkAAAAJAAQAAAAXAAoAAAAJAAUAAAAYAAYAAAAJAAEAAAAYAAcAAAAJAAIAAAAYAAgAAAASAAgAAAAYAAkAAAAJAAQAAAAYAAoAAAAJAAUAAAAZAAYAAAAJAAEAAAAZAAcAAAAJAAIAAAAZAAgAAAARAAgAAAAZAAkAAAAJAAQAAAAZAAoAAAAJAAUAAAAaAAYAAAAJAAEAAAAaAAcAAAAJAAIAAAAaAAgAAAAUAAgAAAAaAAkAAAAJAAQAAAAaAAoAAAAJAAUAAAAbAAYAAAAJAAEAAAAbAAcAAAAJAAIAAAAbAAgAAAAQAAgAAAAbAAkAAAAJAAQAAAAbAAoAAAAJAAUAAAA=")
@@ -6475,9 +6462,15 @@ shape = SubResource("RectangleShape2D_4m1su")
 
 [node name="CheminOuest" type="Area2D" parent="." unique_id=1407656079]
 position = Vector2(16, 560)
-script = ExtResource("17_l0axx")
+script = ExtResource("16_36nsd")
 lines = Array[ExtResource("18_b70ib")]([SubResource("Resource_k4rot"), SubResource("Resource_bfqf1")])
 push_back = Vector2(28, 0)
+target_scene = "res://scenes/maps/LacMap.tscn"
+spawn_point = "SpawnFromCascade"
+required_flags = Array[String](["aldric_quest_started"])
+
+[node name="SpawnFromLac" type="Marker2D" parent="." unique_id=1407656080]
+position = Vector2(60, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheminOuest" unique_id=846586146]
 shape = SubResource("RectangleShape2D_qvfob")

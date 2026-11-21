@@ -58,6 +58,10 @@ func _initialize() -> void:
 	add_sign(root, "EnseigneForge", 1, forge_door + Vector2(1.6, 1.0))
 	add_chest(root, "CoffreVillage", "fiole", 2, Vector2(14.6, 10.7))
 	add_arrival(root)
+	add_board(root)
+	add_signpost(root)
+	add_door(root, "EnterJumelles", Vector2(13.0, 27.95), "res://scenes/maps/MaisonJumellesMap.tscn", "SpawnFromVillage",
+		"SpawnFromJumelles", Vector2(13.0, 30.2))
 	var out := PackedScene.new()
 	print("pack ", out.pack(root))
 	print("save ", ResourceSaver.save(out, OUT))
@@ -209,6 +213,52 @@ static func add_arrival(root: Node) -> void:
 		m.position = cell_to_world(step[1])
 		a.add_child(m)
 		m.owner = root
+
+## Le panneau des contrats (scenes/maps/panneau_contrats.gd), au pied du panneau d'affichage déjà
+## dessiné dans le décor, à droite de l'auberge.
+static func add_board(root: Node) -> void:
+	var b := Node2D.new()
+	b.name = "PanneauContrats"
+	b.set_script(load("res://scenes/maps/panneau_contrats.gd"))
+	b.position = cell_to_world(Vector2(33.0, 13.75))
+	root.get_node("YSortLayer").add_child(b)
+	b.owner = root
+
+## Le poteau indicateur à l'entrée du village (déjà dessiné dans le décor, à gauche du chemin qui
+## vient de la forêt) : on peut le lire.
+static func add_signpost(root: Node) -> void:
+	var read := Node2D.new()
+	read.name = "LirePoteau"
+	read.set_script(load("res://scenes/maps/point_inspection.gd"))
+	var text := load("res://resources/dialogues/panneaux/panneau_eclatvin.tres")
+	read.set("conversation", text)
+	read.set("conversation_after", text)
+	read.set("sparkle_at", Vector2(0, -44))
+	read.position = Vector2(-64, 474)
+	root.get_node("YSortLayer").add_child(read)
+	read.owner = root
+
+## Porte d'une maison : une zone de sortie vers l'intérieur, et le point d'arrivée en ressortant.
+static func add_door(root: Node, n: String, door: Vector2, target: String, target_spawn: String, spawn_name: String, spawn: Vector2) -> void:
+	var a := Area2D.new()
+	a.name = n
+	a.set_script(load("res://scenes/maps/map_exit.gd"))
+	a.set("target_scene", target)
+	a.set("spawn_point", target_spawn)
+	a.position = cell_to_world(door)
+	root.add_child(a)
+	a.owner = root
+	var c := CollisionShape2D.new()
+	var r := RectangleShape2D.new()
+	r.size = Vector2(28, 16)
+	c.shape = r
+	a.add_child(c)
+	c.owner = root
+	var m := Marker2D.new()
+	m.name = spawn_name
+	m.position = cell_to_world(spawn)
+	root.add_child(m)
+	m.owner = root
 
 ## Enseigne (0 : auberge, 1 : forge) au pied du mur `cell` (case de la carte).
 static func add_sign(root: Node, n: String, frame: int, cell: Vector2) -> void:
