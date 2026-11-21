@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bk5p7liuqmon0"]
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_pem3k"]
 [ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_t4cep"]

@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bs8gv6vwvyjsw"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_085tv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/oswin_surpris.tres" id="2_mh4cq"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_268ky"]
+[ext_resource type="Texture2D" path="res://assets/portrait/oswin_triste.tres" id="4_gm2sm"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="5_vkicf"]
+[ext_resource type="Texture2D" path="res://assets/portrait/oswin_inquiet.tres" id="6_quk3f"]
+[ext_resource type="Texture2D" path="res://assets/portrait/oswin_determine.tres" id="7_5d27r"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="8_4potf"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="9_oyp1x"]
+
+[sub_resource type="Resource" id="Resource_m3cgc"]
+script = ExtResource("1_085tv")
+speaker_name = "Oswin"
+portrait = ExtResource("2_mh4cq")
+text = "Ashwarden ! Vous voilà revenu... Et le marchand ?"
+
+[sub_resource type="Resource" id="Resource_x8r1p"]
+script = ExtResource("1_085tv")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_268ky")
+text = "Je suis désolé, Oswin. On l'a retrouvé au fond du temple des Yrenn. Il était déjà mort."
+
+[sub_resource type="Resource" id="Resource_30vmc"]
+script = ExtResource("1_085tv")
+speaker_name = "Oswin"
+portrait = ExtResource("4_gm2sm")
+text = "... Pauvre homme. Ça faisait vingt ans qu'il faisait la route jusqu'ici."
+
+[sub_resource type="Resource" id="Resource_nfr7v"]
+script = ExtResource("1_085tv")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_vkicf")
+text = "Ce ne sont pas les goules qui l'ont tué. Des hommes l'ont emmené là-bas pour un rituel. Ceux-là, je vais les trouver."
+
+[sub_resource type="Resource" id="Resource_ynqge"]
+script = ExtResource("1_085tv")
+speaker_name = "Oswin"
+portrait = ExtResource("6_quk3f")
+text = "Des hommes... Que les Cendres nous gardent. Les routes ne seront pas sûres de sitôt."
+
+[sub_resource type="Resource" id="Resource_lc3vo"]
+script = ExtResource("1_085tv")
+speaker_name = "Oswin"
+portrait = ExtResource("7_5d27r")
+text = "Prenez ça. C'est tout ce qui me reste en remèdes, mais vous en aurez plus besoin que nous."
+
+[sub_resource type="Resource" id="Resource_o4per"]
+script = ExtResource("1_085tv")
+text = "Oswin donne 3 potions et 2 fioles de mana à Zylrak."
+
+[sub_resource type="Resource" id="Resource_e8srf"]
+script = ExtResource("1_085tv")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_4potf")
+text = "Garde ta bourse, je te l'avais dit. Mais les potions, je les prends."
+
+[resource]
+script = ExtResource("9_oyp1x")
+lines = Array[ExtResource("1_085tv")]([SubResource("Resource_m3cgc"), SubResource("Resource_x8r1p"), SubResource("Resource_30vmc"), SubResource("Resource_nfr7v"), SubResource("Resource_ynqge"), SubResource("Resource_lc3vo"), SubResource("Resource_o4per"), SubResource("Resource_e8srf")])
+required_flags = Array[String](["has_accepted_zylrak_quest", "marchand_retrouve"])
+forbidden_flags = Array[String](["quete_marchand_terminee"])
+flags_on_finish = Array[String](["quete_marchand_terminee"])
+show_quest_marker = true

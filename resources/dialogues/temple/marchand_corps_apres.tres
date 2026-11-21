@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://bcw606diqu7an"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_cyydn"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_n3x0i"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_lprdl"]
+
+[sub_resource type="Resource" id="Resource_wvdmo"]
+script = ExtResource("1_cyydn")
+speaker_name = "Zylrak"
+portrait = ExtResource("2_n3x0i")
+text = "Repose en paix. On dira à Oswin ce qui t'est arrivé."
+
+[resource]
+script = ExtResource("3_lprdl")
+lines = Array[ExtResource("1_cyydn")]([SubResource("Resource_wvdmo")])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://c07gkiyto8lqn"]
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_k8lro"]
 [ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="2_s1g7q"]

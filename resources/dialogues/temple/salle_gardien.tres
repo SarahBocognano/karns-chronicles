@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://djm42lynchm40"]
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_2osqk"]
 [ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_sqv0l"]
@@ -16,13 +16,13 @@ text = "Regarde le sol... Le même cercle que sur la porte, en grand."
 script = ExtResource("1_2osqk")
 speaker_name = "Zylrak"
 portrait = ExtResource("3_s4lqa")
-text = "Et au fond, une armure. Debout devant un escalier, derrière un voile comme celui de l'entrée."
+text = "Et au fond, une armure, debout devant un autel. Et là, par terre... quelqu'un."
 
 [sub_resource type="Resource" id="Resource_lhioe"]
 script = ExtResource("1_2osqk")
 speaker_name = "Ysolde"
 portrait = ExtResource("4_5fiam")
-text = "Elle ne bouge pas. Pour l'instant."
+text = "Le marchand. L'armure ne bouge pas, mais je n'aime pas ça."
 
 [resource]
 script = ExtResource("5_iyotc")

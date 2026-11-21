@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3 uid="uid://1gy4kxshp1qw"]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_t10ir"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_surprise.tres" id="2_b67sl"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_nd37q"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="4_gllg5"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="5_cb6me"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_ykk6q"]
+
+[sub_resource type="Resource" id="Resource_5ml6p"]
+script = ExtResource("1_t10ir")
+text = "Sur l'autel, là où brillait l'éclat, un rouleau scellé à la cire bleue. L'écriture des Yrenn, et des dessins à l'encre."
+
+[sub_resource type="Resource" id="Resource_ugsc8"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("2_b67sl")
+text = "Tu sais lire ça ?"
+
+[sub_resource type="Resource" id="Resource_h5eut"]
+script = ExtResource("1_t10ir")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_nd37q")
+text = "Un peu. L'Ordre nous apprend les vieux signes... « Quatre éclats, quatre temples. Quand la lune noire reviendra, les sceaux céderont l'un après l'autre. »"
+
+[sub_resource type="Resource" id="Resource_8epxl"]
+script = ExtResource("1_t10ir")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_nd37q")
+text = "« Que les porteurs de cendre rassemblent les éclats, et qu'ils les rendent ensemble à la flamme : alors la Bête dormira mille ans encore. »"
+
+[sub_resource type="Resource" id="Resource_u36wg"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_gllg5")
+text = "Les porteurs de cendre... Les Ashwardens. Et regarde, une carte : un loup, sous l'eau. On dirait le lac, au sud de la forêt."
+
+[sub_resource type="Resource" id="Resource_7ttky"]
+script = ExtResource("1_t10ir")
+speaker_name = "Zylrak"
+portrait = ExtResource("5_cb6me")
+text = "Le temple du Loup. Ceux qui ont tué le marchand y penseront aussi. Rentrons d'abord : Oswin doit savoir."
+
+[sub_resource type="Resource" id="Resource_eapip"]
+script = ExtResource("1_t10ir")
+text = "Zylrak obtient : Parchemin des Yrenn."
+
+[resource]
+script = ExtResource("6_ykk6q")
+lines = Array[ExtResource("1_t10ir")]([SubResource("Resource_5ml6p"), SubResource("Resource_ugsc8"), SubResource("Resource_h5eut"), SubResource("Resource_8epxl"), SubResource("Resource_u36wg"), SubResource("Resource_7ttky"), SubResource("Resource_eapip")])

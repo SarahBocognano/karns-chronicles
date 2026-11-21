@@ -4,10 +4,11 @@ extends Node
 ## - une arrivée (conversation `arrival`, jouée une fois : flag `arrival_flag`) ;
 ## - le cercle de cendres du vestibule (flag "indice_ordre_vu") : la flamme de l'Ordre des Cendres,
 ##   renversée, tracée avec le sang du marchand ;
-## - le gardien de la salle du fond, une armure des Yrenn devant l'escalier : il s'éveille quand
-##   Zylrak approche, combat (on ne peut pas fuir) ; vaincu, il s'effondre et le voile de l'escalier
-##   se dissipe (flag "gardien_temple_vaincu") ;
-## - l'escalier, qui descend dans le noir : il faudra une torche (suite à venir).
+## - le gardien de la salle du fond, devant l'autel : une armure des Yrenn qu'un fragment de l'âme de
+##   la Bête a dévorée sous la lune noire. Il s'éveille quand Zylrak approche, combat (on ne peut pas
+##   fuir) ; vaincu, l'armure s'effondre et le fragment, une braise noire, tente de s'enfuir : Zylrak
+##   l'enferme dans la cendre (flags "gardien_temple_vaincu", "fragment_ame_lune"). Le corps du
+##   marchand et le parchemin de l'autel s'examinent ensuite (point_inspection.gd).
 
 @export var arrival: DialogueConversation
 @export var arrival_flag: String = ""
@@ -20,18 +21,17 @@ extends Node
 @export var circle_stranger: DialogueConversation
 @export var guardian_wake: DialogueConversation
 @export var guardian_defeated: DialogueConversation
-@export var stairs: DialogueConversation
+## Après la capture du fragment.
+@export var fragment_caught: DialogueConversation
 @export_group("Nœuds")
 @export var guardian_path: NodePath
 @export var circle_zone_path: NodePath
 @export var guardian_zone_path: NodePath
-@export var stairs_zone_path: NodePath
-## Voile de l'escalier (sceau_yrenn.gd), qui se dissipe quand le gardien tombe.
-@export var veil_path: NodePath
-## Recul de Zylrak après le message de l'escalier.
-@export var stairs_push_back: Vector2 = Vector2(0, 28)
+
+const SHARD := preload("res://assets/sprites/objets/temple/eclat_ame.png")
 
 var _busy := false
+var _hover: Tween
 
 func _ready() -> void:
 	var guardian := get_node_or_null(guardian_path) as Node2D
@@ -39,7 +39,6 @@ func _ready() -> void:
 		guardian.queue_free()
 	_connect(circle_zone_path, _on_circle_entered)
 	_connect(guardian_zone_path, _on_guardian_zone_entered)
-	_connect(stairs_zone_path, _on_stairs_entered)
 	if arrival and arrival_flag != "" and not PlayerData.get_flag(arrival_flag):
 		_arrive.call_deferred()
 
@@ -113,12 +112,15 @@ func _on_guardian_zone_entered(player: Node2D) -> void:
 		return
 	PlayerData.set_flag("gardien_temple_vaincu", true)
 	PlayerData.controls_locked = true
+	var at := guardian.global_position if is_instance_valid(guardian) else player.global_position
 	if is_instance_valid(guardian):
 		await _collapse(guardian)
-	var veil := get_node_or_null(veil_path)
-	if veil and veil.visible:
-		await veil.dissipate()
+	var shard := _shard_rises(at)
 	await _say(guardian_defeated.lines)
+	if is_instance_valid(player):
+		await _catch(shard, player)
+	PlayerData.set_flag("fragment_ame_lune", true)
+	await _say(fragment_caught.lines)
 	PlayerData.controls_locked = false
 	_busy = false
 
@@ -144,15 +146,41 @@ func _collapse(guardian: Node2D) -> void:
 	await tw.finished
 	guardian.queue_free()
 
-# --- 5. L'escalier ---
+## La braise noire sort des cendres de l'armure et tourne sur place, comme si elle cherchait une issue.
+func _shard_rises(at: Vector2) -> Sprite2D:
+	var shard := Sprite2D.new()
+	shard.texture = SHARD
+	shard.position = at + Vector2(0, -10)
+	shard.z_index = 2
+	get_parent().add_child(shard)
+	var light := PointLight2D.new()
+	light.texture = load("res://scenes/maps/sceau_yrenn.gd").glow_texture()
+	light.color = Color(1.0, 0.25, 0.3)
+	light.energy = 0.9
+	light.texture_scale = 0.4
+	shard.add_child(light)
+	var tw := create_tween()
+	tw.tween_property(shard, "position:y", at.y - 34, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tw.tween_callback(func():
+		_hover = shard.create_tween().set_loops()
+		_hover.tween_property(shard, "position:x", at.x + 6, 0.5).set_trans(Tween.TRANS_SINE)
+		_hover.tween_property(shard, "position:x", at.x - 6, 0.5).set_trans(Tween.TRANS_SINE))
+	return shard
 
-func _on_stairs_entered(player: Node2D) -> void:
-	if not _free() or not PlayerData.get_flag("gardien_temple_vaincu"):
+## Zylrak tend la main : la braise file vers lui, la cendre se referme dessus (éclair gris).
+func _catch(shard: Sprite2D, player: Node2D) -> void:
+	if not is_instance_valid(shard):
 		return
-	_busy = true
-	PlayerData.controls_locked = true
-	await _say(stairs.lines)
-	if is_instance_valid(player):
-		player.global_position += stairs_push_back
-	PlayerData.controls_locked = false
-	_busy = false
+	if player.has_method("face"):
+		player.face("up")
+	if _hover:
+		_hover.kill()
+	var tw := create_tween()
+	tw.tween_property(shard, "global_position", player.global_position + Vector2(0, -14), 0.6).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.parallel().tween_property(shard, "scale", Vector2(0.5, 0.5), 0.6)
+	await tw.finished
+	var flash := create_tween()
+	flash.tween_property(player, "modulate", Color(1.8, 1.7, 1.6), 0.12)
+	flash.tween_property(player, "modulate", Color.WHITE, 0.5)
+	shard.queue_free()
+	await flash.finished
