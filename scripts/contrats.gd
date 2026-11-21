@@ -29,6 +29,26 @@ const LIST: Array[Dictionary] = [
 static func flag_for(id: String) -> String:
 	return "contrat_%s_accepte" % id
 
+## Contrat rempli (récompense touchée).
+static func done(id: String) -> bool:
+	return PlayerData.get_flag("contrat_%s_termine" % id)
+
+## Les étapes d'un contrat accepté, pour le journal : [[texte, faite], ...].
+static func steps(id: String) -> Array:
+	var f := PlayerData.get_flag
+	match id:
+		"grotte":
+			var out: Array = [["Passer à la forge chercher la torche.", f.call("torche_forgeron")]]
+			if f.call("torche_forgeron"):
+				out.append(["Descendre au fond de la grotte du sentier, au-dessus du chariot, jusqu'au filon de pierre-de-braise.", f.call("pierre_de_braise")])
+			if f.call("pierre_de_braise"):
+				out.append(["Rapporter la pierre-de-braise au forgeron.", f.call("contrat_grotte_termine")])
+			return out
+	for c in LIST:
+		if c.id == id:
+			return [[c.etape, done(id)]]
+	return []
+
 ## Le panneau se remplit une fois la quête d'Oswin acceptée.
 static func board_open() -> bool:
 	return PlayerData.get_flag("has_accepted_zylrak_quest")

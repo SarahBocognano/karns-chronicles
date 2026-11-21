@@ -33,6 +33,9 @@ const PLACES := {
 	"TempleVestibuleMap": "Temple des Yrenn · le vestibule",
 	"TempleGalerieMap": "Temple des Yrenn · la galerie",
 	"TempleGardienMap": "Temple des Yrenn · la salle du gardien",
+	"GrotteEntreeMap": "La grotte du sentier · l'entrée",
+	"GrotteToilesMap": "La grotte du sentier · les toiles",
+	"GrotteFilonMap": "La grotte du sentier · le filon",
 }
 
 ## Dossier des sauvegardes (les tests en utilisent un autre).

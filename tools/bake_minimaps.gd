@@ -19,6 +19,9 @@ const MAPS := [
 	"res://scenes/maps/RuinesMonteeMap.tscn",
 	"res://scenes/maps/RuinesParvisMap.tscn",
 	"res://scenes/maps/LacMap.tscn",
+	"res://scenes/maps/GrotteEntreeMap.tscn",
+	"res://scenes/maps/GrotteToilesMap.tscn",
+	"res://scenes/maps/GrotteFilonMap.tscn",
 ]
 const OUT_DIR := "res://assets/ui/minimap/"
 

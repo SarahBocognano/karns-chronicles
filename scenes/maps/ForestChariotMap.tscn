@@ -26,7 +26,6 @@
 [ext_resource type="Script" uid="uid://d30cvftsqiqkj" path="res://scenes/Dialog/dialog_lines.gd" id="24_oq8ih"]
 [ext_resource type="Texture2D" uid="uid://b82h2yree0n6j" path="res://assets/portrait/zylrak_determiné.tres" id="25_c5q5k"]
 [ext_resource type="Texture2D" uid="uid://6if08xlylmun" path="res://assets/portrait/zylrak_reflexion.tres" id="26_fu7no"]
-[ext_resource type="Script" uid="uid://ccpkbre2r8m58" path="res://scenes/maps/map_message_zone.gd" id="27_bgxnw"]
 [ext_resource type="Texture2D" uid="uid://bl2ddbq03v35k" path="res://assets/portrait/zylrak_normal.tres" id="28_7s5er"]
 [ext_resource type="Script" uid="uid://5dw03yihmhnb" path="res://scenes/maps/npc_dialogue.gd" id="29_ylxt2"]
 [ext_resource type="Script" uid="uid://cr5skyw35upow" path="res://scenes/Dialog/dialogue_conversation.gd" id="30_8rws1"]
@@ -3677,12 +3676,18 @@ shape = SubResource("RectangleShape2D_64gk4")
 
 [node name="Grotte" type="Area2D" parent="." unique_id=283797987]
 position = Vector2(752, 272)
-script = ExtResource("27_bgxnw")
+script = ExtResource("23_k7mfi")
+target_scene = "res://scenes/maps/GrotteEntreeMap.tscn"
+spawn_point = "SpawnFromChariot"
+required_flags = Array[String](["torche_forgeron"])
 lines = Array[ExtResource("24_oq8ih")]([SubResource("Resource_3tnbl"), SubResource("Resource_47le2")])
 push_back = Vector2(0, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grotte" unique_id=794239178]
 shape = SubResource("RectangleShape2D_m2a2a")
+
+[node name="SpawnFromGrotte" type="Marker2D" parent="." unique_id=1873360301]
+position = Vector2(752, 318)
 
 [node name="ChariotMarchand" type="Node2D" parent="." unique_id=577161930]
 position = Vector2(416, 360)

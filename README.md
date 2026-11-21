@@ -49,9 +49,11 @@ Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 Six coffres sont cachés dans le village, la forêt et les ruines (coffre en bois cerclé de fer pour les objets, coffre précieux doré pour l'équipement). On les ouvre avec Entrée : potions, fioles, et de l'équipement (Carquois tressé, Cotte de mailles, Talisman des Cendres). Un coffre ouvert le reste, même après une sauvegarde.
 
 ### Les contrats et la boutique
-- **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal. Les contrats eux-mêmes (« Le voleur d'Eclatvin », « Dans le noir de la grotte ») arrivent bientôt.
+- **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal. Le contrat du voleur (« Le voleur d'Eclatvin ») arrive bientôt.
+- **Contrat « Dans le noir de la grotte »** : le forgeron confie sa torche ; au fond de la grotte du chariot, l'araignée géante garde le filon de pierre-de-braise. Rapportée à la forge, la pierre devient la **Lame de braise** (+3 en attaque), avec 30 écus. Les étapes s'affichent dans le journal, et l'objectif sur la mini-carte.
+- **Le venin** : les araignées empoisonnent ; un héros empoisonné perd des PV au début de chacun de ses tours, jusqu'à la fin du combat ou un **antidote** (en vente chez Myrtille, et deux dans un coffre de la grotte).
 - **Les écus** : Zylrak en a 30 au départ et en gagne à chaque victoire ; ils s'affichent en bas du grimoire.
-- **La maison des jumelles** (la porte de Mirabelle) : Myrtille, sa jumelle, y vend des potions (15 écus) et des fioles de mana (20 écus).
+- **La maison des jumelles** (la porte de Mirabelle) : Myrtille, sa jumelle, y vend des potions (15 écus), des fioles de mana (20 écus) et des antidotes (12 écus).
 
 ### L'auberge
 Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
@@ -61,7 +63,7 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - **La lisière** : le chemin qui descend du village, un carrefour et une prairie d'herbes hautes.
 - **La cascade** (à l'ouest) : un ruisseau qui tombe de la falaise, un étang et un pont de rondins (l'eau du lac : `eau_lac.gdshader`, et la chute `chute_lac.gdshader`, qui se raccordent par une lèvre d'écume) ; le chemin de l'ouest descend vers le lac, une fois que Brenna a demandé de retrouver Aldric.
 - **Le lac aux Brumes** (à l'ouest de la cascade, généré par `tools/make_lac.gd`) : un grand lac entouré de forêt, une île et son arbre mort, un ponton et sa barque, des roseaux, des nénuphars et de la brume qui dérive sur l'eau ; à l'ouest, la clairière où Aldric coupait du bois. Un panneau à l'entrée, et une tête de loup gravée dessous...
-- **Le chariot** (à l'est) : **le chariot du marchand**, renversé sur la route. Une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines. Un sentier monte de la route jusqu'à **une grotte**, creusée dans la paroi du nord ; on ne peut pas encore l'explorer (il faut une torche). À l'est, la route mène aux ruines (une fois le chariot trouvé).
+- **Le chariot** (à l'est) : **le chariot du marchand**, renversé sur la route. Une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines. Un sentier monte de la route jusqu'à **une grotte**, creusée dans la paroi du nord ; il faut la torche du forgeron pour y entrer. À l'est, la route mène aux ruines (une fois le chariot trouvé).
 - Le vent fait doucement balancer les arbres, les buissons et les herbes, sur toutes les cartes extérieures (forêt, lac, ruines, village) : shader `vent.gdshader`, posé dans les cartes de la forêt et ajouté aux autres à l'arrivée par l'autoload `scripts/vent.gd` (les arbres du village, peints en tuiles, ont leur propre version : `vent_tuiles.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 
@@ -84,6 +86,12 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - **Ysolde**, une fois qu'elle l'a rejoint : Attaque (un tir à l'arc), Talents (Flèche perçante, Pluie de flèches, **Pillage** : elle dérobe une potion ou une fiole de mana à un monstre), Objets, Fuite.
 - Potions et fioles se donnent à l'allié de son choix ; un héros à terre se relève à la victoire ; la défaite n'arrive que si toute l'équipe tombe.
 - Montée de niveau : Ysolde progresse avec Zylrak.
+
+### La grotte du sentier (au-dessus du chariot)
+Trois salles plongées dans le noir (générées par `tools/make_grotte.gd`, tuiles du pack *Caves*), éclairées par la torche que Zylrak tient (`scenes/maps/torche_joueur.gd`) :
+- **L'entrée** : stalagmites, cristaux bleus, et le jour qui entre derrière soi.
+- **Le couloir aux toiles** : des toiles et des proies emmaillotées ; les araignées attaquent.
+- **La salle du filon**, éclairée de rouge par la pierre-de-braise, où attend l'araignée géante (combat sans fuite, `scenes/maps/grotte_scenario.gd`).
 
 ### Les ruines des Yrenn (à l'est de la forêt)
 - **La montée** : une clairière semée de ruines, une paroi rocheuse et son escalier de pierre (un panneau, à l'entrée, prévient des dangers). Ysolde y attend Zylrak, puis le suit partout.
@@ -127,6 +135,7 @@ scripts/
 - Ciel et sommets au-dessus du temple : peints pour le projet (`tools/paint_backdrop.gd`).
 - Police : **Cinzel** (Google Fonts, licence SIL Open Font License).
 - Monstres morts-vivants : **Fat Cat Games**, pack *10 FREE Undead fantasy JRPG pixelart characters* (https://fatcatgamesstudio.itch.io/10-jrpg-pixelart-battlers).
+- Araignées : *LPC Spider* par **Stephen Challener (Redshrike)**, avec **William.Thompsonj** — CC-BY 3.0 (https://opengameart.org/content/lpc-spider).
 - Zombie : *[LPC] Zombie* par **Benjamin K. Smith (BenCreating)**, commandé par castelonia, d'après la base LPC de **Stephen Challener (Redshrike)** et les animations de **Johannes Sjölund (wulax)** — CC-BY-SA 3.0 (https://opengameart.org/content/lpc-zombie).
 - Musique :
   - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : *Exploration Fantasy Free Pack* par **EugeneDesMusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/exploration-fantasy-free-pack) ;
@@ -148,5 +157,4 @@ scripts/
 ## À venir
 
 - Contrat du voleur d'Eclatvin : Pépin, la mère Margot, et Croûton, le chien errant.
-- Contrat de la grotte : la torche du forgeron, les araignées, la pierre-de-braise.
-- La quête d'Aldric, au lac ; le temple du Loup, sous le lac ; l'intérieur de la grotte.
+- La quête d'Aldric, au lac ; le temple du Loup, sous le lac.
