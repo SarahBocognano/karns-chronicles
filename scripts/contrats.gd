@@ -58,9 +58,16 @@ static func steps(id: String) -> Array:
 			var out: Array = [["Aller voir la mère Margot, à sa ferme, au bout du chemin du nord-est.", f.call("voleur_margot_vue")]]
 			if f.call("voleur_bourse_volee"):
 				out.append(["Retrouver la bourse que Pépin a « empruntée » sur la place.", f.call("voleur_goules_vaincues")])
-			if f.call("voleur_margot_vue") or f.call("voleur_bourse_volee"):
-				var n := clue_count()
-				out.append(["Interroger les témoins : les voyageurs de l'étage de l'auberge, Aelis, Godric (%d sur 5 indices)." % n, f.call("voleur_deduction")])
+			if not f.call("voleur_deduction"):
+				# les témoins, un par un (ce qu'il reste à faire reste en clair)
+				out.append(["Interroger les voyageurs qui logent à l'étage de l'auberge : le colporteur et la vieille voyageuse.",
+					f.call("voleur_colporteur_vu") and f.call("voleur_voyageuse_vue")])
+				out.append(["Parler à Aelis : elle se tient devant la longue maison qu'elle loue, au sud-est de la place.", f.call("voleur_aelis_parle")])
+				if f.call("voleur_aelis_parle"):
+					out.append(["Examiner la fenêtre de chez Aelis (la porte ouverte de la longue maison).", f.call("voleur_poils_trouves")])
+				out.append(["Interroger Godric, le vieux bûcheron, près des tas de bois au nord-est du village.", f.call("voleur_godric_vu")])
+			else:
+				out.append(["Interroger les témoins (5 indices sur 5).", true])
 			if f.call("voleur_deduction"):
 				out.append(["Trouver la cachette de Pépin, dans les herbes hautes de la lisière.", f.call("voleur_goules_vaincues")])
 			if f.call("voleur_goules_vaincues"):

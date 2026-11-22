@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
 [ext_resource type="Texture2D" path="res://assets/portrait/pepin_excite.tres" id="p0"]
 [ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p2"]
 
 [sub_resource type="Resource" id="Resource_l0"]
 script = ExtResource("1_lines")
@@ -31,6 +32,12 @@ speaker_name = "Zylrak"
 portrait = ExtResource("p1")
 text = "Ma bourse ! ... Le petit morveux."
 
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Le voleur de la mère Margot, peut-être bien... Raison de plus pour aller la voir, à sa ferme du nord-est."
+
 [resource]
 script = ExtResource("2_conv")
-lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4")])
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5")])

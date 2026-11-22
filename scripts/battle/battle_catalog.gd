@@ -45,6 +45,8 @@ const EQUIPEMENTS: Dictionary = {
 		"desc": "Forgée par le forgeron d'Eclatvin dans la pierre-de-braise de la grotte. La lame garde une lueur rouge, comme un charbon sous la cendre."},
 	"caillou_pepin": {"nom": "Caillou porte-bonheur", "type": "accessoire", "pour": "tous", "bonus": {"defense": 1, "vitesse": 1},
 		"desc": "Un caillou percé d'un trou, poli par des années de poche. Pépin jure qu'il porte bonheur : c'est son trésor."},
+	"ruban_brenna": {"nom": "Ruban de Brenna", "type": "accessoire", "pour": "tous", "bonus": {"magie": 1, "vitesse": 1},
+		"desc": "Un ruban de soie bleue, élimé, qui appartenait à la mère de Brenna et d'Aldric. Il porte chance à ceux qui reviennent."},
 	"amulette_yrenn": {"nom": "Amulette des Yrenn", "type": "accessoire", "pour": "tous", "bonus": {"magie": 1, "defense": 1},
 		"desc": "Une pierre turquoise sertie d'argent, gravée d'une lune. Elle luit faiblement dans le noir."},
 }

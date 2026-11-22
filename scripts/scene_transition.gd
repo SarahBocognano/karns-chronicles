@@ -59,6 +59,12 @@ func change_scene(scene_path: String, spawn_point: String, hold: float = 0.0) ->
 ## Lance un combat par-dessus la carte actuelle : la carte est figée pendant le combat,
 ## puis Zylrak la retrouve exactement où il était.
 ## `monsters` : liste de MonsterData (1 à 3). `can_flee` : false pour un combat de gardien.
+## Fondu au noir (1.0) ou retour à l'image (0.0), sans changer de carte (ex. la traversée en barque).
+func fade(to_alpha: float, duration: float = 0.5) -> void:
+	var tw := create_tween()
+	tw.tween_property(_fade_rect, "modulate:a", to_alpha, duration)
+	await tw.finished
+
 func start_battle(background: Texture2D, monsters: Array, can_flee: bool = true) -> void:
 	if in_battle:
 		return

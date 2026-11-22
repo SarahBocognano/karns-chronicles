@@ -47,14 +47,26 @@ text = "Des pieds d'enfant... Intéressant."
 [sub_resource type="Resource" id="Resource_l6"]
 script = ExtResource("1_lines")
 speaker_name = "Margot"
-portrait = ExtResource("p0")
-text = "Tiens, prends ça : de la viande séchée. On ne mène pas une enquête le ventre vide."
+portrait = ExtResource("p3")
+text = "Va donc demander autour de toi. Les voyageurs qui logent à l'étage de l'auberge ne dorment pas toujours, la nuit."
 
 [sub_resource type="Resource" id="Resource_l7"]
 script = ExtResource("1_lines")
-text = "Zylrak reçoit de la viande séchée."
+speaker_name = "Margot"
+portrait = ExtResource("p1")
+text = "Aelis, celle qui loue la longue maison au sud-est de la place, s'est plainte d'un vol elle aussi. Et Godric part couper du bois à l'aube : il voit passer du monde."
 
 [sub_resource type="Resource" id="Resource_l8"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p0")
+text = "Tiens, prends ça : de la viande séchée. On ne mène pas une enquête le ventre vide."
+
+[sub_resource type="Resource" id="Resource_l9"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit de la viande séchée."
+
+[sub_resource type="Resource" id="Resource_l10"]
 script = ExtResource("1_lines")
 speaker_name = "Margot"
 portrait = ExtResource("p4")
@@ -62,7 +74,7 @@ text = "Et si tu l'attrapes, mon chapardeur, ne lui fais pas de mal. Ramène-le-
 
 [resource]
 script = ExtResource("2_conv")
-lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7"), SubResource("Resource_l8")])
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7"), SubResource("Resource_l8"), SubResource("Resource_l9"), SubResource("Resource_l10")])
 required_flags = Array[String](["contrat_voleur_accepte"])
 forbidden_flags = Array[String](["voleur_margot_vue"])
 flags_on_finish = Array[String](["voleur_margot_vue"])

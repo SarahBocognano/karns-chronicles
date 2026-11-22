@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aldric_sourire.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aldric_neutre.tres" id="p1"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p0")
+text = "Ma jambe se remet. Godric dit que je devrai attendre l'été pour abattre un chêne. Il exagère."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p1")
+text = "Si tu retournes au lac, méfie-toi de la brume. Et des hommes en capuche."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1")])
+required_flags = Array[String](["aldric_sauve"])

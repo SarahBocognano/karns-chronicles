@@ -44,7 +44,7 @@ const INK_GOLD := Color("#8a5a1c")
 # Icônes d'objets et d'équipement (16 px, voir tools/dev/draw_icones.gd).
 const ICONS := preload("res://assets/sprites/objets/icones_objets.png")
 const ICON_ORDER := ["potion", "fiole", "epee_ordre", "cuir_ashwarden", "arc_frene", "brigandine", "anneau_marchand",
-	"talisman_cendres", "carquois_tresse", "cotte_mailles", "amulette_yrenn", "fragment_ame", "parchemin_yrenn", "antidote", "lame_braise", "torche", "pierre_braise", "viande_sechee", "caillou_pepin"]
+	"talisman_cendres", "carquois_tresse", "cotte_mailles", "amulette_yrenn", "fragment_ame", "parchemin_yrenn", "antidote", "lame_braise", "torche", "pierre_braise", "viande_sechee", "caillou_pepin", "ruban_brenna"]
 
 static func da_sheet() -> Texture2D:
 	return px(DA_SHEET, DA)

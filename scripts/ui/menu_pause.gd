@@ -718,8 +718,15 @@ func _quests() -> Array[Dictionary]:
 			out.append({"titre": "Contrat : " + c.titre, "texte": "%s\nRécompense : %s." % [c.commanditaire, c.recompense],
 				"etapes": Contrats.steps(c.id)})
 	if f.call("aldric_quest_started"):
+		var steps: Array = [["Chercher Aldric du côté du lac, au-delà de la cascade : sa clairière est à l'ouest du lac.", f.call("aldric_traces_vues")]]
+		if f.call("aldric_traces_vues"):
+			steps.append(["Prendre la barque, au bout du ponton, et rejoindre l'île.", f.call("aldric_trouve")])
+		if f.call("aldric_trouve"):
+			steps.append(["Ramener Aldric à la rive.", f.call("aldric_sauve")])
+		if f.call("aldric_sauve"):
+			steps.append(["Retrouver Brenna, au village.", f.call("aldric_retrouvailles")])
 		out.append({"titre": "Le frère de Brenna", "texte": "Brenna demande de retrouver son frère Aldric, parti couper du bois près du lac et jamais revenu.",
-			"etapes": [["Chercher Aldric du côté du lac, au-delà de la cascade.", false]]})
+			"etapes": steps})
 	return out
 
 func _page_journal(index: int) -> void:

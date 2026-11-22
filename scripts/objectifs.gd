@@ -47,11 +47,14 @@ static func current() -> Array[Dictionary]:
 		else:
 			out.append({"map": "WeaponsShopMap", "node": "Forgeron"})
 	if Contrats.accepted("voleur") and not Contrats.done("voleur"):
-		if not f.call("voleur_margot_vue") or f.call("voleur_goules_vaincues"):
+		if f.call("voleur_goules_vaincues"):
 			out.append({"map": "MaisonMargotMap", "node": "YSortLayer/Margot"})
 		elif f.call("voleur_deduction"):
 			out.append({"map": "ForestMap", "node": "YSortLayer/CachettePepin"})
 		else:
+			# Margot et tous les témoins restants, dès le contrat accepté
+			if not f.call("voleur_margot_vue"):
+				out.append({"map": "MaisonMargotMap", "node": "YSortLayer/Margot"})
 			if not f.call("voleur_colporteur_vu") or not f.call("voleur_voyageuse_vue"):
 				out.append({"map": "AubergeEtageMap", "node": ""})
 			if not f.call("voleur_aelis_parle"):
@@ -60,8 +63,13 @@ static func current() -> Array[Dictionary]:
 				out.append({"map": "MaisonAelisMap", "node": "YSortLayer/LireFenetre"})
 			if not f.call("voleur_godric_vu"):
 				out.append({"map": "VillageV2Map", "node": "PNJBucheron/AnimatedSprite2D"})
-	if f.call("aldric_quest_started"):
-		out.append({"map": "LacMap", "node": ""})
+	if f.call("aldric_quest_started") and not f.call("aldric_retrouvailles"):
+		if f.call("aldric_sauve"):
+			out.append({"map": "VillageV2Map", "node": "RandomRedHair/AnimatedSprite2D"})
+		elif f.call("aldric_traces_vues"):
+			out.append({"map": "LacMap", "node": "BarquePonton"})
+		else:
+			out.append({"map": "LacMap", "node": "YSortLayer/LireClairiere"})
 	return out
 
 ## Nom de la sortie de `from` par laquelle passer pour aller vers `to` ("" : pas de route connue).

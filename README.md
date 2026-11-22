@@ -70,6 +70,7 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - **La lisière** : le chemin qui descend du village, un carrefour et une prairie d'herbes hautes.
 - **La cascade** (à l'ouest) : un ruisseau qui tombe de la falaise, un étang et un pont de rondins (l'eau du lac : `eau_lac.gdshader`, et la chute `chute_lac.gdshader`, qui se raccordent par une lèvre d'écume) ; le chemin de l'ouest descend vers le lac, une fois que Brenna a demandé de retrouver Aldric.
 - **Le lac aux Brumes** (à l'ouest de la cascade, généré par `tools/make_lac.gd`) : un grand lac entouré de forêt, une île et son arbre mort, un ponton et sa barque, des roseaux, des nénuphars et de la brume qui dérive sur l'eau ; à l'ouest, la clairière où Aldric coupait du bois. Un panneau à l'entrée, et une tête de loup gravée dessous...
+- **La quête de Brenna** (`scenes/maps/lac/`) : au lac, la clairière d'Aldric est saccagée (traces de goules, ses pas qui filent vers la rive). La barque du ponton mène à l'île, où Aldric s'est réfugié, blessé : il a vu des hommes en capuche sur la rive, qui parlaient d'un temple sous l'eau et de la lune noire. Les **goules des brumes** sortent de l'eau (combat sans fuite) ; Zylrak ramène Aldric, qui rentre au village. Brenna offre le **Ruban de Brenna** (et retient enfin le nom de Zylrak), Godric donne 30 écus.
 - **Le chariot** (à l'est) : **le chariot du marchand**, renversé sur la route. Une fois la quête d'Oswin acceptée, Zylrak y trouve des indices qui mènent vers les ruines. Un sentier monte de la route jusqu'à **une grotte**, creusée dans la paroi du nord ; il faut la torche du forgeron pour y entrer. À l'est, la route mène aux ruines (une fois le chariot trouvé).
 - Le vent fait doucement balancer les arbres, les buissons et les herbes, sur toutes les cartes extérieures (forêt, lac, ruines, village) : shader `vent.gdshader`, posé dans les cartes de la forêt et ajouté aux autres à l'arrivée par l'autoload `scripts/vent.gd` (les arbres du village, peints en tuiles, ont leur propre version : `vent_tuiles.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
@@ -157,6 +158,7 @@ scripts/
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Portraits de Margot, Myrtille, du colporteur et de la vieille voyageuse : générés avec Copilot, fond détouré par `tools/dev/import_portraits.gd`.
 - Croûton, le chien errant (marche, assis, renifle, aboie) : généré avec Copilot.
+- Portraits d'Aldric : générés avec Copilot.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
   - remplissages des barres : Pixel UI Fantasy Free by heyheythere - https://heyheythere.itch.io/pixel-ui-fantasy-free - CC BY 4.0 ;
@@ -165,4 +167,4 @@ scripts/
 
 ## À venir
 
-- La quête d'Aldric, au lac ; le temple du Loup, sous le lac.
+- Le temple du Loup, sous le lac.

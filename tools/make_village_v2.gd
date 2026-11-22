@@ -69,6 +69,7 @@ func _initialize() -> void:
 	add_door(root, "EnterJumelles", Vector2(13.0, 27.95), "res://scenes/maps/MaisonJumellesMap.tscn", "SpawnFromVillage",
 		"SpawnFromJumelles", Vector2(13.0, 30.2))
 	add_walls(root)
+	add_aldric(root)
 	var out := PackedScene.new()
 	print("pack ", out.pack(root))
 	print("save ", ResourceSaver.save(out, OUT))
@@ -248,6 +249,13 @@ static func add_signpost(root: Node) -> void:
 ## Collisions ajoutées là où celles des tuiles ne suivent pas le dessin (en cases de la carte).
 const EXTRA_WALLS := [
 	Rect2(13.66, 28.0, 0.34, 0.95),   # maison des jumelles : le perron, à droite de l'escalier
+	Rect2(31.0, 8.9, 1.8, 1.1),       # étendoir entre l'auberge et la grange
+	Rect2(19.9, 18.4, 1.9, 1.9),      # étendoir près de la maison au toit bleu
+	Rect2(35.5, 13.0, 3.3, 3.0),      # l'appentis : sous le toit, les gerbes et la faux
+	Rect2(40.3, 16.9, 7.4, 0.9),      # longue maison de gauche (chez Aelis) : le haut du toit, côté nord
+	Rect2(48.3, 16.9, 7.5, 0.9),      # longue maison de droite : idem
+	Rect2(53.0, 21.3, 3.0, 0.8),      # le linge étendu devant la longue maison de droite
+	Rect2(48.6, 29.5, 1.3, 0.9),      # le tas de bûches à côté de la cabane
 ]
 
 static func add_walls(root: Node) -> void:
@@ -274,7 +282,7 @@ static func lock_aelis_door(root: Node) -> void:
 	var line := DialogueLine.new()
 	line.speaker_name = "Zylrak"
 	line.portrait = load("res://assets/portrait/zylrak_reflexion.tres")
-	line.text = "Fermé. Ça doit être chez Aelis... Mieux vaut ne pas forcer la porte."
+	line.text = "Fermé à clé. C'est la maison qu'Aelis loue... Si je veux entrer, il faudra d'abord lui parler : elle traîne souvent juste devant."
 	var lines: Array[DialogueLine] = [line]
 	door.set("lines", lines)
 	door.set("push_back", Vector2(0, 18))
@@ -330,6 +338,32 @@ static func add_thief_contract(root: Node) -> void:
 	spot.position = cell_to_world(Vector2(31.6, 21.4))
 	root.get_node("YSortLayer").add_child(spot)
 	spot.owner = root
+
+## La quête de Brenna : une fois Aldric ramené du lac, il est au village, près de sa sœur ; Brenna,
+## Godric et Mirabelle ont des répliques pour la fin de la quête.
+static func add_aldric(root: Node) -> void:
+	_prepend_conversations(root.get_node("RandomRedHair"), ["brenna/brenna_retrouvailles", "brenna/brenna_apres_aldric"])
+	_prepend_conversations(root.get_node("PNJBucheron"), ["godric/godric_merci_aldric"])
+	_prepend_conversations(root.get_node("PNJArrosoir"), ["mirabelle/mirabelle_aldric_rentre"])
+	var al := Node2D.new()
+	al.name = "Aldric"
+	al.set_script(load("res://scenes/maps/pnj_lpc.gd"))
+	al.set("sheet", load("res://assets/sprites/characters/aldric.png"))
+	al.set("facing", "left")
+	var convs: Array[DialogueConversation] = [load("res://resources/dialogues/aldric/aldric_village.tres")]
+	al.set("conversations", convs)
+	al.set("interaction_radius", 46.0)
+	al.scale = Vector2(0.7, 0.7)
+	al.position = root.get_node("RandomRedHair").position + Vector2(40, 8)
+	root.add_child(al)
+	al.owner = root
+	var presence := Node.new()
+	presence.name = "Presence"
+	presence.set_script(load("res://scenes/maps/flag_presence.gd"))
+	var req: Array[String] = ["aldric_sauve"]
+	presence.set("required_flags", req)
+	al.add_child(presence)
+	presence.owner = root
 
 static func _prepend_conversations(npc: Node, names: Array) -> void:
 	var convs: Array[DialogueConversation] = []

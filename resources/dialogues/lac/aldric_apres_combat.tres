@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aldric_rire.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aldric_sourire.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aldric_neutre.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p4"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p0")
+text = "Ha ! Je retire ce que j'ai dit sur les Ashwardens. Enfin... ce que Brenna en disait."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Elle disait quoi ?"
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p2")
+text = "Que tu criais ton nom sur la place. Zylrak, c'est ça ?"
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p3")
+text = "Écoute... Les hommes en capuche parlaient d'un temple sous l'eau. Ils attendent « que la brume se lève, à la lune noire ». Je n'ai pas compris le reste."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p4")
+text = "Un temple sous le lac... Il faudra revenir. Mais d'abord, je te ramène à ta sœur."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+text = "Zylrak aide Aldric à monter dans la barque, et rame jusqu'au ponton."
+
+[sub_resource type="Resource" id="Resource_l6"]
+script = ExtResource("1_lines")
+speaker_name = "Aldric"
+portrait = ExtResource("p2")
+text = "Je rentre au village. Brenna va me tuer... puis me serrer à m'étouffer. Passe nous voir, Zylrak."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6")])

@@ -70,6 +70,7 @@ var path_cells := {}
 var pier := {}
 var ysort: Node2D
 var sol: Node2D
+var pier_tip := Vector2i.ZERO
 
 func _initialize() -> void:
 	rng.seed = 4242
@@ -92,6 +93,7 @@ func _initialize() -> void:
 	_meadow()
 	_trees()
 	_mist()
+	_aldric()
 	_bounds()
 	_zones()
 	var cm := CanvasModulate.new()
@@ -130,9 +132,9 @@ func _masks() -> void:
 				water[c] = true
 				forest.erase(c)
 	_smooth()
-	# une petite île au milieu (après le lissage, qui la refermerait), 3 × 3 cases
+	# une petite île au milieu (après le lissage, qui la refermerait), 4 × 3 cases
 	for y in range(7, 10):
-		for x in range(11, 14):
+		for x in range(10, 14):
 			water.erase(Vector2i(x, y))
 	_thicken()
 	# le chemin : de la cascade (est) jusqu'au ponton, puis vers la clairière (ouest)
@@ -304,6 +306,7 @@ func _pier() -> void:
 		var key := "ponton_bout_nord" if k == cells.size() - 1 else "ponton_ns"
 		_sprite(sol, "Ponton", PROPS, P[key], Vector2(c) * T + Vector2(16, 32))
 	var tip: Vector2i = cells[-1]
+	pier_tip = tip
 	_sprite(ysort, "Poteau", PROPS, P["poteau_1"], Vector2(tip) * T + Vector2(-2, 30), 2)
 	_sprite(ysort, "Poteau", PROPS, P["poteau_2"], Vector2(tip) * T + Vector2(34, 30), 2)
 	_sprite(sol, "Barque", PROPS, P["barque_amarree"], Vector2(tip) * T + Vector2(64, 40))
@@ -426,7 +429,68 @@ func _trees() -> void:
 		_sprite(ysort, "Arbre", VEG, t[0], p * T, t[1]).flip_h = rng.randf() < 0.5
 		trunks.append(p)
 	# l'île : un arbre mort et des roseaux
-	_sprite(ysort, "ArbreIle", VEG, DEAD[0][0], Vector2(12.5, 9.2) * T, DEAD[0][1])
+	_sprite(ysort, "ArbreIle", VEG, DEAD[0][0], Vector2(13.0, 8.9) * T, DEAD[0][1])
+
+## La quête de Brenna (scenes/maps/lac/) : la clairière saccagée, la barque du ponton et celle de
+## l'île, Aldric blessé contre l'arbre mort, et le scénario qui relie tout ça.
+func _aldric() -> void:
+	const DECO := "res://assets/sprites/tilesets/Buildings/FL_Houses_decoratives.png"
+	const D := "res://resources/dialogues/lac/"
+	# la clairière : un panier renversé, du bois éparpillé ; on peut l'examiner
+	_sprite(ysort, "PanierRenverse", DECO, Rect2(134, 318, 24, 24), Vector2(7.6, 20.3) * T, 2)
+	_sprite(sol, "BoisEparpille", PROPS, P["bois_flotte"], Vector2(6.4, 20.9) * T)
+	var look := Node2D.new()
+	look.set_script(load("res://scenes/maps/point_inspection.gd"))
+	look.set("conversation", load(D + "aldric_clairiere.tres"))
+	look.set("conversation_after", load(D + "aldric_clairiere_apres.tres"))
+	look.set("required_flag", "aldric_quest_started")
+	look.set("flag_on_read", "aldric_traces_vues")
+	look.set("reach", 48.0)
+	look.set("sparkle_at", Vector2(0, -18))
+	_own(look, "LireClairiere", ysort)
+	look.position = Vector2(7.0, 20.5) * T
+	# les points d'arrivée de la barque
+	var on_pier := _own(Marker2D.new(), "QuaiPonton", map_root) as Marker2D
+	on_pier.position = (Vector2(pier_tip) + Vector2(0.5, 0.7)) * T
+	var on_island := _own(Marker2D.new(), "DebarquementIle", map_root) as Marker2D
+	on_island.position = Vector2(10.6, 9.4) * T
+	# la barque du ponton (vers l'île, une fois la clairière examinée) et celle de l'île (retour)
+	var boat := Node2D.new()
+	boat.set_script(load("res://scenes/maps/lac/barque.gd"))
+	boat.set("required_flag", "aldric_traces_vues")
+	boat.set("idle", load(D + "barque_ponton.tres"))
+	boat.set("question", "Ramer jusqu'à l'île ?")
+	boat.set("go_label", "Ramer jusqu'à l'île")
+	boat.set("reach", 64.0)
+	_own(boat, "BarquePonton", map_root)
+	boat.position = Vector2(pier_tip) * T + Vector2(52, 30)
+	boat.set("destination", NodePath("../DebarquementIle"))
+	var back := Node2D.new()
+	back.set_script(load("res://scenes/maps/lac/barque.gd"))
+	back.set("question", "Rentrer au ponton ?")
+	back.set("go_label", "Rentrer au ponton")
+	_own(back, "BarqueIle", map_root)
+	back.position = Vector2(10.3, 9.6) * T
+	back.set("destination", NodePath("../QuaiPonton"))
+	_sprite(sol, "BarqueIleSprite", PROPS, P["barque_amarree"], Vector2(9.6, 9.9) * T)
+	# Aldric, blessé, contre l'arbre mort
+	var al := AnimatedSprite2D.new()
+	var frames := SpriteFrames.new()
+	var at := AtlasTexture.new()
+	at.atlas = load("res://assets/sprites/characters/aldric.png")
+	at.region = Rect2(3 * 64, 20 * 64, 64, 64)   # à genoux (rangée « blessé » de la feuille LPC)
+	frames.add_frame("default", at)
+	al.sprite_frames = frames
+	al.scale = Vector2(0.7, 0.7)
+	al.offset = Vector2(0, -26)
+	_own(al, "AldricIle", ysort)
+	al.position = Vector2(12.2, 8.6) * T
+	var sc := Node.new()
+	sc.set_script(load("res://scenes/maps/lac/aldric.gd"))
+	_own(sc, "ScenarioAldric", map_root)
+	sc.set("aldric_path", NodePath("../YSortLayer/AldricIle"))
+	sc.set("pier_boat_path", NodePath("../BarquePonton"))
+	sc.set("pier_landing_path", NodePath("../QuaiPonton"))
 
 ## Des nappes de brume qui dérivent lentement sur l'eau.
 func _mist() -> void:
