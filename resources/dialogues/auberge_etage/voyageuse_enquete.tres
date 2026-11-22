@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/voyageuse_neutre.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/voyageuse_inquiete.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/voyageuse_sourire.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/voyageuse_rire.tres" id="p4"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Voyageuse"
+portrait = ExtResource("p0")
+text = "À mon âge, on ne dort plus guère. Alors je regarde par la fenêtre."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Voyageuse"
+portrait = ExtResource("p1")
+text = "Cette nuit, une petite silhouette a traversé la place, un panier au bras. Elle filait vers le sud, vers la forêt."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Voyageuse"
+portrait = ExtResource("p2")
+text = "Trop petite pour un brigand, trop rapide pour un vieillard. Un enfant, je dirais."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p3")
+text = "Vers la forêt... Merci, grand-mère."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Voyageuse"
+portrait = ExtResource("p4")
+text = "Grand-mère ! Tu sais parler aux dames, toi."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4")])
+required_flags = Array[String](["contrat_voleur_accepte"])
+forbidden_flags = Array[String](["voleur_voyageuse_vue"])
+flags_on_finish = Array[String](["voleur_voyageuse_vue"])
+show_quest_marker = true

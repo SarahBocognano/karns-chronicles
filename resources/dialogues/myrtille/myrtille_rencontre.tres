@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_xp8v5"]
-[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_rire.tres" id="2_txcyk"]
+[ext_resource type="Texture2D" path="res://assets/portrait/myrtille_rire.tres" id="2_txcyk"]
 [ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="3_15jg1"]
-[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_douce.tres" id="4_hsnyy"]
-[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_genee.tres" id="5_wu7os"]
+[ext_resource type="Texture2D" path="res://assets/portrait/myrtille_sourire.tres" id="4_hsnyy"]
+[ext_resource type="Texture2D" path="res://assets/portrait/myrtille_inquiete.tres" id="5_wu7os"]
 [ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_q8wep"]
 
 [sub_resource type="Resource" id="Resource_wl20l"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aelis_glaciale.tres" id="p0"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Aelis"
+portrait = ExtResource("p0")
+text = "La fenêtre est au fond, à droite. Je t'ai dit de ne toucher à rien."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0")])
+required_flags = Array[String](["voleur_aelis_parle"])
+forbidden_flags = Array[String](["voleur_goules_vaincues"])

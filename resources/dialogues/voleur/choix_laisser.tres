@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_excite.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_rire.tres" id="p2"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Il est à toi, Pépin. C'est toi qui l'as nourri. On va s'arranger avec Margot."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p1")
+text = "C'est vrai ?! ... Tiens, prends mon trésor, alors. C'est ce que j'ai de plus précieux."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit le caillou porte-bonheur de Pépin."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p2")
+text = "T'es un vrai chevalier, en fait. Même avec ta cape de rideau."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3")])

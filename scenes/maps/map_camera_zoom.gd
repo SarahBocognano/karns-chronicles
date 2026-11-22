@@ -32,6 +32,25 @@ func _ready() -> void:
 	if fill_screen:
 		get_viewport().size_changed.connect(_fit_room_to_screen)
 	_spawn_companions()
+	_spawn_dog()
+
+## Croûton, si Zylrak l'a gardé (contrat du voleur : flag "voleur_chien_garde"), le suit aussi.
+func _spawn_dog() -> void:
+	var player_data := get_node_or_null("/root/PlayerData")
+	if player_data == null or not player_data.get_flag("voleur_chien_garde"):
+		return
+	for node in get_tree().get_nodes_in_group("Chien"):
+		if not node.is_queued_for_deletion():
+			return
+	var player := _get_real_player()
+	if player == null:
+		return
+	var dog: Node2D = load("res://scenes/characters/ChienCompagnon.tscn").instantiate()
+	dog.facing = player_data.facing
+	player.get_parent().add_child(dog)
+	player.get_parent().move_child(dog, player.get_index())
+	var back := {"up": Vector2.DOWN, "down": Vector2.UP, "left": Vector2.RIGHT, "right": Vector2.LEFT}
+	dog.global_position = player.global_position + back.get(player_data.facing, Vector2.UP) * 44.0
 
 ## Ysolde, une fois qu'elle a rejoint Zylrak (flag "ysolde_joined"), le suit sur toutes les cartes.
 func _spawn_companions() -> void:

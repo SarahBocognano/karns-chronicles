@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_neutre.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_inquiete.tres" id="p1"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p0")
+text = "Bonjour, étranger. Je suis Margot : la ferme, le fournil, et tout le pain d'Eclatvin."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p1")
+text = "Si tu cherches du travail, j'ai mis une affiche sur le panneau, près de l'auberge. Un voleur qui me rend chèvre."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1")])
+forbidden_flags = Array[String](["contrat_voleur_accepte"])

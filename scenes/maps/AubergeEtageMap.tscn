@@ -11,6 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://ckj77pbv1162w" path="res://assets/sprites/tilesets/Buildings/FL_Houses_torch.png" id="8_4mnxp"]
 [ext_resource type="AudioStream" uid="uid://c5pxpcy8wirou" path="res://assets/audio/musique/auberge.wav" id="musique_carte"]
 
+[ext_resource type="Script" path="res://scenes/maps/pnj_lpc.gd" id="v_pnj"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="v_conv"]
+[ext_resource type="Script" path="res://scenes/maps/voleur/enquete.gd" id="v_enquete"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/colporteur.png" id="v_colp_sheet"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/vieille_voyageuse.png" id="v_voy_sheet"]
+[ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/colporteur_enquete.tres" id="v_colp1"]
+[ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/colporteur_bonjour.tres" id="v_colp2"]
+[ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/voyageuse_enquete.tres" id="v_voy1"]
+[ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/voyageuse_bonjour.tres" id="v_voy2"]
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnkuf"]
 texture = ExtResource("1_cwq2d")
 texture_region_size = Vector2i(32, 32)
@@ -5344,3 +5353,24 @@ position = Vector2(-144, -144)
 sprite_frames = SubResource("SpriteFrames_lh3kx")
 autoplay = "default"
 frame_progress = 0.8523207
+
+[node name="Colporteur" type="Node2D" parent="." unique_id=1873361001]
+position = Vector2(226, -18)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("v_pnj")
+sheet = ExtResource("v_colp_sheet")
+facing = "left"
+conversations = Array[ExtResource("v_conv")]([ExtResource("v_colp1"), ExtResource("v_colp2")])
+interaction_radius = 46.0
+
+[node name="Voyageuse" type="Node2D" parent="." unique_id=1873361002]
+position = Vector2(-149, -3)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("v_pnj")
+sheet = ExtResource("v_voy_sheet")
+facing = "right"
+conversations = Array[ExtResource("v_conv")]([ExtResource("v_voy1"), ExtResource("v_voy2")])
+interaction_radius = 46.0
+
+[node name="EnqueteVoleur" type="Node" parent="." unique_id=1873361003]
+script = ExtResource("v_enquete")

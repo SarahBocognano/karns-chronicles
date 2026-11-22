@@ -39,7 +39,7 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 ## Contenu actuel
 
 ### Le village
-Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
+Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin, le Forgeron, et la mère Margot (dans sa ferme-fournil, au bout du chemin du nord-est).
 
 - Des **enseignes** distinguent les bâtiments : une chope pour l'auberge, une enclume pour la forge.
 - **Le poteau indicateur**, à l'entrée du village par la route de la forêt, se lit avec Entrée.
@@ -49,10 +49,16 @@ Aelis, Brenna, Oswin, Mirabelle, Godric, Pépin et le Forgeron.
 Six coffres sont cachés dans le village, la forêt et les ruines (coffre en bois cerclé de fer pour les objets, coffre précieux doré pour l'équipement). On les ouvre avec Entrée : potions, fioles, et de l'équipement (Carquois tressé, Cotte de mailles, Talisman des Cendres). Un coffre ouvert le reste, même après une sauvegarde.
 
 ### Les contrats et la boutique
-- **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal. Le contrat du voleur (« Le voleur d'Eclatvin ») arrive bientôt.
+- **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal.
+- **Contrat « Le voleur d'Eclatvin »** (pour Margot) : peu après l'avoir accepté, Pépin bouscule Zylrak sur la place et lui prend sa bourse (tous ses écus). L'enquête : Margot (des traces de pas d'enfant dans la farine ; elle donne de la viande séchée), le colporteur et la vieille voyageuse à l'étage de l'auberge, Aelis (son coussin brodé ; à la fenêtre de chez elle, des poils de chien) et Godric. Avec les cinq indices, Zylrak comprend : Pépin cache un chien dans les herbes hautes de la lisière. À la cachette, la viande séchée apprivoise Croûton, des goules attaquent (Croûton se bat aux côtés de Zylrak), Pépin rend la bourse, et il faut choisir :
+  - **garder Croûton** : il suit Zylrak sur toutes les cartes et **flaire les objets enfouis** (il court s'arrêter et aboie ; Entrée pour creuser) ;
+  - **le laisser à Pépin** : ils dorment dans la grange de Margot, et Pépin offre son trésor, le **Caillou porte-bonheur**.
+
+  Margot paie 40 écus dans les deux cas. Scènes et scripts : `scenes/maps/voleur/`, `scripts/characters/chien_compagnon.gd`, `scenes/maps/flair_chien.gd` ; choix dans les dialogues : `Cutscene.choose`.
 - **Contrat « Dans le noir de la grotte »** : le forgeron confie sa torche ; au fond de la grotte du chariot, l'araignée géante garde le filon de pierre-de-braise. Rapportée à la forge, la pierre devient la **Lame de braise** (+3 en attaque), avec 30 écus. Les étapes s'affichent dans le journal, et l'objectif sur la mini-carte.
 - **Le venin** : les araignées empoisonnent ; un héros empoisonné perd des PV au début de chacun de ses tours, jusqu'à la fin du combat ou un **antidote** (en vente chez Myrtille, et deux dans un coffre de la grotte).
 - **Les écus** : Zylrak en a 30 au départ et en gagne à chaque victoire ; ils s'affichent en bas du grimoire.
+- **Nouveaux intérieurs** (`tools/make_interieurs.gd`) : la ferme-fournil de Margot (four à pain, pétrin, sacs de farine) et la chambre qu'Aelis loue.
 - **La maison des jumelles** (la porte de Mirabelle) : Myrtille, sa jumelle, y vend des potions (15 écus), des fioles de mana (20 écus) et des antidotes (12 écus).
 
 ### L'auberge
@@ -148,6 +154,8 @@ scripts/
 - Lac : eau, rivages et décor (roseaux, nénuphars, ponton, barque, rochers, brume) générés avec Copilot ; l'herbe des rivages est rendue transparente (`tools/dev/draw_lac.gd`).
 - Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel, pierres gravées des fragments, statues de mages, ossements, racines et mousse, fond de combat de la salle, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
+- Portraits de Margot, Myrtille, du colporteur et de la vieille voyageuse : générés avec Copilot, fond détouré par `tools/dev/import_portraits.gd`.
+- Croûton, le chien errant (marche, assis, renifle, aboie) : généré avec Copilot.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;
   - remplissages des barres : Pixel UI Fantasy Free by heyheythere - https://heyheythere.itch.io/pixel-ui-fantasy-free - CC BY 4.0 ;
@@ -156,5 +164,4 @@ scripts/
 
 ## À venir
 
-- Contrat du voleur d'Eclatvin : Pépin, la mère Margot, et Croûton, le chien errant.
 - La quête d'Aldric, au lac ; le temple du Loup, sous le lac.

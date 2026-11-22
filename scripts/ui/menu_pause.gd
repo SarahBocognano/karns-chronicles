@@ -636,6 +636,9 @@ func _key_items() -> Array[Dictionary]:
 	if PlayerData.get_flag("fragment_ame_lune"):
 		entries.append({"id": "fragment_ame", "icon": UiKit.icon("fragment_ame"), "count": 1, "titre": "Fragment d'âme",
 			"sous_titre": "1 sur 4", "texte": SOUL_FRAGMENT_TEXT})
+	if PlayerData.get_flag("voleur_margot_vue") and not PlayerData.get_flag("voleur_goules_vaincues"):
+		entries.append({"id": "viande_sechee", "icon": UiKit.icon("viande_sechee"), "count": 1, "titre": "Viande séchée",
+			"sous_titre": "Donnée par Margot", "texte": "Des lanières de viande séchée et salée, enveloppées dans un torchon. « On ne mène pas une enquête le ventre vide », a dit Margot."})
 	if PlayerData.get_flag("torche_forgeron"):
 		entries.append({"id": "torche", "icon": UiKit.icon("torche"), "count": 1, "titre": "Torche du forgeron",
 			"sous_titre": "Pour la grotte", "texte": TORCH_TEXT})

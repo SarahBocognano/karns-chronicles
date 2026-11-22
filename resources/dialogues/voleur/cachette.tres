@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_boudeur.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_curieux.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_excite.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p4"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_colère.tres" id="p5"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+text = "Derrière les herbes hautes, un abri de bottes de paille. Une couverture de laine, un coussin brodé... et Pépin, accroupi."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p0")
+text = "Va-t'en ! C'est ma cachette !"
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+text = "Un chien efflanqué se dresse devant le gamin. Il grogne, babines retroussées."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p1")
+text = "Croûton, non ! ... Il mord pas. Enfin, presque pas."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Doucement, mon grand... Tiens."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+text = "Zylrak tend la viande séchée de Margot. Le chien hésite, renifle... et l'avale d'un coup. Sa queue se met à battre."
+
+[sub_resource type="Resource" id="Resource_l6"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p3")
+text = "Il t'aime bien ! Il aime personne, d'habitude."
+
+[sub_resource type="Resource" id="Resource_l7"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p4")
+text = "Bon. Ma bourse, Pépin. Et le pain de Margot, la paille, la couverture, le coussin..."
+
+[sub_resource type="Resource" id="Resource_l8"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p0")
+text = "Il avait faim ! Et froid ! Personne voulait de lui, alors..."
+
+[sub_resource type="Resource" id="Resource_l9"]
+script = ExtResource("1_lines")
+text = "Un grondement monte des bois. Croûton se retourne, le poil hérissé."
+
+[sub_resource type="Resource" id="Resource_l10"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p5")
+text = "Des goules. Pépin, derrière moi !"
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7"), SubResource("Resource_l8"), SubResource("Resource_l9"), SubResource("Resource_l10")])

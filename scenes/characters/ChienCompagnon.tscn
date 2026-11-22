@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/chien_compagnon.gd" id="1_chien"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/chien_crouton.png" id="2_sheet"]
+
+[node name="Crouton" type="Node2D"]
+script = ExtResource("1_chien")
+sheet = ExtResource("2_sheet")
+sprite_scale = 0.6
+follow_distance = 56.0
+speed = 160.0

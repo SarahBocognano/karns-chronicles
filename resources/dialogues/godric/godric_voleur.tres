@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/godric_neutre.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/godric_bougon.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/godric_sourire.tres" id="p2"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Godric"
+portrait = ExtResource("p0")
+text = "Le voleur de la mère Margot ? Hm. J'ai peut-être vu quelque chose."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Godric"
+portrait = ExtResource("p1")
+text = "Avant-hier, à l'aube, j'allais couper du bois à la lisière. Le petit Pépin filait dans les herbes hautes, une miche sous le bras."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Godric"
+portrait = ExtResource("p2")
+text = "Je me suis dit qu'il portait le pain à quelqu'un. Ce gamin n'a jamais rien mangé d'aussi gros de sa vie."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2")])
+required_flags = Array[String](["contrat_voleur_accepte"])
+forbidden_flags = Array[String](["voleur_godric_vu"])
+flags_on_finish = Array[String](["voleur_godric_vu"])
+show_quest_marker = true

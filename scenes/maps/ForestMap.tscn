@@ -22,6 +22,8 @@
 [ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="20_3yp6n"]
 [ext_resource type="Texture2D" uid="uid://d30rysgkt0aol" path="res://assets/battle_backgrounds/battle_foret.png" id="21_miica"]
 
+[ext_resource type="Script" path="res://scenes/maps/voleur/cachette.gd" id="v_cachette"]
+[ext_resource type="Script" path="res://scenes/maps/flair_chien.gd" id="v_flair"]
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_07u4y"]
 seed = 11
 frequency = 0.006
@@ -3809,3 +3811,19 @@ shape = SubResource("RectangleShape2D_f88s7")
 [node name="R21" type="CollisionShape2D" parent="EncounterZone" unique_id=197561743]
 position = Vector2(448, 752)
 shape = SubResource("RectangleShape2D_d6nd7")
+
+[node name="CachettePepin" type="Node2D" parent="YSortLayer" unique_id=1873362001]
+position = Vector2(500, 660)
+script = ExtResource("v_cachette")
+
+[node name="FlairLisiere" type="Node2D" parent="YSortLayer" unique_id=1873362002]
+position = Vector2(620, 150)
+script = ExtResource("v_flair")
+contenu = "ecus"
+quantite = 15
+
+[node name="FlairPrairie" type="Node2D" parent="YSortLayer" unique_id=1873362003]
+position = Vector2(640, 610)
+script = ExtResource("v_flair")
+contenu = "potion"
+quantite = 2

@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/colporteur_neutre.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/colporteur_inquiete.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/colporteur_sourire.tres" id="p3"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Colporteur"
+portrait = ExtResource("p0")
+text = "T'enquêtes sur le voleur ? Alors écoute bien, parce que moi aussi j'y suis passé."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Colporteur"
+portrait = ExtResource("p1")
+text = "Il y a deux nuits, on m'a pris ma couverture de laine. La plus chaude que j'avais ! Et elle était roulée sous ma fenêtre."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Une couverture ? Drôle de butin, pour un voleur."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Colporteur"
+portrait = ExtResource("p3")
+text = "Pas pour qui dort dehors, l'ami. Moi, à ta place, je chercherais quelqu'un qui a froid la nuit."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3")])
+required_flags = Array[String](["contrat_voleur_accepte"])
+forbidden_flags = Array[String](["voleur_colporteur_vu"])
+flags_on_finish = Array[String](["voleur_colporteur_vu"])
+show_quest_marker = true

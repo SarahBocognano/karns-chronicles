@@ -34,6 +34,29 @@ func say(lines: Array[DialogueLine]) -> void:
 		await _advanced
 	_box.hide_dialogue()
 
+## Un choix (ex. « Garder Croûton / Le laisser à Pépin ») : la dernière réplique reste affichée, et
+## une petite liste apparaît au-dessus de la boîte de dialogue. Renvoie l'indice choisi.
+func choose(entries: Array[String], last_line: DialogueLine = null) -> int:
+	if last_line:
+		_box.show_dialogue(last_line.speaker_name, last_line.text, last_line.portrait)
+	var layer := CanvasLayer.new()
+	layer.layer = 60
+	add_child(layer)
+	var size := Vector2(620, 64 + 52 * entries.size())
+	var screen := get_viewport().get_visible_rect().size
+	var panel := UiKit.da_panel(UiKit.DA_FRAME, 20, Vector2(screen.x - size.x - 120, screen.y - 330 - size.y), size)
+	layer.add_child(panel)
+	var list := ListeMenu.new()
+	list.font_size = 30
+	list.cancelable = false
+	list.position = Vector2(70, 32)
+	panel.add_child(list)
+	list.set_entries(entries)
+	var i: int = await list.choose()
+	layer.queue_free()
+	_box.hide_dialogue()
+	return i
+
 func wait(seconds: float) -> void:
 	if not is_inside_tree():
 		return   # la carte a changé pendant la scène

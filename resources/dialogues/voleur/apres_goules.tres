@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_excite.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_boudeur.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/pepin_curieux.tres" id="p2"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+text = "Pendant le combat, Croûton s'est jeté sur une goule et l'a tenue par la jambe, le temps que Zylrak frappe."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p0")
+text = "T'as vu ?! T'as vu Croûton ? Il t'a défendu !"
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p1")
+text = "... Tiens. Ta bourse. J'ai rien dépensé, promis. J'voulais juste lui acheter des os."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+text = "Zylrak récupère sa bourse."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Pépin"
+portrait = ExtResource("p2")
+text = "Dis... Tu veux bien le prendre avec toi, Croûton ? Moi j'peux pas le garder, la mère Margot va me tuer."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4")])

@@ -31,6 +31,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/chute_lac.gdshader" id="chute_lac_shader"]
 [ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Lac/lac_tileset.png" id="eau_lac_tiles"]
 
+[ext_resource type="Script" path="res://scenes/maps/flair_chien.gd" id="v_flair"]
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8q4tu"]
 seed = 3
 frequency = 0.02
@@ -6753,3 +6754,9 @@ shape = SubResource("RectangleShape2D_ytwub")
 [node name="R25" type="CollisionShape2D" parent="EncounterZone" unique_id=1313602416]
 position = Vector2(624, 720)
 shape = SubResource("RectangleShape2D_3r7m5")
+
+[node name="FlairCascade" type="Node2D" parent="YSortLayer" unique_id=1873362005]
+position = Vector2(200, 556)
+script = ExtResource("v_flair")
+contenu = "antidote"
+quantite = 2

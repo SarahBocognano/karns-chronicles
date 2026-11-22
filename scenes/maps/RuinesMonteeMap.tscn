@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/tilesets/Lac/lac_props.png" id="panneau_tex"]
 [ext_resource type="Script" path="res://scenes/maps/point_inspection.gd" id="panneau_script"]
 [ext_resource type="Resource" path="res://resources/dialogues/panneaux/panneau_ruines.tres" id="panneau_texte"]
+[ext_resource type="Script" path="res://scenes/maps/flair_chien.gd" id="v_flair"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66xnt"]
 size = Vector2(32, 160)
 
@@ -4114,3 +4115,9 @@ script = ExtResource("panneau_script")
 conversation = ExtResource("panneau_texte")
 conversation_after = ExtResource("panneau_texte")
 sparkle_at = Vector2(0, -36)
+
+[node name="FlairRuines" type="Node2D" parent="YSortLayer" unique_id=1873362006]
+position = Vector2(300, 520)
+script = ExtResource("v_flair")
+contenu = "ecus"
+quantite = 25
