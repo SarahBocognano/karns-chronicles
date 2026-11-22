@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" path="res://assets/portrait/ysolde_neutre.tres" id="4_gllg5"]
 [ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="5_cb6me"]
 [ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="6_ykk6q"]
+[ext_resource type="Texture2D" path="res://assets/portrait/ysolde_sourire.tres" id="7_ysourire"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="8_zcoin"]
 
 [sub_resource type="Resource" id="Resource_5ml6p"]
 script = ExtResource("1_t10ir")
@@ -45,6 +47,42 @@ text = "Le temple du Loup. Ceux qui ont tué le marchand y penseront aussi. Rent
 script = ExtResource("1_t10ir")
 text = "Zylrak obtient : Parchemin des Yrenn."
 
+[sub_resource type="Resource" id="Resource_reste0"]
+script = ExtResource("1_t10ir")
+speaker_name = "Zylrak"
+portrait = ExtResource("3_nd37q")
+text = "Le marchand est retrouvé, et ton affaire avec les goules est réglée... Tu vas reprendre ta route ?"
+
+[sub_resource type="Resource" id="Resource_reste1"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_gllg5")
+text = "Réglée ? Ces goules ne sortent pas de terre par hasard. Tant qu'un éclat de la Bête remue quelque part, il en sortira d'autres."
+
+[sub_resource type="Resource" id="Resource_reste2"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("4_gllg5")
+text = "Et je me suis juré de ne plus laisser personne disparaître sous mes yeux. Si les gens d'Eclatvin se mettent à disparaître eux aussi..."
+
+[sub_resource type="Resource" id="Resource_reste3"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("7_ysourire")
+text = "Je reste avec toi. Jusqu'au temple du Loup, au moins. Il faut bien quelqu'un pour surveiller ta ligne de tir."
+
+[sub_resource type="Resource" id="Resource_reste4"]
+script = ExtResource("1_t10ir")
+speaker_name = "Zylrak"
+portrait = ExtResource("8_zcoin")
+text = "J'allais te le proposer."
+
+[sub_resource type="Resource" id="Resource_reste5"]
+script = ExtResource("1_t10ir")
+speaker_name = "Ysolde"
+portrait = ExtResource("7_ysourire")
+text = "Menteur. Allez, en route, l'Ashwarden."
+
 [resource]
 script = ExtResource("6_ykk6q")
-lines = Array[ExtResource("1_t10ir")]([SubResource("Resource_5ml6p"), SubResource("Resource_ugsc8"), SubResource("Resource_h5eut"), SubResource("Resource_8epxl"), SubResource("Resource_u36wg"), SubResource("Resource_7ttky"), SubResource("Resource_eapip")])
+lines = Array[ExtResource("1_t10ir")]([SubResource("Resource_5ml6p"), SubResource("Resource_ugsc8"), SubResource("Resource_h5eut"), SubResource("Resource_8epxl"), SubResource("Resource_u36wg"), SubResource("Resource_7ttky"), SubResource("Resource_eapip"), SubResource("Resource_reste0"), SubResource("Resource_reste1"), SubResource("Resource_reste2"), SubResource("Resource_reste3"), SubResource("Resource_reste4"), SubResource("Resource_reste5")])

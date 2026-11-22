@@ -335,6 +335,8 @@ func _hero_card(h: String, pos: Vector2) -> void:
 	name_line.add_child(_ink("Niv. %d" % PlayerData.level, 30))
 	_place(card, name_line, Vector2(260, 40))
 	_place(card, _ink("Ashwarden de l'Ordre des Cendres" if h == "zylrak" else "Archère", 22, UiKit.INK_SOFT), Vector2(262, 96))
+	if PlayerData.is_poisoned(h):
+		_place(card, _ink("Empoisonné", 24, Color("#4f7a2a")), Vector2(600, 96))
 	var hp := _hp(h)
 	var mp := _mp(h)
 	var lvl := PlayerData.level
@@ -542,7 +544,7 @@ static func _describe(id: String, gear: bool) -> String:
 	if o.has("mana"):
 		return "Rend %d PM à un allié." % o.mana
 	if o.has("antidote"):
-		return "Soigne le venin d'un allié. Le venin des araignées ne dure que le temps d'un combat : l'antidote se boit en combat."
+		return "Soigne le venin d'un allié, en combat ou ici. Le venin des araignées ne part pas tout seul : tant qu'il coule, le héros perd des PV à chaque tour de combat."
 	return ""
 
 func _items_loop() -> void:
@@ -571,7 +573,7 @@ func _choose_hero_for() -> String:
 	for h in heroes:
 		var hp := _hp(h)
 		var mp := _mp(h)
-		entries.append("%s    PV %d/%d    PM %d/%d" % [_hero_name(h), hp.x, hp.y, mp.x, mp.y])
+		entries.append("%s    PV %d/%d    PM %d/%d%s" % [_hero_name(h), hp.x, hp.y, mp.x, mp.y, "    (empoisonné)" if PlayerData.is_poisoned(h) else ""])
 	var list := _list(entries, Vector2(640 + 56, 400 + 80), [], true, 28)
 	var k := await list.choose()
 	list.queue_free()
@@ -603,7 +605,11 @@ func _use(id: String, h: String) -> String:
 		PlayerData.use_item(id)
 		return "%s récupère %d PM." % [who, gain]
 	if o.has("antidote"):
-		return "Personne n'est empoisonné. L'antidote se garde pour les combats."
+		if not PlayerData.is_poisoned(h):
+			return "%s n'est pas empoisonné." % who
+		PlayerData.cure_poison(h)
+		PlayerData.use_item(id)
+		return "Le venin quitte le sang de %s." % who
 	return ""
 
 # --- Objets précieux ---

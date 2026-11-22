@@ -168,6 +168,8 @@ func _turn_order() -> Array:
 	for f in foes:
 		if f.alive:
 			order.append([f, f.data.speed + rng.randf_range(0, 3)])
+			if f.get("enraged", false):
+				order.append([f, f.data.speed - 3.0 + rng.randf_range(0, 3)])   # en furie : une deuxième action
 	order.sort_custom(func(a, b): return a[1] > b[1])
 	return order.map(func(e): return e[0])
 
@@ -222,6 +224,7 @@ func _foe_turn(foe: Dictionary) -> void:
 	elif foe.data.venom_chance > 0.0 and not target.get("poison", false) and rng.randf() < foe.data.venom_chance:
 		target.poison = true
 		target.venom = maxi(target.get("venom", 0), foe.data.venom_damage)
+		PlayerData.venin[target.id] = target.venom   # le venin reste après le combat
 		await get_tree().create_timer(0.3).timeout
 		_show_message("%s est empoisonné !" % target.name)
 		_refresh_hero()
@@ -467,6 +470,7 @@ func _use_item(user: Dictionary, item_id: String, ally: Dictionary) -> void:
 	if item.has("antidote"):
 		if ally.get("poison", false):
 			ally.poison = false
+			PlayerData.cure_poison(ally.id)
 			_show_message("Le venin quitte le sang de %s." % ally.name)
 		else:
 			_show_message("%s n'était pas empoisonné." % ally.name)
@@ -506,10 +510,16 @@ func _hero_step(dx: float) -> void:
 
 func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 	foe.hp = max(0, foe.hp - dmg)
+	var furious: bool = foe.hp > 0 and foe.data.enrage_below > 0.0 and not foe.get("enraged", false) and foe.hp <= foe.data.max_hp * foe.data.enrage_below
 	_update_hp_bar(foe)
 	_popup(prefix + str(dmg), foe.home + Vector2(0, -foe.height - 6), color)
 	_shake(foe.sprite, foe.home)
 	await _flash(foe.sprite, Color(2.2, 2.2, 2.2), 0.12)
+	if furious:
+		foe.enraged = true
+		(foe.sprite as CanvasItem).modulate = foe.data.tint * Color(1.35, 0.75, 0.7)
+		_shake(foe.sprite, foe.home)
+		await _say("%s entre en furie : deux attaques par tour !" % foe.name, 1.4, true)
 	if foe.hp <= 0:
 		foe.alive = false
 		if foe.sprite is AnimatedSprite2D:
@@ -929,6 +939,8 @@ func _build_world() -> void:
 		if _hero.animation == "coup" or _hero.animation == "sort":
 			_hero.play("garde"))
 	party.append({"id": "zylrak", "name": "Zylrak", "sprite": _hero, "home": hero_home, "ui": {}})
+	party[-1].poison = PlayerData.is_poisoned("zylrak")
+	party[-1].venom = int(PlayerData.venin.get("zylrak", 0))
 	if PlayerData.ysolde_in_party():
 		_shadow(YSOLDE_DUO, 13)
 		_ysolde = AnimatedSprite2D.new()
@@ -941,6 +953,8 @@ func _build_world() -> void:
 			if _ysolde.animation == "tir":
 				_ysolde.play("garde"))
 		party.append({"id": "ysolde", "name": "Ysolde", "sprite": _ysolde, "home": YSOLDE_DUO, "ui": {}})
+		party[-1].poison = PlayerData.is_poisoned("ysolde")
+		party[-1].venom = int(PlayerData.venin.get("ysolde", 0))
 	for m in party:
 		if _hp(m) <= 0:
 			m.sprite.play("blesse")

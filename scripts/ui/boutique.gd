@@ -9,7 +9,7 @@ const STOCK := [["potion", 15], ["fiole", 20], ["antidote", 12]]
 const DESC := {
 	"potion": "Une potion rouge, épaisse et sucrée. Rend %d PV.",
 	"fiole": "Une fiole bleue qui sent la menthe et l'orage. Rend %d PM.",
-	"antidote": "Une décoction amère d'herbes des marais. Soigne le venin des araignées, en combat.%s",
+	"antidote": "Une décoction amère d'herbes des marais. Soigne le venin des araignées, en combat ou depuis le grimoire (le venin, lui, ne part pas tout seul).%s",
 }
 
 var _note: Label

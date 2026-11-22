@@ -68,6 +68,7 @@ func _initialize() -> void:
 	add_thief_contract(root)
 	add_door(root, "EnterJumelles", Vector2(13.0, 27.95), "res://scenes/maps/MaisonJumellesMap.tscn", "SpawnFromVillage",
 		"SpawnFromJumelles", Vector2(13.0, 30.2))
+	add_walls(root)
 	var out := PackedScene.new()
 	print("pack ", out.pack(root))
 	print("save ", ResourceSaver.save(out, OUT))
@@ -243,6 +244,27 @@ static func add_signpost(root: Node) -> void:
 	read.position = Vector2(-64, 474)
 	root.get_node("YSortLayer").add_child(read)
 	read.owner = root
+
+## Collisions ajoutées là où celles des tuiles ne suivent pas le dessin (en cases de la carte).
+const EXTRA_WALLS := [
+	Rect2(13.66, 28.0, 0.34, 0.95),   # maison des jumelles : le perron, à droite de l'escalier
+]
+
+static func add_walls(root: Node) -> void:
+	var body := StaticBody2D.new()
+	body.name = "CollisionsAjoutees"
+	root.add_child(body)
+	body.owner = root
+	for i in EXTRA_WALLS.size():
+		var r: Rect2 = EXTRA_WALLS[i]
+		var shape := CollisionShape2D.new()
+		shape.name = "Mur%d" % i
+		var rect := RectangleShape2D.new()
+		rect.size = r.size * T
+		shape.shape = rect
+		shape.position = cell_to_world(r.get_center())
+		body.add_child(shape)
+		shape.owner = root
 
 ## La porte d'Aelis reste fermée tant qu'elle n'a pas parlé de son coussin (contrat du voleur).
 static func lock_aelis_door(root: Node) -> void:
