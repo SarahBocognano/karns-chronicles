@@ -167,6 +167,16 @@ var ecus: int = 30
 ## Les écus que Pépin a pris dans la bourse de Zylrak (contrat du voleur) : il les rend à la fin.
 var ecus_voles: int = 0
 
+## Le venin des araignées : héros empoisonné -> PV perdus au début de chacun de ses tours, à chaque
+## combat, tant qu'il n'a pas bu d'antidote (en combat ou depuis le grimoire). Ex. {"zylrak": 3}.
+var venin: Dictionary = {}
+
+func is_poisoned(hero: String) -> bool:
+	return venin.has(hero)
+
+func cure_poison(hero: String) -> void:
+	venin.erase(hero)
+
 ## Pépin vole la bourse : tous les écus passent dans `ecus_voles`.
 func steal_purse() -> void:
 	ecus_voles += ecus
@@ -262,7 +272,7 @@ var arrival_pending := false
 # --- Sauvegarde ---
 
 const SAVED_FIELDS := ["current_hp", "max_hp", "current_energy", "max_energy", "attack", "defense", "magic",
-	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time", "ecus", "ecus_voles"]
+	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time", "ecus", "ecus_voles", "venin"]
 
 ## Tout ce qu'une sauvegarde doit retenir de Zylrak, d'Ysolde et de la quête.
 func to_dict() -> Dictionary:
@@ -280,7 +290,12 @@ func from_dict(d: Dictionary) -> void:
 	for f in SAVED_FIELDS:
 		if d.has(f):
 			var v = d[f]
-			set(f, int(v) if typeof(get(f)) == TYPE_INT else v)
+			if f == "venin":
+				venin.clear()
+				for k in v:
+					venin[str(k)] = int(v[k])
+			else:
+				set(f, int(v) if typeof(get(f)) == TYPE_INT else v)
 	inventory.assign(d.get("inventory", []))
 	if d.has("equipement"):
 		for hero in d.equipement:

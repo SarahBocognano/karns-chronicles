@@ -93,6 +93,7 @@ func start_battle(background: Texture2D, monsters: Array, can_flee: bool = true)
 		PlayerData.current_hp = PlayerData.max_hp
 		PlayerData.current_energy = PlayerData.max_energy
 		PlayerData.restore_ysolde()
+		PlayerData.venin.clear()   # soignés au village : le venin aussi
 		in_battle = false
 		await change_scene(DEFEAT_SCENE, DEFEAT_SPAWN)
 	else:

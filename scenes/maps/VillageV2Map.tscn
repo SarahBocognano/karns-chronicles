@@ -20734,6 +20734,9 @@ size = Vector2(28, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inamy"]
 size = Vector2(28, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxcj7"]
+size = Vector2(10.88, 30.4)
+
 [node name="VillageV2Map" type="Node2D" unique_id=1637787322 groups=["Player"]]
 script = ExtResource("1_ysunt")
 music = ExtResource("2_bckda")
@@ -20753,7 +20756,7 @@ tile_set = SubResource("TileSet_cqgup")
 tile_map_data = PackedByteArray("AADm//H/AAAHAAsAAADm//L/AAAHAAoAAADm//P/AAAHAAsAAADm//T/AAAHAAwAAADm//X/AAAHAA0AAADm//b/AAAHAA4AAADn//H/AAAIAAsAAADn//L/AAAIAAwAAADn//P/AAAIAAsAAADn//T/AAAIAAwAAADn//X/AAAIAA0AAADn//b/AAAIAA4AAADo//H/AAAJAAsAAADo//L/AAAJAAwAAADo//P/AAAJAAsAAADo//T/AAAJAAwAAADo//X/AAAJAA0AAADo//b/AAAJAA4AAADp//H/AAAKAAsAAADp//L/AAAKAAwAAADp//P/AAAKAAsAAADp//T/AAAKAAwAAADp//X/AAAKAA0AAADp//b/AAAKAA4AAADq//H/AAAPAAsAAADq//L/AAAHAAQAAADq//P/AAAHAAQAAADq//T/AAAHAAQAAADq//X/AAAHAAUAAADq//b/AAALAA4AAAAZAPr/AAAeAAAAAAAZAPv/AAAeAAEAAAAZAPz/AAAeAAIAAAAaAPr/AAAfAAAAAAAaAPv/AAAfAAEAAAAaAPz/AAAfAAIAAAAbAPr/AAAgAAAAAAAbAPv/AAAgAAEAAAAbAPz/AAAgAAIAAAAcAPr/AAAhAAAAAAAcAPv/AAAhAAEAAAAcAPz/AAAhAAIAAAAdAPr/AAAiAAAAAAAdAPv/AAAiAAEAAAAdAPz/AAAiAAIAAAAZAP3/AAAeAAQAAAAZAP7/AAAeAAUAAAAaAP3/AAAfAAQAAAAaAP7/AAAfAAUAAAAbAP3/AAAgAAQAAAAbAP7/AAAgAAUAAAAcAP3/AAAhAAQAAAAcAP7/AAAhAAUAAAAdAP3/AAAiAAQAAAAdAP7/AAAiAAUAAADm/+//AAAHAAkAAADm//D/AAAHAAoAAADn/+//AAAIAAkAAADn//D/AAAIAAoAAADo/+//AAAJAAkAAADo//D/AAAJAAoAAADp/+//AAAKAAkAAADp//D/AAAKAAoAAADq/+//AAALAAkAAADq//D/AAAHAAAAAADr//D/AAAIAAAAAADr//H/AAAIAAEAAADr//L/AAAIAAIAAADr//P/AAAIAAMAAADs//D/AAAJAAAAAADs//H/AAAJAAEAAADs//L/AAAJAAIAAADs//P/AAAJAAMAAADt//D/AAAKAAAAAADt//H/AAAKAAEAAADt//L/AAAKAAIAAADt//P/AAAKAAMAAADu//D/AAALAAAAAADu//H/AAALAAEAAADu//L/AAALAAIAAADu//P/AAALAAMAAADr//T/AAAIAAQAAADs//T/AAAJAAQAAADt//T/AAAKAAQAAADu//T/AAALAAQAAADr//X/AAAIAAUAAADs//X/AAAJAAUAAADt//X/AAAKAAUAAADu//X/AAALAAUAAAD3/+//AAAHAA8AAAD3//D/AAAHABAAAAD3//H/AAAJAAoAAAD4/+//AAAIAA8AAAD4//D/AAAKAAkAAAD4//H/AAAKAAoAAAD2//D/AAAIAAkAAAD2//H/AAAIAAoAAAD2//L/AAAIAAsAAAD2//P/AAAIAA0AAAD2//T/AAAIAA4AAAD3//L/AAAJAAsAAAD3//P/AAAJAAwAAAD3//T/AAAJAA0AAAD4//L/AAAKAAsAAAD4//P/AAAKAAwAAAD4//T/AAAKAA4AAAD1//D/AAAHAAkAAAD1//H/AAAHAAoAAAD1//L/AAAHAAsAAAD1//P/AAAHAAwAAAD1//T/AAAHAA4AAAD5//D/AAALAAkAAAD5//H/AAALAAoAAAD5//L/AAALAAsAAAD5//P/AAALAAwAAADw//D/AAABAAEAAADw//H/AAABAAIAAADw//L/AAABAAMAAADw//P/AAABAAQAAADx/+//AAACAAAAAADx//D/AAACAAEAAADx//H/AAACAAIAAADx//L/AAACAAMAAADx//P/AAACAAQAAADy/+//AAADAAAAAADy//D/AAADAAEAAADy//H/AAADAAIAAADy//L/AAADAAMAAADy//P/AAADAAQAAADz/+//AAAEAAAAAADz//D/AAAEAAEAAADz//H/AAAEAAIAAADz//L/AAAEAAMAAADz//P/AAAEAAQAAAD0//D/AAAFAAEAAAD0//H/AAAFAAIAAAD0//L/AAAFAAMAAAD0//P/AAAFAAQAAADv//T/AAAAAAYAAADw//T/AAABAAYAAADw//X/AAABAAcAAADx//T/AAACAAYAAADx//X/AAACAAcAAADx//b/AAACAAgAAADy//T/AAADAAYAAADy//X/AAADAAcAAADy//b/AAADAAgAAADz//T/AAAEAAYAAADz//X/AAAEAAcAAADz//b/AAAEAAgAAAD0//T/AAAFAAYAAAD0//X/AAAFAAcAAADv//P/AAAAAAQAAADv//L/AAAAAAQAAADv//H/AAAAAAMAAAAYAO//AAAYAAoAAAAYAPD/AAAYAAsAAAAYAPH/AAAYAAwAAAAZAO7/AAAZAAkAAAAZAO//AAAZAAoAAAAZAPD/AAAZAAsAAAAZAPH/AAAZAAwAAAAaAO7/AAAaAAkAAAAaAO//AAAaAAoAAAAaAPD/AAAaAAsAAAAaAPH/AAAaAAwAAAAbAO7/AAAbAAkAAAAbAO//AAAbAAoAAAAbAPD/AAAbAAsAAAAbAPH/AAAbAAwAAAAcAO//AAAcAAoAAAAcAPD/AAAcAAsAAAAcAPH/AAAcAAwAAAAZAPL/AAAZAA0AAAAaAPL/AAAaAA0AAAAbAPL/AAAbAA0AAAAYAPL/AAAYAA0AAAAcAPL/AAAcAA0AAAAYAPP/AAAYABAAAAAZAPP/AAAZABAAAAAZAPT/AAAZABEAAAAaAPP/AAAaABAAAAAaAPT/AAAaABEAAAAbAPP/AAAbABAAAAAbAPT/AAAbABEAAAAcAPP/AAAcABAAAAA=")
 tile_set = SubResource("TileSet_vxric")
 
-[node name="Marches" type="TileMapLayer" parent="." unique_id=2044638861]
+[node name="Marches" type="TileMapLayer" parent="." unique_id=2008083333]
 z_index = -1
 tile_map_data = PackedByteArray("AAAYAPf/AAADABQAAADq////AAADABQAAAA=")
 tile_set = SubResource("TileSet_qhbll")
@@ -20801,13 +20804,13 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAWAAkAAAAVAAgAAAAWAAoAAAAVAAkAAAAWAAsAAAAVAAoAAAAWAAwAAAAVAAsAAAAXAAgAAAAWAAcAAAAXAAkAAAAWAAgAAAAXAAoAAAAWAAkAAAAXAAsAAAAWAAoAAAAXAAwAAAAWAAsAAAAYAAkAAAAXAAgAAAAYAAoAAAAXAAkAAAAYAAsAAAAXAAoAAAAYAAwAAAAXAAsAAAAbAAYAAAAVAAgAAAAbAAcAAAAVAAkAAAAbAAgAAAAVAAoAAAAbAAkAAAAVAAsAAAAcAAUAAAAWAAcAAAAcAAYAAAAWAAgAAAAcAAcAAAAWAAkAAAAcAAgAAAAWAAoAAAAcAAkAAAAWAAsAAAAdAAYAAAAXAAgAAAAdAAcAAAAXAAkAAAAdAAgAAAAXAAoAAAAdAAkAAAAXAAsAAAASAAgAAAAVAAgAAAASAAkAAAAVAAkAAAASAAoAAAAVAAoAAAASAAsAAAAVAAsAAAATAAcAAAAWAAcAAAATAAgAAAAWAAgAAAATAAkAAAAWAAkAAAATAAoAAAAWAAoAAAATAAsAAAAWAAsAAAAUAAgAAAAXAAgAAAAUAAkAAAAXAAkAAAAUAAoAAAAXAAoAAAAUAAsAAAAXAAsAAAAYAA0AAAAVAAgAAAAYAA4AAAAVAAkAAAAYAA8AAAAVAAoAAAAYABAAAAAVAAsAAAAZAAwAAAAWAAcAAAAZAA0AAAAWAAgAAAAZAA4AAAAWAAkAAAAZAA8AAAAWAAoAAAAZABAAAAAWAAsAAAAaAA0AAAAXAAgAAAAaAA4AAAAXAAkAAAAaAA8AAAAXAAoAAAAaABAAAAAXAAsAAAAZAO7/AAAVAAgAAAAZAO//AAAVAAkAAAAZAPD/AAAVAAoAAAAZAPH/AAAVAAsAAAAaAO3/AAAWAAcAAAAaAO7/AAAWAAgAAAAaAO//AAAWAAkAAAAaAPD/AAAWAAoAAAAaAPH/AAAWAAsAAAAbAO7/AAAXAAgAAAAbAO//AAAXAAkAAAAbAPD/AAAXAAoAAAAbAPH/AAAXAAsAAAATAPD/AAAVAAgAAAATAPH/AAAVAAkAAAATAPL/AAAVAAoAAAATAPP/AAAVAAsAAAAUAO//AAAWAAcAAAAUAPD/AAAWAAgAAAAUAPH/AAAWAAkAAAAUAPL/AAAWAAoAAAAUAPP/AAAWAAsAAAAVAPD/AAAXAAgAAAAVAPH/AAAXAAkAAAAVAPL/AAAXAAoAAAAVAPP/AAAXAAsAAAD9//D/AAAVAAgAAAD9//H/AAAVAAkAAAD9//L/AAAVAAoAAAD9//P/AAAVAAsAAAD+/+//AAAWAAcAAAD+//D/AAAWAAgAAAD+//H/AAAWAAkAAAD+//L/AAAWAAoAAAD+//P/AAAWAAsAAAD///D/AAAXAAgAAAD///H/AAAXAAkAAAD///L/AAAXAAoAAAD///P/AAAXAAsAAADx//D/AAAYAAkAAADx//H/AAAYAAoAAADx//L/AAAYAAsAAADy//D/AAAZAAkAAADy//H/AAAZAAoAAADy//L/AAAZAAsAAAD7//P/AAAYAAkAAAD7//T/AAAYAAoAAAD7//X/AAAYAAsAAAD8//P/AAAZAAkAAAD8//T/AAAZAAoAAAD8//X/AAAZAAsAAAAHAPL/AAAYAAkAAAAHAPP/AAAYAAoAAAAHAPT/AAAYAAsAAAAIAPL/AAAZAAkAAAAIAPP/AAAZAAoAAAAIAPT/AAAZAAsAAAAZAAgAAAAYAAkAAAAZAAkAAAAYAAoAAAAZAAoAAAAYAAsAAAAaAAgAAAAZAAkAAAAaAAkAAAAZAAoAAAAaAAoAAAAZAAsAAAAVAA0AAAAYAAkAAAAVAA4AAAAYAAoAAAAVAA8AAAAYAAsAAAAWAA0AAAAZAAkAAAAWAA4AAAAZAAoAAAAWAA8AAAAZAAsAAAASAA0AAAAYAAkAAAASAA4AAAAYAAoAAAASAA8AAAAYAAsAAAATAA0AAAAZAAkAAAATAA4AAAAZAAoAAAATAA8AAAAZAAsAAADk/wAAAAAYAAkAAADk/wEAAAAYAAoAAADk/wIAAAAYAAsAAADl/wAAAAAZAAkAAADl/wEAAAAZAAoAAADl/wIAAAAZAAsAAADi//v/AAAYAAkAAADi//z/AAAYAAoAAADi//3/AAAYAAsAAADj//v/AAAZAAkAAADj//z/AAAZAAoAAADj//3/AAAZAAsAAADj/wMAAAAYAAkAAADj/wQAAAAYAAoAAADj/wUAAAAYAAsAAADk/wMAAAAZAAkAAADk/wQAAAAZAAoAAADk/wUAAAAZAAsAAAAOAPL/AAAFAAwAAAAOAPP/AAAFAA0AAAAPAPD/AAAGAAoAAAAPAPH/AAAGAAsAAAAPAPL/AAAGAAwAAAAPAPP/AAAGAA0AAAAPAPT/AAAGAA4AAAAPAPX/AAAGAA8AAAAQAPD/AAAHAAoAAAAQAPH/AAAHAAsAAAAQAPL/AAAHAAwAAAAQAPP/AAAHAA0AAAAQAPT/AAAHAA4AAAAQAPX/AAAHAA8AAAARAPH/AAAIAAsAAAARAPL/AAAIAAwAAAARAPP/AAAIAA0AAAAbAP//AAAFAAwAAAAbAAAAAAAFAA0AAAAcAP3/AAAGAAoAAAAcAP7/AAAGAAsAAAAcAP//AAAGAAwAAAAcAAAAAAAGAA0AAAAcAAEAAAAGAA4AAAAcAAIAAAAGAA8AAAAdAP3/AAAHAAoAAAAdAP7/AAAHAAsAAAAdAP//AAAHAAwAAAAdAAAAAAAHAA0AAAAdAAEAAAAHAA4AAAAdAAIAAAAHAA8AAAAeAP7/AAAIAAsAAAAeAP//AAAIAAwAAAAeAAAAAAAIAA0AAAAEAAwAAAAFAAwAAAAEAA0AAAAFAA0AAAAFAAoAAAAGAAoAAAAFAAsAAAAGAAsAAAAFAAwAAAAGAAwAAAAFAA0AAAAGAA0AAAAFAA4AAAAGAA4AAAAFAA8AAAAGAA8AAAAGAAoAAAAHAAoAAAAGAAsAAAAHAAsAAAAGAAwAAAAHAAwAAAAGAA0AAAAHAA0AAAAGAA4AAAAHAA4AAAAGAA8AAAAHAA8AAAAHAAsAAAAIAAsAAAAHAAwAAAAIAAwAAAAHAA0AAAAIAA0AAADz/wgAAAAFAAwAAADz/wkAAAAFAA0AAAD0/wYAAAAGAAoAAAD0/wcAAAAGAAsAAAD0/wgAAAAGAAwAAAD0/wkAAAAGAA0AAAD0/woAAAAGAA4AAAD0/wsAAAAGAA8AAAD1/wYAAAAHAAoAAAD1/wcAAAAHAAsAAAD1/wgAAAAHAAwAAAD1/wkAAAAHAA0AAAD1/woAAAAHAA4AAAD1/wsAAAAHAA8AAAD2/wcAAAAIAAsAAAD2/wgAAAAIAAwAAAD2/wkAAAAIAA0AAADn/wgAAAAFAAwAAADn/wkAAAAFAA0AAADo/wYAAAAGAAoAAADo/wcAAAAGAAsAAADo/wgAAAAGAAwAAADo/wkAAAAGAA0AAADo/woAAAAGAA4AAADo/wsAAAAGAA8AAADp/wYAAAAHAAoAAADp/wcAAAAHAAsAAADp/wgAAAAHAAwAAADp/wkAAAAHAA0AAADp/woAAAAHAA4AAADp/wsAAAAHAA8AAADq/wcAAAAIAAsAAADq/wgAAAAIAAwAAADq/wkAAAAIAA0AAADw//r/AAAPAAkAAADw//v/AAAPAAoAAADw//z/AAAPAAsAAADw//3/AAAPAAwAAADw//7/AAAPAA0AAADx//r/AAAQAAkAAADx//v/AAAQAAoAAADx//z/AAAQAAsAAADx//3/AAAQAAwAAADx//7/AAAQAA0AAAA=")
 tile_set = SubResource("TileSet_lmsi1")
 
-[node name="Sapins2" type="TileMapLayer" parent="YSortLayer" unique_id=1888624573]
+[node name="Sapins2" type="TileMapLayer" parent="YSortLayer" unique_id=657442152]
 z_index = 2
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AADl/wIAAAATAAYAAADk/wMAAAASAAcAAADl/wMAAAATAAcAAADm/wMAAAAUAAcAAADk/wQAAAASAAgAAADl/wQAAAATAAgAAADm/wQAAAAUAAgAAADk/wUAAAASAAkAAADl/wUAAAATAAkAAADm/wUAAAAUAAkAAADk/wYAAAASAAoAAADl/wYAAAATAAoAAADm/wYAAAAUAAoAAADk/wcAAAASAAsAAADl/wcAAAATAAsAAADm/wcAAAAUAAsAAAA=")
 tile_set = SubResource("TileSet_063pl")
 
-[node name="Sapins3" type="TileMapLayer" parent="YSortLayer" unique_id=1781826407]
+[node name="Sapins3" type="TileMapLayer" parent="YSortLayer" unique_id=736993719]
 z_index = 2
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AADn/wMAAAATAAYAAADm/wQAAAASAAcAAADn/wQAAAATAAcAAADo/wQAAAAUAAcAAADm/wUAAAASAAgAAADn/wUAAAATAAgAAADo/wUAAAAUAAgAAADm/wYAAAASAAkAAADn/wYAAAATAAkAAADo/wYAAAAUAAkAAADm/wcAAAASAAoAAADn/wcAAAATAAoAAADo/wcAAAAUAAoAAADm/wgAAAASAAsAAADn/wgAAAATAAsAAADo/wgAAAAUAAsAAAA=")
@@ -20828,7 +20831,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-52, -15)
 
-[node name="EnseigneAuberge" type="Sprite2D" parent="YSortLayer" unique_id=1203151897]
+[node name="EnseigneAuberge" type="Sprite2D" parent="YSortLayer" unique_id=282268311]
 z_index = 1
 position = Vector2(-44.799988, -160)
 texture = ExtResource("15_k1o7c")
@@ -20836,7 +20839,7 @@ offset = Vector2(18, -50)
 region_enabled = true
 region_rect = Rect2(0, 0, 40, 44)
 
-[node name="EnseigneForge" type="Sprite2D" parent="YSortLayer" unique_id=1309051883]
+[node name="EnseigneForge" type="Sprite2D" parent="YSortLayer" unique_id=270459412]
 z_index = 1
 position = Vector2(-652.8, -32)
 texture = ExtResource("15_k1o7c")
@@ -20844,35 +20847,35 @@ offset = Vector2(18, -50)
 region_enabled = true
 region_rect = Rect2(40, 0, 40, 44)
 
-[node name="CoffreVillage" type="Node2D" parent="YSortLayer" unique_id=1442891529]
+[node name="CoffreVillage" type="Node2D" parent="YSortLayer" unique_id=8668239]
 position = Vector2(-492.8, -201.6)
 script = ExtResource("16_o6gib")
 contenu = "fiole"
 quantite = 2
 
-[node name="PanneauContrats" type="Node2D" parent="YSortLayer" unique_id=1694088329]
+[node name="PanneauContrats" type="Node2D" parent="YSortLayer" unique_id=1662066620]
 position = Vector2(96, -104)
 script = ExtResource("17_0isnx")
 
-[node name="LirePoteau" type="Node2D" parent="YSortLayer" unique_id=260143648]
+[node name="LirePoteau" type="Node2D" parent="YSortLayer" unique_id=2051113190]
 position = Vector2(-64, 474)
 script = ExtResource("18_6jt8u")
 conversation = ExtResource("19_bqk5v")
 conversation_after = ExtResource("19_bqk5v")
 sparkle_at = Vector2(0, -44)
 
-[node name="CroutonGrange" type="AnimatedSprite2D" parent="YSortLayer" unique_id=1431219266]
+[node name="CroutonGrange" type="AnimatedSprite2D" parent="YSortLayer" unique_id=706267888]
 position = Vector2(166.40002, -172.79999)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_pwtrs")
 autoplay = "default"
 offset = Vector2(0, -28)
 
-[node name="Presence" type="Node" parent="YSortLayer/CroutonGrange" unique_id=1341219907]
+[node name="Presence" type="Node" parent="YSortLayer/CroutonGrange" unique_id=1270255082]
 script = ExtResource("21_re1xn")
 required_flags = Array[String](["voleur_chien_pepin"])
 
-[node name="FlairPuits" type="Node2D" parent="YSortLayer" unique_id=769748043]
+[node name="FlairPuits" type="Node2D" parent="YSortLayer" unique_id=1164941357]
 position = Vector2(51.200012, 140.79999)
 script = ExtResource("22_xbpqk")
 
@@ -21016,7 +21019,7 @@ shape = SubResource("RectangleShape2D_ir2vt")
 position = Vector2(-2, 9)
 shape = SubResource("CircleShape2D_1ylwq")
 
-[node name="Dialogue" type="Node2D" parent="PNJChildBlondHair" unique_id=631213313]
+[node name="Dialogue" type="Node2D" parent="PNJChildBlondHair" unique_id=463181251]
 position = Vector2(-2, 9)
 script = ExtResource("25_ujm7w")
 conversations = Array[ExtResource("26_6tcag")]([ExtResource("46_aguie"), ExtResource("47_0gbjs"), ExtResource("48_ojjqe"), ExtResource("49_wfq8s")])
@@ -21040,47 +21043,47 @@ frame_progress = 0.3131992
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_vwmpr")
 
-[node name="ExitToForest" type="Area2D" parent="." unique_id=692382061]
+[node name="ExitToForest" type="Area2D" parent="." unique_id=1539640837]
 position = Vector2(16, 532)
 script = ExtResource("54_w26k3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToForest" unique_id=454842792]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitToForest" unique_id=1418363325]
 shape = SubResource("RectangleShape2D_exit_forest")
 
-[node name="SpawnFromForest" type="Marker2D" parent="." unique_id=73098323]
+[node name="SpawnFromForest" type="Marker2D" parent="." unique_id=1929105445]
 position = Vector2(16, 480)
 
-[node name="ArriveeVillage" type="Node2D" parent="." unique_id=1013306481]
+[node name="ArriveeVillage" type="Node2D" parent="." unique_id=1313565228]
 script = ExtResource("55_ey2is")
 
-[node name="Route1" type="Marker2D" parent="ArriveeVillage" unique_id=1540492745]
+[node name="Route1" type="Marker2D" parent="ArriveeVillage" unique_id=206479163]
 position = Vector2(16, 192)
 
-[node name="Route2" type="Marker2D" parent="ArriveeVillage" unique_id=946844807]
+[node name="Route2" type="Marker2D" parent="ArriveeVillage" unique_id=304932334]
 position = Vector2(83.19995, 134.40002)
 
-[node name="Route3" type="Marker2D" parent="ArriveeVillage" unique_id=1795381074]
+[node name="Route3" type="Marker2D" parent="ArriveeVillage" unique_id=2144442765]
 position = Vector2(83.19995, 0)
 
-[node name="HalteAuberge" type="Marker2D" parent="ArriveeVillage" unique_id=927311032]
+[node name="HalteAuberge" type="Marker2D" parent="ArriveeVillage" unique_id=1905313651]
 position = Vector2(-51.200012, -76.79999)
 
-[node name="Porte" type="Marker2D" parent="ArriveeVillage" unique_id=115439387]
+[node name="Porte" type="Marker2D" parent="ArriveeVillage" unique_id=36909309]
 position = Vector2(-94.400024, -140.79999)
 
-[node name="EnterMargot" type="Area2D" parent="." unique_id=78655513]
+[node name="EnterMargot" type="Area2D" parent="." unique_id=36795882]
 position = Vector2(784, -289.6)
 script = ExtResource("56_237mj")
 target_scene = "res://scenes/maps/MaisonMargotMap.tscn"
 spawn_point = "SpawnFromVillage"
 
-[node name="@CollisionShape2D@2" type="CollisionShape2D" parent="EnterMargot" unique_id=815910945]
+[node name="@CollisionShape2D@2" type="CollisionShape2D" parent="EnterMargot" unique_id=2055217158]
 shape = SubResource("RectangleShape2D_lwuou")
 
-[node name="SpawnFromMargot" type="Marker2D" parent="." unique_id=1402791193]
+[node name="SpawnFromMargot" type="Marker2D" parent="." unique_id=1322208360]
 position = Vector2(784, -252.79999)
 
-[node name="EnterAelis" type="Area2D" parent="." unique_id=1801107563]
+[node name="EnterAelis" type="Area2D" parent="." unique_id=487668424]
 position = Vector2(526.4, 131.20001)
 script = ExtResource("56_237mj")
 target_scene = "res://scenes/maps/MaisonAelisMap.tscn"
@@ -21089,29 +21092,35 @@ required_flags = Array[String](["voleur_aelis_parle"])
 lines = Array[ExtResource("57_45ru6")]([SubResource("Resource_862wi")])
 push_back = Vector2(0, 18)
 
-[node name="@CollisionShape2D@3" type="CollisionShape2D" parent="EnterAelis" unique_id=2027957776]
+[node name="@CollisionShape2D@3" type="CollisionShape2D" parent="EnterAelis" unique_id=1218203953]
 shape = SubResource("RectangleShape2D_tnl7y")
 
-[node name="SpawnFromAelis" type="Marker2D" parent="." unique_id=2054487897]
+[node name="SpawnFromAelis" type="Marker2D" parent="." unique_id=825926362]
 position = Vector2(526.4, 172.79999)
 
-[node name="VolBourse" type="Node" parent="." unique_id=486652188]
+[node name="VolBourse" type="Node" parent="." unique_id=2090961138]
 script = ExtResource("59_5mjgc")
 pepin_path = NodePath("../PNJChildBlondHair")
 
-[node name="EnqueteVoleur" type="Node" parent="." unique_id=2011377405]
+[node name="EnqueteVoleur" type="Node" parent="." unique_id=651036134]
 script = ExtResource("60_4ejfd")
 
-[node name="EnterJumelles" type="Area2D" parent="." unique_id=1802160283]
+[node name="EnterJumelles" type="Area2D" parent="." unique_id=631605753]
 position = Vector2(-544, 350.40002)
 script = ExtResource("56_237mj")
 target_scene = "res://scenes/maps/MaisonJumellesMap.tscn"
 spawn_point = "SpawnFromVillage"
 
-[node name="@CollisionShape2D@4" type="CollisionShape2D" parent="EnterJumelles" unique_id=1244729097]
+[node name="@CollisionShape2D@4" type="CollisionShape2D" parent="EnterJumelles" unique_id=454926593]
 shape = SubResource("RectangleShape2D_inamy")
 
-[node name="SpawnFromJumelles" type="Marker2D" parent="." unique_id=1999503997]
+[node name="SpawnFromJumelles" type="Marker2D" parent="." unique_id=1600722388]
 position = Vector2(-544, 422.40002)
+
+[node name="CollisionsAjoutees" type="StaticBody2D" parent="." unique_id=2144864915]
+
+[node name="Mur0" type="CollisionShape2D" parent="CollisionsAjoutees" unique_id=1092924698]
+position = Vector2(-517.44, 367.2)
+shape = SubResource("RectangleShape2D_nxcj7")
 
 [connection signal="timeout" from="PNJChildBlondHair/DirectionTimer" to="YSortLayer/Player" method="_on_direction_timer_timeout"]

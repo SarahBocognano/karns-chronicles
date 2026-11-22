@@ -36,3 +36,8 @@ class_name MonsterData
 ## au début de chacun de ses tours, jusqu'à la fin du combat ou un antidote.
 @export_range(0.0, 1.0) var venom_chance: float = 0.0
 @export var venom_damage: int = 2
+
+@export_group("Boss")
+## En dessous de cette part de ses PV (ex. 0.5 : la moitié), le monstre entre en furie : il agit
+## deux fois par tour (0 : jamais).
+@export_range(0.0, 1.0) var enrage_below: float = 0.0
