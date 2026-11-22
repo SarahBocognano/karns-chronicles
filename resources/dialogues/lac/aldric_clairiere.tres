@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p1"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+text = "Une souche à moitié entaillée, des bûches éparpillées, un panier renversé. La hache d'Aldric n'est plus là."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+text = "Dans la terre humide, des empreintes de goules, beaucoup. Et des pas d'homme qui filent vers la rive, en courant."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Il a fui vers l'eau... L'île, au milieu du lac ? Un filet de fumée s'en échappe."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Il y a une barque, au bout du ponton. Elle tiendra bien jusque là-bas."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3")])

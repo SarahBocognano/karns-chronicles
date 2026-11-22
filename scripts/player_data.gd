@@ -109,9 +109,9 @@ var equipment := {
 var gear_bag: Array[String] = []
 ## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
 const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand", "contrat_grotte_termine": "lame_braise",
-	"voleur_chien_pepin": "caillou_pepin"}
+	"voleur_chien_pepin": "caillou_pepin", "aldric_retrouvailles": "ruban_brenna"}
 ## Écus gagnés quand un flag passe à true (contrats).
-const FLAG_ECUS := {"contrat_grotte_termine": 30, "contrat_voleur_termine": 40}
+const FLAG_ECUS := {"contrat_grotte_termine": 30, "contrat_voleur_termine": 40, "godric_merci_aldric": 30}
 ## Objets donnés quand un flag passe à true (récompense de quête).
 const FLAG_ITEMS := {"quete_marchand_terminee": ["potion", "potion", "potion", "fiole", "fiole"]}
 
@@ -241,6 +241,14 @@ var quest_flags: Dictionary = {
 	"araignee_geante_vaincue": false,    # l'araignée géante, au fond de la grotte, est tombée
 	"pierre_de_braise": false,           # Zylrak a détaché la pierre-de-braise du filon
 	"contrat_grotte_termine": false,     # la pierre rapportée : Lame de braise et 30 écus (FLAG_REWARDS, FLAG_ECUS)
+	# quête de Brenna, au lac :
+	"aldric_lac_vu": false,              # arrivée au lac pendant la quête
+	"aldric_traces_vues": false,         # la clairière saccagée : Aldric a fui vers l'île
+	"aldric_trouve": false,              # Aldric retrouvé sur l'île, les goules des brumes repoussées
+	"aldric_sauve": false,               # Aldric ramené à la rive : il rentre au village
+	"aldric_retrouvailles": false,       # Brenna remercie Zylrak (Ruban de Brenna)
+	"godric_merci_aldric": false,        # Godric remercie Zylrak (30 écus)
+	"mirabelle_aldric_fleurs": false,
 	# contrat du voleur (voir Contrats.steps) :
 	"voleur_bourse_volee": false,        # Pépin a bousculé Zylrak sur la place et pris sa bourse
 	"voleur_margot_vue": false,          # Margot : traces de pas d'enfant dans la farine ; elle donne la viande séchée

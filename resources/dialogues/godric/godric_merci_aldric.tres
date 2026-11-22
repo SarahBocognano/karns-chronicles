@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/godric_sourire.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/godric_bougon.tres" id="p1"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Godric"
+portrait = ExtResource("p0")
+text = "Tu l'as ramené. ... Tiens, prends ça : trente écus. Ne discute pas, c'est pour la hache que je n'aurai pas à lui racheter."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit 30 écus."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Godric"
+portrait = ExtResource("p1")
+text = "Et ne le laisse plus retourner seul à ce lac. Moi, il ne m'écoute pas."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2")])
+required_flags = Array[String](["aldric_sauve"])
+forbidden_flags = Array[String](["godric_merci_aldric"])
+flags_on_finish = Array[String](["godric_merci_aldric"])
+show_quest_marker = true

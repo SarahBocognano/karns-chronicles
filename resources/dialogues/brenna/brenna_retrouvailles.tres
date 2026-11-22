@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/brenna_surprise.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/brenna_timide.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/brenna_malicieuse.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_embarrassé.tres" id="p4"]
+[ext_resource type="Texture2D" path="res://assets/portrait/brenna_rire.tres" id="p5"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p0")
+text = "Zylrak ! Il est rentré, il est vivant... Tu l'as vraiment ramené."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p1")
+text = "Je... merci. Vraiment."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Je t'avais dit que je n'avais peur de rien."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p3")
+text = "Mmh. Aldric dit que tu as crié ton nom aux goules avant de les frapper."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p4")
+text = "... Il délire. La fièvre."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p5")
+text = "Tiens. C'était le ruban de notre mère : il porte chance à ceux qui reviennent. Garde-le."
+
+[sub_resource type="Resource" id="Resource_l6"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit le Ruban de Brenna."
+
+[sub_resource type="Resource" id="Resource_l7"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p1")
+text = "Et pour ton nom... Zylrak. Tu vois ? Je l'ai retenu."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7")])
+required_flags = Array[String](["aldric_sauve"])
+forbidden_flags = Array[String](["aldric_retrouvailles"])
+flags_on_finish = Array[String](["aldric_retrouvailles"])
+show_quest_marker = true

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/brenna_malicieuse.tres" id="p0"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Brenna"
+portrait = ExtResource("p0")
+text = "Aldric ne tient plus en place : il veut retourner au lac dès que sa jambe ira mieux. Les hommes de ma famille sont des têtes de mule."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0")])
+required_flags = Array[String](["aldric_retrouvailles"])

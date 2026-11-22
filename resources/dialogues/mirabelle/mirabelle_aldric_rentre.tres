@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_douce.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_genee.tres" id="p1"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Mirabelle"
+portrait = ExtResource("p0")
+text = "Aldric est rentré ! Il m'a rapporté des fleurs du lac... en boitant. Il est bête."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Mirabelle"
+portrait = ExtResource("p1")
+text = "Pour mon jardin, hein. Juste pour le jardin."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1")])
+required_flags = Array[String](["aldric_sauve"])
+forbidden_flags = Array[String](["mirabelle_aldric_fleurs"])
+flags_on_finish = Array[String](["mirabelle_aldric_fleurs"])
