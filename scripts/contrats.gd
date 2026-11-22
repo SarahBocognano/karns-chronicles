@@ -29,6 +29,16 @@ const LIST: Array[Dictionary] = [
 static func flag_for(id: String) -> String:
 	return "contrat_%s_accepte" % id
 
+## Les indices du contrat du voleur.
+const CLUES := ["voleur_margot_vue", "voleur_colporteur_vu", "voleur_voyageuse_vue", "voleur_poils_trouves", "voleur_godric_vu"]
+
+static func clue_count() -> int:
+	var n := 0
+	for c in CLUES:
+		if PlayerData.get_flag(c):
+			n += 1
+	return n
+
 ## Contrat rempli (récompense touchée).
 static func done(id: String) -> bool:
 	return PlayerData.get_flag("contrat_%s_termine" % id)
@@ -43,6 +53,18 @@ static func steps(id: String) -> Array:
 				out.append(["Descendre au fond de la grotte du sentier, au-dessus du chariot, jusqu'au filon de pierre-de-braise.", f.call("pierre_de_braise")])
 			if f.call("pierre_de_braise"):
 				out.append(["Rapporter la pierre-de-braise au forgeron.", f.call("contrat_grotte_termine")])
+			return out
+		"voleur":
+			var out: Array = [["Aller voir la mère Margot, à sa ferme, au bout du chemin du nord-est.", f.call("voleur_margot_vue")]]
+			if f.call("voleur_bourse_volee"):
+				out.append(["Retrouver la bourse que Pépin a « empruntée » sur la place.", f.call("voleur_goules_vaincues")])
+			if f.call("voleur_margot_vue") or f.call("voleur_bourse_volee"):
+				var n := clue_count()
+				out.append(["Interroger les témoins : les voyageurs de l'étage de l'auberge, Aelis, Godric (%d sur 5 indices)." % n, f.call("voleur_deduction")])
+			if f.call("voleur_deduction"):
+				out.append(["Trouver la cachette de Pépin, dans les herbes hautes de la lisière.", f.call("voleur_goules_vaincues")])
+			if f.call("voleur_goules_vaincues"):
+				out.append(["Rendre compte à la mère Margot.", f.call("contrat_voleur_termine")])
 			return out
 	for c in LIST:
 		if c.id == id:

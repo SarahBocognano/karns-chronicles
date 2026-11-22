@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/voyageuse_sourire.tres" id="p0"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Voyageuse"
+portrait = ExtResource("p0")
+text = "Je me repose ici quelques jours avant de reprendre la route vers le nord. Mes vieilles jambes ne sont plus ce qu'elles étaient."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0")])

@@ -108,9 +108,10 @@ var equipment := {
 ## Pièces d'équipement possédées mais portées par personne.
 var gear_bag: Array[String] = []
 ## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
-const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand", "contrat_grotte_termine": "lame_braise"}
+const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand", "contrat_grotte_termine": "lame_braise",
+	"voleur_chien_pepin": "caillou_pepin"}
 ## Écus gagnés quand un flag passe à true (contrats).
-const FLAG_ECUS := {"contrat_grotte_termine": 30}
+const FLAG_ECUS := {"contrat_grotte_termine": 30, "contrat_voleur_termine": 40}
 ## Objets donnés quand un flag passe à true (récompense de quête).
 const FLAG_ITEMS := {"quete_marchand_terminee": ["potion", "potion", "potion", "fiole", "fiole"]}
 
@@ -163,6 +164,18 @@ var inventory: Array[String] = ["potion", "potion", "potion"]
 
 # --- Écus (la monnaie) : gagnés en combat et grâce aux contrats, dépensés chez Myrtille ---
 var ecus: int = 30
+## Les écus que Pépin a pris dans la bourse de Zylrak (contrat du voleur) : il les rend à la fin.
+var ecus_voles: int = 0
+
+## Pépin vole la bourse : tous les écus passent dans `ecus_voles`.
+func steal_purse() -> void:
+	ecus_voles += ecus
+	ecus = 0
+
+## Pépin rend la bourse.
+func return_purse() -> void:
+	ecus += ecus_voles
+	ecus_voles = 0
 
 ## Retire `amount` écus s'il y en a assez ; renvoie false sinon.
 func spend_ecus(amount: int) -> bool:
@@ -218,6 +231,19 @@ var quest_flags: Dictionary = {
 	"araignee_geante_vaincue": false,    # l'araignée géante, au fond de la grotte, est tombée
 	"pierre_de_braise": false,           # Zylrak a détaché la pierre-de-braise du filon
 	"contrat_grotte_termine": false,     # la pierre rapportée : Lame de braise et 30 écus (FLAG_REWARDS, FLAG_ECUS)
+	# contrat du voleur (voir Contrats.steps) :
+	"voleur_bourse_volee": false,        # Pépin a bousculé Zylrak sur la place et pris sa bourse
+	"voleur_margot_vue": false,          # Margot : traces de pas d'enfant dans la farine ; elle donne la viande séchée
+	"voleur_colporteur_vu": false,       # le colporteur (étage de l'auberge) : on lui a pris une couverture
+	"voleur_voyageuse_vue": false,       # la vieille voyageuse : un enfant avec un panier, vers la forêt
+	"voleur_aelis_parle": false,         # Aelis : son coussin brodé ; elle ouvre la porte de chez elle
+	"voleur_poils_trouves": false,       # des poils de chien sur le rebord de la fenêtre d'Aelis
+	"voleur_godric_vu": false,           # Godric a vu Pépin à la lisière, une miche sous le bras
+	"voleur_deduction": false,           # Zylrak a compris : Pépin cache un chien à la lisière
+	"voleur_goules_vaincues": false,     # la cachette : Croûton apprivoisé, les goules repoussées, la bourse rendue
+	"voleur_chien_garde": false,         # choix : Croûton suit Zylrak (il flaire des objets cachés)
+	"voleur_chien_pepin": false,         # choix : Croûton reste avec Pépin, dans la grange de Margot
+	"contrat_voleur_termine": false,     # Margot a payé le contrat (40 écus)
 }
 
 # --- Système de spawn entre scènes ---
@@ -236,7 +262,7 @@ var arrival_pending := false
 # --- Sauvegarde ---
 
 const SAVED_FIELDS := ["current_hp", "max_hp", "current_energy", "max_energy", "attack", "defense", "magic",
-	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time", "ecus"]
+	"speed", "level", "xp", "ysolde_hp", "ysolde_energy", "facing", "play_time", "ecus", "ecus_voles"]
 
 ## Tout ce qu'une sauvegarde doit retenir de Zylrak, d'Ysolde et de la quête.
 func to_dict() -> Dictionary:

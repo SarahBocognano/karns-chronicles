@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_sourire.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_inquiete.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_neutre.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_rire.tres" id="p4"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p0")
+text = "Ah, c'est toi qui as décroché mon affiche ? Entre, entre ! Attention à la farine."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p1")
+text = "Ça fait cinq nuits. D'abord une miche, puis un jambon entier, et voilà que la paille de ma grange s'envole par brassées !"
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Rien d'autre ? Ni écus, ni bijoux ?"
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p3")
+text = "Rien de précieux. Du pain, de la viande, de la paille. C'est bien ça le plus bizarre."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p1")
+text = "Et ce matin, près du pétrin : des petites traces de pas dans la farine renversée. Des pieds d'enfant, si tu veux mon avis."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Des pieds d'enfant... Intéressant."
+
+[sub_resource type="Resource" id="Resource_l6"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p0")
+text = "Tiens, prends ça : de la viande séchée. On ne mène pas une enquête le ventre vide."
+
+[sub_resource type="Resource" id="Resource_l7"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit de la viande séchée."
+
+[sub_resource type="Resource" id="Resource_l8"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p4")
+text = "Et si tu l'attrapes, mon chapardeur, ne lui fais pas de mal. Ramène-le-moi par l'oreille !"
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5"), SubResource("Resource_l6"), SubResource("Resource_l7"), SubResource("Resource_l8")])
+required_flags = Array[String](["contrat_voleur_accepte"])
+forbidden_flags = Array[String](["voleur_margot_vue"])
+flags_on_finish = Array[String](["voleur_margot_vue"])
+show_quest_marker = true

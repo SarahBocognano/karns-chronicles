@@ -7,7 +7,8 @@ class_name Objectifs
 
 ## Les sorties de chaque carte et la carte où elles mènent (pour trouver la route).
 const LINKS := {
-	"VillageV2Map": {"ExitToForest": "ForestMap", "EnterAuberge": "AubergeMap", "EnterWeaponsShop": "WeaponsShopMap", "EnterJumelles": "MaisonJumellesMap"},
+	"VillageV2Map": {"ExitToForest": "ForestMap", "EnterAuberge": "AubergeMap", "EnterWeaponsShop": "WeaponsShopMap", "EnterJumelles": "MaisonJumellesMap",
+		"EnterMargot": "MaisonMargotMap", "EnterAelis": "MaisonAelisMap"},
 	"ForestMap": {"ExitToVillage": "VillageV2Map", "ExitToCascade": "ForestCascadeMap", "ExitToChariot": "ForestChariotMap"},
 	"ForestChariotMap": {"ExitToLisiere": "ForestMap", "CheminEst": "RuinesMonteeMap", "Grotte": "GrotteEntreeMap"},
 	"GrotteEntreeMap": {"ExitToChariot": "ForestChariotMap", "ExitToToiles": "GrotteToilesMap"},
@@ -17,7 +18,10 @@ const LINKS := {
 	"LacMap": {"ExitToCascade": "ForestCascadeMap"},
 	"RuinesMonteeMap": {"ExitToForest": "ForestChariotMap", "ExitToParvis": "RuinesParvisMap"},
 	"RuinesParvisMap": {"ExitToMontee": "RuinesMonteeMap", "ExitToTemple": "TempleVestibuleMap"},
-	"AubergeMap": {"ExitToVillage": "VillageV2Map"},
+	"AubergeMap": {"ExitToVillage": "VillageV2Map", "ExitToUpstairs": "AubergeEtageMap"},
+	"AubergeEtageMap": {"ExitToDownstairs": "AubergeMap"},
+	"MaisonMargotMap": {"ExitToVillage": "VillageV2Map"},
+	"MaisonAelisMap": {"ExitToVillage": "VillageV2Map"},
 	"WeaponsShopMap": {"ExitToVillage": "VillageV2Map"},
 	"MaisonJumellesMap": {"ExitToVillage": "VillageV2Map"},
 	"TempleVestibuleMap": {"ExitToParvis": "RuinesParvisMap"},
@@ -42,6 +46,20 @@ static func current() -> Array[Dictionary]:
 			out.append({"map": "GrotteFilonMap", "node": "YSortLayer/Filon"})
 		else:
 			out.append({"map": "WeaponsShopMap", "node": "Forgeron"})
+	if Contrats.accepted("voleur") and not Contrats.done("voleur"):
+		if not f.call("voleur_margot_vue") or f.call("voleur_goules_vaincues"):
+			out.append({"map": "MaisonMargotMap", "node": "YSortLayer/Margot"})
+		elif f.call("voleur_deduction"):
+			out.append({"map": "ForestMap", "node": "YSortLayer/CachettePepin"})
+		else:
+			if not f.call("voleur_colporteur_vu") or not f.call("voleur_voyageuse_vue"):
+				out.append({"map": "AubergeEtageMap", "node": ""})
+			if not f.call("voleur_aelis_parle"):
+				out.append({"map": "VillageV2Map", "node": "PNJBlondeHair/AnimatedSprite2D"})
+			elif not f.call("voleur_poils_trouves"):
+				out.append({"map": "MaisonAelisMap", "node": "YSortLayer/LireFenetre"})
+			if not f.call("voleur_godric_vu"):
+				out.append({"map": "VillageV2Map", "node": "PNJBucheron/AnimatedSprite2D"})
 	if f.call("aldric_quest_started"):
 		out.append({"map": "LacMap", "node": ""})
 	return out

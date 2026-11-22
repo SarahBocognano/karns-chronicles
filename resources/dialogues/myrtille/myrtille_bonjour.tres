@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogueConversation" format=3]
 
 [ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_r6fxn"]
-[ext_resource type="Texture2D" path="res://assets/portrait/mirabelle_douce.tres" id="2_kehbx"]
+[ext_resource type="Texture2D" path="res://assets/portrait/myrtille_sourire.tres" id="2_kehbx"]
 [ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="3_lw7dd"]
 
 [sub_resource type="Resource" id="Resource_e4xx2"]

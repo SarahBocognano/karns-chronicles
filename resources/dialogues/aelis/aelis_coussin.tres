@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aelis_furieuse.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_embarrassé.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aelis_colere.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aelis_mefiante.tres" id="p4"]
+[ext_resource type="Texture2D" path="res://assets/portrait/aelis_soupir.tres" id="p5"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Aelis"
+portrait = ExtResource("p0")
+text = "Toi ! Rends-moi mon coussin, voleur !"
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Ton... coussin ?"
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Aelis"
+portrait = ExtResource("p2")
+text = "Mon coussin brodé ! Il était sur le rebord de ma fenêtre, et il a disparu cette nuit. Et toi, tu traînes dans le village depuis des jours. Coïncidence ?"
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p3")
+text = "On m'a volé ma bourse aussi, figure-toi. Je cherche ce voleur pour la mère Margot."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+speaker_name = "Aelis"
+portrait = ExtResource("p4")
+text = "... Hmpf. Admettons."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Aelis"
+portrait = ExtResource("p5")
+text = "La maison que je loue est juste derrière moi. Va voir la fenêtre si ça te chante. Et ne touche à rien."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5")])
+required_flags = Array[String](["contrat_voleur_accepte"])
+forbidden_flags = Array[String](["voleur_aelis_parle"])
+flags_on_finish = Array[String](["voleur_aelis_parle"])
+show_quest_marker = true

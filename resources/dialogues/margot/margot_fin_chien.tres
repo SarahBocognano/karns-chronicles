@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_inquiete.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_neutre.tres" id="p2"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_sourire.tres" id="p3"]
+[ext_resource type="Texture2D" path="res://assets/portrait/margot_rire.tres" id="p4"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p0")
+text = "Pépin ?! C'était donc lui... Et tout ça pour nourrir un chien errant."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Un chien qui m'a sauvé la mise contre des goules. Il vient avec moi, maintenant."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p2")
+text = "Le gamin viendra m'aider au fournil tous les matins jusqu'à l'été : ça paiera le jambon. Et la paille."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p3")
+text = "Quant à toi, voilà ce que je te dois. Quarante écus, comme promis."
+
+[sub_resource type="Resource" id="Resource_l4"]
+script = ExtResource("1_lines")
+text = "Zylrak reçoit 40 écus."
+
+[sub_resource type="Resource" id="Resource_l5"]
+script = ExtResource("1_lines")
+speaker_name = "Margot"
+portrait = ExtResource("p4")
+text = "Et prends soin de ce chien ! Il a l'air d'avoir trouvé un bon maître."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3"), SubResource("Resource_l4"), SubResource("Resource_l5")])
+required_flags = Array[String](["voleur_goules_vaincues", "voleur_chien_garde"])
+forbidden_flags = Array[String](["contrat_voleur_termine"])
+flags_on_finish = Array[String](["contrat_voleur_termine"])
+show_quest_marker = true

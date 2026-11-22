@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogueConversation" format=3]
+
+[ext_resource type="Script" path="res://scenes/Dialog/dialog_lines.gd" id="1_lines"]
+[ext_resource type="Script" path="res://scenes/Dialog/dialogue_conversation.gd" id="2_conv"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_reflexion.tres" id="p0"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_determiné.tres" id="p1"]
+[ext_resource type="Texture2D" path="res://assets/portrait/zylrak_sourire_en_coin.tres" id="p2"]
+
+[sub_resource type="Resource" id="Resource_l0"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Du pain, de la viande, de la paille, une couverture, un coussin... et des poils de chien."
+
+[sub_resource type="Resource" id="Resource_l1"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p0")
+text = "Rien de précieux : tout ce qu'il faut pour nourrir une bête et lui faire un lit au chaud."
+
+[sub_resource type="Resource" id="Resource_l2"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p1")
+text = "Un enfant qui file vers la lisière à l'aube, du pain sous le bras... Pépin cache un chien dans la forêt."
+
+[sub_resource type="Resource" id="Resource_l3"]
+script = ExtResource("1_lines")
+speaker_name = "Zylrak"
+portrait = ExtResource("p2")
+text = "Les herbes hautes de la lisière, au sud du carrefour. Allons voir ça."
+
+[resource]
+script = ExtResource("2_conv")
+lines = Array[ExtResource("1_lines")]([SubResource("Resource_l0"), SubResource("Resource_l1"), SubResource("Resource_l2"), SubResource("Resource_l3")])

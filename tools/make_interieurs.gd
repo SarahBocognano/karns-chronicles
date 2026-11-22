@@ -6,6 +6,9 @@ extends SceneTree
 # meubles : FL_Houses_int_FurnituresA et furnitures ; coins rentrants : tools/dev/draw_interieurs.gd.
 # - MaisonJumellesMap : la maison de Mirabelle et Myrtille, où Myrtille tient sa boutique d'herbes
 #   et de potions (scenes/maps/marchande.gd, scripts/ui/boutique.gd).
+# - MaisonMargotMap : la ferme-fournil de la mère Margot (contrat du voleur) : four à pain, pétrin,
+#   sacs de farine, et des traces de pas d'enfant dans la farine renversée.
+# - MaisonAelisMap : la chambre qu'Aelis loue ; sur le rebord de la fenêtre, des poils de chien.
 
 const T := 32
 const HOUSES := "res://assets/sprites/tilesets/Buildings/houses_interriors.png"
@@ -46,6 +49,15 @@ const WALL_SHELF := Rect2(424, 270, 48, 30)    # étagère murale avec pots
 const BARRELS := Rect2(740, 320, 24, 64)
 const LOW_CABINETS := [Rect2(480, 224, 32, 50), Rect2(512, 224, 32, 50)]   # buffets bas, herbes et fioles dessus
 const RUG := Rect2(128, 1088, 128, 96)        # tapis vert
+const FURN_C := "res://assets/sprites/tilesets/Buildings/FL_Houses_int_FurnituresC.png"
+const DECO := "res://assets/sprites/tilesets/Buildings/FL_Houses_decoratives.png"
+const OVEN := Rect2(480, 30, 64, 84)            # four à pain (FurnituresC)
+const BREAD_RACKS := [Rect2(576, 14, 32, 50), Rect2(576, 78, 32, 50)]   # casiers à pain
+const SACKS := [Rect2(225, 324, 26, 22), Rect2(257, 324, 24, 22), Rect2(290, 350, 26, 34)]   # sacs de farine (decoratives)
+const BED_BLUE := Rect2(288, 8, 32, 64)         # lit à couverture bleue (FurnituresA)
+const WARDROBE := Rect2(0, 8, 32, 72)
+const VOLEUR := "res://assets/sprites/objets/voleur/"
+const DIALOGUES := "res://resources/dialogues/"
 
 var ts: TileSet
 var map_root: Node2D
@@ -60,7 +72,7 @@ var rng := RandomNumberGenerator.new()
 
 func _initialize() -> void:
 	var args := OS.get_cmdline_user_args()
-	var rooms := ["jumelles"] if args.is_empty() else [args[0]]
+	var rooms := ["jumelles", "margot", "aelis"] if args.is_empty() else [args[0]]
 	ts = _tileset()
 	for r in rooms:
 		call("_room_" + r)
@@ -99,6 +111,101 @@ func _room_jumelles() -> void:
 	_exit("ExitToVillage", Vector2(cx, H * T - 14), Vector2(64, 24), "res://scenes/maps/VillageV2Map.tscn", "SpawnFromJumelles")
 	_player(Vector2(cx, 9.2 * T))
 	_save("res://scenes/maps/MaisonJumellesMap.tscn")
+
+## La ferme-fournil de Margot : 16 × 12 cases. Le four et les casiers à pain au fond, le pétrin,
+## les sacs de farine ; Margot près du four.
+func _room_margot() -> void:
+	var pattern := {}
+	for x in range(1, 15):
+		pattern[x] = [WALL_WINDOWS if x >= 9 else WALL_PLAIN, (x - 1) % 7]
+	_begin("MaisonMargotMap", 16, 12, [Rect2i(1, 3, 14, 7), Rect2i(7, 10, 2, 2)], pattern, 37)
+	var cx := 8.0 * T
+	_sprite(ysort, "Four", FURN_C, OVEN, Vector2(3.0, 3.9) * T, true)
+	_sprite(ysort, "CasierPain", FURN_C, BREAD_RACKS[0], Vector2(5.2, 3.6) * T, true)
+	_sprite(ysort, "CasierPain2", FURN_C, BREAD_RACKS[1], Vector2(6.3, 3.6) * T, true)
+	_sprite(ysort, "Petrin", FURN_A, COUNTER, Vector2(8.2, 6.4) * T, true)
+	_sprite(ysort, "Sac", DECO, SACKS[2], Vector2(12.6, 3.9) * T, true)
+	_sprite(ysort, "Sac2", DECO, SACKS[0], Vector2(13.6, 4.2) * T, true)
+	_sprite(ysort, "Sac3", DECO, SACKS[1], Vector2(13.2, 5.1) * T, true)
+	_sprite(ysort, "Tonneaux", FURN, BARRELS, Vector2(14.4, 8.6) * T, true)
+	_sprite(ysort, "Plante", FURN, PLANTS[2], Vector2(1.5, 9.0) * T, true)
+	var rug := _sprite(map_root, "Tapis", HOUSES, RUG, Vector2(cx + 2.0 * T, 8.9 * T))
+	map_root.move_child(rug, 1)
+	# la farine renversée au pied du pétrin, avec les traces de pas (on peut l'examiner)
+	var flour := Sprite2D.new()
+	flour.texture = load(VOLEUR + "farine.png")
+	flour.position = Vector2(9.0, 7.5) * T
+	_own(flour, "Farine", decor)
+	var look := Node2D.new()
+	look.set_script(load("res://scenes/maps/point_inspection.gd"))
+	look.set("conversation", load(DIALOGUES + "margot/farine.tres"))
+	look.set("conversation_after", load(DIALOGUES + "margot/farine.tres"))
+	look.set("sparkle_at", Vector2(0, -10))
+	_own(look, "LireFarine", ysort)
+	look.position = Vector2(9.0, 7.6) * T
+	var convs: Array[DialogueConversation] = []
+	for c in ["margot_fin_chien", "margot_fin_pepin", "margot_enquete", "margot_rappel", "margot_bonjour", "margot_avant"]:
+		convs.append(load(DIALOGUES + "margot/%s.tres" % c))
+	_pnj("Margot", "res://assets/sprites/characters/margot.png", Vector2(4.6, 5.2) * T, convs, "down")
+	_watch()
+	_spawn("SpawnFromVillage", Vector2(cx, 9.2 * T))
+	_exit("ExitToVillage", Vector2(cx, H * T - 14), Vector2(64, 24), "res://scenes/maps/VillageV2Map.tscn", "SpawnFromMargot")
+	_player(Vector2(cx, 9.2 * T))
+	_save("res://scenes/maps/MaisonMargotMap.tscn")
+
+## La chambre qu'Aelis loue : 12 × 10 cases. Un lit, une armoire ; la fenêtre du fond, à droite,
+## où quelqu'un a pris le coussin brodé (et laissé des poils de chien).
+func _room_aelis() -> void:
+	var pattern := {}
+	for x in range(2, 14):
+		pattern[x] = [WALL_WINDOWS if x >= 9 else WALL_PLAIN, (x - 1) % 7]
+	_begin("MaisonAelisMap", 16, 12, [Rect2i(2, 3, 12, 7), Rect2i(7, 10, 2, 2)], pattern, 43)
+	var cx := 8.0 * T
+	_sprite(ysort, "Lit", FURN_A, BED_BLUE, Vector2(2.7, 5.4) * T, true)
+	_sprite(ysort, "Armoire", FURN_A, WARDROBE, Vector2(4.0, 3.7) * T, true)
+	_sprite(ysort, "Buffet", FURN_A, LOW_CABINETS[0], Vector2(6.2, 3.7) * T, true)
+	_sprite(ysort, "Plante", FURN, PLANTS[4], Vector2(13.4, 8.6) * T, true)
+	var rug := _sprite(map_root, "Tapis", HOUSES, RUG, Vector2(cx, 7.4 * T))
+	map_root.move_child(rug, 1)
+	# les poils sur le rebord de la fenêtre du fond, à droite
+	var hair := Sprite2D.new()
+	hair.texture = load(VOLEUR + "poils.png")
+	hair.position = Vector2(11.5, 2.86) * T
+	hair.z_index = 2
+	_own(hair, "Poils", decor)
+	var look := Node2D.new()
+	look.set_script(load("res://scenes/maps/point_inspection.gd"))
+	look.set("conversation", load(DIALOGUES + "aelis/aelis_fenetre.tres"))
+	look.set("conversation_after", load(DIALOGUES + "aelis/aelis_fenetre_apres.tres"))
+	look.set("required_flag", "voleur_aelis_parle")
+	look.set("flag_on_read", "voleur_poils_trouves")
+	look.set("sparkle_at", Vector2(0, -22))
+	look.set("hide_after", NodePath("../../Decor/Poils"))
+	_own(look, "LireFenetre", ysort)
+	look.position = Vector2(11.5, 3.5) * T
+	_watch()
+	_spawn("SpawnFromVillage", Vector2(cx, 9.2 * T))
+	_exit("ExitToVillage", Vector2(cx, H * T - 14), Vector2(64, 24), "res://scenes/maps/VillageV2Map.tscn", "SpawnFromAelis")
+	_player(Vector2(cx, 9.2 * T))
+	_save("res://scenes/maps/MaisonAelisMap.tscn")
+
+## Un PNJ à feuille LPC (scenes/maps/pnj_lpc.gd).
+func _pnj(nm: String, sheet: String, pos: Vector2, convs: Array[DialogueConversation], facing: String) -> void:
+	var n := Node2D.new()
+	n.set_script(load("res://scenes/maps/pnj_lpc.gd"))
+	n.set("sheet", load(sheet))
+	n.set("facing", facing)
+	n.set("conversations", convs)
+	n.set("interaction_radius", 46.0)
+	n.scale = Vector2(0.7, 0.7)
+	_own(n, nm, ysort)
+	n.position = pos
+
+## Le contrat du voleur : Zylrak fait le point quand il a tous les indices (scenes/maps/voleur/enquete.gd).
+func _watch() -> void:
+	var w := Node.new()
+	w.set_script(load("res://scenes/maps/voleur/enquete.gd"))
+	_own(w, "EnqueteVoleur", map_root)
 
 func _myrtille(pos: Vector2) -> void:
 	var n := Node2D.new()

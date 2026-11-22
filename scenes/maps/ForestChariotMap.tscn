@@ -39,6 +39,7 @@
 [ext_resource type="Resource" path="res://resources/monsters/gobelin_aile.tres" id="38_vw75b"]
 [ext_resource type="Texture2D" uid="uid://d30rysgkt0aol" path="res://assets/battle_backgrounds/battle_foret.png" id="39_xgx4i"]
 
+[ext_resource type="Script" path="res://scenes/maps/flair_chien.gd" id="v_flair"]
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bbs5k"]
 seed = 11
 frequency = 0.006
@@ -3950,3 +3951,9 @@ shape = SubResource("RectangleShape2D_jq0vv")
 [node name="R22" type="CollisionShape2D" parent="EncounterZone" unique_id=1497571137]
 position = Vector2(288, 688)
 shape = SubResource("RectangleShape2D_uempt")
+
+[node name="FlairRoute" type="Node2D" parent="YSortLayer" unique_id=1873362004]
+position = Vector2(260, 560)
+script = ExtResource("v_flair")
+contenu = "fiole"
+quantite = 2

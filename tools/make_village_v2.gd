@@ -60,6 +60,12 @@ func _initialize() -> void:
 	add_arrival(root)
 	add_board(root)
 	add_signpost(root)
+	add_door(root, "EnterMargot", Vector2(54.5, 7.95), "res://scenes/maps/MaisonMargotMap.tscn", "SpawnFromVillage",
+		"SpawnFromMargot", Vector2(54.5, 9.1))
+	add_door(root, "EnterAelis", Vector2(46.45, 21.1), "res://scenes/maps/MaisonAelisMap.tscn", "SpawnFromVillage",
+		"SpawnFromAelis", Vector2(46.45, 22.4))
+	lock_aelis_door(root)
+	add_thief_contract(root)
 	add_door(root, "EnterJumelles", Vector2(13.0, 27.95), "res://scenes/maps/MaisonJumellesMap.tscn", "SpawnFromVillage",
 		"SpawnFromJumelles", Vector2(13.0, 30.2))
 	var out := PackedScene.new()
@@ -237,6 +243,80 @@ static func add_signpost(root: Node) -> void:
 	read.position = Vector2(-64, 474)
 	root.get_node("YSortLayer").add_child(read)
 	read.owner = root
+
+## La porte d'Aelis reste fermée tant qu'elle n'a pas parlé de son coussin (contrat du voleur).
+static func lock_aelis_door(root: Node) -> void:
+	var door := root.get_node("EnterAelis")
+	var flags: Array[String] = ["voleur_aelis_parle"]
+	door.set("required_flags", flags)
+	var line := DialogueLine.new()
+	line.speaker_name = "Zylrak"
+	line.portrait = load("res://assets/portrait/zylrak_reflexion.tres")
+	line.text = "Fermé. Ça doit être chez Aelis... Mieux vaut ne pas forcer la porte."
+	var lines: Array[DialogueLine] = [line]
+	door.set("lines", lines)
+	door.set("push_back", Vector2(0, 18))
+
+## Le contrat du voleur, au village : les nouvelles répliques d'Aelis, de Godric et de Pépin, la scène
+## du vol de la bourse, Zylrak qui fait le point (scenes/maps/voleur/), et Croûton couché devant
+## la grange de Margot si Zylrak l'a laissé à Pépin.
+static func add_thief_contract(root: Node) -> void:
+	_prepend_conversations(root.get_node("PNJBlondeHair"), ["aelis/aelis_coussin", "aelis/aelis_coussin_rappel"])
+	_prepend_conversations(root.get_node("PNJBucheron"), ["godric/godric_voleur"])
+	_prepend_conversations(root.get_node("PNJChildBlondHair/Dialogue"), ["pepin/pepin_apres_chien", "pepin/pepin_apres_grange"])
+	var theft := Node.new()
+	theft.name = "VolBourse"
+	theft.set_script(load("res://scenes/maps/voleur/vol_bourse.gd"))
+	root.add_child(theft)
+	theft.owner = root
+	theft.set("pepin_path", NodePath("../PNJChildBlondHair"))
+	var watch := Node.new()
+	watch.name = "EnqueteVoleur"
+	watch.set_script(load("res://scenes/maps/voleur/enquete.gd"))
+	root.add_child(watch)
+	watch.owner = root
+	# Croûton, chez Margot (s'il est resté avec Pépin) : assis devant la grange, la queue qui bat
+	var dog := AnimatedSprite2D.new()
+	dog.name = "CroutonGrange"
+	var frames := SpriteFrames.new()
+	frames.set_animation_speed("default", 2.0)
+	for i in 2:
+		var at := AtlasTexture.new()
+		at.atlas = load("res://assets/sprites/characters/chien_crouton.png")
+		at.region = Rect2(i * 64, 4 * 64, 64, 64)
+		frames.add_frame("default", at)
+	dog.sprite_frames = frames
+	dog.autoplay = "default"
+	dog.offset = Vector2(0, -28)
+	dog.scale = Vector2(0.6, 0.6)
+	dog.position = cell_to_world(Vector2(35.2, 11.6))
+	root.get_node("YSortLayer").add_child(dog)
+	dog.owner = root
+	var presence := Node.new()
+	presence.name = "Presence"
+	presence.set_script(load("res://scenes/maps/flag_presence.gd"))
+	var req: Array[String] = ["voleur_chien_pepin"]
+	presence.set("required_flags", req)
+	dog.add_child(presence)
+	presence.owner = root
+	# un objet enfoui près du puits, que seul Croûton sait trouver
+	var spot := Node2D.new()
+	spot.name = "FlairPuits"
+	spot.set_script(load("res://scenes/maps/flair_chien.gd"))
+	spot.set("contenu", "potion")
+	spot.set("quantite", 1)
+	spot.position = cell_to_world(Vector2(31.6, 21.4))
+	root.get_node("YSortLayer").add_child(spot)
+	spot.owner = root
+
+static func _prepend_conversations(npc: Node, names: Array) -> void:
+	var convs: Array[DialogueConversation] = []
+	for n in names:
+		convs.append(load("res://resources/dialogues/%s.tres" % n))
+	for c in npc.get("conversations"):
+		if not convs.has(c):
+			convs.append(c)
+	npc.set("conversations", convs)
 
 ## Porte d'une maison : une zone de sortie vers l'intérieur, et le point d'arrivée en ressortant.
 static func add_door(root: Node, n: String, door: Vector2, target: String, target_spawn: String, spawn_name: String, spawn: Vector2) -> void:
