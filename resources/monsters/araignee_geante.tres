@@ -17,3 +17,4 @@ attack_names = PackedStringArray("Crochets", "Jet de venin", "Morsure")
 venom_chance = 0.45
 venom_damage = 3
 enrage_below = 0.35
+cri = "araignee"

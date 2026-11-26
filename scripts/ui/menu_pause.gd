@@ -117,9 +117,11 @@ func open() -> void:
 	tab = EQUIPE
 	_build()
 	_root.visible = true
+	Sons.play("ouvrir")
 	_run()
 
 func close() -> void:
+	Sons.play("fermer")
 	is_open = false
 	_root.visible = false
 	_focus = "tabs"
@@ -729,8 +731,13 @@ func _quests() -> Array[Dictionary]:
 			"etapes": steps})
 	return out
 
+## La fiche d'une quête : son titre, sa description et ses étapes, empilés selon leur vraie
+## hauteur dans une zone qui défile (`_journal_scroll`), ouverte sur la première étape à faire.
+var _journal_scroll: ScrollContainer
+
 func _page_journal(index: int) -> void:
 	_clear()
+	_journal_scroll = null
 	var quests := _quests()
 	_place(_view, UiKit.label("Quêtes", 30, UiKit.GOLD), Vector2(20, 0))
 	var card := _parchment(Vector2(640, 0), Vector2(900, 640))
@@ -746,27 +753,91 @@ func _page_journal(index: int) -> void:
 		titles.add_child(UiKit.label(quests[k].titre, 30, UiKit.TEXT if k == index else UiKit.GREY))
 	_place(_view, titles, Vector2(72, 70))
 	var q: Dictionary = quests[clampi(index, 0, quests.size() - 1)]
-	_place(card, _ink(q.titre, 36, UiKit.INK_GOLD), Vector2(56, 40))
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+	scroll.size = Vector2(810, 560)
+	_place(card, scroll, Vector2(56, 40))
+	_journal_scroll = scroll
+	var box := VBoxContainer.new()
+	box.custom_minimum_size = Vector2(800, 0)
+	box.add_theme_constant_override("separation", 12)
+	scroll.add_child(box)
+	box.add_child(_ink(q.titre, 36, UiKit.INK_GOLD))
 	var t := _ink(q.texte, 24, UiKit.INK_SOFT)
 	t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	t.size = Vector2(790, 80)
-	_place(card, t, Vector2(56, 96))
-	var y := 210.0
+	t.custom_minimum_size = Vector2(790, 0)
+	box.add_child(t)
+	var gap := Control.new()
+	gap.custom_minimum_size = Vector2(0, 10)
+	box.add_child(gap)
+	var first_todo: Control = null
 	for st in q.etapes:
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 18)
 		var dia := UiKit.da_image(UiKit.DA_DIAMOND)
 		dia.modulate = Color(0.55, 0.5, 0.45) if st[1] else Color(1, 1, 1)
-		_place(card, dia, Vector2(56, y + 2))
+		dia.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		row.add_child(dia)
 		var l := _ink(st[0], 26, UiKit.INK_SOFT if st[1] else UiKit.INK)
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		l.size = Vector2(730, 70)
-		_place(card, l, Vector2(112, y))
-		y += 78
+		l.custom_minimum_size = Vector2(730, 0)
+		row.add_child(l)
+		box.add_child(row)
+		if first_todo == null and not st[1]:
+			first_todo = row
+	# des flèches discrètes quand il y a plus à lire, au-dessus ou en dessous
+	var more_up := _ink("▲", 22, UiKit.INK_SOFT)
+	var more_down := _ink("▼", 22, UiKit.INK_SOFT)
+	_place(card, more_up, Vector2(860, 14))
+	_place(card, more_down, Vector2(860, 604))
+	var update_arrows := func():
+		if is_instance_valid(scroll) and is_instance_valid(more_up):
+			var bar := scroll.get_v_scroll_bar()
+			more_up.visible = scroll.scroll_vertical > 2
+			more_down.visible = scroll.scroll_vertical < bar.max_value - bar.page - 2
+	scroll.get_v_scroll_bar().changed.connect(update_arrows)
+	scroll.get_v_scroll_bar().value_changed.connect(func(_v): update_arrows.call())
+	# ouverte sur la première étape à faire
+	var focus_todo := func():
+		if is_instance_valid(scroll) and first_todo and is_instance_valid(first_todo):
+			scroll.scroll_vertical = int(maxf(0.0, first_todo.position.y - 120.0))
+		update_arrows.call()
+	focus_todo.call_deferred()
+
+## Fait défiler la fiche de quête (flèches, molette) jusqu'à Échap ou Entrée.
+func _read_journal() -> void:
+	var reader := JournalReader.new()
+	reader.scroll = _journal_scroll
+	_content.add_child(reader)
+	await reader.done
+	reader.queue_free()
+
+class JournalReader extends Node:
+	signal done
+	var scroll: ScrollContainer
+	func _ready() -> void:
+		process_mode = Node.PROCESS_MODE_ALWAYS
+	func _unhandled_input(event: InputEvent) -> void:
+		var up := event.is_action_pressed("ui_up") or event.is_action_pressed("move_up")
+		var down := event.is_action_pressed("ui_down") or event.is_action_pressed("move_down")
+		if up or down:
+			if is_instance_valid(scroll):
+				scroll.scroll_vertical += -70 if up else 70
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_accept") or event.is_action_pressed("interact"):
+			get_viewport().set_input_as_handled()
+			Sons.play("retour")
+			done.emit()
 
 func _journal_loop() -> void:
 	var quests := _quests()
 	if quests.size() <= 1:
 		_page_journal(0)
-		await _wait_back()
+		if quests.is_empty():
+			await _wait_back()
+		else:
+			await _read_journal()   # une seule quête : les flèches font défiler sa fiche
 		return
 	var index := 0
 	_page_journal(index)
@@ -778,8 +849,12 @@ func _journal_loop() -> void:
 	list.set_entries(quests.map(func(q): return q.titre))
 	_place(_content, list, Vector2(20, 70))
 	list.moved.connect(func(k: int): _page_journal(k))
-	while await list.choose() >= 0:
-		pass
+	while true:
+		var k := await list.choose()
+		if k < 0:
+			break
+		# Entrée sur une quête : on lit sa fiche (les flèches la font défiler), Échap revient à la liste
+		await _read_journal()
 	list.queue_free()
 
 # --- Système ---

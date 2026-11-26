@@ -43,6 +43,9 @@ func _ready() -> void:
 ## Coupe (true) ou remet (false) la musique ; les morceaux continuent de défiler en silence.
 func set_muted(value: bool) -> void:
 	AudioServer.set_bus_mute(AudioServer.get_bus_index(BUS), value)
+	var sons := get_node_or_null("/root/Sons")
+	if sons:
+		sons.set_muted(value)   # le bouton coupe aussi les bruitages
 	_button.muted = value
 
 ## Affiche ou cache le bouton du son (caché pendant l'intro).

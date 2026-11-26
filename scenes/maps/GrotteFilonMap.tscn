@@ -1,7 +1,7 @@
 [gd_scene format=4]
 
 [ext_resource type="Script" path="res://scenes/maps/map_camera_zoom.gd" id="1_j4sby"]
-[ext_resource type="AudioStream" path="res://assets/audio/musique/ruines.wav" id="2_wx6y8"]
+[ext_resource type="AudioStream" path="res://assets/audio/musique/grotte.wav" id="2_wx6y8"]
 [ext_resource type="TileSet" path="res://resources/tilesets/grotte.tres" id="3_xepu7"]
 [ext_resource type="Texture2D" path="res://assets/sprites/objets/grotte/toiles.png" id="4_6wi35"]
 [ext_resource type="PackedScene" path="res://scenes/characters/Player.tscn" id="5_recn5"]

@@ -13,6 +13,8 @@ const DEFEAT_SCENE := "res://scenes/maps/VillageV2Map.tscn"
 const DEFEAT_SPAWN := "SpawnFromForest"
 ## Musique des combats (« RPG/JRPG Combat Exploration Themes », version en boucle).
 const BATTLE_MUSIC := preload("res://assets/audio/musique/combat.mp3")
+## Combats sans fuite (gardiens, boss, combats de quête) : une musique plus solennelle.
+const BOSS_MUSIC := preload("res://assets/audio/musique/combat_boss.wav")
 
 @export var fade_duration: float = 0.3
 
@@ -38,8 +40,16 @@ func _add_overlay(layer: CanvasLayer) -> void:
 	get_tree().root.add_child(layer)
 
 ## `hold` : temps passé sur l'écran noir entre les deux cartes (une petite coupure, en secondes).
+## Cartes d'intérieur : y entrer ou en sortir fait le bruit d'une porte.
+const INTERIORS := ["Auberge", "Maison", "WeaponsShop"]
+
 func change_scene(scene_path: String, spawn_point: String, hold: float = 0.0) -> void:
 	PlayerData.next_spawn_point = spawn_point
+	var here := String(get_tree().current_scene.name) if get_tree().current_scene else ""
+	for word in INTERIORS:
+		if word in scene_path.get_file() or word in here:
+			Sons.play("porte")
+			break
 
 	var tween := create_tween()
 	tween.tween_property(_fade_rect, "modulate:a", 1.0, fade_duration)
@@ -71,7 +81,7 @@ func start_battle(background: Texture2D, monsters: Array, can_flee: bool = true)
 	in_battle = true
 	PlayerData.controls_locked = true
 	var map := get_tree().current_scene
-	Musique.start_battle(BATTLE_MUSIC)
+	Musique.start_battle(BATTLE_MUSIC if can_flee else BOSS_MUSIC)
 	await _battle_intro()
 	if is_instance_valid(map):
 		map.process_mode = Node.PROCESS_MODE_DISABLED

@@ -47,6 +47,7 @@ func _sniff(spot: Node2D) -> void:
 	await get_tree().create_timer(0.7).timeout
 	if is_instance_valid(spot) and not spot.dug:
 		_play("aboie")
+		Sons.play("aboiement")
 		spot.reveal()
 
 func _build_frames() -> SpriteFrames:

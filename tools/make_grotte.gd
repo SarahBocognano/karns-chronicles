@@ -19,7 +19,7 @@ const DECO := "res://assets/sprites/tilesets/Caves/decorative.png"
 const WEBS := "res://assets/sprites/objets/grotte/toiles.png"
 const SPIDER := "res://assets/sprites/monsters/araignees/araignee_geante.png"
 const TILESET_OUT := "res://resources/tilesets/grotte.tres"
-const MUSIC := "res://assets/audio/musique/ruines.wav"
+const MUSIC := "res://assets/audio/musique/grotte.wav"
 const BATTLE_BG := "res://assets/battle_backgrounds/battle_grotte.png"
 const DIALOGUES := "res://resources/dialogues/grotte/"
 

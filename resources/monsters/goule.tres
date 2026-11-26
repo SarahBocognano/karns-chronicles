@@ -16,3 +16,4 @@ defense = 1
 speed = 4
 xp = 6
 attack_names = PackedStringArray("Griffes", "Morsure")
+cri = "goule"

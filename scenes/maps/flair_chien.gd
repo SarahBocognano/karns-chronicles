@@ -54,6 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	_dig()
 
 func _dig() -> void:
+	Sons.play("creuser")
 	dug = true
 	queue_redraw()
 	PlayerData.set_flag(_flag(), true)
@@ -68,6 +69,7 @@ func _dig() -> void:
 		for i in quantite:
 			PlayerData.inventory.append(contenu)
 		what = BattleCatalog.OBJETS[contenu].nom + ("" if quantite == 1 else " ×%d" % quantite)
+	Sons.play("ecus" if contenu == "ecus" else "objet")
 	var line := DialogueLine.new()
 	line.text = "Zylrak gratte la terre là où Croûton aboie... et déterre : %s !" % what
 	var lines: Array[DialogueLine] = [line]

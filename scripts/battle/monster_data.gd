@@ -30,6 +30,8 @@ class_name MonsterData
 @export_group("Attaques")
 ## Noms affichés quand le monstre attaque (tirés au hasard).
 @export var attack_names: PackedStringArray = ["Griffes"]
+## Son de son attaque (voir l'autoload Sons : "monstre", "goule", "araignee", "gardien"...).
+@export var cri: String = "monstre"
 
 @export_group("Venin")
 ## Chance d'empoisonner à chaque attaque (0 : jamais). Un héros empoisonné perd `venom_damage` PV
