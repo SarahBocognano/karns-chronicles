@@ -110,6 +110,9 @@ var gear_bag: Array[String] = []
 ## Équipement trouvé en avançant dans l'histoire : flag -> pièce gagnée (une seule fois).
 const FLAG_REWARDS := {"found_merchant_cart": "anneau_marchand", "contrat_grotte_termine": "lame_braise",
 	"voleur_chien_pepin": "caillou_pepin", "aldric_retrouvailles": "ruban_brenna"}
+## Flags qui donnent un objet précieux (petit son de trouvaille).
+const KEY_ITEM_FLAGS := ["fragment_lune", "fragment_loup", "fragment_epee", "fragment_flamme", "torche_forgeron",
+	"fragment_ame_lune", "voleur_margot_vue"]
 ## Écus gagnés quand un flag passe à true (contrats).
 const FLAG_ECUS := {"contrat_grotte_termine": 30, "contrat_voleur_termine": 40, "godric_merci_aldric": 30}
 ## Objets donnés quand un flag passe à true (récompense de quête).
@@ -322,17 +325,28 @@ func from_dict(d: Dictionary) -> void:
 		flag_changed.emit(k, quest_flags[k])
 
 func set_flag(flag_name: String, value: bool) -> void:
+	var was: bool = quest_flags.get(flag_name, false)
 	quest_flags[flag_name] = value
 	if value and FLAG_REWARDS.has(flag_name) and not owns_gear(FLAG_REWARDS[flag_name]):
 		gear_bag.append(FLAG_REWARDS[flag_name])
+		_sound("objet_rare")
+	if value and not was and KEY_ITEM_FLAGS.has(flag_name):
+		_sound("objet_rare")
 	if value and FLAG_ECUS.has(flag_name) and not quest_flags.get(flag_name + "_ecus", false):
 		quest_flags[flag_name + "_ecus"] = true
 		ecus += FLAG_ECUS[flag_name]
+		_sound("ecus")
 	if value and FLAG_ITEMS.has(flag_name) and not quest_flags.get(flag_name + "_recompense", false):
 		quest_flags[flag_name + "_recompense"] = true
 		for item in FLAG_ITEMS[flag_name]:
 			inventory.append(item)
 	flag_changed.emit(flag_name, value)
+
+## Un bruitage (l'autoload Sons n'existe pas dans les générateurs de cartes).
+func _sound(name: String) -> void:
+	var sons := get_node_or_null("/root/Sons")
+	if sons:
+		sons.play(name)
 
 func get_flag(flag_name: String) -> bool:
 	return quest_flags.get(flag_name, false)

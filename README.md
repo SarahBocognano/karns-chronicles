@@ -75,6 +75,9 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - Le vent fait doucement balancer les arbres, les buissons et les herbes, sur toutes les cartes extérieures (forêt, lac, ruines, village) : shader `vent.gdshader`, posé dans les cartes de la forêt et ajouté aux autres à l'arrivée par l'autoload `scripts/vent.gd` (les arbres du village, peints en tuiles, ont leur propre version : `vent_tuiles.gdshader`).
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 
+### Les sons
+Des bruitages partout (autoload `Sons`, `scripts/sons.gd`, fichiers dans `assets/audio/sons/`) : menus et dialogues, pas de Zylrak (selon le sol : terre, bois, pierre), une ambiance en boucle sous la musique (forêt, grotte, intérieur, cascade), portes des maisons, coffres et trouvailles, achats et écus, le chien qui aboie, la barque ; en combat, coups d'épée, flèches, Signes, potions, cris des monstres (selon le monstre : `MonsterData.cri`), venin, furie, victoire, défaite, montée de niveau. Les combats sans fuite (gardiens, boss) ont leur propre musique, et la grotte la sienne. Le bouton du son coupe la musique et les bruitages.
+
 ### Les menus
 - **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
 - **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak arrive au village par la route de la forêt et marche seul jusqu'à l'auberge ; coupure au noir, et Oswin lui tombe dessus.
@@ -147,9 +150,13 @@ scripts/
 - Zombie : *[LPC] Zombie* par **Benjamin K. Smith (BenCreating)**, commandé par castelonia, d'après la base LPC de **Stephen Challener (Redshrike)** et les animations de **Johannes Sjölund (wulax)** — CC-BY-SA 3.0 (https://opengameart.org/content/lpc-zombie).
 - Musique :
   - village (*The Apothecary*), auberge (*The Tavern Keeper*), forge (*The Blacksmith*) : *Exploration Fantasy Free Pack* par **EugeneDesMusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/exploration-fantasy-free-pack) ;
-  - forêt (*Place_Fantasy_Desert_Loop*) et lac (*Place_Lake_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
+  - forêt (*Place_Fantasy_Desert_Loop*), lac (*Place_Lake_Loop*), grotte (*Atmosphere_Dark_Creepy_Loop*) et combats de boss (*Theme_Decisive Battle_Loop*) : *Music For Your RPG* par **The Sound Guild** — licence GameDev Market (https://www.gamedevmarket.net/asset/music-for-your-rpg) ;
   - ruines (*Sunrise Over the Ruins*) : *Emotional And Cinematic Music Pack for RPGs* par **lullemusic** — licence GameDev Market (https://www.gamedevmarket.net/asset/emotional-and-cinematic-music-pack-for-rpgs) ;
   - combats : *JRPG/RPG Combat Exploration Theme* (version en boucle) par **lardven** — licence GameDev Market (https://www.gamedevmarket.net/asset/jrpgrpg-combat-exploration-theme).
+- Bruitages et ambiances :
+  - *Free Fantasy SFX Pack* par **TomMusic** (https://tommusic.itch.io) : pas (terre, bois, pierre), épée, arc, sorts de feu, coffres, portes, torche, ambiances en boucle (forêt, grotte, intérieur, cascade) ;
+  - *400 Sounds Pack* et *96 Extra SFX* par **Chequered Ink** (https://ci.itch.io/400-sounds-pack) : jingles au clavecin (victoire, niveau, défaite, validation), interface, livre, pièces, pelle, potion ;
+  - CC0 : *Interface Sounds* par **Kenney** (dialogues) ; *80 CC0 creature SFX* et *80 CC0 RPG SFX* par **rubberduck** (cris de monstres, aboiements ; https://opengameart.org/content/80-cc0-rpg-sfx).
 - Coffres : générés avec Copilot dans le style de Szadi art, puis découpés.
 - Sang au sol : *Horror Fantasy Assets* par **Stealthix** — CC0 (https://opengameart.org/content/horror-fantasy-assets).
 - Fonds de combat : générés avec Copilot, puis pixelisés.

@@ -62,8 +62,9 @@ func _initialize() -> void:
 	add_signpost(root)
 	add_door(root, "EnterMargot", Vector2(54.5, 7.95), "res://scenes/maps/MaisonMargotMap.tscn", "SpawnFromVillage",
 		"SpawnFromMargot", Vector2(54.5, 9.1))
-	add_door(root, "EnterAelis", Vector2(46.45, 21.1), "res://scenes/maps/MaisonAelisMap.tscn", "SpawnFromVillage",
-		"SpawnFromAelis", Vector2(46.45, 22.4))
+	# (la zone de la porte d'Aelis descend jusqu'aux marches : le mur de la maison arrête Zylrak plus bas)
+	add_door(root, "EnterAelis", Vector2(46.45, 21.7), "res://scenes/maps/MaisonAelisMap.tscn", "SpawnFromVillage",
+		"SpawnFromAelis", Vector2(46.45, 23.0))
 	lock_aelis_door(root)
 	add_thief_contract(root)
 	add_door(root, "EnterJumelles", Vector2(13.0, 27.95), "res://scenes/maps/MaisonJumellesMap.tscn", "SpawnFromVillage",

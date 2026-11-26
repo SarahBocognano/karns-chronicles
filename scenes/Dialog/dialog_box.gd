@@ -22,6 +22,9 @@ func _position_panel() -> void:
 	print("Panel positionné à gauche: x=", panel.position.x, " | Portrait x=", portrait_display.global_position.x)
 
 func show_dialogue(npc_name: String, text: String, portrait: Texture2D = null) -> void:
+	var sons := get_node_or_null("/root/Sons")
+	if sons:
+		sons.play("dialogue")
 	name_label.text = npc_name
 	dialogue_label.text = text
 	if portrait:

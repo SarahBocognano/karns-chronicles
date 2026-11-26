@@ -17,3 +17,4 @@ speed = 3
 xp = 60
 attack_names = PackedStringArray("Hache runique", "Coup de bouclier", "Taille du gardien")
 enrage_below = 0.5
+cri = "gardien"

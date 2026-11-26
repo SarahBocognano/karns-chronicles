@@ -86,6 +86,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Marquer la touche comme traitée avant d'émettre : celui qui attend le choix peut retirer la liste.
 	get_viewport().set_input_as_handled()
 	if up or down:
+		Sons.play("curseur")
 		var n := _enabled.size()
 		for _i in n:
 			index = posmod(index + (1 if down else -1), n)
@@ -95,6 +96,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		moved.emit(index)
 	elif accept:
 		if _enabled[index]:
+			Sons.play("valider")
 			_done.emit(index)
+		else:
+			Sons.play("erreur")
 	elif cancelable:
+		Sons.play("retour")
 		_done.emit(-1)

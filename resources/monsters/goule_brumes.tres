@@ -18,3 +18,4 @@ speed = 4
 xp = 40
 attack_names = PackedStringArray("Griffes glacées", "Étreinte des brumes", "Morsure")
 enrage_below = 0.4
+cri = "goule"

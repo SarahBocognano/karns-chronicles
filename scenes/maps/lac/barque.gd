@@ -47,6 +47,7 @@ func cross(player: Node2D) -> void:
 	var to := get_node_or_null(destination) as Node2D
 	if to == null:
 		return
+	Sons.play("barque")
 	await SceneTransition.fade(1.0, 0.5)
 	player.global_position = to.global_position
 	for group in ["Compagnon", "Chien"]:

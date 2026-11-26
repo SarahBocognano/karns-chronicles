@@ -16,3 +16,4 @@ xp = 8
 attack_names = PackedStringArray("Morsure", "Crochets")
 venom_chance = 0.3
 venom_damage = 2
+cri = "araignee"

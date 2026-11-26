@@ -81,10 +81,12 @@ func _open() -> void:
 		for i in quantite:
 			PlayerData.inventory.append(contenu)
 	PlayerData.set_flag(flag_name(), true)
+	Sons.play("coffre")
 	# le couvercle s'ouvre (4 images)
 	for f in FRAMES:
 		_sprite.frame = f
 		await get_tree().create_timer(0.09).timeout
+	Sons.play("objet_rare" if gear else "objet")
 	var cs := Cutscene.new()
 	get_tree().current_scene.add_child(cs)
 	var text := "Zylrak trouve : %s." % contents_label()

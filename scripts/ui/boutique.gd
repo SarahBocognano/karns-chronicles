@@ -31,10 +31,12 @@ func _run() -> void:
 		var id: String = STOCK[i][0]
 		var price: int = STOCK[i][1]
 		if PlayerData.spend_ecus(price):
+			Sons.play("achat")
 			PlayerData.inventory.append(id)
 			_refresh()
 			_show(i, "Acheté ! « Merci, et reviens vite. »")
 		else:
+			Sons.play("erreur")
 			_show(i, "Pas assez d'écus.")
 	close()
 

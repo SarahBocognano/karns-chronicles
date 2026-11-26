@@ -25,6 +25,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
 	PlayerData.controls_locked = true
+	Sons.play("parchemin")
 	var screen := get_viewport().get_visible_rect().size
 	var shade := ColorRect.new()
 	shade.color = Color(0, 0, 0, 0.55)

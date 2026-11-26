@@ -47,6 +47,8 @@ func _arrive() -> void:
 	await get_tree().create_timer(0.6).timeout   # fin du fondu d'arrivée
 	if not is_inside_tree():
 		return
+	if arrival_flag == "grotte_entree_vue":
+		Sons.play("torche")   # Zylrak allume la torche du forgeron
 	await _say(arrival.lines)
 	PlayerData.set_flag(arrival_flag, true)
 	PlayerData.controls_locked = false

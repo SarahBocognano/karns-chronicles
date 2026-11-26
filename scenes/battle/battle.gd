@@ -136,6 +136,7 @@ func _run() -> void:
 		intro = "Des monstres surgissent !"
 	elif foes.size() == 1:
 		intro = "%s surgit !" % _with_article(foes[0].data.display_name)
+	Sons.play("combat_debut")
 	await _say(intro, 1.2)
 	while result == "":
 		for actor in _turn_order():
@@ -196,6 +197,7 @@ func _foe_turn(foe: Dictionary) -> void:
 	var names: PackedStringArray = foe.data.attack_names
 	var attack_name: String = names[rng.randi() % names.size()] if names.size() > 0 else "Attaque"
 	_show_message("%s : %s !" % [foe.name, attack_name])
+	Sons.play(foe.data.cri)
 	var sprite: Node2D = foe.sprite
 	if sprite is AnimatedSprite2D:
 		sprite.play("attaque")
@@ -213,6 +215,7 @@ func _foe_turn(foe: Dictionary) -> void:
 		dmg = max(1, dmg / 2)
 	_set_hp(target, max(0, _hp(target) - dmg))
 	var sprite_t: AnimatedSprite2D = target.sprite
+	Sons.play("touche_heros")
 	_popup(str(dmg), target.home + Vector2(0, -48), Color(1.0, 0.85, 0.80))
 	_shake(sprite_t, target.home)
 	await _flash(sprite_t, Color(1.8, 0.5, 0.45), 0.18)
@@ -227,6 +230,7 @@ func _foe_turn(foe: Dictionary) -> void:
 		PlayerData.venin[target.id] = target.venom   # le venin reste après le combat
 		await get_tree().create_timer(0.3).timeout
 		_show_message("%s est empoisonné !" % target.name)
+		Sons.play("venin")
 		_refresh_hero()
 		await _flash(sprite_t, Color(0.7, 1.6, 0.6), 0.25)
 	await get_tree().create_timer(0.55).timeout
@@ -239,6 +243,7 @@ func _venom_tick(m: Dictionary) -> void:
 	var dmg: int = maxi(1, m.get("venom", 2))
 	_set_hp(m, maxi(0, _hp(m) - dmg))
 	_show_message("Le venin ronge %s." % m.name)
+	Sons.play("venin", -4.0)
 	_popup(str(dmg), m.home + Vector2(0, -48), VENOM)
 	await _flash(m.sprite, Color(0.7, 1.5, 0.6), 0.22)
 	_refresh_hero()
@@ -372,6 +377,7 @@ func _input(event: InputEvent) -> void:
 	var right := event.is_action_pressed("ui_right") or event.is_action_pressed("move_right")
 	if state == "menu" and _menu_panel.visible:
 		if up or down:
+			Sons.play("curseur")
 			var n := _menu_entries.size()
 			for _i in n:
 				menu_index = posmod(menu_index + (1 if down else -1), n)
@@ -379,8 +385,10 @@ func _input(event: InputEvent) -> void:
 					break
 			_place_menu_cursor()
 		elif accept and _menu_enabled[menu_index]:
+			Sons.play("valider")
 			_menu_done.emit(menu_index)
 		elif cancel and _menu_cancelable:
+			Sons.play("retour")
 			_menu_done.emit(-1)
 		else:
 			return
@@ -388,14 +396,18 @@ func _input(event: InputEvent) -> void:
 	elif state == "cible":
 		var n2 := _alive_foes().size()
 		if up or left:
+			Sons.play("curseur")
 			_target_index = posmod(_target_index - 1, n2)
 			_place_target_cursor()
 		elif down or right:
+			Sons.play("curseur")
 			_target_index = posmod(_target_index + 1, n2)
 			_place_target_cursor()
 		elif accept:
+			Sons.play("valider")
 			_menu_done.emit(_target_index)
 		elif cancel:
+			Sons.play("retour")
 			_menu_done.emit(-1)
 		else:
 			return
@@ -414,6 +426,7 @@ func _hero_attack(foe: Dictionary) -> void:
 	var crit := rng.randf() < 0.1
 	if crit:
 		dmg = int(dmg * 1.5)
+	Sons.play("epee", 3.0 if crit else 0.0)
 	await _hit_foe(foe, dmg, Color(1, 1, 1), "Critique ! " if crit else "")
 	# L'animation a pu se terminer pendant que la goule disparaissait.
 	if _hero.animation == "coup" and _hero.is_playing():
@@ -429,10 +442,12 @@ func _hero_sign(signe: Dictionary, target: Dictionary) -> void:
 	await get_tree().create_timer(0.45).timeout
 	match signe.type:
 		"degats":
+			Sons.play("feu")
 			_embers(target.sprite.position + Vector2(0, -24), Color(1.0, 0.55, 0.15))
 			var dmg := int(PlayerData.stat("zylrak", "magie") * signe.puissance * rng.randf_range(0.9, 1.1)) - int(target.data.defense * 0.25)
 			await _hit_foe(target, max(1, dmg), Color(1.0, 0.7, 0.35), "")
 		"protection":
+			Sons.play("protection")
 			_rempart_turns = signe.tours
 			for m in _alive_party():
 				_embers(m.home + Vector2(0, -24), Color(0.95, 0.75, 0.45))
@@ -443,6 +458,7 @@ func _hero_sign(signe: Dictionary, target: Dictionary) -> void:
 		"soin":
 			var who: Dictionary = target if not target.is_empty() else _member("zylrak")
 			var heal := int(ceil(_max_hp(who) * signe.soin))
+			Sons.play("soin")
 			_heal(who, heal)
 			_embers(who.home + Vector2(0, -24), Color(1.0, 0.6, 0.3))
 			await _flash(who.sprite, Color(1.4, 1.1, 0.8), 0.3)
@@ -461,6 +477,7 @@ func _use_item(user: Dictionary, item_id: String, ally: Dictionary) -> void:
 	else:
 		_show_message("%s donne : %s à %s." % [user.name, item.nom, ally.name])
 	await get_tree().create_timer(0.3).timeout
+	Sons.play("potion")
 	if item.has("soin"):
 		_heal(ally, item.soin)
 		await _flash(ally.sprite, Color(1.1, 1.5, 1.1), 0.3)
@@ -491,6 +508,7 @@ func _hero_flee() -> void:
 	var chance: float = clamp(0.5 + 0.08 * (PlayerData.stat("zylrak", "vitesse") - foe_speed), 0.2, 0.9)
 	if rng.randf() < chance:
 		_show_message("Zylrak prend la fuite !" if party.size() == 1 else "L'équipe prend la fuite !")
+		Sons.play("fuite")
 		var tw := create_tween().set_parallel()
 		for m in _alive_party():
 			m.sprite.flip_h = true
@@ -517,11 +535,13 @@ func _hit_foe(foe: Dictionary, dmg: int, color: Color, prefix: String) -> void:
 	await _flash(foe.sprite, Color(2.2, 2.2, 2.2), 0.12)
 	if furious:
 		foe.enraged = true
+		Sons.play("furie")
 		(foe.sprite as CanvasItem).modulate = foe.data.tint * Color(1.35, 0.75, 0.7)
 		_shake(foe.sprite, foe.home)
 		await _say("%s entre en furie : deux attaques par tour !" % foe.name, 1.4, true)
 	if foe.hp <= 0:
 		foe.alive = false
+		Sons.play("mort_monstre")
 		if foe.sprite is AnimatedSprite2D:
 			foe.sprite.play("mort")
 			await foe.sprite.animation_finished
@@ -708,6 +728,7 @@ func _bow_draw() -> void:
 
 ## Une flèche (petit trait) part d'Ysolde vers le monstre.
 func _arrow(foe: Dictionary, color := Color(0.95, 0.9, 0.8)) -> void:
+	Sons.play("fleche")
 	var a := Line2D.new()
 	a.points = PackedVector2Array([Vector2(-7, 0), Vector2(5, 0)])
 	a.width = 1.5
@@ -806,6 +827,7 @@ func _ending() -> void:
 					_set_hp(m, 1)
 					m.sprite.play("garde")
 			_refresh_hero()
+			Sons.play("victoire")
 			await _victory_pose()
 			if party.size() == 1:
 				await _say("Victoire ! Zylrak gagne %d points d'expérience et %d écus." % [gained, coins], 2.4, true)
@@ -814,6 +836,7 @@ func _ending() -> void:
 			for up in PlayerData.gain_xp(gained):
 				await _level_up(up)
 		"defaite":
+			Sons.play("defaite")
 			await _say("Zylrak s'effondre..." if party.size() == 1 else "Zylrak et Ysolde s'effondrent...", 2.2, true)
 		"fuite":
 			pass
@@ -838,6 +861,7 @@ func _level_up(up: Dictionary) -> void:
 	_refresh_hero()
 	_embers(hero_home + Vector2(0, -20), Color(1.0, 0.85, 0.4))
 	_embers(hero_home + Vector2(0, -34), Color(1.0, 0.7, 0.3))
+	Sons.play("niveau")
 	_popup("Niveau %d !" % up.level, hero_home + Vector2(0, -62), Color(1.0, 0.86, 0.45))
 	_flash(_hero, Color(1.8, 1.55, 0.9), 0.4)
 	await _say("Zylrak passe au niveau %d !" % up.level, 2.0, true)

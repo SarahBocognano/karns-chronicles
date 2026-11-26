@@ -8,6 +8,9 @@ var direction: Vector2 = Vector2.ZERO
 var current_direction: String = "down"
 ## true pendant une scène automatique : Zylrak marche tout seul (voir walk_to).
 var scripted := false
+## Distance parcourue depuis le dernier bruit de pas.
+var _step := 0.0
+const STEP_EVERY := 36.0
 
 func _ready() -> void:
 	_apply_spawn_point()
@@ -56,7 +59,12 @@ func _physics_process(_delta: float) -> void:
 	else:
 		stop_animation()
 
+	var before := global_position
 	move_and_slide()
+	_step += global_position.distance_to(before)
+	if _step >= STEP_EVERY:
+		_step = 0.0
+		Sons.play("pas")
 
 func update_facing_direction() -> void:
 	if abs(direction.x) > abs(direction.y):

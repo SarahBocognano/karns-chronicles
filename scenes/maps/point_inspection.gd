@@ -66,6 +66,7 @@ func _read(conv: DialogueConversation) -> void:
 	await cs.say(conv.lines)
 	cs.queue_free()
 	if flag_on_read != "" and not PlayerData.get_flag(flag_on_read):
+		Sons.play("objet_rare")
 		PlayerData.set_flag(flag_on_read, true)
 		_hide_taken()
 	PlayerData.controls_locked = false
