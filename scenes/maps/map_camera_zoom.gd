@@ -33,6 +33,7 @@ func _ready() -> void:
 		get_viewport().size_changed.connect(_fit_room_to_screen)
 	_spawn_companions()
 	_spawn_dog()
+	Eclairage.apply(self)
 
 ## Croûton, si Zylrak l'a gardé (contrat du voleur : flag "voleur_chien_garde"), le suit aussi.
 func _spawn_dog() -> void:
