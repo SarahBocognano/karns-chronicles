@@ -78,6 +78,9 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 ### Les sons
 Des bruitages partout (autoload `Sons`, `scripts/sons.gd`, fichiers dans `assets/audio/sons/`) : menus et dialogues, pas de Zylrak (selon le sol : terre, bois, pierre), une ambiance en boucle sous la musique (forêt, grotte, intérieur, cascade), portes des maisons, coffres et trouvailles, achats et écus, le chien qui aboie, la barque ; en combat, coups d'épée, flèches, Signes, potions, cris des monstres (selon le monstre : `MonsterData.cri`), venin, furie, victoire, défaite, montée de niveau. Les combats sans fuite (gardiens, boss) ont leur propre musique, et la grotte la sienne. Le bouton du son coupe la musique et les bruitages.
 
+### L'éclairage
+Chaque carte a sa lumière (`scripts/eclairage.gd`, posé à l'arrivée sur la carte) : Eclatvin au crépuscule avec ses lanternes allumées, la forêt verte et tamisée (plus sombre autour du chariot attaqué), les ruines au couchant ; les intérieurs dans une pénombre chaude, éclairés par leurs torches, bougies, cheminées, le four de Margot, les braises de la forge et le jour des fenêtres. Les flammes vacillent (`scenes/maps/lueur.gd`). La grotte, le temple et le lac gardent leur propre éclairage. Pas de cycle jour / nuit pour l'instant.
+
 ### Les menus
 - **Écran titre** au lancement : Continuer (la dernière sauvegarde), Nouvelle partie, Charger, Quitter.
 - **Nouvelle partie** : une intro à l'ancienne (prologue qui s'écrit lettre par lettre sur les cartes du jeu ; Entrée pour la passer), puis Zylrak arrive au village par la route de la forêt et marche seul jusqu'à l'auberge ; coupure au noir, et Oswin lui tombe dessus.

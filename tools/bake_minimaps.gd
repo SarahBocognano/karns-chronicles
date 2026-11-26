@@ -37,6 +37,7 @@ func _bake_all() -> void:
 
 func _bake(path: String) -> void:
 	var map: Node = load(path).instantiate()
+	map.set_meta("sans_eclairage", true)   # la mini-carte garde les couleurs du jour
 	var ground: TileMapLayer = map.get_node("Ground")
 	var used := ground.get_used_rect()
 	var ts := Vector2(ground.tile_set.tile_size)
