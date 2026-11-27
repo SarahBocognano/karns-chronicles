@@ -99,7 +99,7 @@ func _build() -> void:
 	_hand_box.add_theme_constant_override("separation", 26)
 	_hand_box.custom_minimum_size = Vector2(0, ICON + 12)
 	col.add_child(_hand_box)
-	var hint := _label("← →  choisir     Entrée  poser     Échap  reprendre", 18, CREAM.darkened(0.25))
+	var hint := _label(Tactile.hint("← →  choisir     Entrée  poser     Échap  reprendre"), 18, CREAM.darkened(0.25))
 	col.add_child(hint)
 
 func _refresh() -> void:

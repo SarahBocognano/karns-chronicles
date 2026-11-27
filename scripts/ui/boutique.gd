@@ -17,7 +17,7 @@ var _note: Label
 func _ready() -> void:
 	super._ready()
 	set_title("Herbes et potions de Myrtille")
-	set_footer("↑ ↓  choisir      Entrée  acheter      Échap  sortir")
+	set_footer(Tactile.hint("↑ ↓  choisir      Entrée  acheter      Échap  sortir"))
 	_run.call_deferred()
 
 func _run() -> void:

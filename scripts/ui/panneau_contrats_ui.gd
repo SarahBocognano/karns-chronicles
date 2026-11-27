@@ -12,13 +12,13 @@ func _ready() -> void:
 
 func _run() -> void:
 	if not Contrats.board_open():
-		set_footer("Entrée  ·  Échap  fermer")
+		set_footer(Tactile.hint("Entrée  ·  Échap  fermer"))
 		ink("Le panneau est vide.", 32, Vector2(60, 60), UiKit.INK_GOLD)
 		ink("Quelques clous rouillés, des bouts de papier arrachés... Rien d'intéressant pour l'instant.", 26, Vector2(60, 130), UiKit.INK, 720)
 		await wait_key()
 		close()
 		return
-	set_footer("↑ ↓  choisir      Entrée  lire / accepter      Échap  fermer")
+	set_footer(Tactile.hint("↑ ↓  choisir      Entrée  lire / accepter      Échap  fermer"))
 	list.moved.connect(_show)
 	while true:
 		_refresh_list()

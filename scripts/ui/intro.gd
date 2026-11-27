@@ -70,7 +70,7 @@ func _ready() -> void:
 	ui.add_child(_caption)
 	_center = _text_label(46, Rect2(200, screen.y / 2.0 - 200, screen.x - 400, 400))
 	ui.add_child(_center)
-	_skip_hint = UiKit.label("Entrée : passer", 20, Color(1, 1, 1, 0.4))
+	_skip_hint = UiKit.label(Tactile.hint("Entrée : passer"), 20, Color(1, 1, 1, 0.4))
 	_skip_hint.position = Vector2(screen.x - 220, screen.y - 40)
 	_skip_hint.modulate.a = 0.0
 	ui.add_child(_skip_hint)

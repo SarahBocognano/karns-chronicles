@@ -26,6 +26,35 @@ Au pied des ruines, une archère, **Ysolde**, le prend pour l'agresseur du march
 
 Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'écran).
 
+### Version web (navigateur, ordinateur et téléphone)
+
+1. Installer les modèles d'export de Godot 4.7.2 (dans l'éditeur : **Éditeur > Gérer les modèles d'export**). Seuls les fichiers `web_*` servent ici.
+2. Exporter avec le preset **Web** (`export_presets.cfg`) depuis l'éditeur, ou en ligne de commande :
+   ```bash
+   godot --headless --path . --export-release "Web" build/web/index.html
+   ```
+3. Servir le dossier `build/web/` (ouvrir `index.html` directement depuis le disque ne marche pas) :
+   ```bash
+   python3 -m http.server 8060 --directory build/web
+   ```
+   puis ouvrir http://localhost:8060.
+
+### Le site en ligne
+
+Le jeu est jouable sur **https://sarahbocognano.github.io/karns-chronicles/**, avec sa page de présentation (le monde, les personnages, des captures, les commandes au clavier et au doigt).
+
+- La page vient du dossier `site/` (`index.html`, `style.css`, `img/`) ; un fichier `.gdignore` empêche Godot de l'importer.
+- À chaque push sur `main`, le workflow `.github/workflows/site-web.yml` exporte le jeu dans `jeu/`, y ajoute la page, et publie le tout sur GitHub Pages (quelques minutes). On peut aussi le relancer à la main depuis l'onglet **Actions**.
+- Pour voir le site en local avant de pousser :
+  ```bash
+  rm -rf build/site && mkdir -p build/site && cp -R site/. build/site/ && cp -R build/web/. build/site/jeu/
+  ```
+  ```bash
+  python3 -m http.server 8061 --directory build/site
+  ```
+
+Le build est en un seul fil d'exécution : il n'a besoin d'aucun en-tête serveur particulier et se dépose tel quel sur itch.io ou un hébergement statique. Il pèse environ 80 Mo à télécharger (compressé). Sur le web, l'écran garde le format 16:9 (bandes noires sur les côtés si la fenêtre est plus large), le rendu passe automatiquement en *Compatibility* (WebGL 2), et l'écran titre n'a pas d'option Quitter. Le son est mixé par le jeu comme sur ordinateur (`audio/general/default_playback_type.web` en *Stream*) : le mode *Sample*, par défaut sur le web, ne suit pas les fondus de volume de la musique et des ambiances, et le jeu restait muet. Les planches de portraits `assets/portrait/1.png`, `2.png` et `3.png`, inutilisées, ne sont pas exportées. Navigateurs conseillés : Chrome ou Firefox ; Safari a des soucis connus avec WebGL 2.
+
 ## Commandes
 
 | Touche | Action |
@@ -35,6 +64,8 @@ Le jeu s'affiche en plein écran, en 1920×1080 (étiré selon la taille de l'é
 | M | Afficher / masquer la mini-carte |
 | Échap | Ouvrir le grimoire (Équipe, Équipement, Objets, Précieux, Journal, Système) ; dans un menu : revenir en arrière |
 | Clic sur le haut-parleur (en haut à droite) | Couper / remettre la musique |
+
+**Sur téléphone ou tablette** (version web), des contrôles tactiles apparaissent (`scripts/tactile.gd`) : une croix à gauche pour se déplacer et naviguer dans les menus, **A** (Entrée), **B** (Échap) et **Carte** (M) à droite. Chaque bouton envoie au jeu la même touche que le clavier. Les aides affichées à l'écran disent alors A et B au lieu d'Entrée et Échap. Les contrôles se cachent dès qu'on joue au clavier et reviennent au premier contact du doigt. Le jeu se joue en paysage : en portrait, un message demande de tourner l'appareil.
 
 ## Contenu actuel
 

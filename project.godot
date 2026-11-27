@@ -15,6 +15,10 @@ run/main_scene="res://scenes/EcranTitre.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 PlayerData="*uid://ddab6qmwc70wa"
@@ -25,14 +29,17 @@ Sons="*res://scripts/sons.gd"
 Vent="*res://scripts/vent.gd"
 Sauvegarde="*res://scripts/sauvegarde.gd"
 MenuPause="*res://scripts/ui/menu_pause.gd"
+Tactile="*res://scripts/tactile.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/size/mode.web=0
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/aspect.web="keep"
 
 [input]
 
