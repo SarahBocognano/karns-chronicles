@@ -46,7 +46,6 @@ const SOUNDS := {
 	"soin": [["soin.ogg"], -6.0, 0.0],
 	"protection": [["protection.ogg"], -8.0, 0.0],
 	"potion": [["potion.wav"], -6.0, 0.0],
-	"touche_heros": [["touche_heros_1.ogg", "touche_heros_2.ogg", "touche_heros_3.ogg"], -10.0, 0.05],
 	"monstre": [["monstre.ogg"], -8.0, 0.08],
 	"goule": [["goule.ogg"], -8.0, 0.08],
 	"araignee": [["araignee.ogg"], -8.0, 0.1],

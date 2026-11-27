@@ -168,6 +168,9 @@ h3 { font-size: 1.2rem; letter-spacing: 0.02em; }
 .section--player { padding-top: 0; margin-top: -3rem; position: relative; }
 .player {
   aspect-ratio: 16 / 9;
+  /* Sans plein écran (iPhone, refus du navigateur), le jeu tient dans la hauteur de l'écran. */
+  width: min(100%, calc(100svh * 16 / 9));
+  margin-inline: auto;
   background: #000;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -424,7 +427,11 @@ kbd.wide { min-width: 4.6rem; }
 
 /* --- Petits écrans --- */
 @media (max-width: 640px) {
-  .player { aspect-ratio: 4 / 3; }
+  .player { aspect-ratio: 4 / 3; width: min(100%, calc(100svh * 4 / 3)); }
   .player__note { display: none; }
   .player__bar { flex-direction: column; align-items: flex-start; }
 }
+
+/* --- Plein écran --- */
+.player:fullscreen { aspect-ratio: auto; width: 100vw; height: 100vh; border: 0; border-radius: 0; box-shadow: none; }
+.player:-webkit-full-screen { aspect-ratio: auto; width: 100vw; height: 100vh; border: 0; border-radius: 0; }

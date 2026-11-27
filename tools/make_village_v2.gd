@@ -127,12 +127,23 @@ func _steps_to_ground(root: Node) -> void:
 	root.add_child(steps)
 	root.move_child(steps, root.get_node("YSortLayer").get_index())
 	steps.owner = root
+	# L'escalier de la maison des jumelles : ses tuiles sont au niveau du sol dans le tileset
+	# (z 0), il lui faut son propre calque, sans le z de -1 des marches.
+	var stairs_layer := TileMapLayer.new()
+	stairs_layer.name = "Escalier"
+	stairs_layer.tile_set = sup.tile_set
+	root.add_child(stairs_layer)
+	root.move_child(stairs_layer, root.get_node("YSortLayer").get_index())
+	stairs_layer.owner = root
 	var moved := 0
 	for c in sup.get_used_cells():
 		var ac := sup.get_cell_atlas_coords(c)
-		# rangée 20 de houses_outside : marches sous une porte ouverte, sans mur derrière
-		if ac.y == 20 and ac.x <= 3 and building.get_cell_source_id(c) == -1:
-			steps.set_cell(c, sup.get_cell_source_id(c), ac, sup.get_cell_alternative_tile(c))
+		# rangée 20 de houses_outside : marches sous une porte ouverte, sans mur derrière ;
+		# (11-12, 25-26) : l'escalier de la maison des jumelles
+		var under_door := ac.y == 20 and ac.x <= 3 and building.get_cell_source_id(c) == -1
+		var stairs := ac.x >= 11 and ac.x <= 12 and ac.y >= 25 and ac.y <= 26
+		if under_door or stairs:
+			(stairs_layer if stairs else steps).set_cell(c, sup.get_cell_source_id(c), ac, sup.get_cell_alternative_tile(c))
 			sup.erase_cell(c)
 			moved += 1
 	print("marches mises au sol : ", moved)
@@ -289,7 +300,7 @@ static func lock_aelis_door(root: Node) -> void:
 	door.set("push_back", Vector2(0, 18))
 
 ## Le contrat du voleur, au village : les nouvelles répliques d'Aelis, de Godric et de Pépin, la scène
-## du vol de la bourse, Zylrak qui fait le point (scenes/maps/voleur/), et Croûton couché devant
+## du vol de la bourse, Zylrak qui fait le point (scenes/maps/voleur/), et Stone couché devant
 ## la grange de Margot si Zylrak l'a laissé à Pépin.
 static func add_thief_contract(root: Node) -> void:
 	_prepend_conversations(root.get_node("PNJBlondeHair"), ["aelis/aelis_coussin", "aelis/aelis_coussin_rappel"])
@@ -306,7 +317,7 @@ static func add_thief_contract(root: Node) -> void:
 	watch.set_script(load("res://scenes/maps/voleur/enquete.gd"))
 	root.add_child(watch)
 	watch.owner = root
-	# Croûton, chez Margot (s'il est resté avec Pépin) : assis devant la grange, la queue qui bat
+	# Stone, chez Margot (s'il est resté avec Pépin) : assis devant la grange, la queue qui bat
 	var dog := AnimatedSprite2D.new()
 	dog.name = "CroutonGrange"
 	var frames := SpriteFrames.new()
@@ -330,7 +341,7 @@ static func add_thief_contract(root: Node) -> void:
 	presence.set("required_flags", req)
 	dog.add_child(presence)
 	presence.owner = root
-	# un objet enfoui près du puits, que seul Croûton sait trouver
+	# un objet enfoui près du puits, que seul Stone sait trouver
 	var spot := Node2D.new()
 	spot.name = "FlairPuits"
 	spot.set_script(load("res://scenes/maps/flair_chien.gd"))

@@ -55,7 +55,7 @@ const OVEN := Rect2(480, 30, 64, 84)            # four à pain (FurnituresC)
 const BREAD_RACKS := [Rect2(576, 14, 32, 50), Rect2(576, 78, 32, 50)]   # casiers à pain
 const SACKS := [Rect2(225, 324, 26, 22), Rect2(257, 324, 24, 22), Rect2(290, 350, 26, 34)]   # sacs de farine (decoratives)
 const BED_BLUE := Rect2(288, 8, 32, 64)         # lit à couverture bleue (FurnituresA)
-const WARDROBE := Rect2(0, 8, 32, 72)
+const WARDROBE := Rect2(8, 8, 48, 72)          # armoire à deux portes (FurnituresA), entière
 const VOLEUR := "res://assets/sprites/objets/voleur/"
 const DIALOGUES := "res://resources/dialogues/"
 

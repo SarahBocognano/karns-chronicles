@@ -29,7 +29,6 @@
 [ext_resource type="Resource" uid="uid://de430twwpugih" path="res://resources/dialogues/ruines/porte_mauvais_ordre_indice.tres" id="27_bh66x"]
 [ext_resource type="Resource" uid="uid://bj1i8qevmkt2n" path="res://resources/dialogues/ruines/porte_mauvais_ordre_sans_indice.tres" id="28_4hqs1"]
 [ext_resource type="Resource" uid="uid://b4ockmyifgk4g" path="res://resources/dialogues/ruines/porte_ouverture.tres" id="29_igspb"]
-[ext_resource type="Resource" uid="uid://b4lsc4hxctfl4" path="res://resources/dialogues/ruines/porte_ouverte.tres" id="30_wqruc"]
 [ext_resource type="Shader" uid="uid://cmy1ahhn88v51" path="res://resources/shaders/forest_ambience.gdshader" id="31_7v6vp"]
 [ext_resource type="Script" uid="uid://d0o4v7vpl7d5c" path="res://scenes/maps/encounter_zone.gd" id="32_m7ctx"]
 [ext_resource type="Script" uid="uid://b6rfqg4b2460u" path="res://scripts/battle/monster_data.gd" id="33_mbg0q"]
@@ -1829,7 +1828,6 @@ wrong_order = ExtResource("26_w37ga")
 wrong_hint = ExtResource("27_bh66x")
 wrong_no_hint = ExtResource("28_4hqs1")
 opening = ExtResource("29_igspb")
-opened = ExtResource("30_wqruc")
 
 [node name="Ambiance" type="ColorRect" parent="." unique_id=1092298676]
 material = SubResource("ShaderMaterial_hqtg5")

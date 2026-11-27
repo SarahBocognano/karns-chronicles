@@ -35,7 +35,7 @@ func _ready() -> void:
 	_spawn_dog()
 	Eclairage.apply(self)
 
-## Croûton, si Zylrak l'a gardé (contrat du voleur : flag "voleur_chien_garde"), le suit aussi.
+## Stone, si Zylrak l'a gardé (contrat du voleur : flag "voleur_chien_garde"), le suit aussi.
 func _spawn_dog() -> void:
 	var player_data := get_node_or_null("/root/PlayerData")
 	if player_data == null or not player_data.get_flag("voleur_chien_garde"):

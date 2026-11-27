@@ -13,14 +13,14 @@ extends CanvasLayer
 const FONT := preload("res://assets/fonts/Cinzel-VariableFont_wght.ttf")
 const GOLD := Color(0.78, 0.63, 0.36)
 const TEXT := Color(0.93, 0.90, 0.84)
-const FILL := Color(0.04, 0.05, 0.10, 0.38)
+const FILL := Color(0.04, 0.05, 0.10, 0.3)
 const FILL_PRESSED := Color(0.78, 0.63, 0.36, 0.45)
 
 ## Croix directionnelle : rayon (unités de l'écran de base 1920 × 1080) et marge au bord.
-const PAD_RADIUS := 165.0
-const MARGIN := 70.0
-const BUTTON_RADIUS := 78.0
-const SMALL_RADIUS := 52.0
+const PAD_RADIUS := 105.0
+const MARGIN := 36.0
+const BUTTON_RADIUS := 50.0
+const SMALL_RADIUS := 34.0
 ## Zone morte au centre de la croix (part du rayon).
 const DEAD_ZONE := 0.22
 
@@ -69,10 +69,10 @@ func _set_active(on: bool) -> void:
 func _layout() -> void:
 	var size := _screen_size()
 	_pad_center = Vector2(MARGIN + PAD_RADIUS, size.y - MARGIN - PAD_RADIUS)
-	var a := Vector2(size.x - MARGIN - BUTTON_RADIUS, size.y - MARGIN - BUTTON_RADIUS - 70.0)
+	var a := Vector2(size.x - MARGIN - BUTTON_RADIUS, size.y - MARGIN - BUTTON_RADIUS - 34.0)
 	_buttons["a"]["pos"] = a
-	_buttons["b"]["pos"] = a + Vector2(-BUTTON_RADIUS * 2.0 - 30.0, 90.0)
-	_buttons["carte"]["pos"] = a + Vector2(-20.0, -BUTTON_RADIUS - SMALL_RADIUS - 70.0)
+	_buttons["b"]["pos"] = a + Vector2(-BUTTON_RADIUS * 2.0 - 22.0, 52.0)
+	_buttons["carte"]["pos"] = a + Vector2(-8.0, -BUTTON_RADIUS - SMALL_RADIUS - 34.0)
 	if _view:
 		_view.queue_redraw()
 
@@ -129,12 +129,12 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_pad(pos: Vector2) -> bool:
-	return pos.distance_to(_pad_center) <= PAD_RADIUS * 1.35
+	return pos.distance_to(_pad_center) <= PAD_RADIUS * 1.5
 
 func _button_at(pos: Vector2) -> String:
 	for id in _buttons:
 		var b: Dictionary = _buttons[id]
-		if pos.distance_to(b["pos"]) <= b["radius"] * 1.3:
+		if pos.distance_to(b["pos"]) <= b["radius"] * 1.45:
 			return id
 	return ""
 
@@ -198,7 +198,7 @@ func _draw_controls() -> void:
 		return
 	# Croix
 	_view.draw_circle(_pad_center, PAD_RADIUS, FILL)
-	_view.draw_arc(_pad_center, PAD_RADIUS, 0.0, TAU, 64, Color(GOLD, 0.5), 3.0, true)
+	_view.draw_arc(_pad_center, PAD_RADIUS, 0.0, TAU, 64, Color(GOLD, 0.45), 2.0, true)
 	var arrows := {KEY_UP: Vector2.UP, KEY_DOWN: Vector2.DOWN, KEY_LEFT: Vector2.LEFT, KEY_RIGHT: Vector2.RIGHT}
 	for k in arrows:
 		var d: Vector2 = arrows[k]
@@ -213,12 +213,12 @@ func _draw_controls() -> void:
 		var b: Dictionary = _buttons[id]
 		var on: bool = pressed_ids.has(id)
 		_view.draw_circle(b["pos"], b["radius"], FILL_PRESSED if on else FILL)
-		_view.draw_arc(b["pos"], b["radius"], 0.0, TAU, 48, Color(GOLD, 0.6), 3.0, true)
-		var fs := 60 if b["radius"] >= BUTTON_RADIUS else 26
+		_view.draw_arc(b["pos"], b["radius"], 0.0, TAU, 48, Color(GOLD, 0.55), 2.0, true)
+		var fs := 40 if b["radius"] >= BUTTON_RADIUS else 18
 		_text(b["label"], b["pos"], fs, Color(TEXT, 0.9))
 
 func _text(s: String, center: Vector2, font_size: int, color: Color) -> void:
 	var w := FONT.get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
 	var pos := center + Vector2(-w.x / 2.0, FONT.get_ascent(font_size) / 2.0 - 4.0)
-	_view.draw_string_outline(FONT, pos, s, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 6, Color(0.02, 0.02, 0.03, 0.8))
+	_view.draw_string_outline(FONT, pos, s, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 4, Color(0.02, 0.02, 0.03, 0.8))
 	_view.draw_string(FONT, pos, s, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)

@@ -8,13 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_l0"]
 script = ExtResource("1_lines")
-text = "Pendant le combat, Croûton s'est jeté sur une goule et l'a tenue par la jambe, le temps que Zylrak frappe."
+text = "Pendant le combat, Stone s'est jeté sur une goule et l'a tenue par la jambe, le temps que Zylrak frappe."
 
 [sub_resource type="Resource" id="Resource_l1"]
 script = ExtResource("1_lines")
 speaker_name = "Pépin"
 portrait = ExtResource("p0")
-text = "T'as vu ?! T'as vu Croûton ? Il t'a défendu !"
+text = "T'as vu ?! T'as vu Stone ? Il t'a défendu !"
 
 [sub_resource type="Resource" id="Resource_l2"]
 script = ExtResource("1_lines")
@@ -30,7 +30,7 @@ text = "Zylrak récupère sa bourse."
 script = ExtResource("1_lines")
 speaker_name = "Pépin"
 portrait = ExtResource("p2")
-text = "Dis... Tu veux bien le prendre avec toi, Croûton ? Moi j'peux pas le garder, la mère Margot va me tuer."
+text = "Dis... Tu veux bien le prendre avec toi, Stone ? Moi j'peux pas le garder, la mère Margot va me tuer."
 
 [resource]
 script = ExtResource("2_conv")

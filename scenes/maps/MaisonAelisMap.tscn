@@ -19,7 +19,7 @@
 size = Vector2(28, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4frl"]
-size = Vector2(28, 16)
+size = Vector2(44, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qeyeh"]
 size = Vector2(28, 16)
@@ -155,9 +155,9 @@ shape = SubResource("RectangleShape2D_5vkgo")
 position = Vector2(128, 118.4)
 texture = ExtResource("6_8sk7j")
 centered = false
-offset = Vector2(-16, -70)
+offset = Vector2(-24, -70)
 region_enabled = true
-region_rect = Rect2(0, 8, 32, 72)
+region_rect = Rect2(8, 8, 48, 72)
 
 [node name="Corps" type="StaticBody2D" parent="YSortLayer/Armoire" unique_id=946224525]
 

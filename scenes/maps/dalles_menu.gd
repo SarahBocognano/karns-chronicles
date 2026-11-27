@@ -38,6 +38,10 @@ func _ready() -> void:
 	for s in FragmentYrenn.SYMBOLS:
 		if PlayerData.get_flag(FragmentYrenn.flag_for(s)):
 			_hand.append(s)
+	# Les pierres arrivent en désordre : jamais déjà rangées dans l'ordre de la Chronique.
+	_hand.shuffle()
+	if _hand.size() > 1 and Array(_hand) == Array(FragmentYrenn.SYMBOLS):
+		_hand.reverse()
 	_build()
 	_refresh()
 

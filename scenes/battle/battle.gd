@@ -215,7 +215,7 @@ func _foe_turn(foe: Dictionary) -> void:
 		dmg = max(1, dmg / 2)
 	_set_hp(target, max(0, _hp(target) - dmg))
 	var sprite_t: AnimatedSprite2D = target.sprite
-	Sons.play("touche_heros")
+	Sons.play("epee")   # le même coup que quand Zylrak frappe
 	_popup(str(dmg), target.home + Vector2(0, -48), Color(1.0, 0.85, 0.80))
 	_shake(sprite_t, target.home)
 	await _flash(sprite_t, Color(1.8, 0.5, 0.45), 0.18)
@@ -875,8 +875,19 @@ func _level_up(up: Dictionary) -> void:
 		_embers(hero_home + Vector2(0, -24), Color(1.0, 0.55, 0.15))
 		await _say("Zylrak apprend le Signe : %s !" % signe, 2.2, true)
 	if _ysolde:
+		# Ysolde monte de niveau avec Zylrak : la même annonce que lui.
 		_embers(YSOLDE_DUO + Vector2(0, -20), Color(1.0, 0.85, 0.4))
-		await _say("Ysolde progresse aussi ! PV max +4, Mana max +2, Attaque +1.", 2.4, true)
+		_embers(YSOLDE_DUO + Vector2(0, -34), Color(1.0, 0.7, 0.3))
+		Sons.play("niveau")
+		_popup("Niveau %d !" % up.level, YSOLDE_DUO + Vector2(0, -62), Color(1.0, 0.86, 0.45))
+		_flash(_ysolde, Color(1.8, 1.55, 0.9), 0.4)
+		await _say("Ysolde passe au niveau %d !" % up.level, 2.0, true)
+		var ys_parts: PackedStringArray = ["PV max +4", "Mana max +2", "Attaque +1"]
+		if (up.level - 1) % 2 == 0:
+			ys_parts.append("Défense +1")   # voir PlayerData.ysolde_defense()
+		if (up.level - 1) % 3 == 0:
+			ys_parts.append("Vitesse +1")   # voir PlayerData.ysolde_speed()
+		await _say(", ".join(ys_parts), 2.6, true)
 
 # =============================================================== construction
 func _build_world() -> void:

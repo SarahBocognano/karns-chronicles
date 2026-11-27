@@ -8,7 +8,7 @@
 script = ExtResource("1_lines")
 speaker_name = "Pépin"
 portrait = ExtResource("p0")
-text = "Salut, chevalier ! Il va bien, Croûton ? Tu lui donnes à manger, hein ?"
+text = "Salut, chevalier ! Il va bien, Stone ? Tu lui donnes à manger, hein ?"
 
 [resource]
 script = ExtResource("2_conv")
