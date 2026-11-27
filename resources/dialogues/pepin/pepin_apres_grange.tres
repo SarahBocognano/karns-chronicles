@@ -8,7 +8,7 @@
 script = ExtResource("1_lines")
 speaker_name = "Pépin"
 portrait = ExtResource("p0")
-text = "Croûton dort dans la grange avec moi, maintenant ! Et la mère Margot me donne les croûtes du pain. C'est pour ça qu'il s'appelle comme ça !"
+text = "Stone dort dans la grange avec moi, maintenant ! Et la mère Margot lui garde les croûtes du pain."
 
 [resource]
 script = ExtResource("2_conv")

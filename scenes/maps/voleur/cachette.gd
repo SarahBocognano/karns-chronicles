@@ -2,8 +2,8 @@ extends Node2D
 
 ## Contrat du voleur : la cachette de Pépin, dans les herbes hautes de la lisière (ForestMap).
 ## Elle apparaît quand Zylrak a compris (flag "voleur_deduction"). Quand il approche : Pépin et son
-## chien Croûton, la viande séchée de Margot, puis des goules attaquent (combat sans fuite) ; Pépin
-## rend la bourse, et Zylrak choisit : garder Croûton (il le suit et flaire des objets cachés) ou le
+## chien Stone, la viande séchée de Margot, puis des goules attaquent (combat sans fuite) ; Pépin
+## rend la bourse, et Zylrak choisit : garder Stone (il le suit et flaire des objets cachés) ou le
 ## laisser à Pépin (qui offre son trésor). Les bottes de paille restent ensuite.
 
 const DECO := preload("res://assets/sprites/tilesets/Buildings/FL_Houses_decoratives.png")
@@ -93,7 +93,7 @@ func _meet(player: Node2D) -> void:
 	var last: DialogueLine = lines.pop_back()
 	await cs.say(lines)
 	PlayerData.return_purse()
-	var choice := await cs.choose(["Garder Croûton", "Le laisser à Pépin"], last)
+	var choice := await cs.choose(["Garder Stone", "Le laisser à Pépin"], last)
 	PlayerData.set_flag("voleur_goules_vaincues", true)
 	if choice == 0:
 		PlayerData.set_flag("voleur_chien_garde", true)
@@ -116,7 +116,7 @@ func _kid_leaves() -> void:
 	tw.tween_property(_kid, "position:y", _kid.position.y - 40, 0.8)
 	tw.parallel().tween_property(_kid, "modulate:a", 0.0, 0.8)
 
-## Croûton devient le compagnon de Zylrak : il part de là où il est assis.
+## Stone devient le compagnon de Zylrak : il part de là où il est assis.
 func _dog_joins(player: Node2D) -> void:
 	var dog: Node2D = load("res://scenes/characters/ChienCompagnon.tscn").instantiate()
 	player.get_parent().add_child(dog)

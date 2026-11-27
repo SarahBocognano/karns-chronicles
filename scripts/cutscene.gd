@@ -34,7 +34,7 @@ func say(lines: Array[DialogueLine]) -> void:
 		await _advanced
 	_box.hide_dialogue()
 
-## Un choix (ex. « Garder Croûton / Le laisser à Pépin ») : la dernière réplique reste affichée, et
+## Un choix (ex. « Garder Stone / Le laisser à Pépin ») : la dernière réplique reste affichée, et
 ## une petite liste apparaît au-dessus de la boîte de dialogue. Renvoie l'indice choisi.
 func choose(entries: Array[String], last_line: DialogueLine = null) -> int:
 	if last_line:

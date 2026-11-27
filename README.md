@@ -81,8 +81,8 @@ Six coffres sont cachés dans le village, la forêt et les ruines (coffre en boi
 
 ### Les contrats et la boutique
 - **Le panneau des contrats**, à droite de l'auberge : une fois la quête d'Oswin acceptée, il affiche deux contrats (un « ! » doré flotte au-dessus tant qu'il en reste à accepter). On les lit et on les accepte avec Entrée ; un contrat accepté passe dans le journal.
-- **Contrat « Le voleur d'Eclatvin »** (pour Margot) : peu après l'avoir accepté, Pépin bouscule Zylrak sur la place et lui prend sa bourse (tous ses écus). L'enquête : Margot (des traces de pas d'enfant dans la farine ; elle donne de la viande séchée), le colporteur et la vieille voyageuse à l'étage de l'auberge, Aelis (son coussin brodé ; à la fenêtre de chez elle, des poils de chien) et Godric. Avec les cinq indices, Zylrak comprend : Pépin cache un chien dans les herbes hautes de la lisière. À la cachette, la viande séchée apprivoise Croûton, des goules attaquent (Croûton se bat aux côtés de Zylrak), Pépin rend la bourse, et il faut choisir :
-  - **garder Croûton** : il suit Zylrak sur toutes les cartes et **flaire les objets enfouis** (il court s'arrêter et aboie ; Entrée pour creuser) ;
+- **Contrat « Le voleur d'Eclatvin »** (pour Margot) : peu après l'avoir accepté, Pépin bouscule Zylrak sur la place et lui prend sa bourse (tous ses écus). L'enquête : Margot (des traces de pas d'enfant dans la farine ; elle donne de la viande séchée), le colporteur et la vieille voyageuse à l'étage de l'auberge, Aelis (son coussin brodé ; à la fenêtre de chez elle, des poils de chien) et Godric. Avec les cinq indices, Zylrak comprend : Pépin cache un chien dans les herbes hautes de la lisière. À la cachette, la viande séchée apprivoise Stone, des goules attaquent (Stone se bat aux côtés de Zylrak), Pépin rend la bourse, et il faut choisir :
+  - **garder Stone** : il suit Zylrak sur toutes les cartes et **flaire les objets enfouis** (il court s'arrêter et aboie ; Entrée pour creuser) ;
   - **le laisser à Pépin** : ils dorment dans la grange de Margot, et Pépin offre son trésor, le **Caillou porte-bonheur**.
 
   Margot paie 40 écus dans les deux cas. Scènes et scripts : `scenes/maps/voleur/`, `scripts/characters/chien_compagnon.gd`, `scenes/maps/flair_chien.gd` ; choix dans les dialogues : `Cutscene.choose`.
@@ -96,6 +96,8 @@ Six coffres sont cachés dans le village, la forêt et les ruines (coffre en boi
 ### L'auberge
 Torvald, Théobald Lunebrise, Barnabé et l'inconnu encapuchonné.
 
+À l'étage, un lit qu'Oswin loue **5 écus la nuit** (`scenes/maps/lit_auberge.gd`) : Zylrak (et Ysolde) y dorment et se réveillent avec tous leurs PV et PM, guéris du venin. Inutile de payer quand tout le monde est déjà en pleine forme.
+
 ### La forêt (au sud du village)
 Trois petites cartes, reliées par les chemins (la musique continue de l'une à l'autre) :
 - **La lisière** : le chemin qui descend du village, un carrefour et une prairie d'herbes hautes.
@@ -107,7 +109,7 @@ Trois petites cartes, reliées par les chemins (la musique continue de l'une à 
 - Des **zones de rencontres aléatoires** partout hors de l'entrée.
 
 ### Les sons
-Des bruitages partout (autoload `Sons`, `scripts/sons.gd`, fichiers dans `assets/audio/sons/`) : menus et dialogues, pas de Zylrak (selon le sol : terre, bois, pierre), une ambiance en boucle sous la musique (forêt, grotte, intérieur, cascade), portes des maisons, coffres et trouvailles, achats et écus, le chien qui aboie, la barque ; en combat, coups d'épée, flèches, Signes, potions, cris des monstres (selon le monstre : `MonsterData.cri`), venin, furie, victoire, défaite, montée de niveau. Les combats sans fuite (gardiens, boss) ont leur propre musique, et la grotte la sienne. Le bouton du son coupe la musique et les bruitages.
+Des bruitages partout (autoload `Sons`, `scripts/sons.gd`, fichiers dans `assets/audio/sons/`) : menus et dialogues, pas de Zylrak (selon le sol : terre, bois, pierre), une ambiance en boucle sous la musique (forêt, grotte, intérieur, cascade), portes des maisons, coffres et trouvailles, achats et écus, le chien qui aboie, la barque ; en combat, coups d'épée (le même son quand un monstre frappe), flèches, Signes, potions, cris des monstres (selon le monstre : `MonsterData.cri`), venin, furie, victoire, défaite, montée de niveau. Les combats sans fuite (gardiens, boss) ont leur propre musique, et la grotte la sienne. Le bouton du son coupe la musique et les bruitages.
 
 ### L'éclairage
 Chaque carte a sa lumière (`scripts/eclairage.gd`, posé à l'arrivée sur la carte) : Eclatvin au crépuscule avec ses lanternes allumées, la forêt verte et tamisée (plus sombre autour du chariot attaqué), les ruines au couchant ; les intérieurs dans une pénombre chaude, éclairés par leurs torches, bougies, cheminées, le four de Margot, les braises de la forge et le jour des fenêtres. Les flammes vacillent (`scenes/maps/lueur.gd`). La grotte, le temple et le lac gardent leur propre éclairage. Pas de cycle jour / nuit pour l'instant.
@@ -130,7 +132,7 @@ Chaque carte a sa lumière (`scripts/eclairage.gd`, posé à l'arrivée sur la c
 - **Zylrak** : Attaque, Signes (Feu, Rempart de cendres, Phoenix…), Objets, Fuite.
 - **Ysolde**, une fois qu'elle l'a rejoint : Attaque (un tir à l'arc), Talents (Flèche perçante, Pluie de flèches, **Pillage** : elle dérobe une potion ou une fiole de mana à un monstre), Objets, Fuite.
 - Potions et fioles se donnent à l'allié de son choix ; un héros à terre se relève à la victoire ; la défaite n'arrive que si toute l'équipe tombe.
-- Montée de niveau : Ysolde progresse avec Zylrak.
+- Montée de niveau : Ysolde progresse avec Zylrak ; chacun a son annonce (« Niveau N ! » au-dessus de lui, puis ses gains).
 
 ### La grotte du sentier (au-dessus du chariot)
 Trois salles plongées dans le noir (générées par `tools/make_grotte.gd`, tuiles du pack *Caves*), éclairées par la torche que Zylrak tient (`scenes/maps/torche_joueur.gd`) :
@@ -141,7 +143,7 @@ Trois salles plongées dans le noir (générées par `tools/make_grotte.gd`, tui
 ### Les ruines des Yrenn (à l'est de la forêt)
 - **La montée** : une clairière semée de ruines, une paroi rocheuse et son escalier de pierre (un panneau, à l'entrée, prévient des dangers). Ysolde y attend Zylrak, puis le suit partout.
 - **Le parvis du temple** : une façade taillée au pied d'une crête, sa porte scellée à la pierre bleue, et le ciel d'aube au-dessus des sommets.
-- **L'énigme de la porte** : en arrivant au parvis, Zylrak suit les traces de sang jusqu'à la porte, scellée par un voile de lumière magique. Quatre encoches attendent des pierres gravées : il faut retrouver les **quatre fragments** qui brillent dans les ruines (deux sur la montée, deux sur le parvis), puis les poser dans le bon ordre. Théobald, à l'auberge, en donne l'indice.
+- **L'énigme de la porte** : en arrivant au parvis, Zylrak suit les traces de sang jusqu'à la porte, scellée par un voile de lumière magique. Quatre encoches attendent des pierres gravées : il faut retrouver les **quatre fragments** qui brillent dans les ruines (deux sur la montée, deux sur le parvis), puis les poser dans le bon ordre (elles sont proposées en désordre). Théobald, à l'auberge, en donne l'indice.
 
 ### Le temple des Yrenn (derrière la porte scellée)
 Trois salles, de plus en plus profondes (générées par `tools/make_temple.gd`) :
@@ -198,7 +200,7 @@ scripts/
 - Temple des Yrenn : fresques murales, sceaux au sol, grand cercle rituel, pierres gravées des fragments, statues de mages, ossements, racines et mousse, fond de combat de la salle, générés avec Copilot ; animations des torches et braseros, cristaux, jarres : Szadi art.
 - Enseignes de l'auberge et de la forge : générées avec Copilot, puis réduites et pixelisées.
 - Portraits de Margot, Myrtille, du colporteur et de la vieille voyageuse : générés avec Copilot, fond détouré par `tools/dev/import_portraits.gd`.
-- Croûton, le chien errant (marche, assis, renifle, aboie) : généré avec Copilot.
+- Stone, le chien errant (marche, assis, renifle, aboie) : généré avec Copilot.
 - Portraits d'Aldric : générés avec Copilot.
 - Interface (combats et menus) :
   - cadres et contour des barres : *Tiny RPG – Mana Soul GUI* par **Gabriel « tiopalada » Lima** — CC0 (https://tiopalada.itch.io/tiny-rpg-mana-soul-gui) ;

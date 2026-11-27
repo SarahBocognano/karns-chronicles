@@ -27,7 +27,7 @@ text = "Un chien efflanqué se dresse devant le gamin. Il grogne, babines retrou
 script = ExtResource("1_lines")
 speaker_name = "Pépin"
 portrait = ExtResource("p1")
-text = "Croûton, non ! ... Il mord pas. Enfin, presque pas."
+text = "Stone, non ! ... Il mord pas. Enfin, presque pas."
 
 [sub_resource type="Resource" id="Resource_l4"]
 script = ExtResource("1_lines")
@@ -59,7 +59,7 @@ text = "Il avait faim ! Et froid ! Personne voulait de lui, alors..."
 
 [sub_resource type="Resource" id="Resource_l9"]
 script = ExtResource("1_lines")
-text = "Un grondement monte des bois. Croûton se retourne, le poil hérissé."
+text = "Un grondement monte des bois. Stone se retourne, le poil hérissé."
 
 [sub_resource type="Resource" id="Resource_l10"]
 script = ExtResource("1_lines")

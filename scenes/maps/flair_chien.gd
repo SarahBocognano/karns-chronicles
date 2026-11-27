@@ -1,6 +1,6 @@
 extends Node2D
 
-## Un objet enfoui, que seul Croûton (scripts/characters/chien_compagnon.gd) sait trouver : quand
+## Un objet enfoui, que seul Stone (scripts/characters/chien_compagnon.gd) sait trouver : quand
 ## il le flaire, il aboie et la terre apparaît remuée ; Zylrak creuse avec la touche d'action.
 ## Donne `contenu` (objet ou équipement de BattleCatalog, ou "ecus") une seule fois :
 ## flag "flair_<carte>_<nom du nœud>".
@@ -71,7 +71,7 @@ func _dig() -> void:
 		what = BattleCatalog.OBJETS[contenu].nom + ("" if quantite == 1 else " ×%d" % quantite)
 	Sons.play("ecus" if contenu == "ecus" else "objet")
 	var line := DialogueLine.new()
-	line.text = "Zylrak gratte la terre là où Croûton aboie... et déterre : %s !" % what
+	line.text = "Zylrak gratte la terre là où Stone aboie... et déterre : %s !" % what
 	var lines: Array[DialogueLine] = [line]
 	PlayerData.controls_locked = true
 	var cs := Cutscene.new()

@@ -261,9 +261,9 @@ var quest_flags: Dictionary = {
 	"voleur_poils_trouves": false,       # des poils de chien sur le rebord de la fenêtre d'Aelis
 	"voleur_godric_vu": false,           # Godric a vu Pépin à la lisière, une miche sous le bras
 	"voleur_deduction": false,           # Zylrak a compris : Pépin cache un chien à la lisière
-	"voleur_goules_vaincues": false,     # la cachette : Croûton apprivoisé, les goules repoussées, la bourse rendue
-	"voleur_chien_garde": false,         # choix : Croûton suit Zylrak (il flaire des objets cachés)
-	"voleur_chien_pepin": false,         # choix : Croûton reste avec Pépin, dans la grange de Margot
+	"voleur_goules_vaincues": false,     # la cachette : Stone apprivoisé, les goules repoussées, la bourse rendue
+	"voleur_chien_garde": false,         # choix : Stone suit Zylrak (il flaire des objets cachés)
+	"voleur_chien_pepin": false,         # choix : Stone reste avec Pépin, dans la grange de Margot
 	"contrat_voleur_termine": false,     # Margot a payé le contrat (40 écus)
 }
 

@@ -36,7 +36,7 @@
     <p class="hero__subtitle">Le Serment des Cendres</p>
     <p class="hero__pitch">Un village aux abois, des goules qui rôdent, des ruines qu'un peuple disparu a scellées. Un RPG à l'ancienne, jouable directement dans ton navigateur, sur ordinateur comme sur téléphone.</p>
     <div class="hero__actions">
-      <a class="btn btn--primary" href="#jouer">Jouer maintenant</a>
+      <a class="btn btn--primary" href="#jouer" data-play>Jouer maintenant</a>
       <a class="btn btn--ghost" href="#monde">Découvrir le monde</a>
     </div>
   </div>
@@ -175,29 +175,54 @@
   const player = document.getElementById('player');
   const poster = document.getElementById('poster');
   const fullscreenBtn = document.getElementById('fullscreen');
+  const hint = document.querySelector('.player__hint');
   const touch = matchMedia('(pointer: coarse)').matches;
+  const requestFs = player.requestFullscreen || player.webkitRequestFullscreen;
 
-  document.getElementById('start').addEventListener('click', () => {
-    // Au téléphone, le jeu s'ouvre en page entière : plus de place, et l'appareil se tient en paysage.
-    if (touch) { location.href = 'jeu/'; return; }
-    const frame = document.createElement('iframe');
-    frame.src = 'jeu/index.html';
-    frame.title = "Karn's Chronicles";
-    frame.allow = 'autoplay; fullscreen';
-    frame.allowFullscreen = true;
-    poster.replaceWith(frame);
+  // Plein écran sur le cadre du jeu. À appeler pendant le clic, sinon le navigateur refuse.
+  function enterFullscreen() {
+    if (!requestFs) return;
+    Promise.resolve(requestFs.call(player, { navigationUI: 'hide' })).then(() => {
+      // Téléphone : on bascule en paysage (Android ; iOS l'ignore).
+      if (touch && screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(() => {});
+      // Ordinateur : Échap ouvre le grimoire au lieu de quitter le plein écran (Chrome, Edge) ;
+      // on quitte en maintenant Échap.
+      if (!touch && navigator.keyboard && navigator.keyboard.lock) navigator.keyboard.lock(['Escape']).catch(() => {});
+      player.querySelector('iframe')?.focus();
+    }).catch(() => {});
+  }
+
+  function startGame() {
+    // iPhone : pas de plein écran pour une page web ; le jeu s'ouvre en page entière.
+    if (touch && !requestFs) { location.href = 'jeu/'; return; }
+    enterFullscreen();
+    let frame = player.querySelector('iframe');
+    if (!frame) {
+      frame = document.createElement('iframe');
+      frame.src = 'jeu/index.html';
+      frame.title = "Karn's Chronicles";
+      frame.allow = 'autoplay; fullscreen; keyboard-map';
+      frame.allowFullscreen = true;
+      poster.replaceWith(frame);
+    }
     frame.focus();
     fullscreenBtn.hidden = false;
-  });
+    player.scrollIntoView({ block: 'center' });
+  }
 
-  fullscreenBtn.addEventListener('click', () => {
-    const frame = player.querySelector('iframe');
-    (frame || player).requestFullscreen?.();
-    frame?.focus();
-  });
+  document.getElementById('start').addEventListener('click', startGame);
+  document.querySelectorAll('[data-play]').forEach((el) => el.addEventListener('click', (e) => {
+    e.preventDefault();
+    startGame();
+  }));
+  fullscreenBtn.addEventListener('click', enterFullscreen);
 
   if (touch) {
-    document.querySelector('.player__hint').textContent = 'Le jeu s’ouvre en plein écran : tourne ton téléphone en paysage.';
+    hint.textContent = 'Le jeu passe en plein écran : tiens ton téléphone en paysage.';
+  } else if (navigator.keyboard && navigator.keyboard.lock) {
+    hint.textContent = 'Le jeu passe en plein écran. Maintiens Échap pour en sortir.';
+  } else {
+    hint.textContent = 'Le jeu passe en plein écran. Échap en sort ; clique dans le jeu pour lui rendre la main.';
   }
 
   const lightbox = document.getElementById('lightbox');

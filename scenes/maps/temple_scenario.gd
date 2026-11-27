@@ -28,12 +28,10 @@ const SOLUTION: Array[String] = ["lune", "loup", "epee", "flamme"]
 @export var wrong_hint: DialogueConversation
 @export var wrong_no_hint: DialogueConversation
 @export var opening: DialogueConversation
-@export var opened: DialogueConversation               # en revenant devant la porte ouverte
 
 var _stones: Node2D
 var _busy := false
 
-var _opened_told := false
 
 func _ready() -> void:
 	# Les pierres posées vont avec le décor au sol (sous les personnages).
@@ -91,12 +89,7 @@ func _on_plates_entered(body: Node2D) -> void:
 	if not PlayerData.get_flag("porte_temple_vue"):
 		return
 	if PlayerData.get_flag("temple_ouvert"):
-		# la porte ouverte mène au temple (sortie ExitToTemple) : un mot avant d'entrer,
-		# une seule fois, et sans faire reculer Zylrak
-		if not _opened_told and not PlayerData.get_flag("temple_vestibule_vu"):
-			_opened_told = true
-			_talk(opened.lines, body, false)
-		return
+		return   # la porte ouverte mène au temple (sortie ExitToTemple)
 	var n := FragmentYrenn.found_count()
 	if n < SOLUTION.size():
 		var lines: Array[DialogueLine] = [

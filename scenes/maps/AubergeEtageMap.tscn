@@ -20,6 +20,7 @@
 [ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/colporteur_bonjour.tres" id="v_colp2"]
 [ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/voyageuse_enquete.tres" id="v_voy1"]
 [ext_resource type="Resource" path="res://resources/dialogues/auberge_etage/voyageuse_bonjour.tres" id="v_voy2"]
+[ext_resource type="Script" path="res://scenes/maps/lit_auberge.gd" id="lit_auberge"]
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnkuf"]
 texture = ExtResource("1_cwq2d")
 texture_region_size = Vector2i(32, 32)
@@ -5374,3 +5375,7 @@ interaction_radius = 46.0
 
 [node name="EnqueteVoleur" type="Node" parent="." unique_id=1873361003]
 script = ExtResource("v_enquete")
+
+[node name="LitAuberge" type="Node2D" parent="."]
+position = Vector2(-176, -60)
+script = ExtResource("lit_auberge")

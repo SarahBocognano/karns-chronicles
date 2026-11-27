@@ -1,13 +1,13 @@
 extends "res://scripts/characters/companion.gd"
 
-## Croûton, le chien de Pépin, quand Zylrak l'a gardé (flag "voleur_chien_garde") : il suit Zylrak
+## Stone, le chien de Pépin, quand Zylrak l'a gardé (flag "voleur_chien_garde") : il suit Zylrak
 ## (derrière Ysolde) et flaire les objets cachés (scenes/maps/flair_chien.gd) : quand Zylrak passe
 ## près d'une cachette, il court s'y arrêter et aboie ; il reprend la route une fois l'objet déterré
 ## ou si Zylrak s'éloigne. Planche : assets/sprites/characters/chien_crouton.png (cases de 64 px :
 ## marche bas, gauche, droite, haut ; assis ; renifle ; aboie).
 
 const DOG_ROWS := {"down": 0, "left": 1, "right": 2, "up": 3}
-## Distance de Zylrak à laquelle Croûton sent une cachette.
+## Distance de Zylrak à laquelle Stone sent une cachette.
 const SNIFF_RANGE := 110.0
 
 var _spot: Node2D
