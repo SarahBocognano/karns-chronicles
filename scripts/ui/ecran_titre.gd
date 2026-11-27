@@ -42,7 +42,11 @@ func _ready() -> void:
 	_menu.cancelable = false
 	_menu.position = Vector2(800, 560)
 	var saved := Sauvegarde.has_any_save()
-	_menu.set_entries(["Continuer", "Nouvelle partie", "Charger", "Quitter"], [saved, true, saved, true])
+	# Sur le web, « Quitter » ne ferait rien : le joueur ferme simplement l'onglet.
+	var entries := ["Continuer", "Nouvelle partie", "Charger"]
+	if not OS.has_feature("web"):
+		entries.append("Quitter")
+	_menu.set_entries(entries, [saved, true, saved, true].slice(0, entries.size()))
 	add_child(_menu)
 	Musique.play(MUSIC)
 	_run.call_deferred()

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karn's Chronicles : Le Serment des Cendres</title>
+<meta name="description" content="Un RPG 2D en pixel art à l'ancienne, jouable dans le navigateur : un village aux abois, des goules, des ruines oubliées et des combats au tour par tour.">
+<meta property="og:title" content="Karn's Chronicles : Le Serment des Cendres">
+<meta property="og:description" content="Un RPG 2D en pixel art à l'ancienne, jouable directement dans le navigateur, sur ordinateur comme sur téléphone.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sarahbocognano.github.io/karns-chronicles/img/apercu.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e1017">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23c8a15c' d='M16 2c2 6 9 9 9 17a9 9 0 0 1-18 0c0-5 3-7 4-11 1 3 3 4 3 4 1-4 0-7 2-10z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__bg" role="img" aria-label="Le village d'Eclatvin au crépuscule, ses lanternes allumées"></div>
+  <nav class="nav">
+    <a class="nav__brand" href="#top">Karn's Chronicles</a>
+    <div class="nav__links">
+      <a href="#monde">Le monde</a>
+      <a href="#personnages">Personnages</a>
+      <a href="#aventure">L'aventure</a>
+      <a href="#commandes">Commandes</a>
+    </div>
+  </nav>
+  <div class="hero__content" id="top">
+    <p class="eyebrow">Un RPG 2D en pixel art</p>
+    <h1>Karn's Chronicles</h1>
+    <p class="hero__subtitle">Le Serment des Cendres</p>
+    <p class="hero__pitch">Un village aux abois, des goules qui rôdent, des ruines qu'un peuple disparu a scellées. Un RPG à l'ancienne, jouable directement dans ton navigateur, sur ordinateur comme sur téléphone.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#jouer">Jouer maintenant</a>
+      <a class="btn btn--ghost" href="#monde">Découvrir le monde</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section section--player" id="jouer" aria-label="Jouer">
+    <div class="player" id="player">
+      <div class="player__poster" id="poster">
+        <img src="img/combat-temple.webp" alt="" width="1200" height="753">
+        <button class="player__start" id="start" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Lancer le jeu</span>
+        </button>
+        <p class="player__note">Premier chargement d'environ 80 Mo. Sur téléphone, joue en paysage.</p>
+      </div>
+    </div>
+    <div class="player__bar">
+      <span class="player__hint">Clique dans le jeu pour lui donner la main, puis joue au clavier.</span>
+      <button class="link-btn" id="fullscreen" type="button" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        Plein écran
+      </button>
+    </div>
+  </section>
+
+  <section class="section" id="monde">
+    <div class="split">
+      <div class="prose">
+        <p class="eyebrow">Le monde</p>
+        <h2>Eclatvin, aux abois</h2>
+        <p>Depuis des semaines, des <strong>goules</strong> rôdent autour du village d'Eclatvin. Les routes sont coupées, et le marchand qui devait apporter vivres et remèdes n'est jamais arrivé.</p>
+        <p>C'est là que débarque <strong>Zylrak</strong>, un Ashwarden de l'Ordre des Cendres, bien décidé à régler l'affaire. À l'auberge, on parle de cris entendus près des <strong>ruines des Yrenn</strong>, un peuple disparu dont personne n'a jamais entièrement déchiffré l'écriture.</p>
+        <p>Dans la forêt, le chariot du marchand gît renversé, couvert de marques de griffes. Les traces mènent vers l'est, jusqu'à un temple taillé dans la montagne, dont la porte est scellée…</p>
+      </div>
+      <figure class="frame">
+        <img src="img/fresque.webp" alt="Zylrak devant la porte scellée du temple des Yrenn, gravée de quatre symboles" loading="lazy" width="1200" height="753">
+        <figcaption>La porte scellée du temple des Yrenn.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="personnages">
+    <p class="eyebrow center">Personnages</p>
+    <h2 class="center">Deux héros, une même piste</h2>
+    <div class="cards">
+      <article class="card">
+        <img class="card__portrait" src="img/zylrak.webp" alt="Portrait de Zylrak, l'air fier" loading="lazy" width="420" height="275">
+        <div class="card__body">
+          <h3>Zylrak</h3>
+          <p class="card__role">Ashwarden de l'Ordre des Cendres</p>
+          <p>Un peu trop sûr de lui, il répète son nom à qui veut l'entendre. Il manie l'épée et les Signes, une magie de feu et de cendres.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="card__portrait" src="img/ysolde.webp" alt="Portrait d'Ysolde, souriante" loading="lazy" width="420" height="396">
+        <div class="card__body">
+          <h3>Ysolde</h3>
+          <p class="card__role">Archère, traqueuse de goules</p>
+          <p>Elle prend d'abord Zylrak pour l'agresseur du marchand. Le quiproquo dissipé, elle fait équipe avec lui : flèches perçantes, pluie de flèches, et des doigts agiles pour chaparder aux monstres.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="aventure">
+    <p class="eyebrow center">L'aventure</p>
+    <h2 class="center">Ce qui t'attend</h2>
+    <ul class="features">
+      <li><span class="features__icon" aria-hidden="true">🏘️</span><h3>Un village vivant</h3><p>Parle aux habitants, accepte des contrats au panneau, aide-les… et démasque le voleur d'Eclatvin.</p></li>
+      <li><span class="features__icon" aria-hidden="true">⚔️</span><h3>Combats au tour par tour</h3><p>Attaques, Signes, talents et objets. Araignées, goules et gardiens anciens t'attendent hors du village.</p></li>
+      <li><span class="features__icon" aria-hidden="true">🗺️</span><h3>Forêt, lac, grotte et ruines</h3><p>Une mini-carte guide tes pas vers l'objectif de chaque quête, de la lisière jusqu'au temple des Yrenn.</p></li>
+      <li><span class="features__icon" aria-hidden="true">📜</span><h3>Le grimoire</h3><p>Équipe, équipement, inventaire, fragments, journal de quêtes, et trois emplacements de sauvegarde.</p></li>
+    </ul>
+    <div class="gallery" id="gallery">
+      <button type="button" class="gallery__item gallery__item--wide" data-src="img/combat-grotte.webp" data-caption="Combat contre une araignée dans la grotte du sentier.">
+        <img src="img/combat-grotte.webp" alt="Combat contre une araignée géante dans une grotte" loading="lazy" width="1200" height="753">
+      </button>
+      <button type="button" class="gallery__item" data-src="img/lac.webp" data-caption="Le ponton du lac, au sud de la forêt.">
+        <img src="img/lac.webp" alt="Zylrak sur le ponton d'un lac" loading="lazy" width="1200" height="753">
+      </button>
+      <button type="button" class="gallery__item" data-src="img/margot.webp" data-caption="Chez la mère Margot, dans sa ferme-fournil, à la lueur du four.">
+        <img src="img/margot.webp" alt="La ferme-fournil de Margot, éclairée par le four à pain" loading="lazy" width="1200" height="753">
+      </button>
+      <button type="button" class="gallery__item" data-src="img/grimoire.webp" data-caption="Le grimoire : la fiche de l'équipe.">
+        <img src="img/grimoire.webp" alt="Le grimoire ouvert sur la fiche de Zylrak et d'Ysolde" loading="lazy" width="1200" height="753">
+      </button>
+      <button type="button" class="gallery__item" data-src="img/combat-lac.webp" data-caption="Des goules sur la rive du lac.">
+        <img src="img/combat-lac.webp" alt="Combat contre deux goules au bord d'un lac" loading="lazy" width="1200" height="753">
+      </button>
+    </div>
+  </section>
+
+  <section class="section" id="commandes">
+    <p class="eyebrow center">Commandes</p>
+    <h2 class="center">Prends les rênes</h2>
+    <div class="controls">
+      <div class="controls__col">
+        <h3>Au clavier</h3>
+        <dl class="keys">
+          <div><dt><span class="dpad-keys"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></span></dt><dd>Se déplacer, choisir dans les menus</dd></div>
+          <div><dt><kbd class="wide">Entrée</kbd></dt><dd>Parler, examiner, valider</dd></div>
+          <div><dt><kbd class="wide">Échap</kbd></dt><dd>Ouvrir le grimoire, revenir en arrière</dd></div>
+          <div><dt><kbd>M</kbd></dt><dd>Afficher ou masquer la mini-carte</dd></div>
+        </dl>
+      </div>
+      <div class="controls__col">
+        <h3>Au doigt</h3>
+        <dl class="keys">
+          <div><dt><svg class="pad" viewBox="0 0 64 64" aria-label="Croix directionnelle"><circle cx="32" cy="32" r="30"/><path d="M32 9l7 9H25zM32 55l-7-9h14zM9 32l9-7v14zM55 32l-9 7V25z"/></svg></dt><dd>Se déplacer, choisir dans les menus</dd></div>
+          <div><dt><span class="round">A</span></dt><dd>Parler, examiner, valider</dd></div>
+          <div><dt><span class="round">B</span></dt><dd>Ouvrir le grimoire, revenir en arrière</dd></div>
+          <div><dt><span class="round round--small">Carte</span></dt><dd>Afficher ou masquer la mini-carte</dd></div>
+        </dl>
+        <p class="controls__note">Les boutons apparaissent sur téléphone et tablette. Tiens l'appareil en paysage.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__title">Karn's Chronicles</p>
+  <p>Un projet de démo réalisé avec <a href="https://godotengine.org">Godot 4.7</a>. Le code source est sur <a href="https://github.com/SarahBocognano/karns-chronicles">GitHub</a>.</p>
+  <p class="footer__credits">Décors : Szadi art. Monstres : Fat Cat Games, Redshrike, BenCreating. Musiques : EugeneDesMusic, The Sound Guild, lullemusic, lardven. Bruitages : TomMusic, Chequered Ink, Kenney, rubberduck. Interface : tiopalada, heyheythere, Hypnobius. Police : Cinzel. <a href="https://github.com/SarahBocognano/karns-chronicles#crédits">Tous les crédits et licences</a>.</p>
+</footer>
+
+<dialog class="lightbox" id="lightbox">
+  <form method="dialog"><button class="lightbox__close" aria-label="Fermer">×</button></form>
+  <img id="lightbox-img" alt="">
+  <p id="lightbox-caption"></p>
+</dialog>
+
+<script>
+  const player = document.getElementById('player');
+  const poster = document.getElementById('poster');
+  const fullscreenBtn = document.getElementById('fullscreen');
+  const touch = matchMedia('(pointer: coarse)').matches;
+
+  document.getElementById('start').addEventListener('click', () => {
+    // Au téléphone, le jeu s'ouvre en page entière : plus de place, et l'appareil se tient en paysage.
+    if (touch) { location.href = 'jeu/'; return; }
+    const frame = document.createElement('iframe');
+    frame.src = 'jeu/index.html';
+    frame.title = "Karn's Chronicles";
+    frame.allow = 'autoplay; fullscreen';
+    frame.allowFullscreen = true;
+    poster.replaceWith(frame);
+    frame.focus();
+    fullscreenBtn.hidden = false;
+  });
+
+  fullscreenBtn.addEventListener('click', () => {
+    const frame = player.querySelector('iframe');
+    (frame || player).requestFullscreen?.();
+    frame?.focus();
+  });
+
+  if (touch) {
+    document.querySelector('.player__hint').textContent = 'Le jeu s’ouvre en plein écran : tourne ton téléphone en paysage.';
+  }
+
+  const lightbox = document.getElementById('lightbox');
+  document.getElementById('gallery').addEventListener('click', (e) => {
+    const item = e.target.closest('.gallery__item');
+    if (!item) return;
+    document.getElementById('lightbox-img').src = item.dataset.src;
+    document.getElementById('lightbox-img').alt = item.querySelector('img').alt;
+    document.getElementById('lightbox-caption').textContent = item.dataset.caption;
+    lightbox.showModal();
+  });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.close(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+# Publie le site (page de présentation + jeu jouable) sur GitHub Pages à chaque push sur main.
+# Le jeu est exporté ici avec le preset « Web » de export_presets.cfg, puis rangé dans jeu/ ;
+# la page de présentation vient du dossier site/.
+name: Site web
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un seul déploiement à la fois ; un nouveau push remplace celui en attente.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: 4.7.2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Godot et modèles d'export (cache)
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-web
+
+      - name: Installer Godot et les modèles d'export web
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: |
+          base="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+          templates="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p ~/godot "$templates"
+          curl -fsSL -o /tmp/godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q /tmp/godot.zip -d ~/godot
+          mv ~/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64 ~/godot/godot
+          curl -fsSL -o /tmp/templates.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip -q -j /tmp/templates.tpz 'templates/web_*' 'templates/version.txt' -d "$templates"
+          rm /tmp/godot.zip /tmp/templates.tpz
+
+      - name: Ressources importées (cache)
+        uses: actions/cache@v4
+        with:
+          path: .godot
+          key: godot-import-${{ hashFiles('**/*.import', 'project.godot') }}
+          restore-keys: godot-import-
+
+      - name: Importer le projet
+        run: ~/godot/godot --headless --path . --import || true
+
+      - name: Exporter le jeu
+        run: |
+          mkdir -p _site/jeu
+          ~/godot/godot --headless --path . --export-release "Web" _site/jeu/index.html
+          test -s _site/jeu/index.pck
+
+      - name: Ajouter la page de présentation
+        run: |
+          cp -R site/. _site/
+          rm -f _site/.gdignore
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

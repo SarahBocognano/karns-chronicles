@@ -133,7 +133,7 @@ func _run() -> void:
 		_focus = "tabs"
 		_draw_tabs()
 		_show_page(tab)
-		_footer_right.text = "← →  onglets      Entrée  ouvrir      Échap  fermer"
+		_footer_right.text = Tactile.hint("← →  onglets      Entrée  ouvrir      Échap  fermer")
 		var action: String = await _tab_signal
 		match action:
 			"left":
@@ -144,7 +144,7 @@ func _run() -> void:
 				close()
 			"enter":
 				_focus = "page"
-				_footer_right.text = "Flèches  choisir      Entrée  valider      Échap  revenir"
+				_footer_right.text = Tactile.hint("Flèches  choisir      Entrée  valider      Échap  revenir")
 				if await _enter_page(tab):
 					return   # partie chargée, écran titre ou reprise
 
